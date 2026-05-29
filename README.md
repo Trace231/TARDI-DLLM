@@ -2,18 +2,16 @@
 
 **Task-Aware Reverse Diffusion Inference for Diffusion Large Language Models**
 
-TARDI-DLLM is a research artifact for studying **masked diffusion language
-models on downstream discriminative tasks**, with experiments centered on
-`LLaDA-8B-Instruct`. The repository does not modify the model backbone. Its
-main focus is an inference-loop controller that uses early reverse-diffusion
-signals to decide how much denoising computation each sample should receive.
+TARDI-DLLM contains the code, result tables, and notes for a small study of
+**masked diffusion language models on downstream discriminative tasks**. Most
+experiments use `LLaDA-8B-Instruct` and compare fixed-step sampling with
+task-aware reverse-diffusion inference.
 
-The current implementation explores a **Selective Re-masking Refinement
-Controller**:
+The main controller is a **Selective Re-masking Refinement Controller**:
 
 1. run a lightweight forward label probe;
 2. perform an 8-step reverse-diffusion scout;
-3. estimate sample risk from probe uncertainty, trajectory flips, validity,
+3. estimate sample risk from probe uncertainty, trajectory changes, validity,
    fill confidence, and task shape;
 4. allocate a budget from `{8, 16, 24, 32}`;
 5. selectively re-mask low-confidence positions before additional denoising.
@@ -144,10 +142,9 @@ python scripts/audit_eval_outputs.py \
   --out results/domain_shift/task_aware/solid_v2/tables/output_audit.csv
 ```
 
-## Data and Artifacts
+## Data and Outputs
 
-The repository tracks the compact artifacts needed to inspect and audit the
-reported conclusions:
+The repository includes the files used for the reported experiments:
 
 - raw JSON evaluation outputs;
 - summary CSV/JSON tables;
@@ -166,7 +163,6 @@ available in the runtime environment.
 
 ## Scope
 
-This repository is best read as a reproducible research bundle rather than a
-turnkey package. It is designed to make the reported LLaDA trajectory-control
-experiments auditable: the scripts, raw outputs, tables, and reports are kept
-together so that accuracy--cost claims can be traced back to concrete runs.
+This is a research-code repository, not a packaged library. The scripts, raw
+outputs, tables, and reports are kept together so that the accuracy--cost
+numbers can be checked against the corresponding runs.
