@@ -1,0 +1,1725 @@
+{
+  "method": "prophet_style_early_commit",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "gsm8k",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/all_datasets_limit50_fast/raw/llada8b_prophet_gsm8k_limit50_seed23.json",
+    "max_steps": 32,
+    "min_steps": 8,
+    "check_interval": 4,
+    "patience": 2,
+    "gen_length": 96,
+    "block_length": 96,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "schedule": "uniform",
+    "stop_on_invalid": false
+  },
+  "summary": {
+    "gsm8k": {
+      "accuracy": 0.64,
+      "n": 50,
+      "seconds": 94.73262000083923,
+      "avg_forward_calls": 15.84,
+      "stop_rates": {
+        "max_steps": 0.14,
+        "stable_label": 0.86
+      },
+      "peak_mem_gb": 15.102809429168701
+    }
+  },
+  "rows": [
+    {
+      "task": "gsm8k",
+      "id": "593",
+      "gold": "3",
+      "pred": "4",
+      "correct": false,
+      "output": "The beanstalk starts at 4 feet tall and doubles its height every day. will take  days to be taller than Mark's window.\n\nFinal answer: ",
+      "metric": "number",
+      "seconds": 1.1292431354522705,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "4",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "4",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "171",
+      "gold": "1210",
+      "pred": "1210",
+      "correct": true,
+      "output": "Jake sees 80 spiders 8 legs each 0 a total of 640 + 540 + 30 = 1210 legs.\n\nFinal answer: 1210",
+      "metric": "number",
+      "seconds": 1.0025582313537598,
+      "forward_calls": 16,
+      "committed_step": 16,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "10",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "1210",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "1210",
+          "valid": true,
+          "filled_ratio": 0.5
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "34",
+      "gold": "23",
+      "pred": "18",
+      "correct": false,
+      "output": " Siobhan has 2 fewer fewer than Aaron, so she has 20 - 2 = 18 jewels.\n\nFinal answer: 18",
+      "metric": "number",
+      "seconds": 0.7416319847106934,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "18",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "18",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1212",
+      "gold": "150",
+      "pred": "15",
+      "correct": false,
+      "output": " class has a capacity of 2 combined capacity of both schools is 120 + 3 = 15 students.\n\nFinal answer: 15",
+      "metric": "number",
+      "seconds": 0.7489714622497559,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "15",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "15",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "628",
+      "gold": "4",
+      "pred": "24",
+      "correct": false,
+      "output": "Adam needs to be 4 feet tall, which is 4  48 / 2 = 24 years.\n\nFinal answer: 24",
+      "metric": "number",
+      "seconds": 0.742802619934082,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "24",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "24",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "867",
+      "gold": "7",
+      "pred": "7",
+      "correct": true,
+      "output": "Daisy bought a bag of potatoes that weighed 5 pounds. bought a bag of sweet potatoes that weighed 2 potatoes  pounds.\n\nFinal answer: 7",
+      "metric": "number",
+      "seconds": 0.754364013671875,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "7",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "7",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "776",
+      "gold": "800",
+      "pred": "800",
+      "correct": true,
+      "output": "Final answer: 800",
+      "metric": "number",
+      "seconds": 3.511017084121704,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "800",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1085",
+      "gold": "26",
+      "pred": "26",
+      "correct": true,
+      "output": "Final answer: 26",
+      "metric": "number",
+      "seconds": 3.8139259815216064,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "26",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "733",
+      "gold": "5",
+      "pred": "5",
+      "correct": true,
+      "output": "Final answer: 5",
+      "metric": "number",
+      "seconds": 3.956041097640991,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "5",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "266",
+      "gold": "118000",
+      "pred": "18000",
+      "correct": false,
+      "output": "000 $000 - $250000 = $18000.\n\nFinal answer: 18000",
+      "metric": "number",
+      "seconds": 1.8384673595428467,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "18000",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "18000",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "393",
+      "gold": "20",
+      "pred": "15",
+      "correct": false,
+      "output": "Carol spends 4 hours writing, 2 hours (5 / 6) * 100 = 15%.\n\nFinal answer: 15",
+      "metric": "number",
+      "seconds": 1.4769625663757324,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "15",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "15",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "547",
+      "gold": "81",
+      "pred": "81",
+      "correct": true,
+      "output": "The problem involves a tree. Therefore, the fourth round of calls will notify 3^4 = approximately 81 families.\n\nFinal answer: 81",
+      "metric": "number",
+      "seconds": 1.4875624179840088,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "81",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "81",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "910",
+      "gold": "700",
+      "pred": "700",
+      "correct": true,
+      "output": "Farmer Brown's farm is 200 acres.0 acres. Together, the two farms have 200 + 500 = 700 acres.\n\nFinal answer: 700",
+      "metric": "number",
+      "seconds": 1.98720121383667,
+      "forward_calls": 16,
+      "committed_step": 16,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "00",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "700",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "700",
+          "valid": true,
+          "filled_ratio": 0.5
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "28",
+      "gold": "25",
+      "pred": "25",
+      "correct": true,
+      "output": "Henry's first stop was distance between his first and second stops is 45 - 20 = 25 miles.\n\nFinal answer: 25",
+      "metric": "number",
+      "seconds": 1.5144600868225098,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "25",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "25",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "452",
+      "gold": "50",
+      "pred": "50",
+      "correct": true,
+      "output": "The distance average speed = total distance / total time = 150 miles / 3 hours = 50 mph.\n\nFinal answer: 50",
+      "metric": "number",
+      "seconds": 1.4942340850830078,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "50",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "50",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1270",
+      "gold": "3528",
+      "pred": "0.80",
+      "correct": false,
+      "output": "After the first year, the boat is worth $9000 * 0.70 = $6300.0 worth $0 * 0.80 = $.\n\nFinal answer: ",
+      "metric": "number",
+      "seconds": 1.9630436897277832,
+      "forward_calls": 16,
+      "committed_step": 16,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "00000",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "0.80",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "0.80",
+          "valid": true,
+          "filled_ratio": 0.5
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "931",
+      "gold": "50",
+      "pred": "0",
+      "correct": false,
+      "output": "Let P be Peter's age, J be Paul's age, and J be John's age. We0 P = 0.\n\nFinal answer: 0",
+      "metric": "number",
+      "seconds": 1.5164501667022705,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "0",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "0",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "50",
+      "gold": "294",
+      "pred": "328",
+      "correct": false,
+      "output": "Lloyd's chickens produce 252 eggs per day, so in a week, they produce 252 * 7 = 4, Lloyd makes 164 *2 = $328 on eggs per week.\n\nFinal answer: 328",
+      "metric": "number",
+      "seconds": 2.5061328411102295,
+      "forward_calls": 20,
+      "committed_step": 20,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "252",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "8",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "328",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "328",
+          "valid": true,
+          "filled_ratio": 0.625
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "216",
+      "gold": "220",
+      "pred": "220",
+      "correct": true,
+      "output": "Janeth to return $2000 +0000\nHer remaining balance will be $2200 - $1980 = $220.\n\nFinal answer: 220",
+      "metric": "number",
+      "seconds": 1.981924295425415,
+      "forward_calls": 16,
+      "committed_step": 16,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "0",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "220",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "220",
+          "valid": true,
+          "filled_ratio": 0.5
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "175",
+      "gold": "15",
+      "pred": "3",
+      "correct": false,
+      "output": "They made $25 in profit, so they $ - cost of sugar = $5 - $2 = $3 $3.\n\nFinal answer: 3",
+      "metric": "number",
+      "seconds": 1.4949955940246582,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "3",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "3",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1020",
+      "gold": "22",
+      "pred": "22",
+      "correct": true,
+      "output": "Final answer: 22",
+      "metric": "number",
+      "seconds": 3.940035104751587,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "22",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "862",
+      "gold": "40",
+      "pred": "40",
+      "correct": true,
+      "output": "Paige bakes 2 bananaaves hour, so she 80 * $0.50 = $40.\n\nFinal answer: 40",
+      "metric": "number",
+      "seconds": 1.4746370315551758,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "40",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "40",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "40",
+      "gold": "8",
+      "pred": "1",
+      "correct": false,
+      "output": " Suzy iPhone is 1 year old",
+      "metric": "number",
+      "seconds": 1.4878122806549072,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "1",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "1",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1049",
+      "gold": "20",
+      "pred": "20",
+      "correct": true,
+      "output": "Final answer: 20",
+      "metric": "number",
+      "seconds": 3.9547030925750732,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "20",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1285",
+      "gold": "1218",
+      "pred": "1218",
+      "correct": true,
+      "output": "Mamou1,360 - 14 1,218 meals left to distribute.\n\nFinal answer: 1,218",
+      "metric": "number",
+      "seconds": 1.5339789390563965,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "1218",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "1218",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "883",
+      "gold": "25",
+      "pred": "25",
+      "correct": true,
+      "output": "Elaina's final concert twice long usual, her usual concerts run for 50 / 2 = 25 minutes.\n\nFinal answer: 25",
+      "metric": "number",
+      "seconds": 1.522963285446167,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "25",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "25",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "735",
+      "gold": "50",
+      "pred": "0",
+      "correct": false,
+      "output": "Candidate A got 20% of the votes, which is 0 - 0 - 30 = 0 votes.\n\nFinal answer: 0",
+      "metric": "number",
+      "seconds": 1.4791648387908936,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "0",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "0",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "117",
+      "gold": "360",
+      "pred": "3",
+      "correct": false,
+      "output": "John buys 2 pairs of shoes for each of his 3 children,",
+      "metric": "number",
+      "seconds": 1.4401512145996094,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "3",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "3",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "421",
+      "gold": "12",
+      "pred": "12",
+      "correct": true,
+      "output": "Initially, there were 50 cats on the rock. Four boats carried away 5 cats each, so  on the.\n\nFinal answer: 12",
+      "metric": "number",
+      "seconds": 1.5015747547149658,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "12",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "12",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "72",
+      "gold": "221",
+      "pred": "221",
+      "correct": true,
+      "output": "Tommy sells 43 brownies at $3 slice, so he43 *3 = $129 $129 + $92 = $221.\n\nFinal answer: 221",
+      "metric": "number",
+      "seconds": 1.9964053630828857,
+      "forward_calls": 16,
+      "committed_step": 16,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "21",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "221",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "221",
+          "valid": true,
+          "filled_ratio": 0.5
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1206",
+      "gold": "40000",
+      "pred": "000",
+      "correct": false,
+      "output": "John gets worth has $100,000 - $60,000 = $40,000 leftover.\n000",
+      "metric": "number",
+      "seconds": 1.4862492084503174,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "000",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "000",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "755",
+      "gold": "7",
+      "pred": "7",
+      "correct": true,
+      "output": " =  matches.\n\nAdding these, Joey played 2 + 1 + 4 = 7 matches in one week.\n\nFinal answer: 7",
+      "metric": "number",
+      "seconds": 1.4907927513122559,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "7",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "7",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "352",
+      "gold": "21",
+      "pred": "21",
+      "correct": true,
+      "output": "Andrea had $36 the beginning. Therefore, she must saved is $36 - $15 = $21.\n\nFinal answer: 21",
+      "metric": "number",
+      "seconds": 1.48286771774292,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "21",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "21",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1271",
+      "gold": "43",
+      "pred": "43",
+      "correct": true,
+      "output": "The bag has 54 red candies, 108 orange candies, and 27 yellow candies. The total number of22, the number of pink candies is 232 - 189 = 43.\n\nFinal answer: 43",
+      "metric": "number",
+      "seconds": 2.479562997817993,
+      "forward_calls": 20,
+      "committed_step": 20,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "232",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "18",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "43",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "43",
+          "valid": true,
+          "filled_ratio": 0.625
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "442",
+      "gold": "49",
+      "pred": "49",
+      "correct": true,
+      "output": "Marcus spends 3 hours baking, so the temperature  final temperature is 55 - 6 = 49 degrees.\n\nFinal answer: 49",
+      "metric": "number",
+      "seconds": 1.474261999130249,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "49",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "49",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "742",
+      "gold": "24",
+      "pred": "24",
+      "correct": true,
+      "output": "40 = 16 girls. Therefore, each class has 40 - 16 = 24 boys.\n\nFinal answer: 24",
+      "metric": "number",
+      "seconds": 1.498375415802002,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "24",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "24",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1158",
+      "gold": "7300",
+      "pred": "7300",
+      "correct": true,
+      "output": "To 100% of the daily energy needs 2300 11500 - 4200 = 7300 bottles.\n\nFinal answer: 7300",
+      "metric": "number",
+      "seconds": 1.9757614135742188,
+      "forward_calls": 16,
+      "committed_step": 16,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "300",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "7300",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "7300",
+          "valid": true,
+          "filled_ratio": 0.5
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1171",
+      "gold": "3160",
+      "pred": "3160",
+      "correct": true,
+      "output": "Each bedroom is 20 * 12 = 240 square feet 100 square is 960 + 1200 + 1000 = 3160 square feet.\n\nFinal answer: 3160",
+      "metric": "number",
+      "seconds": 2.491670846939087,
+      "forward_calls": 20,
+      "committed_step": 20,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "0",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "160",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "3160",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "3160",
+          "valid": true,
+          "filled_ratio": 0.625
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "576",
+      "gold": "11232",
+      "pred": "2",
+      "correct": false,
+      "output": "The area of the bedroom is 18 * 12 = 216 square feet.\nThe cost per is52 * 216 = $,2.\n\nFinal answer: $,2",
+      "metric": "number",
+      "seconds": 2.4517760276794434,
+      "forward_calls": 16,
+      "committed_step": 16,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "1",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "2",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "2",
+          "valid": true,
+          "filled_ratio": 0.5
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "643",
+      "gold": "840",
+      "pred": "1120",
+      "correct": false,
+      "output": "The website 20 is 40 articles/day * 28 days = 1120 articles.\n\nFinal answer: 1120",
+      "metric": "number",
+      "seconds": 1.490915298461914,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "1120",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "1120",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1173",
+      "gold": "10",
+      "pred": "10",
+      "correct": true,
+      "output": "The special size box has 0 can 120 /12 = 10 dishwashing cycles for $1.\n\nFinal answer: 10",
+      "metric": "number",
+      "seconds": 1.474679946899414,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "10",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "10",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "970",
+      "gold": "33",
+      "pred": "33",
+      "correct": true,
+      "output": "Final answer: 33",
+      "metric": "number",
+      "seconds": 3.8835597038269043,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "33",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "363",
+      "gold": "6",
+      "pred": "7",
+      "correct": false,
+      "output": " / 80 mph = 3 hours.\n\nTotal time 3 + 1 + 3 = 7 hours.\n\nFinal answer: 7",
+      "metric": "number",
+      "seconds": 1.5127320289611816,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "7",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "7",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "989",
+      "gold": "45",
+      "pred": "45",
+      "correct": true,
+      "output": "Emily can peel 6 shrimp per minute, so it will take 15 + 30 = 45 minutes.\n\nFinal answer: 45",
+      "metric": "number",
+      "seconds": 1.492290735244751,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "45",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "45",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1209",
+      "gold": "29",
+      "pred": "29",
+      "correct": true,
+      "output": "On the low setting, de total amount water removed is 3 + 6 + 20 = 29 liters.\n\nFinal answer: 29",
+      "metric": "number",
+      "seconds": 1.9022324085235596,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "29",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "29",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "916",
+      "gold": "14",
+      "pred": "2",
+      "correct": false,
+      "output": "The total cost of the cake and balloons is $11 +0.5 $40 / 2 = $20.\n\nFinal answer: 2",
+      "metric": "number",
+      "seconds": 1.8341498374938965,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "2",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "2",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1315",
+      "gold": "5",
+      "pred": "5",
+      "correct": true,
+      "output": "Ana spends 3 minutes peeling orange, so in will have 20 - 15 = 5 more oranges than Jane.\n\nFinal answer: 5",
+      "metric": "number",
+      "seconds": 1.489222764968872,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "5",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "5",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "335",
+      "gold": "310",
+      "pred": "310",
+      "correct": true,
+      "output": "Mason needs 30 ounces sugar 240 + 70 = 310 ounces of sugar.\n\nFinal answer: 310",
+      "metric": "number",
+      "seconds": 1.5014169216156006,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "310",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "310",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "372",
+      "gold": "5",
+      "pred": "5",
+      "correct": true,
+      "output": "Hallie had dance practice for 1 hour on and 2 hours on Thursdays, 3 + 2 = 5 hours.\n\nFinal answer: 5",
+      "metric": "number",
+      "seconds": 1.49253249168396,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "5",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "5",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "365",
+      "gold": "18",
+      "pred": "18",
+      "correct": true,
+      "output": "Final answer: 18",
+      "metric": "number",
+      "seconds": 3.834153652191162,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "18",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    }
+  ]
+}

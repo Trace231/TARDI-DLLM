@@ -1,0 +1,14 @@
+{
+  "path": "results/domain_shift/task_aware/solid_v2/lora_control_v2/train/domain_mix_final_typed_control_seed23.jsonl",
+  "n": 469,
+  "counts": {
+    "commonsenseqa": 100,
+    "sciq": 100,
+    "pubmedqa": 100,
+    "mmlu_pro": 50,
+    "winogrande": 100,
+    "ceval_computer_network": 19
+  },
+  "seed": 20260527,
+  "limit_per_task": 100
+}

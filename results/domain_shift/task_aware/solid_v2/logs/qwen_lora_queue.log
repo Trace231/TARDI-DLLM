@@ -1,0 +1,679 @@
+/miniconda3/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.5.0) or chardet (6.0.0.post1)/charset_normalizer (3.4.4) doesn't match a supported version!
+  warnings.warn(
+/data/venvs/llada/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:06,  2.14s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:04<00:04,  2.48s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:07<00:02,  2.59s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.29s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:09<00:00,  2.35s/it]
+trainable params: 20,185,088 || all params: 7,635,801,600 || trainable%: 0.2643
+  0%|          | 0/200 [00:00<?, ?it/s]  0%|          | 1/200 [00:03<11:10,  3.37s/it]  1%|          | 2/200 [00:06<11:31,  3.49s/it]  2%|▏         | 3/200 [00:10<12:08,  3.70s/it]  2%|▏         | 4/200 [00:14<12:24,  3.80s/it]  2%|▎         | 5/200 [00:18<12:07,  3.73s/it]  3%|▎         | 6/200 [00:21<11:43,  3.62s/it]  4%|▎         | 7/200 [00:25<11:58,  3.72s/it]  4%|▍         | 8/200 [00:29<11:23,  3.56s/it]  4%|▍         | 9/200 [00:32<11:29,  3.61s/it]  5%|▌         | 10/200 [00:36<11:24,  3.61s/it]                                                {'loss': 3.6658, 'grad_norm': 10.708718299865723, 'learning_rate': 9.994100796397954e-05, 'epoch': 0.03}
+  5%|▌         | 10/200 [00:36<11:24,  3.61s/it]  6%|▌         | 11/200 [00:40<11:55,  3.78s/it]  6%|▌         | 12/200 [00:43<11:17,  3.60s/it]  6%|▋         | 13/200 [00:47<11:01,  3.54s/it]  7%|▋         | 14/200 [00:50<10:56,  3.53s/it]  8%|▊         | 15/200 [00:53<10:45,  3.49s/it]  8%|▊         | 16/200 [00:57<10:35,  3.45s/it]  8%|▊         | 17/200 [01:00<10:27,  3.43s/it]  9%|▉         | 18/200 [01:04<10:33,  3.48s/it] 10%|▉         | 19/200 [01:07<10:19,  3.42s/it] 10%|█         | 20/200 [01:10<10:01,  3.34s/it]                                                {'loss': 0.1944, 'grad_norm': 2.0274786949157715, 'learning_rate': 9.889612861977853e-05, 'epoch': 0.05}
+ 10%|█         | 20/200 [01:10<10:01,  3.34s/it] 10%|█         | 21/200 [01:13<09:37,  3.22s/it] 11%|█         | 22/200 [01:17<10:04,  3.39s/it] 12%|█▏        | 23/200 [01:20<09:46,  3.31s/it] 12%|█▏        | 24/200 [01:24<10:05,  3.44s/it] 12%|█▎        | 25/200 [01:27<09:51,  3.38s/it] 13%|█▎        | 26/200 [01:30<09:42,  3.35s/it] 14%|█▎        | 27/200 [01:34<09:46,  3.39s/it] 14%|█▍        | 28/200 [01:37<09:34,  3.34s/it] 14%|█▍        | 29/200 [01:40<09:30,  3.33s/it] 15%|█▌        | 30/200 [01:44<09:34,  3.38s/it]                                                {'loss': 0.101, 'grad_norm': 1.8452134132385254, 'learning_rate': 9.657180469054213e-05, 'epoch': 0.07}
+ 15%|█▌        | 30/200 [01:44<09:34,  3.38s/it] 16%|█▌        | 31/200 [01:48<09:53,  3.51s/it] 16%|█▌        | 32/200 [01:51<09:46,  3.49s/it] 16%|█▋        | 33/200 [01:55<09:37,  3.46s/it] 17%|█▋        | 34/200 [01:58<09:13,  3.33s/it] 18%|█▊        | 35/200 [02:01<09:17,  3.38s/it] 18%|█▊        | 36/200 [02:05<09:17,  3.40s/it] 18%|█▊        | 37/200 [02:08<09:21,  3.44s/it] 19%|█▉        | 38/200 [02:12<09:21,  3.47s/it] 20%|█▉        | 39/200 [02:15<09:18,  3.47s/it] 20%|██        | 40/200 [02:18<09:01,  3.39s/it]                                                {'loss': 0.1141, 'grad_norm': 2.37096905708313, 'learning_rate': 9.302885579019627e-05, 'epoch': 0.1}
+ 20%|██        | 40/200 [02:18<09:01,  3.39s/it] 20%|██        | 41/200 [02:21<08:50,  3.34s/it] 21%|██        | 42/200 [02:25<08:53,  3.37s/it] 22%|██▏       | 43/200 [02:28<08:56,  3.42s/it] 22%|██▏       | 44/200 [02:32<09:01,  3.47s/it] 22%|██▎       | 45/200 [02:36<08:58,  3.48s/it] 23%|██▎       | 46/200 [02:39<08:51,  3.45s/it] 24%|██▎       | 47/200 [02:42<08:49,  3.46s/it] 24%|██▍       | 48/200 [02:46<08:33,  3.38s/it] 24%|██▍       | 49/200 [02:50<08:54,  3.54s/it] 25%|██▌       | 50/200 [02:53<08:47,  3.52s/it]                                                {'loss': 0.0784, 'grad_norm': 0.2829359769821167, 'learning_rate': 8.835998878354931e-05, 'epoch': 0.12}
+ 25%|██▌       | 50/200 [02:53<08:47,  3.52s/it] 26%|██▌       | 51/200 [02:56<08:29,  3.42s/it] 26%|██▌       | 52/200 [03:00<08:35,  3.48s/it] 26%|██▋       | 53/200 [03:03<08:10,  3.33s/it] 27%|██▋       | 54/200 [03:06<07:59,  3.29s/it] 28%|██▊       | 55/200 [03:09<07:46,  3.22s/it] 28%|██▊       | 56/200 [03:12<07:42,  3.21s/it] 28%|██▊       | 57/200 [03:16<07:45,  3.25s/it] 29%|██▉       | 58/200 [03:19<07:32,  3.19s/it] 30%|██▉       | 59/200 [03:22<07:29,  3.19s/it] 30%|███       | 60/200 [03:25<07:16,  3.12s/it]                                                {'loss': 0.0946, 'grad_norm': 0.7838069796562195, 'learning_rate': 8.268737196446264e-05, 'epoch': 0.15}
+ 30%|███       | 60/200 [03:25<07:16,  3.12s/it] 30%|███       | 61/200 [03:28<07:18,  3.16s/it] 31%|███       | 62/200 [03:31<07:12,  3.13s/it] 32%|███▏      | 63/200 [03:34<07:01,  3.08s/it] 32%|███▏      | 64/200 [03:37<07:10,  3.16s/it] 32%|███▎      | 65/200 [03:41<07:05,  3.15s/it] 33%|███▎      | 66/200 [03:43<06:54,  3.09s/it] 34%|███▎      | 67/200 [03:46<06:47,  3.06s/it] 34%|███▍      | 68/200 [03:50<06:51,  3.12s/it] 34%|███▍      | 69/200 [03:53<06:57,  3.19s/it] 35%|███▌      | 70/200 [03:56<06:54,  3.19s/it]                                                {'loss': 0.1121, 'grad_norm': 1.097578763961792, 'learning_rate': 7.61594383291065e-05, 'epoch': 0.17}
+ 35%|███▌      | 70/200 [03:56<06:54,  3.19s/it] 36%|███▌      | 71/200 [03:59<06:53,  3.21s/it] 36%|███▌      | 72/200 [04:03<06:51,  3.22s/it] 36%|███▋      | 73/200 [04:06<06:53,  3.26s/it] 37%|███▋      | 74/200 [04:10<07:14,  3.45s/it] 38%|███▊      | 75/200 [04:13<07:00,  3.36s/it] 38%|███▊      | 76/200 [04:16<06:45,  3.27s/it] 38%|███▊      | 77/200 [04:20<06:42,  3.28s/it] 39%|███▉      | 78/200 [04:23<06:43,  3.31s/it] 40%|███▉      | 79/200 [04:26<06:41,  3.32s/it] 40%|████      | 80/200 [04:30<06:43,  3.37s/it]                                                {'loss': 0.0814, 'grad_norm': 1.3998574018478394, 'learning_rate': 6.894700159171534e-05, 'epoch': 0.2}
+ 40%|████      | 80/200 [04:30<06:43,  3.37s/it] 40%|████      | 81/200 [04:33<06:31,  3.29s/it] 41%|████      | 82/200 [04:36<06:22,  3.24s/it] 42%|████▏     | 83/200 [04:39<06:21,  3.26s/it] 42%|████▏     | 84/200 [04:42<06:14,  3.22s/it] 42%|████▎     | 85/200 [04:46<06:18,  3.29s/it] 43%|████▎     | 86/200 [04:49<06:06,  3.21s/it] 44%|████▎     | 87/200 [04:52<06:00,  3.19s/it] 44%|████▍     | 88/200 [04:56<06:18,  3.38s/it] 44%|████▍     | 89/200 [04:59<06:03,  3.28s/it] 45%|████▌     | 90/200 [05:03<06:14,  3.41s/it]                                                {'loss': 0.0869, 'grad_norm': 1.1478455066680908, 'learning_rate': 6.123878657343648e-05, 'epoch': 0.23}
+ 45%|████▌     | 90/200 [05:03<06:14,  3.41s/it] 46%|████▌     | 91/200 [05:06<06:11,  3.41s/it] 46%|████▌     | 92/200 [05:09<06:05,  3.39s/it] 46%|████▋     | 93/200 [05:13<05:59,  3.36s/it] 47%|████▋     | 94/200 [05:16<05:58,  3.38s/it] 48%|████▊     | 95/200 [05:19<05:41,  3.25s/it] 48%|████▊     | 96/200 [05:22<05:44,  3.31s/it] 48%|████▊     | 97/200 [05:26<05:38,  3.28s/it] 49%|████▉     | 98/200 [05:29<05:33,  3.27s/it] 50%|████▉     | 99/200 [05:32<05:39,  3.36s/it] 50%|█████     | 100/200 [05:36<05:28,  3.29s/it]                                                 {'loss': 0.086, 'grad_norm': 0.8819364309310913, 'learning_rate': 5.3236490918721794e-05, 'epoch': 0.25}
+ 50%|█████     | 100/200 [05:36<05:28,  3.29s/it] 50%|█████     | 101/200 [05:39<05:32,  3.35s/it] 51%|█████     | 102/200 [05:43<05:33,  3.41s/it] 52%|█████▏    | 103/200 [05:46<05:27,  3.38s/it] 52%|█████▏    | 104/200 [05:49<05:28,  3.42s/it] 52%|█████▎    | 105/200 [05:53<05:35,  3.54s/it] 53%|█████▎    | 106/200 [05:57<05:34,  3.56s/it] 54%|█████▎    | 107/200 [06:00<05:30,  3.55s/it] 54%|█████▍    | 108/200 [06:04<05:24,  3.53s/it] 55%|█████▍    | 109/200 [06:07<05:11,  3.42s/it] 55%|█████▌    | 110/200 [06:10<04:55,  3.28s/it]                                                 {'loss': 0.0778, 'grad_norm': 1.1340886354446411, 'learning_rate': 4.51495073572676e-05, 'epoch': 0.28}
+ 55%|█████▌    | 110/200 [06:10<04:55,  3.28s/it] 56%|█████▌    | 111/200 [06:13<04:52,  3.29s/it] 56%|█████▌    | 112/200 [06:17<04:58,  3.39s/it] 56%|█████▋    | 113/200 [06:20<04:46,  3.30s/it] 57%|█████▋    | 114/200 [06:23<04:40,  3.26s/it] 57%|█████▊    | 115/200 [06:27<04:41,  3.31s/it] 58%|█████▊    | 116/200 [06:30<04:40,  3.34s/it] 58%|█████▊    | 117/200 [06:34<04:44,  3.42s/it] 59%|█████▉    | 118/200 [06:37<04:43,  3.45s/it] 60%|█████▉    | 119/200 [06:41<04:40,  3.47s/it] 60%|██████    | 120/200 [06:44<04:29,  3.36s/it]                                                 {'loss': 0.0859, 'grad_norm': 1.116102695465088, 'learning_rate': 3.718944461187138e-05, 'epoch': 0.3}
+ 60%|██████    | 120/200 [06:44<04:29,  3.36s/it] 60%|██████    | 121/200 [06:47<04:26,  3.37s/it] 61%|██████    | 122/200 [06:50<04:17,  3.30s/it] 62%|██████▏   | 123/200 [06:54<04:19,  3.37s/it] 62%|██████▏   | 124/200 [06:57<04:06,  3.24s/it] 62%|██████▎   | 125/200 [07:00<04:08,  3.32s/it] 63%|██████▎   | 126/200 [07:03<03:59,  3.24s/it] 64%|██████▎   | 127/200 [07:07<04:04,  3.35s/it] 64%|██████▍   | 128/200 [07:10<03:58,  3.31s/it] 64%|██████▍   | 129/200 [07:13<03:50,  3.25s/it] 65%|██████▌   | 130/200 [07:16<03:43,  3.19s/it]                                                 {'loss': 0.0924, 'grad_norm': 0.14578880369663239, 'learning_rate': 2.9564590321322207e-05, 'epoch': 0.33}
+ 65%|██████▌   | 130/200 [07:16<03:43,  3.19s/it] 66%|██████▌   | 131/200 [07:20<03:51,  3.35s/it] 66%|██████▌   | 132/200 [07:24<03:50,  3.39s/it] 66%|██████▋   | 133/200 [07:27<03:58,  3.55s/it] 67%|██████▋   | 134/200 [07:31<03:46,  3.43s/it] 68%|██████▊   | 135/200 [07:34<03:42,  3.42s/it] 68%|██████▊   | 136/200 [07:37<03:35,  3.37s/it] 68%|██████▊   | 137/200 [07:41<03:35,  3.42s/it] 69%|██████▉   | 138/200 [07:44<03:28,  3.36s/it] 70%|██████▉   | 139/200 [07:48<03:31,  3.46s/it] 70%|███████   | 140/200 [07:51<03:23,  3.39s/it]                                                 {'loss': 0.0544, 'grad_norm': 0.4811614751815796, 'learning_rate': 2.2474460864709824e-05, 'epoch': 0.35}
+ 70%|███████   | 140/200 [07:51<03:23,  3.39s/it] 70%|███████   | 141/200 [07:55<03:24,  3.47s/it] 71%|███████   | 142/200 [07:58<03:24,  3.53s/it] 72%|███████▏  | 143/200 [08:02<03:27,  3.63s/it] 72%|███████▏  | 144/200 [08:06<03:23,  3.64s/it] 72%|███████▎  | 145/200 [08:09<03:14,  3.54s/it] 73%|███████▎  | 146/200 [08:12<03:07,  3.48s/it] 74%|███████▎  | 147/200 [08:16<03:03,  3.46s/it] 74%|███████▍  | 148/200 [08:19<02:56,  3.39s/it] 74%|███████▍  | 149/200 [08:23<02:53,  3.39s/it] 75%|███████▌  | 150/200 [08:26<02:50,  3.41s/it]                                                 {'loss': 0.0718, 'grad_norm': 0.3944489657878876, 'learning_rate': 1.6104580699624837e-05, 'epoch': 0.38}
+ 75%|███████▌  | 150/200 [08:26<02:50,  3.41s/it] 76%|███████▌  | 151/200 [08:29<02:43,  3.33s/it] 76%|███████▌  | 152/200 [08:33<02:43,  3.40s/it] 76%|███████▋  | 153/200 [08:36<02:41,  3.43s/it] 77%|███████▋  | 154/200 [08:40<02:36,  3.40s/it] 78%|███████▊  | 155/200 [08:43<02:36,  3.47s/it] 78%|███████▊  | 156/200 [08:46<02:25,  3.31s/it] 78%|███████▊  | 157/200 [08:49<02:22,  3.31s/it] 79%|███████▉  | 158/200 [08:52<02:14,  3.21s/it] 80%|███████▉  | 159/200 [08:56<02:13,  3.25s/it] 80%|████████  | 160/200 [08:59<02:10,  3.26s/it]                                                 {'loss': 0.0799, 'grad_norm': 1.4156584739685059, 'learning_rate': 1.0621627821127289e-05, 'epoch': 0.4}
+ 80%|████████  | 160/200 [08:59<02:10,  3.26s/it] 80%|████████  | 161/200 [09:02<02:05,  3.21s/it] 81%|████████  | 162/200 [09:06<02:06,  3.34s/it] 82%|████████▏ | 163/200 [09:09<01:59,  3.22s/it] 82%|████████▏ | 164/200 [09:12<01:52,  3.13s/it] 82%|████████▎ | 165/200 [09:15<01:52,  3.21s/it] 83%|████████▎ | 166/200 [09:18<01:49,  3.22s/it] 84%|████████▎ | 167/200 [09:21<01:44,  3.17s/it] 84%|████████▍ | 168/200 [09:24<01:41,  3.17s/it] 84%|████████▍ | 169/200 [09:28<01:39,  3.22s/it] 85%|████████▌ | 170/200 [09:31<01:36,  3.23s/it]                                                 {'loss': 0.109, 'grad_norm': 0.2519662082195282, 'learning_rate': 6.16907236823262e-06, 'epoch': 0.42}
+ 85%|████████▌ | 170/200 [09:31<01:36,  3.23s/it] 86%|████████▌ | 171/200 [09:34<01:35,  3.29s/it] 86%|████████▌ | 172/200 [09:38<01:33,  3.33s/it] 86%|████████▋ | 173/200 [09:41<01:29,  3.32s/it] 87%|████████▋ | 174/200 [09:45<01:27,  3.37s/it] 88%|████████▊ | 175/200 [09:48<01:22,  3.31s/it] 88%|████████▊ | 176/200 [09:51<01:17,  3.21s/it] 88%|████████▊ | 177/200 [09:54<01:12,  3.15s/it] 89%|████████▉ | 178/200 [09:57<01:12,  3.28s/it] 90%|████████▉ | 179/200 [10:01<01:10,  3.35s/it] 90%|█████████ | 180/200 [10:04<01:05,  3.25s/it]                                                 {'loss': 0.0881, 'grad_norm': 0.9367956519126892, 'learning_rate': 2.8634225006782865e-06, 'epoch': 0.45}
+ 90%|█████████ | 180/200 [10:04<01:05,  3.25s/it] 90%|█████████ | 181/200 [10:08<01:03,  3.34s/it] 91%|█████████ | 182/200 [10:10<00:58,  3.23s/it] 92%|█████████▏| 183/200 [10:14<00:56,  3.33s/it] 92%|█████████▏| 184/200 [10:18<00:54,  3.38s/it] 92%|█████████▎| 185/200 [10:21<00:52,  3.48s/it] 93%|█████████▎| 186/200 [10:25<00:50,  3.64s/it] 94%|█████████▎| 187/200 [10:29<00:45,  3.53s/it] 94%|█████████▍| 188/200 [10:32<00:41,  3.48s/it] 94%|█████████▍| 189/200 [10:36<00:38,  3.53s/it] 95%|█████████▌| 190/200 [10:39<00:34,  3.48s/it]                                                 {'loss': 0.0506, 'grad_norm': 0.9069722294807434, 'learning_rate': 7.911757785462881e-07, 'epoch': 0.47}
+ 95%|█████████▌| 190/200 [10:39<00:34,  3.48s/it] 96%|█████████▌| 191/200 [10:42<00:30,  3.40s/it] 96%|█████████▌| 192/200 [10:45<00:27,  3.39s/it] 96%|█████████▋| 193/200 [10:48<00:22,  3.25s/it] 97%|█████████▋| 194/200 [10:52<00:19,  3.24s/it] 98%|█████████▊| 195/200 [10:55<00:16,  3.25s/it] 98%|█████████▊| 196/200 [10:58<00:12,  3.23s/it] 98%|█████████▊| 197/200 [11:02<00:10,  3.36s/it] 99%|█████████▉| 198/200 [11:05<00:06,  3.36s/it]100%|█████████▉| 199/200 [11:09<00:03,  3.46s/it]100%|██████████| 200/200 [11:12<00:00,  3.47s/it]                                                 {'loss': 0.0588, 'grad_norm': 0.4048595428466797, 'learning_rate': 6.5558167183898955e-09, 'epoch': 0.5}
+100%|██████████| 200/200 [11:12<00:00,  3.47s/it]                                                 {'train_runtime': 673.1885, 'train_samples_per_second': 2.377, 'train_steps_per_second': 0.297, 'train_loss': 0.26916917264461515, 'epoch': 0.5}
+100%|██████████| 200/200 [11:13<00:00,  3.47s/it]100%|██████████| 200/200 [11:13<00:00,  3.37s/it]
+/miniconda3/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.5.0) or chardet (6.0.0.post1)/charset_normalizer (3.4.4) doesn't match a supported version!
+  warnings.warn(
+/data/venvs/llada/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  2.72it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:00<00:00,  2.71it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  2.62it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.76it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.73it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+{"task": "mmlu_pro", "id": "5449", "gold": "H", "pred": "H", "correct": true}
+{"task": "mmlu_pro", "id": "2574", "gold": "E", "pred": "C", "correct": false}
+{"task": "mmlu_pro", "id": "6633", "gold": "E", "pred": "E", "correct": true}
+{"task": "mmlu_pro", "id": "10877", "gold": "E", "pred": "E", "correct": true}
+{"task": "mmlu_pro", "id": "868", "gold": "F", "pred": "A", "correct": false}
+{"task": "mmlu_pro", "id": "1270", "gold": "B", "pred": "B", "correct": true}
+{"task": "mmlu_pro", "id": "8968", "gold": "G", "pred": "A", "correct": false}
+{"task": "mmlu_pro", "id": "1634", "gold": "B", "pred": "B", "correct": true}
+{"task": "mmlu_pro", "id": "6152", "gold": "D", "pred": "F", "correct": false}
+{"task": "mmlu_pro", "id": "9738", "gold": "J", "pred": "A", "correct": false}
+{"task": "mmlu_pro", "id": "1030", "gold": "D", "pred": "E", "correct": false}
+{"task": "mmlu_pro", "id": "8500", "gold": "D", "pred": "D", "correct": true}
+{"task": "mmlu_pro", "id": "3638", "gold": "H", "pred": "A", "correct": false}
+{"task": "mmlu_pro", "id": "691", "gold": "F", "pred": "D", "correct": false}
+{"task": "mmlu_pro", "id": "1499", "gold": "D", "pred": "D", "correct": true}
+{"task": "mmlu_pro", "id": "7278", "gold": "J", "pred": "J", "correct": true}
+{"task": "mmlu_pro", "id": "7019", "gold": "F", "pred": "F", "correct": true}
+{"task": "mmlu_pro", "id": "1227", "gold": "I", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "4068", "gold": "E", "pred": "A", "correct": false}
+{"task": "mmlu_pro", "id": "1577", "gold": "E", "pred": "D", "correct": false}
+{"task": "mmlu_pro", "id": "9217", "gold": "I", "pred": "I", "correct": true}
+{"task": "mmlu_pro", "id": "7125", "gold": "D", "pred": "A", "correct": false}
+{"task": "mmlu_pro", "id": "1048", "gold": "C", "pred": "E", "correct": false}
+{"task": "mmlu_pro", "id": "9453", "gold": "C", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "2128", "gold": "I", "pred": "F", "correct": false}
+{"task": "mmlu_pro", "id": "3780", "gold": "B", "pred": "B", "correct": true}
+{"task": "mmlu_pro", "id": "10538", "gold": "J", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "10484", "gold": "G", "pred": "F", "correct": false}
+{"task": "mmlu_pro", "id": "9741", "gold": "B", "pred": "B", "correct": true}
+{"task": "mmlu_pro", "id": "1093", "gold": "F", "pred": "C", "correct": false}
+{"task": "mmlu_pro", "id": "9645", "gold": "I", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "9783", "gold": "C", "pred": "I", "correct": false}
+{"task": "mmlu_pro", "id": "6664", "gold": "I", "pred": "H", "correct": false}
+{"task": "mmlu_pro", "id": "889", "gold": "C", "pred": "J", "correct": false}
+{"task": "mmlu_pro", "id": "3745", "gold": "C", "pred": "C", "correct": true}
+{"task": "mmlu_pro", "id": "840", "gold": "B", "pred": "B", "correct": true}
+{"task": "mmlu_pro", "id": "9309", "gold": "F", "pred": "C", "correct": false}
+{"task": "mmlu_pro", "id": "2282", "gold": "H", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "4883", "gold": "B", "pred": "A", "correct": false}
+{"task": "mmlu_pro", "id": "7035", "gold": "H", "pred": "H", "correct": true}
+{"task": "mmlu_pro", "id": "2466", "gold": "E", "pred": "E", "correct": true}
+{"task": "mmlu_pro", "id": "9047", "gold": "B", "pred": "E", "correct": false}
+{"task": "mmlu_pro", "id": "2027", "gold": "G", "pred": "G", "correct": true}
+{"task": "mmlu_pro", "id": "9542", "gold": "H", "pred": "E", "correct": false}
+{"task": "mmlu_pro", "id": "5196", "gold": "G", "pred": "G", "correct": true}
+{"task": "mmlu_pro", "id": "9368", "gold": "C", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "11396", "gold": "D", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "3079", "gold": "H", "pred": "H", "correct": true}
+{"task": "mmlu_pro", "id": "1783", "gold": "I", "pred": "G", "correct": false}
+{"task": "mmlu_pro", "id": "9718", "gold": "G", "pred": "G", "correct": true}
+{"task": "mmlu_pro", "id": "9547", "gold": "B", "pred": "G", "correct": false}
+{"task": "mmlu_pro", "id": "10676", "gold": "H", "pred": "J", "correct": false}
+{"task": "mmlu_pro", "id": "3198", "gold": "B", "pred": "B", "correct": true}
+{"task": "mmlu_pro", "id": "6263", "gold": "G", "pred": "G", "correct": true}
+{"task": "mmlu_pro", "id": "1689", "gold": "A", "pred": "D", "correct": false}
+{"task": "mmlu_pro", "id": "9163", "gold": "I", "pred": "C", "correct": false}
+{"task": "mmlu_pro", "id": "11892", "gold": "A", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "1109", "gold": "G", "pred": "D", "correct": false}
+{"task": "mmlu_pro", "id": "9435", "gold": "J", "pred": "I", "correct": false}
+{"task": "mmlu_pro", "id": "1056", "gold": "E", "pred": "I", "correct": false}
+{"task": "mmlu_pro", "id": "10343", "gold": "A", "pred": "A", "correct": true}
+{"task": "mmlu_pro", "id": "3495", "gold": "D", "pred": "G", "correct": false}
+{"task": "mmlu_pro", "id": "8319", "gold": "B", "pred": "B", "correct": true}
+{"task": "mmlu_pro", "id": "11369", "gold": "F", "pred": "C", "correct": false}
+{"task": "mmlu_pro", "id": "8899", "gold": "F", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "7176", "gold": "D", "pred": "D", "correct": true}
+{"task": "mmlu_pro", "id": "5288", "gold": "D", "pred": "E", "correct": false}
+{"task": "mmlu_pro", "id": "7811", "gold": "C", "pred": "G", "correct": false}
+{"task": "mmlu_pro", "id": "7607", "gold": "J", "pred": "J", "correct": true}
+{"task": "mmlu_pro", "id": "6085", "gold": "H", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "5052", "gold": "H", "pred": "C", "correct": false}
+{"task": "mmlu_pro", "id": "4196", "gold": "C", "pred": "A", "correct": false}
+{"task": "mmlu_pro", "id": "3063", "gold": "E", "pred": "E", "correct": true}
+{"task": "mmlu_pro", "id": "11676", "gold": "J", "pred": "D", "correct": false}
+{"task": "mmlu_pro", "id": "4125", "gold": "G", "pred": "G", "correct": true}
+{"task": "mmlu_pro", "id": "1431", "gold": "D", "pred": "D", "correct": true}
+{"task": "mmlu_pro", "id": "9600", "gold": "A", "pred": "E", "correct": false}
+{"task": "mmlu_pro", "id": "5060", "gold": "C", "pred": "C", "correct": true}
+{"task": "mmlu_pro", "id": "8792", "gold": "I", "pred": "J", "correct": false}
+{"task": "mmlu_pro", "id": "8297", "gold": "A", "pred": "A", "correct": true}
+{"task": "mmlu_pro", "id": "5782", "gold": "H", "pred": "G", "correct": false}
+{"task": "mmlu_pro", "id": "12176", "gold": "I", "pred": "A", "correct": false}
+{"task": "mmlu_pro", "id": "7536", "gold": "F", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "4856", "gold": "A", "pred": "A", "correct": true}
+{"task": "mmlu_pro", "id": "10176", "gold": "D", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "1283", "gold": "I", "pred": "B", "correct": false}
+{"task": "mmlu_pro", "id": "2032", "gold": "I", "pred": "I", "correct": true}
+{"task": "mmlu_pro", "id": "8574", "gold": "B", "pred": "I", "correct": false}
+{"task": "mmlu_pro", "id": "7018", "gold": "E", "pred": "E", "correct": true}
+{"task": "mmlu_pro", "id": "2818", "gold": "D", "pred": "D", "correct": true}
+{"task": "mmlu_pro", "id": "5759", "gold": "A", "pred": "A", "correct": true}
+{"task": "mmlu_pro", "id": "2594", "gold": "B", "pred": "B", "correct": true}
+{"task": "mmlu_pro", "id": "8196", "gold": "I", "pred": "E", "correct": false}
+{"task": "mmlu_pro", "id": "7079", "gold": "F", "pred": "F", "correct": true}
+{"task": "mmlu_pro", "id": "719", "gold": "D", "pred": "A", "correct": false}
+{"task": "mmlu_pro", "id": "11169", "gold": "F", "pred": "C", "correct": false}
+{"task": "mmlu_pro", "id": "1356", "gold": "B", "pred": "B", "correct": true}
+{"task": "mmlu_pro", "id": "9332", "gold": "I", "pred": "A", "correct": false}
+{"task": "mmlu_pro", "id": "9577", "gold": "F", "pred": "I", "correct": false}
+{"task": "mmlu_pro", "id": "5282", "gold": "F", "pred": "A", "correct": false}
+{"task": "pubmedqa", "id": "15151701", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "21228436", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "22428608", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "23414523", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "18472368", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "21402341", "gold": "no", "pred": "yes", "correct": false}
+{"task": "pubmedqa", "id": "23361217", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "26063028", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "18041059", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "9199905", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "12238307", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "22350859", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "27491658", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "23379759", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "19309468", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "14872327", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "20084845", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "27592038", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "19027440", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "26859535", "gold": "no", "pred": "yes", "correct": false}
+{"task": "pubmedqa", "id": "18049437", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "9191526", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "15800018", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "26418441", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "18375490", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "19822586", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "8111516", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "17089900", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "17621202", "gold": "maybe", "pred": "no", "correct": false}
+{"task": "pubmedqa", "id": "21550158", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "25007420", "gold": "maybe", "pred": "yes", "correct": false}
+{"task": "pubmedqa", "id": "10473855", "gold": "no", "pred": "yes", "correct": false}
+{"task": "pubmedqa", "id": "26175531", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "11438275", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "22453060", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "24684514", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "25280365", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "24939676", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "20082356", "gold": "maybe", "pred": "yes", "correct": false}
+{"task": "pubmedqa", "id": "22236315", "gold": "no", "pred": "yes", "correct": false}
+{"task": "pubmedqa", "id": "20571467", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "23224030", "gold": "yes", "pred": "no", "correct": false}
+{"task": "pubmedqa", "id": "24318956", "gold": "yes", "pred": "no", "correct": false}
+{"task": "pubmedqa", "id": "25588461", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "10759659", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "25446909", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "11411430", "gold": "maybe", "pred": "yes", "correct": false}
+{"task": "pubmedqa", "id": "22349635", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "11035130", "gold": "yes", "pred": "no", "correct": false}
+{"task": "pubmedqa", "id": "15052394", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "11926574", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "18182265", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "20304513", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "18251357", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "15588538", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "15530261", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "18274917", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "27928673", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "16971978", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "17444776", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "15125825", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "24785562", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "9100537", "gold": "no", "pred": "yes", "correct": false}
+{"task": "pubmedqa", "id": "7664228", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "22227642", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "10781708", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "27643961", "gold": "no", "pred": "yes", "correct": false}
+{"task": "pubmedqa", "id": "9044116", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "25488308", "gold": "no", "pred": "yes", "correct": false}
+{"task": "pubmedqa", "id": "10877371", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "25699562", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "11481172", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "22251324", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "11862129", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "19520213", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "25155638", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "21845457", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "23337545", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "22012962", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "18955431", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "9602458", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "9465206", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "24748473", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "19854401", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "25103647", "gold": "maybe", "pred": "no", "correct": false}
+{"task": "pubmedqa", "id": "20608141", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "8985020", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "18096128", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "9550200", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "18801797", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "10757151", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "21593045", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "24901580", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "22658587", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "12040336", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "20297950", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "pubmedqa", "id": "20594006", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "19237087", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "22011946", "gold": "no", "pred": "no", "correct": true}
+{"task": "pubmedqa", "id": "14976655", "gold": "yes", "pred": "yes", "correct": true}
+{"task": "ceval_computer_network", "id": "82", "gold": "D", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "38", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "101", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "166", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "12", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "18", "gold": "D", "pred": "A", "correct": false}
+{"task": "ceval_computer_network", "id": "137", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "24", "gold": "C", "pred": "B", "correct": false}
+{"task": "ceval_computer_network", "id": "93", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "149", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "14", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "129", "gold": "A", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "54", "gold": "A", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "9", "gold": "D", "pred": "A", "correct": false}
+{"task": "ceval_computer_network", "id": "22", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "111", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "107", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "17", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "61", "gold": "B", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "23", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "141", "gold": "C", "pred": "D", "correct": false}
+{"task": "ceval_computer_network", "id": "108", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "15", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "144", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "31", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "57", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "148", "gold": "C", "pred": "B", "correct": false}
+{"task": "ceval_computer_network", "id": "168", "gold": "A", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "167", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "56", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "11", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "34", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "74", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "154", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "36", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "30", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "78", "gold": "D", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "46", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "26", "gold": "D", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "48", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "95", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "163", "gold": "D", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "16", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "147", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "79", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "132", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "63", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "87", "gold": "D", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "68", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "158", "gold": "B", "pred": "D", "correct": false}
+{"task": "ceval_computer_network", "id": "99", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "40", "gold": "C", "pred": "A", "correct": false}
+{"task": "ceval_computer_network", "id": "59", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "138", "gold": "C", "pred": "D", "correct": false}
+{"task": "ceval_computer_network", "id": "58", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "133", "gold": "D", "pred": "A", "correct": false}
+{"task": "ceval_computer_network", "id": "169", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "146", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "143", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "151", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "89", "gold": "A", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "120", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "113", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "10", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "73", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "114", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "67", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "124", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "43", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "162", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "145", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "136", "gold": "B", "pred": "A", "correct": false}
+{"task": "ceval_computer_network", "id": "77", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "157", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "127", "gold": "B", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "65", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "53", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "21", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "102", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "19", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "62", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "94", "gold": "B", "pred": "D", "correct": false}
+{"task": "ceval_computer_network", "id": "5", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "85", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "97", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "71", "gold": "B", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "106", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "119", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "92", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "44", "gold": "D", "pred": "A", "correct": false}
+{"task": "ceval_computer_network", "id": "76", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "103", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "117", "gold": "A", "pred": "A", "correct": true}
+{"task": "ceval_computer_network", "id": "116", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "8", "gold": "A", "pred": "C", "correct": false}
+{"task": "ceval_computer_network", "id": "140", "gold": "B", "pred": "B", "correct": true}
+{"task": "ceval_computer_network", "id": "139", "gold": "C", "pred": "C", "correct": true}
+{"task": "ceval_computer_network", "id": "60", "gold": "C", "pred": "D", "correct": false}
+{"task": "ceval_computer_network", "id": "80", "gold": "D", "pred": "D", "correct": true}
+{"task": "ceval_computer_network", "id": "7", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "331", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "970", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "154", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "404", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "666", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "49", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "74", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "840", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "548", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "96", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "374", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "596", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "59", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "931", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "519", "gold": "A", "pred": "B", "correct": false}
+{"task": "sciq", "id": "219", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "38", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "88", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "444", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "428", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "71", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "246", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "92", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "564", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "434", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "60", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "846", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "579", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "126", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "998", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "228", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "645", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "642", "gold": "D", "pred": "C", "correct": false}
+{"task": "sciq", "id": "988", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "63", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "590", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "599", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "406", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "50", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "226", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "47", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "570", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "879", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "136", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "296", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "429", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "147", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "553", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "120", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "584", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "315", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "573", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "835", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "698", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "185", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "105", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "595", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "950", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "654", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "192", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "381", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "99", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "560", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "729", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "64", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "577", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "61", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "633", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "210", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "508", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "696", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "544", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "437", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "795", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "321", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "476", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "963", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "464", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "370", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "306", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "254", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "813", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "184", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "715", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "798", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "249", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "83", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "588", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "307", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "537", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "506", "gold": "C", "pred": "C", "correct": true}
+{"task": "sciq", "id": "896", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "351", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "746", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "459", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "294", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "623", "gold": "A", "pred": "A", "correct": true}
+{"task": "sciq", "id": "993", "gold": "D", "pred": "D", "correct": true}
+{"task": "sciq", "id": "951", "gold": "B", "pred": "B", "correct": true}
+{"task": "sciq", "id": "524", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "663", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "308", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "808", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "98", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "148", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "1097", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "192", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "748", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "1193", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "118", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "1039", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "439", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "76", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "176", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "888", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "856", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "143", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "492", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "185", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "1128", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "869", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "121", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "1158", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "253", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "457", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "126", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "1181", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "1199", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "812", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "101", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "452", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "95", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "1140", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "272", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "593", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "858", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "295", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "1107", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "241", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "1169", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "631", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "1147", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "370", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "211", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "1191", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "384", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "762", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "199", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "1121", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "128", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "1155", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "122", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "421", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "1016", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "1088", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "875", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "643", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "953", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "928", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "740", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "613", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "508", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "368", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "499", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "167", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "1176", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "614", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "1075", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "1013", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "703", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "919", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "589", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "1247", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "149", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "1048", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "337", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "700", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "311", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "1001", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "863", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "80", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "158", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "1142", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "1173", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "642", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "696", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "717", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "1217", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "1017", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "1187", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "934", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "140", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "191", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "552", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "970", "gold": "A", "pred": "A", "correct": true}
+{"task": "winogrande", "id": "133", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "124", "gold": "B", "pred": "B", "correct": true}
+{"task": "winogrande", "id": "634", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "1183", "gold": "B", "pred": "A", "correct": false}
+{"task": "winogrande", "id": "912", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "870b07a1c5af2e956673a9680da99852", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "d6bb990e8c409d2b3af37a2da198e01f", "gold": "B", "pred": "A", "correct": false}
+{"task": "commonsenseqa", "id": "4302e727e47f464511d4d04f22bed0d2", "gold": "D", "pred": "E", "correct": false}
+{"task": "commonsenseqa", "id": "9370b2b0897b796dec4a40f107854c8d", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "a38df3e750b1edd30f905e17af803c61", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "7c05e8d5a057085455eea243fbd1cd90", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "2dd138a63b5895cf737ced793cc668e7", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "1bf4c6b5bd870b1a079106e1e97e5d09", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "8b548832703a8c68a788e2f9c0e222ae", "gold": "A", "pred": "E", "correct": false}
+{"task": "commonsenseqa", "id": "3730c646fdf54472ab873aac9ff7852e", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "a4b44a986e7f9045432e20ea75611df4", "gold": "C", "pred": "B", "correct": false}
+{"task": "commonsenseqa", "id": "cc917ca0e03c91a5141920f5a902a36c", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "1feb4c2a0e8ed638259f5d27b16eae9a", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "4e3f85dc92eaad4ae6bc6529d62e382c", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "3b4dcfcab4726496bdbe9535cc669082", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "4f7be1c68654e2924c161c8eca652928", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "191e3c676f05a11d6b2565d8c27d2001", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "0519b0b0869681c2884f53dbfa43e538", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "e2a9f0041d17a9944377a91bef5e0d0d", "gold": "C", "pred": "A", "correct": false}
+{"task": "commonsenseqa", "id": "eaf6838d29bcd4ebf408da2f75aa65c3", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "2c13e6d61e3733db90a9fd22d72b3337", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "08db69edf0ec5848c1a53dca8fc1601a", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "0f7425ecbe369bf41a230aab92d84132", "gold": "B", "pred": "A", "correct": false}
+{"task": "commonsenseqa", "id": "f372587fa4c99d5bebf0d0eb987c44e2", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "7d70208061ae3185bcfc9e912ee9e141", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "f898eb5b789d2dc6804edba269f051f0", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "aed771629c8dbd0c2587891e98030607", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "5b5d2a8b83282f61c68a870116042f64", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "6416dcdf9b8d7d2787f07e7426f86fe4", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "320ec9b68fdefe13d59cc8b628083790", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "4ef3d70648ee3cea028bc5ed0fdfda28", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "5169f7ae0781b15161551de3a189ebef", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "8e7941ce31996ca83cc0a68f7313c96d", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "0f79faf5337706f2e0e39c15bbd2e99a", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "8b25332de2894ab38784235838d38cec", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "14e75a42a416d32a24e2826cae34d2bf", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "3ebc5ddd2e97fe37fcb52aa2a9e2e1a7", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "ba9132ebf2bc3ad21e6a0631dc4e0a77", "gold": "E", "pred": "D", "correct": false}
+{"task": "commonsenseqa", "id": "f2645d0ee8662b6553954cee7e77979e", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "410f907f817dd7aa8e73291a918d3d86", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "9698232e3599157431c9dc8f2fe179cd", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "a90f9197a13c64089c9ba95bcba275ad", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "72b638200414a526b598de0e01a044df", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "9a23a7f04e63bf9f4c7dfe50c58abfd2", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "d9835ede7a0ed79325de13ca95b85b78", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "0843c51212a3c2eee660fab5648c9e19", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "a15d564d0be6996251b5d523ac62db2a", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "6386bcf080633bc3eeb3317a5435b7b7", "gold": "E", "pred": "D", "correct": false}
+{"task": "commonsenseqa", "id": "5ea6b94d1a911365b06cf776919413e8", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "15798a23ee6952fedd6d202064069126", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "715583129369c0c5c9f499c93a1c095e", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "855ab6ba47f6311104c4d29e24ef0234", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "8b3b598a647dfd2d63fcedce5f461040", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "7ae17f5aecacf18c94a47cc48deb6c36", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "eb50f536830ba18ab987c7ff652e2aba", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "f0c4622a082eb9ad0690dd36dcf61297", "gold": "E", "pred": "B", "correct": false}
+{"task": "commonsenseqa", "id": "3eb397b96b6c3a245c81ab30205943f1", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "5799089c131e26473697afc54d5f6964", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "7a58e7e7bf76658751e850f790922aba", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "0f0e339412f719a019bf373e6daf2530", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "bbe0a1ad733e5699f991ff91b3712a6f", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "8605fd2affc796d79073d0f3ef0761c9", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "6ca8439d062de4d43d7d471c508b78db", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "c432b860fcd7297751ff5254ec4a7956", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "1ac54dbf6b67f27daa3d456416047584", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "d986f17acb3ed19c77e3ca3f98c026b9", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "9e5ce2b7d9eb404cdf8c7317dd0b5a59", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "7b7941b883328ad39048d4dfb1eb5623", "gold": "E", "pred": "A", "correct": false}
+{"task": "commonsenseqa", "id": "25136807f7b2e78b115698daa1677b4a", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "4396cb65629672723c7b184424e139bb", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "e43c4eaa04243ddee30f29171718eb92", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "38e61d4be0da46b3cbbd76dc20bce677", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "dba51270f789c75a2e38a5201b124d99", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "22b8219d43a38a1130e0a35ece152337", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "c611875b43b67b91030b889b267bbcb3", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "275c859994f7d3acd3c8863be591ab2c", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "2ef2ae21a2d3a9ecbd5c45ff378d10e3", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "a656e74a943f9e2698a25bbcfb4e96db", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "13d2a103abbed930cabc9567a1ba12f2", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "60e92cd2f35c345872d1a898e1718d55", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "26ce83b8e9a263079aa8cdbd5258d667", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "de54d03e69d9765872f95ff06ed21499", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "ed50555f8db2b8f66caf9868dcd7e13b", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "e0a7d1df3ce14b27888e785e6636d5f0", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "92869fc0be5dc45f407700692ffd80a0", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "ef889edd1b57d8d0c81e43f73c98c8e9", "gold": "C", "pred": "A", "correct": false}
+{"task": "commonsenseqa", "id": "88f1fe6cfbcb1a25f25454341c789463", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "5d809e0ee19badc66071653630ea7c51", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "3884d82524f2337ce53ce64776293cf7", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "2adbb4fc0d5249dc411dda433f378591", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "30e66db11e0257a14a17108b90cd69fb", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "e69da59cbcf2a302e4523571eba8186b", "gold": "E", "pred": "A", "correct": false}
+{"task": "commonsenseqa", "id": "c3b7f4196b12714940ac1b9417194df4", "gold": "D", "pred": "E", "correct": false}
+{"task": "commonsenseqa", "id": "ec224c1dbfb569cce7ec317fe987ae68", "gold": "B", "pred": "E", "correct": false}
+{"task": "commonsenseqa", "id": "a5e76dd088aab4f89e2fe93f6de6e46d", "gold": "D", "pred": "D", "correct": true}
+{"task": "commonsenseqa", "id": "e9389b08fdd17f14b148d498d6ff4dfe", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "68c41ec8415eab50620eb9ecf6f35a6a", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "533599262a5dae7c7137cfe69e0e24fb", "gold": "B", "pred": "B", "correct": true}
+{"task": "commonsenseqa", "id": "e8a9142d2402f818273dd62cf5a7b559_1", "gold": "C", "pred": "C", "correct": true}
+{"task": "commonsenseqa", "id": "f996430ce208606452868fd2e739d409", "gold": "B", "pred": "B", "correct": true}
+{
+  "mmlu_pro": {
+    "accuracy": 0.39,
+    "n": 100,
+    "seconds": 26.700956106185913,
+    "peak_mem_gb": 14.482266426086426
+  },
+  "pubmedqa": {
+    "accuracy": 0.85,
+    "n": 100,
+    "seconds": 29.085200786590576,
+    "peak_mem_gb": 14.49143934249878
+  },
+  "ceval_computer_network": {
+    "accuracy": 0.74,
+    "n": 100,
+    "seconds": 24.883658409118652,
+    "peak_mem_gb": 14.347671031951904
+  },
+  "sciq": {
+    "accuracy": 0.98,
+    "n": 100,
+    "seconds": 23.919203758239746,
+    "peak_mem_gb": 14.325790405273438
+  },
+  "winogrande": {
+    "accuracy": 0.68,
+    "n": 100,
+    "seconds": 24.148308038711548,
+    "peak_mem_gb": 14.317550659179688
+  },
+  "commonsenseqa": {
+    "accuracy": 0.86,
+    "n": 100,
+    "seconds": 24.560890674591064,
+    "peak_mem_gb": 14.324993133544922
+  }
+}
+{
+  "root": "results/domain_shift/task_aware/solid_v2",
+  "tables": "results/domain_shift/task_aware/solid_v2/tables",
+  "figures": "results/domain_shift/task_aware/solid_v2/figures",
+  "reports": "results/domain_shift/task_aware/solid_v2/reports"
+}

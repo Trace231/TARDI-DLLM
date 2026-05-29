@@ -1,0 +1,6848 @@
+{
+  "method": "selective_remask_refinement_controller",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "gsm8k,drop_span",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/v3_choice_fast/raw/llada8b_refinement_v3_reasoning_limit50_seed23.json",
+    "budgets": "8,16,24,32",
+    "scout_steps": 8,
+    "gen_length": 96,
+    "block_length": 96,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "risk_t16": 0.24,
+    "risk_t24": 0.38,
+    "risk_t32": 0.56,
+    "margin_target": 0.18,
+    "fill_confidence_target": 0.7,
+    "binary_direct_full_threshold": 0.52,
+    "multi_direct_full_threshold": 0.36,
+    "multi_direct_full_entropy": 0.98,
+    "disable_multi_direct_full": true,
+    "skip_probe_on_conservative": true,
+    "enable_choice_fast_path": true,
+    "choice_fast_min_labels": 3,
+    "choice_fast_max_labels": 5,
+    "choice_fast_max_prompt_tokens": 512,
+    "binary_post_disagree_confidence": 0.72,
+    "multi_post_disagree_confidence": 0.7,
+    "multi_disagreement_policy": "ignore",
+    "remask_min_fraction": 0.2,
+    "remask_max_fraction": 0.55,
+    "remask_min_tokens": 4,
+    "max_refinements": 3
+  },
+  "summary": {
+    "gsm8k": {
+      "accuracy": 0.78,
+      "n": 50,
+      "seconds": 55.61764860153198,
+      "avg_forward_calls": 32.0,
+      "route_rates": {
+        "32": 1.0
+      },
+      "final_budget_rates": {
+        "32": 1.0
+      },
+      "peak_mem_gb": 15.178945064544678
+    },
+    "drop_span": {
+      "accuracy": 0.0,
+      "n": 50,
+      "seconds": 81.9166190624237,
+      "avg_forward_calls": 32.0,
+      "route_rates": {
+        "32": 1.0
+      },
+      "final_budget_rates": {
+        "32": 1.0
+      },
+      "peak_mem_gb": 15.394102573394775
+    }
+  },
+  "rows": [
+    {
+      "task": "gsm8k",
+      "id": "593",
+      "gold": "3",
+      "pred": "3",
+      "correct": true,
+      "output": "The beanstalk starts at 4 feet tall and doubles its height every day. On the first day, it will be 8 feet. On the second day, it will be 16 feet. On the third day, it will be 32 feet. At this point, the beanstalk exceeds the window height of 20 feet. Therefore, it will take 3 days to be taller than Mark's window.\n\nFinal answer: 3",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 92
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "4",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "3",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "3",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "3",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.87982177734375,
+        "min_fill_confidence": 0.455078125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "3"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.46797513961792,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "171",
+      "gold": "1210",
+      "pred": "1210",
+      "correct": true,
+      "output": "Jake sees 80 spiders * 8 legs each = 640 legs, \n90 insects * 6 legs each = 540 legs, and\n3 rare mutant invertebrates * 10 legs each = 30 legs.\nSo, Jake sees a total of 640 + 540 + 30 = 1210 legs.\n\nFinal answer: 1210",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 92
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "10",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "1210",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "1210",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "1210",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9041951894760132,
+        "min_fill_confidence": 0.4296875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "1210"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0867226123809814,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "34",
+      "gold": "23",
+      "pred": "18",
+      "correct": false,
+      "output": "1. Raymond has 40 jewels.\n2. Half of Raymond's jewels is 40 / 2 = 20 jewels.\n3. Aaron has 5 more jewels than half, so he has 20 + 5 = 20 jewels.\n4. Siobhan has 2 fewer fewer than Aaron, so she has 20 - 2 = 18 jewels.\n\nFinal answer: 18",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 78
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "18",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "18",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "18",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "18",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9426676630973816,
+        "min_fill_confidence": 0.50390625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "18"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0810456275939941,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1212",
+      "gold": "150",
+      "pred": "155",
+      "correct": false,
+      "output": "Ali's class has a capacity of 120 students. Each of John's classes has a capacity of 1/8 * 120 = 15 students. Since John has two classes, the total capacity of John's classes is 15 * 2 = 30 students. The combined capacity of both schools is 120 + 30 = 155 students.\n\nFinal answer: 155",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 102
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "15",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "155",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "155",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "155",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9281005859375,
+        "min_fill_confidence": 0.5234375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "155"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0905191898345947,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "628",
+      "gold": "4",
+      "pred": "24",
+      "correct": false,
+      "output": "Adam needs to be 4 feet tall, which is 4 * 12 = 48 inches tall to ride the roller coaster.\nHe is 40 inches tall now, so he needs to grow 48 - 40 = 48 inches.\nHe grows 2 inches per year, so he will have to enough height in 48 / 2 = 24 years.\n\nFinal answer: 24",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 91
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "24",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "24",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "24",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "24",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.8768310546875,
+        "min_fill_confidence": 0.25390625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "24"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.085277795791626,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "867",
+      "gold": "7",
+      "pred": "7",
+      "correct": true,
+      "output": "Daisy bought a bag of potatoes that weighed 5 pounds. She also bought a bag of sweet potatoes that weighed 2 times as much as the potatoes, so the weight of the sweet potatoes is 2 * 5 = 10 pounds. She also bought a bag of carrots that weighed 3 pounds fewer than the sweet potatoes, so the weight of the carrots is 10 - 3 = 7 pounds.\n\nFinal answer: 7",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 92
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9537760615348816,
+        "min_fill_confidence": 0.4453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "7"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0826613903045654,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "776",
+      "gold": "800",
+      "pred": "800",
+      "correct": true,
+      "output": "Final answer: 800",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 67
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "800",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9510905146598816,
+        "min_fill_confidence": 0.65625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "800"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0857553482055664,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1085",
+      "gold": "26",
+      "pred": "26",
+      "correct": true,
+      "output": "Final answer: 26",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 66
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "26",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9610189199447632,
+        "min_fill_confidence": 0.65234375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "26"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0843236446380615,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "733",
+      "gold": "5",
+      "pred": "5",
+      "correct": true,
+      "output": "Final answer: 5",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 79
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "5",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9687907099723816,
+        "min_fill_confidence": 0.8671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "5"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0807111263275146,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "266",
+      "gold": "118000",
+      "pred": "118000",
+      "correct": true,
+      "output": "Mr. Tan paid $12,000 for transfer fees and $20,000 for the brokerage fee. \nSo, his net proceeds from selling the house are $400,000 - $12,000 - $20,000 - $250,000 = $118,000.\n\nFinal answer: 118000",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 119
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "18000",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "18000",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "118000",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "118000",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 24,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.8744303584098816,
+        "min_fill_confidence": 0.283203125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "118000"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1971111297607422,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "393",
+      "gold": "20",
+      "pred": "15",
+      "correct": false,
+      "output": "Carol spends 4 hours writing, 2 hours recording, and 90 minutes editing. The total work time is 4 + 2 + 1.5 = 6 hours. The time spent editing is 90 / 60 = 1.5 hours. The percentage of her total work time spent editing is (1.5 / 6) * 100 = 15%.\n\nFinal answer: 15",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 73
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "15",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "15",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "15",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "15",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.86846923828125,
+        "min_fill_confidence": 0.423828125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "15"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.087207555770874,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "547",
+      "gold": "81",
+      "pred": "81",
+      "correct": true,
+      "output": "The problem involves a phone tree structure where each family calls 3 others. This means that each of of the called families will call 3 others, leading to an exponential growth. The first round of calls will notify 3 families, the second round will notify 3^2 = approximately 9 families, and so on. Therefore, the fourth round of calls will notify 3^4 = approximately 81 families.\n\nFinal answer: 81",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 88
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "81",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "81",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "81",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "81",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.6597697138786316,
+        "min_fill_confidence": 0.1533203125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "81"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1021192073822021,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "910",
+      "gold": "700",
+      "pred": "700",
+      "correct": true,
+      "output": "Farmer Brown's farm is 200 acres. Twice that amount is 2 * 200 = 400 acres. Farmer Smith has an additional 100 acres, so Farmer Smith's farm is 400 + 100 = 500 acres. Together, the two farms have 200 + 500 = 700 acres.\n\nFinal answer: 700",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 75
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "00",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "700",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "700",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "700",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9210612177848816,
+        "min_fill_confidence": 0.4921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "700"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0952556133270264,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "28",
+      "gold": "25",
+      "pred": "25",
+      "correct": true,
+      "output": "Henry's first stop was after 20 miles, and his second stop was 15 miles before the end of his trip. Since his total trip is 60 miles, his second stop was at 60 - 15 (to reach the second stop) = 45 miles. Therefore, the distance between his first and second stops is 45 - 20 = 25 miles.\n\nFinal answer: 25",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 87
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "25",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "25",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "25",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "25",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.8028564453125,
+        "min_fill_confidence": 0.31640625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "25"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0964691638946533,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "452",
+      "gold": "50",
+      "pred": "50",
+      "correct": true,
+      "output": "The total distance traveled by the car is 60 mph * 2 hours = 30 miles + 30 miles = 150 miles.\n\nThe total time taken for the trip is 2 hours + 1 hour = 155 hours.\n\nTherefore, the average speed = total distance / total time = 150 miles / 3 hours = 50 mph.\n\nFinal answer: 50",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 79
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "50",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "50",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "50",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "50",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.8265584707260132,
+        "min_fill_confidence": 0.494140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "50"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0971262454986572,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1270",
+      "gold": "3528",
+      "pred": "3528",
+      "correct": true,
+      "output": "After the first year, the boat is worth $9000 * 0.70 = $6300.\nAfter the second year, the boat is worth $6300 * 0.70 = $4410. \nAfter the third year, the boat is worth $4410 * 0.80 = $3528.\n\nFinal answer: 3528",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 95
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "00000",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "0.80",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "35",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "3528",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 3,
+        "first_final_step": 32,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9509684443473816,
+        "min_fill_confidence": 0.6015625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "3528"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1012678146362305,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "931",
+      "gold": "50",
+      "pred": "30",
+      "correct": false,
+      "output": "Let P be Peter's age, J be Paul's age, and J be John's age. We know P + J + J = 100, J = P + 10, and P = J + P. Substituting J = P = P + 10 into the first equation, we get 2P + 10 = 100, so P = 30.\n\nFinal answer: 30",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 87
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "0",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "0",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "0",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "30",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 32,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.8057861328125,
+        "min_fill_confidence": 0.28125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "30"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0960164070129395,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "50",
+      "gold": "294",
+      "pred": "328",
+      "correct": false,
+      "output": "Lloyd's chickens produce 252 eggs per day, so in a week, they produce 252 * 7 = 1764 eggs. Since he sells them in dozens, he sells 1764 / 12 = 164 dozens. At $2 per dozen, Lloyd makes 164 * $2 = $328 on eggs per week.\n\nFinal answer: 328",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 73
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "252",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "328",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "328",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "328",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9072062373161316,
+        "min_fill_confidence": 0.46484375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "328"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1177875995635986,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "216",
+      "gold": "220",
+      "pred": "220",
+      "correct": true,
+      "output": "Janeth needs to return $2000 + 10% of $2000 = $2000 + $200 = $2200.\nShe will pay a total of $165 * 12 months = $1980.\nHer remaining balance will be $2200 - $1980 = $220.\n\nFinal answer: 220",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 91
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "0",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "220",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "220",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "220",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9376220703125,
+        "min_fill_confidence": 0.59765625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "220"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.097477912902832,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "175",
+      "gold": "15",
+      "pred": "3",
+      "correct": false,
+      "output": "They made $25 in profit, so they made $25 / $0.50 = 50 glasses. They get 20 glasses per gallon, so they made 50 / / 20 = 25 gallons. Each gallon costs $3 for lemons and $ sugar, so the cost of lemons = total cost - cost of sugar = $5 - $2 = $3 $3.\n\nFinal answer: 3",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 99
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "3",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "3",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "3",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "3",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.7078959345817566,
+        "min_fill_confidence": 0.2490234375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "3"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1023437976837158,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1020",
+      "gold": "22",
+      "pred": "22",
+      "correct": true,
+      "output": "Final answer: 22",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 76
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "22",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.96142578125,
+        "min_fill_confidence": 0.5859375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "22"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0944788455963135,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "862",
+      "gold": "40",
+      "pred": "40",
+      "correct": true,
+      "output": "Paige bakes 2 bananaaves per hour for 5 hours, so she bakes 2 * 5 = 10 loaves.\nEach loaf is cut into 8 slices, so she bakes 10 * 8 = 80 slices.\nEach slice is sold for $0.50, so she raised 80 * $0.50 = $40.\n\nFinal answer: 40",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 118
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "40",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "40",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "40",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "40",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9401448965072632,
+        "min_fill_confidence": 0.5625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "40"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.105494737625122,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "40",
+      "gold": "8",
+      "pred": "8",
+      "correct": true,
+      "output": "If Suzy's iPhone is 1 year old, then Ben's iPhone is 2 * 1 = 2 years old. Therefore, Brandon's iPhone is 4 * 2 = 8 years old.\n\nFinal answer: 8",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 81
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "1",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "1",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "2",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "8",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 2,
+        "first_final_step": 32,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9680582880973816,
+        "min_fill_confidence": 0.68359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "8"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0970473289489746,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1049",
+      "gold": "20",
+      "pred": "20",
+      "correct": true,
+      "output": "Final answer: 20",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 78
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "20",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9530436396598816,
+        "min_fill_confidence": 0.44140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "20"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0953369140625,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1285",
+      "gold": "1218",
+      "pred": "1218",
+      "correct": true,
+      "output": "Mamou has already given out 64 + 30 + 48 = 142 meals. She started with 1,360 meals and has 1 set of meals, so she needs to distribute 1,360 meals. Therefore, she has 1,360 - 142 = 1,218 meals left to distribute.\n\nFinal answer: 1,218",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 110
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "1218",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "1218",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "1218",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "1218",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.8180949091911316,
+        "min_fill_confidence": 0.232421875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "1218"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1003086566925049,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "883",
+      "gold": "25",
+      "pred": "25",
+      "correct": true,
+      "output": "Elaina's final concert is twice as long as her usual concerts and includes a 15-minute encore. The total runtime of the final concert is 65 minutes. Therefore, the runtime without the encore is 65 - 15 = 50 minutes. Since the final concert is twice as long as her usual concerts, her usual concerts run for 50 / 2 = 25 minutes.\n\nFinal answer: 25",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 109
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "25",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "25",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "25",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "25",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.8971964716911316,
+        "min_fill_confidence": 0.451171875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "25"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1036317348480225,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "735",
+      "gold": "50",
+      "pred": "50",
+      "correct": true,
+      "output": "Candidate A got 20% of the votes, which is 20/100 * 100 = 20 votes. Candidate B got 50% more than candidate A, which is 20 + 0.5 * 20 = 30 votes. Therefore, candidate C got 100 - 20 - 30 = 50 votes.\n\nFinal answer: 50",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 96
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "0",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "50",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "50",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "50",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9395751953125,
+        "min_fill_confidence": 0.5625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "50"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1245777606964111,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "117",
+      "gold": "360",
+      "pred": "360",
+      "correct": true,
+      "output": "John buys 2 pairs of shoes for each of his 3 children, so he buys a total of 2 * 3 = 6 pairs of shoes. Each pair costs $60, so the total cost is 6 * $60 = $360.\n\nFinal answer: 360",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 67
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "3",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "3",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "60",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "360",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 2,
+        "first_final_step": 32,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9496256709098816,
+        "min_fill_confidence": 0.7265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "360"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1006054878234863,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "421",
+      "gold": "12",
+      "pred": "12",
+      "correct": true,
+      "output": "Initially, there were 50 cats on the rock. Four boats carried away 5 cats each, so 50 - 20 = 30 cats remained. Then, 3/5 of the remaining cats ran after a mouse, so 30 * 3/5 = 18 cats ran. Therefore, 30 - 18 = 12 cats remained on the rock.\n\nFinal answer: 12",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 86
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "12",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "12",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "12",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "12",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.8951823115348816,
+        "min_fill_confidence": 0.515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "12"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.102515697479248,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "72",
+      "gold": "221",
+      "pred": "221",
+      "correct": true,
+      "output": "Tommy sells 43 brownies at $3 per slice, so he raises 43 * $3 = $129 from the brownies.\nHe sells 23 slices of cheesecake at $4 per slice, so he earns 23 * $4 = $92 from the cheesecakes.\nIn total, Tommy raises $129 + $92 = $221.\n\nFinal answer: 221",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 83
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "21",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "221",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "221",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "221",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9503377676010132,
+        "min_fill_confidence": 0.44140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "221"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0985474586486816,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1206",
+      "gold": "40000",
+      "pred": "40000",
+      "correct": true,
+      "output": "John gets a loan worth $250,000 * 40% = $100,000.\nHe uses $100,000 * 60% = $60,000.\nSo he has $100,000 - $60,000 = $40,000 leftover.\nFinal answer: 40,000",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 104
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "000",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "40000",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "40000",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "40000",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9506022334098816,
+        "min_fill_confidence": 0.671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "40000"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.100879192352295,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "755",
+      "gold": "7",
+      "pred": "7",
+      "correct": true,
+      "output": "Sure, let's break it down step by step:\n\n- On Monday, Joey played 2 matches.\n- On Friday, he played 1 match.\n- On Saturday, he played double the number of matches he played on Monday, which is 2 * 2 = 4 matches.\n\nAdding these up, Joey played 2 + 1 + 4 = 7 matches in one week.\n\nFinal answer: 7",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 84
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.91802978515625,
+        "min_fill_confidence": 0.431640625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "7"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1005580425262451,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "352",
+      "gold": "21",
+      "pred": "21",
+      "correct": true,
+      "output": "Andrea had $36 in the beginning. She spent $11 on a sweater and gave $4 to her brother, so she spent a total of $11 + $4 = $15. If she spent some money and then $15,, the amount she must saved is $36 - $15. Therefore, she must saved is $36 - $15 = $21.\n\nFinal answer: 21",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 80
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "21",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "21",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "21",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "21",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.7440287470817566,
+        "min_fill_confidence": 0.2099609375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "21"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0972211360931396,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1271",
+      "gold": "43",
+      "pred": "43",
+      "correct": true,
+      "output": "The bag has 54 red candies, 108 orange candies, and 27 yellow candies. The total number of red, orange, and yellow candies combined is 54 + 108 + 27 = 189. Since the total number of candies is 232, the number of pink candies is 232 - 189 = 43.\n\nFinal answer: 43",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 89
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "232",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "43",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "43",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "43",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9195556640625,
+        "min_fill_confidence": 0.376953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "43"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0898675918579102,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "442",
+      "gold": "49",
+      "pred": "49",
+      "correct": true,
+      "output": "Marcus spends 3 hours baking, so the temperature increases by 3 * 5 = 15 degrees. The temperature is now 40 + 15 = 55 degrees. After opening the window for 30 minutes, the temperature decreases by (30 / 10) * 2 = 6 degrees. The final temperature is 55 - 6 = 49 degrees.\n\nFinal answer: 49",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 113
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "49",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "49",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "49",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "49",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.90087890625,
+        "min_fill_confidence": 0.49609375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "49"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0981950759887695,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "742",
+      "gold": "24",
+      "pred": "24",
+      "correct": true,
+      "output": "Since the total number of students in both classes is 80 and each class has the same number of students, each class has 80 / 2 = 40 students. If 40% of the students are girls, then each class has 0.40 * 40 = 16 girls. Therefore, each class has 40 - 16 = 24 boys.\n\nFinal answer: 24",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 84
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "24",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "24",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "24",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "24",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.889404296875,
+        "min_fill_confidence": 0.47265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "24"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.08957839012146,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1158",
+      "gold": "7300",
+      "pred": "7300",
+      "correct": true,
+      "output": "To satisfy 100% of the daily energy needs of 2300 people, Hortex needs to produce 2300 * 5 = 11500 bottles of juice.\n\nCurrently, they produce 4200 bottles, so they need to produce an additional 11500 - 4200 = 7300 bottles.\n\nFinal answer: 7300",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 114
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "300",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "7300",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "7300",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "7300",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.909423828125,
+        "min_fill_confidence": 0.52734375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "7300"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0943818092346191,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1171",
+      "gold": "3160",
+      "pred": "3160",
+      "correct": true,
+      "output": "Each bedroom is 20 * 12 = 240 square feet. There are 4 * 240 = 960 square feet. The living room is 5 * 240 = 1200 square feet. The total area is 960 + 1200 + 1000 = 3160 square feet.\n\nFinal answer: 3160",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 102
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "0",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "3160",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "3160",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "3160",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9346517324447632,
+        "min_fill_confidence": 0.3828125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "3160"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0976572036743164,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "576",
+      "gold": "11232",
+      "pred": "9932",
+      "correct": false,
+      "output": "The area of the bedroom is 18 * 12 = 216 square feet.\nThe cost per square foot for the new carpet, padding, removing the old,  and installing the new is $12 + $2 + $4 + $34 = $52.\nThe total cost is $52 * 216 = $9,932.\n\nFinal answer: $9,932",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 126
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "1",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "2",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "2",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "9932",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 2,
+        "first_final_step": 32,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.8156331777572632,
+        "min_fill_confidence": 0.306640625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "9932"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2002930641174316,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "643",
+      "gold": "840",
+      "pred": "1120",
+      "correct": false,
+      "output": "The news website publishes 20 articles per day, and the sister company publishes 10 articles per day. Together, they publish 20 + 10 = 30 articles per day. This = 40 articles per day. In February with 28 days, the total number of articles published is 40 articles/day * 28 days = 1120 articles.\n\nFinal answer: 1120",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 94
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "1120",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "1120",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "1120",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "1120",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.83453369140625,
+        "min_fill_confidence": 0.30859375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "1120"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0966625213623047,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1173",
+      "gold": "10",
+      "pred": "10",
+      "correct": true,
+      "output": "The special size box has 100 + (20% of 100) = 100 + 20 = 120 pods.\nSince the special size box costs $12, for every $12, you get 120 pods.\nTherefore, you can run 120 / 12 = 10 dishwashing cycles for $1.\n\nFinal answer: 10",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 96
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "10",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "10",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "10",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "10",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.8526815176010132,
+        "min_fill_confidence": 0.298828125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "10"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1009769439697266,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "970",
+      "gold": "33",
+      "pred": "33",
+      "correct": true,
+      "output": "Final answer: 33",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 71
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "33",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9475911855697632,
+        "min_fill_confidence": 0.73828125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "33"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0955252647399902,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "363",
+      "gold": "6",
+      "pred": "7",
+      "correct": false,
+      "output": "Initial trip to to friend's house: 200 miles / 70 mph = 3 hours.\nDetour added 10 miles, so: 10 miles / 70 mph = 1 hour.\nReturn trip to home: 240 miles / 80 mph = 3 hours.\n\nTotal time: 3 + 1 + 3 = 7 hours.\n\nFinal answer: 7",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 114
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "7",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.83148193359375,
+        "min_fill_confidence": 0.30078125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "7"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0937459468841553,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "989",
+      "gold": "45",
+      "pred": "45",
+      "correct": true,
+      "output": "Emily can peel 6 shrimp per minute, so it will take her 90 / 6 = 15 minutes to peel the shrimp. She can saute 30 shrimp in 10 minutes, so it will take her 90 / 30 * 10 = 30 minutes to cook the shrimp. The total time is 15 + 30 = 45 minutes.\n\nFinal answer: 45",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 72
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "45",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "45",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "45",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "45",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9254964590072632,
+        "min_fill_confidence": 0.50390625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "45"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0886790752410889,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1209",
+      "gold": "29",
+      "pred": "29",
+      "correct": true,
+      "output": "On the low setting, the dehumidifier removes 1 liter x 3 days = 3 liters.\nOn the medium setting, it removes 2 liters x 3 days = 6 liters.\nOn the high setting, it removes 4 liters x 5 days = 20 liters.\nThe total amount of water removed is 3 + 6 + 20 = 29 liters.\n\nFinal answer: 29",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 196
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "29",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "29",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "29",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "29",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9325968623161316,
+        "min_fill_confidence": 0.4921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "29"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.238811731338501,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "916",
+      "gold": "14",
+      "pred": "20",
+      "correct": false,
+      "output": "The total cost of the cake and balloons is $11 + ($0.5 * 2) = $11 + $1 = $12.\nThe remaining money after buying the ice cream is $12 - ($0.5 * 2) = $40.\nSince Julia and Nadine received the same amount of allowance, each received $40 / 2 = $20.\n\nFinal answer: 20",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 131
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "2",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "20",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "20",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "20",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 16,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.79351806640625,
+        "min_fill_confidence": 0.36328125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "20"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2030961513519287,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "1315",
+      "gold": "5",
+      "pred": "5",
+      "correct": true,
+      "output": "Ana spends 3 minutes peeling an orange, so in 60 minutes, she can peel 60 / 3 = 20 oranges.\n\nJane spends 4 minutes peeling an orange, so in 60 minutes, she can peel 60 / 4 = 15 oranges.\n\nTherefore, Ana will have peeled 20 - 15 = 5 more oranges than Jane.\n\nFinal answer: 5",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 94
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "5",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "5",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "5",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "5",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9612630605697632,
+        "min_fill_confidence": 0.55078125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "5"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0967633724212646,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "335",
+      "gold": "310",
+      "pred": "310",
+      "correct": true,
+      "output": "Mason needs 30 ounces of sugar for each batch of suckers, so for 8 batches, he needs 8 * 30 = 240 ounces of sugar. For 1 batch of fudge, he needs 1 * 70 = 70 ounces of sugar. In total, he needs 240 + 70 = 310 ounces of sugar.\n\nFinal answer: 310",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 89
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "310",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "310",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "310",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "310",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9391276240348816,
+        "min_fill_confidence": 0.49609375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "310"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.0953538417816162,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "372",
+      "gold": "5",
+      "pred": "5",
+      "correct": true,
+      "output": "Hallie had dance practice for 1 hour on Tuesdays and 2 hours on Thursdays, which totals 1 + 2 = 3 hours. On Saturdays, she had dance practice that lasted twice as long as Tuesday's night class, which is 2 * 1 = 2 hours.\n\nSo, the total number of hours she had dance practice in a week is 3 + 2 = 5 hours.\n\nFinal answer: 5",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 86
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "5",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "5",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "5",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "5",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9100748896598816,
+        "min_fill_confidence": 0.5078125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "5"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.09159517288208,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "gsm8k",
+      "id": "365",
+      "gold": "18",
+      "pred": "18",
+      "correct": true,
+      "output": "Final answer: 18",
+      "metric": "number",
+      "profile": {
+        "metric": "number",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 66
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "18",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9486083984375,
+        "min_fill_confidence": 0.66015625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "18"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.090088129043579,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "b850b3c4-671c-4944-b8df-39dcdc624be1",
+      "gold": [
+        "Peyton Manning",
+        "Rivers",
+        "Rivers",
+        "Peyton Manning"
+      ],
+      "pred": "Final answer: Rivers",
+      "correct": false,
+      "output": "Final answer: Rivers",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 320
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: Rivers",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9631754755973816,
+        "min_fill_confidence": 0.3515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: Rivers"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5667028427124023,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "3119334a-b767-4071-b25c-7cd7006eafd2",
+      "gold": [
+        "200 horse and 1,000 foot soldiers",
+        "3300",
+        "1200"
+      ],
+      "pred": "Final answer: 200 horse and 1,000 foot soldiers",
+      "correct": false,
+      "output": "Final answer: 200 horse and 1,000 foot soldiers",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 334
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 200 horse and 1,000 foot soldiers",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9656168818473816,
+        "min_fill_confidence": 0.5625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 200 horse and 1,000 foot soldiers"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5542471408843994,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "775c49ab-37b3-49a4-b26b-652142f4a615",
+      "gold": [
+        "2",
+        "3"
+      ],
+      "pred": "Final answer: 2",
+      "correct": false,
+      "output": "Final answer: 2",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 431
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 2",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9832357168197632,
+        "min_fill_confidence": 0.69921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 2"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.9274184703826904,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "b1135420-64b6-4aee-8b7f-fe16ced46567",
+      "gold": [
+        "9",
+        "90"
+      ],
+      "pred": "Final answer: 90",
+      "correct": false,
+      "output": "Final answer: 90",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 479
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 90",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9868571162223816,
+        "min_fill_confidence": 0.78515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 90"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.968146800994873,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "8647c387-9782-4ca0-b91a-0a26f4528a28",
+      "gold": [
+        "10",
+        "7"
+      ],
+      "pred": "Final answer: 1",
+      "correct": false,
+      "output": "Final answer: 1",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 348
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 1",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9748942255973816,
+        "min_fill_confidence": 0.32421875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 1"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5686419010162354,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "d87fa251-9dc4-46d7-b994-93b774659477",
+      "gold": [
+        "Indonesia",
+        "Indonesia"
+      ],
+      "pred": "Final answer: Indonesia",
+      "correct": false,
+      "output": "Final answer: Indonesia",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 343
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: Indonesia",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9947916865348816,
+        "min_fill_confidence": 0.87890625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: Indonesia"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.565584421157837,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "25c8ffbf-0519-4bdf-a4b3-cbab57608e2e",
+      "gold": [
+        "19",
+        "19"
+      ],
+      "pred": "Final answer: 19",
+      "correct": false,
+      "output": "Final answer: 19",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 359
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 19",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9952799677848816,
+        "min_fill_confidence": 0.88671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 19"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5761191844940186,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "dfb70b82-048c-421c-9b1c-c3e2cfad5eb4",
+      "gold": [
+        "10",
+        "2"
+      ],
+      "pred": "Final answer: 10",
+      "correct": false,
+      "output": "Final answer: 10",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 264
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 10",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.990478515625,
+        "min_fill_confidence": 0.8515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 10"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.497666835784912,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "706376ab-ebc2-498c-95d6-5b1929adb779",
+      "gold": [
+        "89.5",
+        "89.5"
+      ],
+      "pred": "Final answer: 89.5%",
+      "correct": false,
+      "output": "Final answer: 89.5%",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 180
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 89.5%",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.982421875,
+        "min_fill_confidence": 0.53125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 89.5%"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2289845943450928,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "c4039f6f-71b5-4f61-80eb-7f7ccbae4cb7",
+      "gold": [
+        "24",
+        "24",
+        "24"
+      ],
+      "pred": "Final answer: 24",
+      "correct": false,
+      "output": "Final answer: 24",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 387
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 24",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9921061396598816,
+        "min_fill_confidence": 0.890625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 24"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.8926680088043213,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "b52da368-96fa-47f7-88db-afc88162027c",
+      "gold": [
+        "2",
+        "2"
+      ],
+      "pred": "Final answer: 2",
+      "correct": false,
+      "output": "Final answer: 2",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 454
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 2",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9943441152572632,
+        "min_fill_confidence": 0.921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 2"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.9523143768310547,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "cd2dc672-54c8-4135-a658-a33a73cc5b8a",
+      "gold": [
+        "36",
+        "36"
+      ],
+      "pred": "Final answer: 36",
+      "correct": false,
+      "output": "Final answer: 36",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 445
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 36",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9912516474723816,
+        "min_fill_confidence": 0.68359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 36"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.9449958801269531,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "15dce16f-9aac-4c3f-b620-ae51c5867c25",
+      "gold": [
+        "7",
+        "75",
+        "73"
+      ],
+      "pred": "Final answer: 73",
+      "correct": false,
+      "output": "Final answer: 73",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 237
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 73",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9834391474723816,
+        "min_fill_confidence": 0.57421875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 73"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.275292158126831,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "d3bc4a55-84c8-4379-a2df-610e30794d1a",
+      "gold": [
+        "18",
+        "18"
+      ],
+      "pred": "Final answer: 18",
+      "correct": false,
+      "output": "Final answer: 18",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 463
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 18",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9832763671875,
+        "min_fill_confidence": 0.69921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 18"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.962886095046997,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "db36038b-1a43-4fa9-9542-993be002f6f1",
+      "gold": [
+        "74.84",
+        "74.84"
+      ],
+      "pred": "Final answer: 74.84%",
+      "correct": false,
+      "output": "Final answer: 74.84%",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 309
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 74.84%",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9856771230697632,
+        "min_fill_confidence": 0.59375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 74.84%"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.545912265777588,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "067516a2-0cac-499b-9c4b-e242105d5dd1",
+      "gold": [
+        "A.J. Green"
+      ],
+      "pred": "Final answer: A.J. Green",
+      "correct": false,
+      "output": "Final answer: A.J. Green",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 301
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: A.J. Green",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9912109375,
+        "min_fill_confidence": 0.75
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: A.J. Green"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5380964279174805,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "9f9a1562-264f-4ccd-95e8-f70d169d0beb",
+      "gold": [
+        "3",
+        "3"
+      ],
+      "pred": "Final answer: 3",
+      "correct": false,
+      "output": "Final answer: 3",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 299
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 3",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9918212890625,
+        "min_fill_confidence": 0.78125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 3"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5330653190612793,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "c1abc27a-fa51-4758-9d45-25e8861b8544",
+      "gold": [
+        "82.8",
+        "116.7"
+      ],
+      "pred": "Final answer: 82.8%",
+      "correct": false,
+      "output": "Final answer: 82.8%",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 355
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 82.8%",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9825032949447632,
+        "min_fill_confidence": 0.5234375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 82.8%"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5761616230010986,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "0279c8c8-6cc8-4dc8-b7df-527fca017649",
+      "gold": [
+        "35.74",
+        "35.74"
+      ],
+      "pred": "Final answer: 35.74%",
+      "correct": false,
+      "output": "Final answer: 35.74%",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 303
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 35.74%",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9825439453125,
+        "min_fill_confidence": 0.69921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 35.74%"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.53554105758667,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "7f18bf62-abf6-46fa-8a8c-a2f19a59d1e0",
+      "gold": [
+        "20",
+        "20"
+      ],
+      "pred": "Final answer: 20",
+      "correct": false,
+      "output": "Final answer: 20",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 304
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 20",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9960123896598816,
+        "min_fill_confidence": 0.89453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 20"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5392937660217285,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "28553293-d719-441b-8f00-ce3dc6df5398",
+      "gold": [
+        "Derrick Mason",
+        "Derrick Mason",
+        "Derrick Mason"
+      ],
+      "pred": "Final answer: Derrick Mason",
+      "correct": false,
+      "output": "Final answer: Derrick Mason",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 206
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: Derrick Mason",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98095703125,
+        "min_fill_confidence": 0.65234375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: Derrick Mason"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2486035823822021,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "63c0b9f0-19f7-411b-9c3c-0e9c51012246",
+      "gold": [
+        "people",
+        "housing units",
+        "people",
+        "housing units"
+      ],
+      "pred": "Final answer: ...",
+      "correct": false,
+      "output": "Final answer: ...",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 274
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: ...",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97906494140625,
+        "min_fill_confidence": 0.494140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: ..."
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5076262950897217,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "dd5eb12c-84e9-441e-aac5-9567d459c040",
+      "gold": [
+        "Brees",
+        "Brees"
+      ],
+      "pred": "Final answer: Drew Brees",
+      "correct": false,
+      "output": "Final answer: Drew Brees",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 439
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: Drew Brees",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9866129755973816,
+        "min_fill_confidence": 0.7734375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: Drew Brees"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.9444541931152344,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "d817453d-6145-42cb-bb39-0c7bf1dcebaa",
+      "gold": [
+        "75.65",
+        "75.65"
+      ],
+      "pred": "Final answer: 75.65%",
+      "correct": false,
+      "output": "Final answer: 75.65%",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 221
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 75.65%",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9851888418197632,
+        "min_fill_confidence": 0.59375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 75.65%"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2582309246063232,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "d54c0048-631a-4958-b39b-6da9c1b1cb0b",
+      "gold": [
+        "20,000 repatriation to the abbey",
+        "repatriation to the abbey",
+        "20,000 repatriation",
+        "repatriation to the abbey"
+      ],
+      "pred": "Final answer: repatriation",
+      "correct": false,
+      "output": "Final answer: repatriation",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 286
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "Final answer:",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "Final answer:",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "Final answer:",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: repatriation",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 1,
+        "first_final_step": 32,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.9758097529411316,
+        "min_fill_confidence": 0.48828125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: repatriation"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.520967960357666,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "761fe680-9e36-4b78-968e-e89e5fe779dc",
+      "gold": [
+        "Siam",
+        "Kengtung"
+      ],
+      "pred": "In Siam",
+      "correct": false,
+      "output": "In Siam",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 425
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "In Siam",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9706624746322632,
+        "min_fill_confidence": 0.6796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "In Siam"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.9263248443603516,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "57aca09c-e162-4c47-a311-d1f22a736216",
+      "gold": [
+        "17",
+        "17",
+        "17",
+        "17",
+        "17",
+        "17",
+        "17",
+        "17",
+        "20"
+      ],
+      "pred": "Final answer: 17",
+      "correct": false,
+      "output": "Final answer: 17",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 436
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 17",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.984130859375,
+        "min_fill_confidence": 0.703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 17"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.9413416385650635,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "c91c3b0f-c77c-41f9-bd9a-d5cc0e897783",
+      "gold": [
+        "96.0",
+        "96.2",
+        "3.8",
+        "96.2",
+        "96.2"
+      ],
+      "pred": "Final answer: 96.2",
+      "correct": false,
+      "output": "Final answer: 96.2",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 208
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 96.2",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9822184443473816,
+        "min_fill_confidence": 0.51953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 96.2"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2501935958862305,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "85517b0e-22c7-4711-b5fc-877b5c94a670",
+      "gold": [
+        "Japanese began sending troops"
+      ],
+      "pred": "Final answer: overnight",
+      "correct": false,
+      "output": "Final answer: overnight",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 387
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: overnight",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9560546875,
+        "min_fill_confidence": 0.3671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: overnight"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.9011156558990479,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "be649d2b-99a6-42e1-8bfa-2bea5354f22f",
+      "gold": [
+        "T. J. Houshmandzadeh",
+        "T. J. Houshmandzadeh",
+        "T. J. Houshmandzadeh"
+      ],
+      "pred": "T. J Houshmandzadeh",
+      "correct": false,
+      "output": "T. J Houshmandzadeh",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 279
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "T. J Houshmandzadeh",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9764404296875,
+        "min_fill_confidence": 0.63671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "T. J Houshmandzadeh"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.515162467956543,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "8b2b0e03-ae5a-4a55-adf8-5445ed05d105",
+      "gold": [
+        "41",
+        "41",
+        "41",
+        "41",
+        "41"
+      ],
+      "pred": "Final answer: 41",
+      "correct": false,
+      "output": "Final answer: 41",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 496
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 41",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9927164912223816,
+        "min_fill_confidence": 0.8515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 41"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.9978044033050537,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "ea1da574-7edf-49ff-af33-8231572dd341",
+      "gold": [
+        "2",
+        "2"
+      ],
+      "pred": "Final answer: 3",
+      "correct": false,
+      "output": "Final answer: 3",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 474
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 3",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9858805537223816,
+        "min_fill_confidence": 0.53515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 3"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.9761090278625488,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "7f09cd77-75f4-4fce-8bdd-110721362765",
+      "gold": [
+        "0.5",
+        "0.5"
+      ],
+      "pred": "Final answer: 0.5",
+      "correct": false,
+      "output": "Final answer: 0.5",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 276
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 0.5",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9774984121322632,
+        "min_fill_confidence": 0.51953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 0.5"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5126714706420898,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "60294197-781f-4514-89db-655e423c8ae0",
+      "gold": [
+        "2007",
+        "2005"
+      ],
+      "pred": "Final answer: 2007",
+      "correct": false,
+      "output": "Final answer: 2007",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 313
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 2007",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9877523183822632,
+        "min_fill_confidence": 0.81640625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 2007"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5463850498199463,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "990b1242-2437-490a-8e56-5996a2853a86",
+      "gold": [
+        "Australia",
+        "Africa",
+        "Australia",
+        "Africa"
+      ],
+      "pred": "Final answer: Africa and Africa",
+      "correct": false,
+      "output": "Final answer: Africa and Africa",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 380
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: Africa and Africa",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9779052734375,
+        "min_fill_confidence": 0.48046875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: Africa and Africa"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.8962781429290771,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "1259b53d-86f8-42da-860f-60006eb653ba",
+      "gold": [
+        "76.5",
+        "76.5"
+      ],
+      "pred": "Final answer: 76.50%",
+      "correct": false,
+      "output": "Final answer: 76.50%",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 204
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 76.50%",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.981201171875,
+        "min_fill_confidence": 0.59375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 76.50%"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2446537017822266,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "52227811-99dd-4f38-8cc5-272e506c22c9",
+      "gold": [
+        "22.8",
+        "22.8"
+      ],
+      "pred": "Final answer: 22.8%",
+      "correct": false,
+      "output": "Final answer: 22.8%",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 316
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 22.8%",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9851888418197632,
+        "min_fill_confidence": 0.67578125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 22.8%"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5482230186462402,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "e4fa103e-c498-41b1-bd11-544f3ca3a4a3",
+      "gold": [
+        "Americans ancestry",
+        "Americans ancestry"
+      ],
+      "pred": "Final answer: Americans American",
+      "correct": false,
+      "output": "Final answer: Americans American",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 360
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: Americans American",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.985107421875,
+        "min_fill_confidence": 0.62109375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: Americans American"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5874452590942383,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "10bb8622-8c5c-46e8-9267-3360f8dd65e4",
+      "gold": [
+        "3853",
+        "3853"
+      ],
+      "pred": "Final answer: 35",
+      "correct": false,
+      "output": "Final answer: 35",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 383
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 35",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.96514892578125,
+        "min_fill_confidence": 0.365234375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 35"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.8981854915618896,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "23e5f993-8682-40dc-a61e-7d268890daa8",
+      "gold": [
+        "Protestant hostility to the Habsburgs",
+        "Protestant hostility to the Habsburgs"
+      ],
+      "pred": "The answer is the convergence of Protestant hostility to the Habsburgs. According to the passage, \"The time seemed oppor",
+      "correct": false,
+      "output": "The answer is the convergence of Protestant hostility to the Habsburgs. According to the passage, \"The time seemed opportune, with the apparent convergence of Protestant hostility to the Habsburgs, and explains French participation in the London talks with Mansfeld.\" This indicates that the convergence of Protestant hostility to the Habsburgs happened first, and then it followed that Venice attacked Milan.\n\nFinal answer: convergence of Protestant hostility to the Habsburgs",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 366
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "The answer is the of togs\n\nFinal answer: convergence of Protestant hostility to the Habsburgs",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "The answer is the convergence of Protestant hostility to the Habsburgs. According to the passage, apparent convergence o",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "The answer is the convergence of Protestant hostility to the Habsburgs. According to the passage, \"The time seemed oppor",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "The answer is the convergence of Protestant hostility to the Habsburgs. According to the passage, \"The time seemed oppor",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 2,
+        "first_final_step": 24,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.8577677607536316,
+        "min_fill_confidence": 0.359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "The answer is the convergence of Protestant hostility to the Habsburgs. According to the passage, \"The time seemed oppor"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5929100513458252,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "9aab4aae-6a2c-4a68-ba5b-0e3a29ffdb9c",
+      "gold": [
+        "9.5",
+        "9.5"
+      ],
+      "pred": "Final answer: 9.5",
+      "correct": false,
+      "output": "Final answer: 9.5",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 210
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 9.5",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9848226308822632,
+        "min_fill_confidence": 0.6328125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 9.5"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2536721229553223,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "fabfaffa-53a2-44ce-8411-c6b14cfeab61",
+      "gold": [
+        "97.82",
+        "97.82"
+      ],
+      "pred": "Final answer: 97.82%",
+      "correct": false,
+      "output": "Final answer: 97.82%",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 276
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 97.82%",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9833577871322632,
+        "min_fill_confidence": 0.62109375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 97.82%"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5140647888183594,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "2cb576cf-7a80-41b7-aeb2-a522a7019dbe",
+      "gold": [
+        "17",
+        "17",
+        "18"
+      ],
+      "pred": "Final answer: 7 months",
+      "correct": false,
+      "output": "Final answer: 7 months",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 374
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 7 months",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9744873046875,
+        "min_fill_confidence": 0.5
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 7 months"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.8921585083007812,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "7e76faee-e2d6-4173-8afd-bd642fc5fe5a",
+      "gold": [
+        "92",
+        "90"
+      ],
+      "pred": "Final answer: 92",
+      "correct": false,
+      "output": "Final answer: 92",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 323
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 92",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9888509511947632,
+        "min_fill_confidence": 0.796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 92"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5527667999267578,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "6cbe18a5-09e1-4eed-a56a-9cab4b240bea",
+      "gold": [
+        "Khitans",
+        "Korea",
+        "Khitans",
+        "Korea"
+      ],
+      "pred": "Final answer: Khitans and Goryeo",
+      "correct": false,
+      "output": "Final answer: Khitans and Goryeo",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 353
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: Khitans and Goryeo",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9881591796875,
+        "min_fill_confidence": 0.828125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: Khitans and Goryeo"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5792779922485352,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "c0c88600-4eeb-47f8-b2b5-7d88d2f203fc",
+      "gold": [
+        "7.66",
+        "7.66"
+      ],
+      "pred": "Final answer: 7.66",
+      "correct": false,
+      "output": "Final answer: 7.66",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 306
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 7.66",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9921468496322632,
+        "min_fill_confidence": 0.9140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 7.66"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5386161804199219,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "7b83ff8b-36c8-4b85-80e0-40e3ad25d010",
+      "gold": [
+        "3400",
+        "3400"
+      ],
+      "pred": "Final answer: 3400",
+      "correct": false,
+      "output": "Final answer: 3400",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 444
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 3400",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9776611328125,
+        "min_fill_confidence": 0.53125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 3400"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.9492790699005127,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "6c75926c-e454-491f-9ff6-d336a1d41db2",
+      "gold": [
+        "19.1",
+        "19.1"
+      ],
+      "pred": "Final answer: 19.1%",
+      "correct": false,
+      "output": "Final answer: 19.1%",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 343
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 19.1%",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9777018427848816,
+        "min_fill_confidence": 0.65625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 19.1%"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5709881782531738,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "9ff05bae-c423-4406-b54c-903589221446",
+      "gold": [
+        "45",
+        "45",
+        "45"
+      ],
+      "pred": "Final answer: 45",
+      "correct": false,
+      "output": "Final answer: 45",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 349
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: 45",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9907633662223816,
+        "min_fill_confidence": 0.76171875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: 45"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5802578926086426,
+      "forward_calls": 32,
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "3c2949c3-be3e-4706-a65e-f9079898bfe3",
+      "gold": [
+        "Princess Kiko",
+        "Princess Kiko",
+        "Princess Kiko"
+      ],
+      "pred": "Final answer: Princess Kiko",
+      "correct": false,
+      "output": "Final answer: Princess Kiko",
+      "metric": "span_contains",
+      "profile": {
+        "metric": "span_contains",
+        "label_space": [],
+        "n_labels": 0,
+        "prompt_tokens": 402
+      },
+      "probe": {
+        "available": false
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "Final answer: Princess Kiko",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9932047724723816,
+        "min_fill_confidence": 0.7109375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "Final answer: Princess Kiko"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.9211115837097168,
+      "forward_calls": 32,
+      "meta": {}
+    }
+  ]
+}

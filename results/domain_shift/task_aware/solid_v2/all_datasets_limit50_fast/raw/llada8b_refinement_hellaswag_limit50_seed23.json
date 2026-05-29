@@ -1,0 +1,4151 @@
+{
+  "method": "selective_remask_refinement_controller",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "winogrande,commonsenseqa,arc_challenge,hellaswag,boolq",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/a100_clean_priority/raw/llada8b_refinement_controller_limit50_seed23.json",
+    "budgets": "8,16,24,32",
+    "scout_steps": 8,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "risk_t16": 0.24,
+    "risk_t24": 0.38,
+    "risk_t32": 0.56,
+    "margin_target": 0.18,
+    "fill_confidence_target": 0.7,
+    "binary_direct_full_threshold": 0.52,
+    "multi_direct_full_threshold": 0.36,
+    "multi_direct_full_entropy": 0.98,
+    "binary_post_disagree_confidence": 0.72,
+    "multi_post_disagree_confidence": 0.7,
+    "multi_disagreement_policy": "ignore",
+    "remask_min_fraction": 0.2,
+    "remask_max_fraction": 0.55,
+    "remask_min_tokens": 4,
+    "max_refinements": 3
+  },
+  "summary": {
+    "hellaswag": {
+      "accuracy": 0.74,
+      "n": 50,
+      "seconds": 63.57025957107544,
+      "avg_forward_calls": 33.0,
+      "route_rates": {
+        "32": 1.0
+      },
+      "final_budget_rates": {
+        "32": 1.0
+      },
+      "peak_mem_gb": 15.22509241104126
+    }
+  },
+  "rows": [
+    {
+      "task": "hellaswag",
+      "id": "4749",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 232
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.5766513347625732,
+        "margin": 0.18032506108283997,
+        "probs": {
+          "A": 0.02100452408194542,
+          "B": 0.5766513347625732,
+          "C": 0.3963262736797333,
+          "D": 0.0060178968124091625
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9903564453125,
+        "min_fill_confidence": 0.7734375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.3831112384796143,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "1368",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 98
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.7653286457061768,
+        "margin": 0.6479616910219193,
+        "probs": {
+          "A": 0.7653286457061768,
+          "B": 0.11736695468425751,
+          "C": 0.007048432715237141,
+          "D": 0.11025604605674744
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9866943359375,
+        "min_fill_confidence": 0.7109375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2405869960784912,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Playing violin"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "279",
+      "gold": "A",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 103
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.8441013097763062,
+        "margin": 0.7493957728147507,
+        "probs": {
+          "A": 0.09470553696155548,
+          "B": 0.01645735651254654,
+          "C": 0.044735729694366455,
+          "D": 0.8441013097763062
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9927978515625,
+        "min_fill_confidence": 0.8828125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.140990972518921,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "High jump"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "9699",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 286
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.8205506801605225,
+        "margin": 0.6485539078712463,
+        "probs": {
+          "A": 0.007099154405295849,
+          "B": 0.00035344608477316797,
+          "C": 0.17199677228927612,
+          "D": 0.8205506801605225
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.988037109375,
+        "min_fill_confidence": 0.671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2935504913330078,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "5025",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 240
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9936927556991577,
+        "margin": 0.9912296375259757,
+        "probs": {
+          "A": 0.0018020556308329105,
+          "B": 0.002041996456682682,
+          "C": 0.9936927556991577,
+          "D": 0.0024631181731820107
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9976806640625,
+        "min_fill_confidence": 0.94921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2705557346343994,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "6942",
+      "gold": "C",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 259
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.6005797982215881,
+        "margin": 0.37963880598545074,
+        "probs": {
+          "A": 0.1110960990190506,
+          "B": 0.2209409922361374,
+          "C": 0.6005797982215881,
+          "D": 0.06738318502902985
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9813232421875,
+        "min_fill_confidence": 0.4765625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2792441844940186,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Sports and Fitness"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "6212",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 272
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9513782858848572,
+        "margin": 0.9226491488516331,
+        "probs": {
+          "A": 0.01854892447590828,
+          "B": 0.9513782858848572,
+          "C": 0.0013436796143651009,
+          "D": 0.028729137033224106
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9962158203125,
+        "min_fill_confidence": 0.8984375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.3067238330841064,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Finance and Business"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "8684",
+      "gold": "B",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 229
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.8894925117492676,
+        "margin": 0.7896942272782326,
+        "probs": {
+          "A": 0.0030136473942548037,
+          "B": 0.007695618085563183,
+          "C": 0.8894925117492676,
+          "D": 0.099798284471035
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.99609375,
+        "min_fill_confidence": 0.92578125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.26741623878479,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Relationships"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "5866",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 197
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7912129759788513,
+        "margin": 0.6032834053039551,
+        "probs": {
+          "A": 0.01980763114988804,
+          "B": 0.7912129759788513,
+          "C": 0.18792957067489624,
+          "D": 0.0010497659677639604
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9930419921875,
+        "min_fill_confidence": 0.87890625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2451815605163574,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "2134",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 93
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7873296141624451,
+        "margin": 0.6003224402666092,
+        "probs": {
+          "A": 0.18700717389583588,
+          "B": 0.7873296141624451,
+          "C": 0.020981622859835625,
+          "D": 0.004681632854044437
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9912109375,
+        "min_fill_confidence": 0.76171875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1495306491851807,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Ping-pong"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "3145",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 135
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.8482947945594788,
+        "margin": 0.7008832842111588,
+        "probs": {
+          "A": 0.14741151034832,
+          "B": 0.00036539664142765105,
+          "C": 0.003928384277969599,
+          "D": 0.8482947945594788
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.993896484375,
+        "min_fill_confidence": 0.9140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1534266471862793,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Tango"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "4380",
+      "gold": "A",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 231
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9530547857284546,
+        "margin": 0.908479817211628,
+        "probs": {
+          "A": 0.04457496851682663,
+          "B": 0.00015102232282515615,
+          "C": 0.9530547857284546,
+          "D": 0.0022192567121237516
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9962158203125,
+        "min_fill_confidence": 0.9453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2639029026031494,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Youth"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "7283",
+      "gold": "B",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 242
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9989901185035706,
+        "margin": 0.9982349052443169,
+        "probs": {
+          "A": 0.0002032628981396556,
+          "B": 5.139290806255303e-05,
+          "C": 0.0007552132592536509,
+          "D": 0.9989901185035706
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.99755859375,
+        "min_fill_confidence": 0.93359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2715537548065186,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Family Life"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "230",
+      "gold": "B",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 160
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.8563964366912842,
+        "margin": 0.747517853975296,
+        "probs": {
+          "A": 0.10887858271598816,
+          "B": 0.029304275289177895,
+          "C": 0.005420745816081762,
+          "D": 0.8563964366912842
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9788818359375,
+        "min_fill_confidence": 0.515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.147768259048462,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Playing violin"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "3621",
+      "gold": "A",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 259
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.6110506653785706,
+        "margin": 0.33989858627319336,
+        "probs": {
+          "A": 0.2711520791053772,
+          "B": 0.06440426409244537,
+          "C": 0.6110506653785706,
+          "D": 0.053393010050058365
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9859619140625,
+        "min_fill_confidence": 0.64453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2808246612548828,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Holidays and Traditions"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "7455",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 247
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9992932081222534,
+        "margin": 0.9989133478084113,
+        "probs": {
+          "A": 0.0001583493285579607,
+          "B": 0.0003798603138420731,
+          "C": 0.00016856197908055037,
+          "D": 0.9992932081222534
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9967041015625,
+        "min_fill_confidence": 0.91796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2736318111419678,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "405",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 142
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.48958346247673035,
+        "margin": 0.17348462343215942,
+        "probs": {
+          "A": 0.08507683873176575,
+          "B": 0.10924083739519119,
+          "C": 0.3160988390445709,
+          "D": 0.48958346247673035
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.978515625,
+        "min_fill_confidence": 0.47265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1406242847442627,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Cheerleading"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "1735",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 93
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.6306945085525513,
+        "margin": 0.271335631608963,
+        "probs": {
+          "A": 0.35935887694358826,
+          "B": 0.6306945085525513,
+          "C": 0.007939272560179234,
+          "D": 0.0020073624327778816
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9915771484375,
+        "min_fill_confidence": 0.84765625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1393356323242188,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Playing saxophone"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "1405",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 116
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.6460991501808167,
+        "margin": 0.4228132367134094,
+        "probs": {
+          "A": 0.12722446024417877,
+          "B": 0.0033904174342751503,
+          "C": 0.6460991501808167,
+          "D": 0.22328591346740723
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.986328125,
+        "min_fill_confidence": 0.72265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1375882625579834,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Playing harmonica"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "8163",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 308
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9991027116775513,
+        "margin": 0.9986150543845724,
+        "probs": {
+          "A": 0.9991027116775513,
+          "B": 0.0002610241062939167,
+          "C": 0.0004876572929788381,
+          "D": 0.00014872706378810108
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9976806640625,
+        "min_fill_confidence": 0.94140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5267643928527832,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Health"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "6901",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 253
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.999388575553894,
+        "margin": 0.9990736302279402,
+        "probs": {
+          "A": 0.0003149453259538859,
+          "B": 0.999388575553894,
+          "C": 0.00023041889653541148,
+          "D": 6.601611676160246e-05
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.997314453125,
+        "min_fill_confidence": 0.9296875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.278045654296875,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Work World"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "320",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 110
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9984225034713745,
+        "margin": 0.997390835895203,
+        "probs": {
+          "A": 0.00043006305349990726,
+          "B": 0.00011574989912332967,
+          "C": 0.0010316675761714578,
+          "D": 0.9984225034713745
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.99462890625,
+        "min_fill_confidence": 0.85546875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1380937099456787,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Having an ice cream"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "8398",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 244
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.5139919519424438,
+        "margin": 0.11369460821151733,
+        "probs": {
+          "A": 0.4002973437309265,
+          "B": 0.5139919519424438,
+          "C": 0.07882322371006012,
+          "D": 0.0068874964490532875
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9901123046875,
+        "min_fill_confidence": 0.81640625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2783055305480957,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Food and Entertaining"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "7066",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 259
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9985823631286621,
+        "margin": 0.9973377351416275,
+        "probs": {
+          "A": 0.9985823631286621,
+          "B": 2.4266380933113396e-05,
+          "C": 0.0012446279870346189,
+          "D": 0.00014864960394334048
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.997802734375,
+        "min_fill_confidence": 0.9375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2806780338287354,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "5881",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 276
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9975147247314453,
+        "margin": 0.9955890682758763,
+        "probs": {
+          "A": 0.9975147247314453,
+          "B": 7.869717592257075e-06,
+          "C": 0.00055170978885144,
+          "D": 0.0019256564555689692
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9974365234375,
+        "min_fill_confidence": 0.93359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2931041717529297,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "942",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 131
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.7766725420951843,
+        "margin": 0.5541521310806274,
+        "probs": {
+          "A": 0.22252041101455688,
+          "B": 0.0004035393940284848,
+          "C": 0.7766725420951843,
+          "D": 0.0004035393940284848
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.993408203125,
+        "min_fill_confidence": 0.91015625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.144864559173584,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Running a marathon"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "3368",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 261
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.990777850151062,
+        "margin": 0.9848864697851241,
+        "probs": {
+          "A": 0.005891380365937948,
+          "B": 0.0023070976603776217,
+          "C": 0.990777850151062,
+          "D": 0.0010237684473395348
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.998046875,
+        "min_fill_confidence": 0.95703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2817130088806152,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Home and Garden"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "578",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 128
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.38358521461486816,
+        "margin": 0.11995121836662292,
+        "probs": {
+          "A": 0.15990209579467773,
+          "B": 0.38358521461486816,
+          "C": 0.26363399624824524,
+          "D": 0.19287875294685364
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97998046875,
+        "min_fill_confidence": 0.51171875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1512665748596191,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Bullfighting"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "9652",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 227
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.7904893159866333,
+        "margin": 0.5906223058700562,
+        "probs": {
+          "A": 0.0072801546193659306,
+          "B": 0.0023635204415768385,
+          "C": 0.19986701011657715,
+          "D": 0.7904893159866333
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9835205078125,
+        "min_fill_confidence": 0.5859375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.4038712978363037,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Food and Entertaining"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "6047",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 232
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9964118599891663,
+        "margin": 0.9936131439171731,
+        "probs": {
+          "A": 0.0027987160719931126,
+          "B": 0.9964118599891663,
+          "C": 0.000586642709095031,
+          "D": 0.00020273830159567297
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.998046875,
+        "min_fill_confidence": 0.953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.4034972190856934,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Relationships"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "2816",
+      "gold": "C",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 115
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.7822566032409668,
+        "margin": 0.6545567214488983,
+        "probs": {
+          "A": 0.07276120036840439,
+          "B": 0.01728229969739914,
+          "C": 0.12769988179206848,
+          "D": 0.7822566032409668
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9844970703125,
+        "min_fill_confidence": 0.68359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1752221584320068,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Skateboarding"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "3539",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 272
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9995573163032532,
+        "margin": 0.9993119952268898,
+        "probs": {
+          "A": 0.0002453210763633251,
+          "B": 0.9995573163032532,
+          "C": 0.00013131090963725,
+          "D": 6.602726352866739e-05
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9981689453125,
+        "min_fill_confidence": 0.95703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.3177263736724854,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Family Life"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "5943",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 260
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.5890797972679138,
+        "margin": 0.1842115819454193,
+        "probs": {
+          "A": 0.4048682153224945,
+          "B": 0.5890797972679138,
+          "C": 0.00449767941609025,
+          "D": 0.0015543565386906266
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9931640625,
+        "min_fill_confidence": 0.87890625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2981188297271729,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Family Life"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "9265",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 222
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.6145786046981812,
+        "margin": 0.2644023001194,
+        "probs": {
+          "A": 0.6145786046981812,
+          "B": 0.35017630457878113,
+          "C": 0.032571472227573395,
+          "D": 0.002673629205673933
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.991455078125,
+        "min_fill_confidence": 0.84375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.273533582687378,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Finance and Business"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "6040",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 229
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9969733953475952,
+        "margin": 0.9953778363997117,
+        "probs": {
+          "A": 0.0015955589478835464,
+          "B": 0.0003344473079778254,
+          "C": 0.9969733953475952,
+          "D": 0.0010966104455292225
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9969482421875,
+        "min_fill_confidence": 0.94921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.274871587753296,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "9372",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 255
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9893442988395691,
+        "margin": 0.9802327528595924,
+        "probs": {
+          "A": 0.009111545979976654,
+          "B": 0.9893442988395691,
+          "C": 0.0007479212945327163,
+          "D": 0.0007961580413393676
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.998291015625,
+        "min_fill_confidence": 0.9609375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.3015031814575195,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "4608",
+      "gold": "C",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 284
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.621792197227478,
+        "margin": 0.28897079825401306,
+        "probs": {
+          "A": 0.33282139897346497,
+          "B": 0.0003439035499468446,
+          "C": 0.045042477548122406,
+          "D": 0.621792197227478
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9964599609375,
+        "min_fill_confidence": 0.9453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.3313241004943848,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Sports and Fitness"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "5150",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 275
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.8916932940483093,
+        "margin": 0.8087529018521309,
+        "probs": {
+          "A": 0.004395679570734501,
+          "B": 0.8916932940483093,
+          "C": 0.02097061648964882,
+          "D": 0.08294039219617844
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.995361328125,
+        "min_fill_confidence": 0.90625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.3233942985534668,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Health"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "9387",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 271
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9241138100624084,
+        "margin": 0.8719788752496243,
+        "probs": {
+          "A": 0.0006165198283270001,
+          "B": 0.023134738206863403,
+          "C": 0.9241138100624084,
+          "D": 0.052134934812784195
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9923095703125,
+        "min_fill_confidence": 0.87890625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.340498447418213,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "1404",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 104
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9990535378456116,
+        "margin": 0.9985009769443423,
+        "probs": {
+          "A": 0.0002451974432915449,
+          "B": 0.0001487197441747412,
+          "C": 0.0005525609012693167,
+          "D": 0.9990535378456116
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.993408203125,
+        "min_fill_confidence": 0.84765625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1922578811645508,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Assembling bicycle"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "7767",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 273
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7266265153884888,
+        "margin": 0.45931553840637207,
+        "probs": {
+          "A": 0.0052117337472736835,
+          "B": 0.7266265153884888,
+          "C": 0.0008507921593263745,
+          "D": 0.2673109769821167
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9942626953125,
+        "min_fill_confidence": 0.90625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.4322960376739502,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "2910",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 109
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9995284080505371,
+        "margin": 0.9992504309338983,
+        "probs": {
+          "A": 0.00010885741357924417,
+          "B": 8.477822848362848e-05,
+          "C": 0.9995284080505371,
+          "D": 0.00027797711663879454
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.995849609375,
+        "min_fill_confidence": 0.8984375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2434678077697754,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Sharpening knives"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "7914",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 300
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9944394826889038,
+        "margin": 0.9895373065955937,
+        "probs": {
+          "A": 0.004902176093310118,
+          "B": 0.9944394826889038,
+          "C": 0.0005500089027918875,
+          "D": 0.00010830318205989897
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9974365234375,
+        "min_fill_confidence": 0.93359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.5474369525909424,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Home and Garden"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "9676",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 285
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.999754011631012,
+        "margin": 0.9995629178156378,
+        "probs": {
+          "A": 4.263879236532375e-05,
+          "B": 1.221621914737625e-05,
+          "C": 0.00019109381537418813,
+          "D": 0.999754011631012
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9981689453125,
+        "min_fill_confidence": 0.95703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.3345849514007568,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Health"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "7331",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 267
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.394366592168808,
+        "margin": 0.12332266569137573,
+        "probs": {
+          "A": 0.13628944754600525,
+          "B": 0.27104392647743225,
+          "C": 0.394366592168808,
+          "D": 0.19829997420310974
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98681640625,
+        "min_fill_confidence": 0.6484375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.348306655883789,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Education and Communications"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "2680",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 123
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9570361971855164,
+        "margin": 0.9149869605898857,
+        "probs": {
+          "A": 0.000679662567563355,
+          "B": 0.00023488512670155615,
+          "C": 0.9570361971855164,
+          "D": 0.042049236595630646
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9969482421875,
+        "min_fill_confidence": 0.94140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1743075847625732,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Ice fishing"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "2982",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 131
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.961884617805481,
+        "margin": 0.9268479719758034,
+        "probs": {
+          "A": 0.03503664582967758,
+          "B": 0.961884617805481,
+          "C": 0.0015394027577713132,
+          "D": 0.0015394027577713132
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.994873046875,
+        "min_fill_confidence": 0.91015625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.220099925994873,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Cutting the grass"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "2925",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 158
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.46859413385391235,
+        "margin": 0.02839067578315735,
+        "probs": {
+          "A": 0.01934118941426277,
+          "B": 0.46859413385391235,
+          "C": 0.07186123728752136,
+          "D": 0.440203458070755
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.976806640625,
+        "min_fill_confidence": 0.50390625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2304446697235107,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Hula hoop"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "8742",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 266
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9990975856781006,
+        "margin": 0.9986099308880512,
+        "probs": {
+          "A": 0.00033515988616272807,
+          "B": 7.960744551382959e-05,
+          "C": 0.0004876547900494188,
+          "D": 0.9990975856781006
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.997802734375,
+        "min_fill_confidence": 0.94140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.3204431533813477,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Family Life"
+      }
+    },
+    {
+      "task": "hellaswag",
+      "id": "5298",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 255
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.7208790183067322,
+        "margin": 0.5268570631742477,
+        "probs": {
+          "A": 0.0670521929860115,
+          "B": 0.018046854063868523,
+          "C": 0.19402195513248444,
+          "D": 0.7208790183067322
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9964599609375,
+        "min_fill_confidence": 0.94140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.3246691226959229,
+      "forward_calls": 33,
+      "meta": {
+        "activity_label": "Personal Care and Style"
+      }
+    }
+  ],
+  "source_file": "results/domain_shift/task_aware/solid_v2/a100_final/raw/llada8b_refinement_controller_limit50_seed23.json"
+}

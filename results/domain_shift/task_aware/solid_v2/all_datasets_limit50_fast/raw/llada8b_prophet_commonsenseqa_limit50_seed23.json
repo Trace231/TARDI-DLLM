@@ -1,0 +1,3038 @@
+{
+  "method": "prophet_style_early_commit",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "winogrande,commonsenseqa,arc_challenge,hellaswag,boolq",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/a100_related_parallel/raw/llada8b_prophet_early_commit_limit50_seed23.json",
+    "max_steps": 32,
+    "min_steps": 8,
+    "check_interval": 4,
+    "patience": 2,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "schedule": "uniform",
+    "stop_on_invalid": false
+  },
+  "summary": {
+    "commonsenseqa": {
+      "accuracy": 0.8,
+      "n": 50,
+      "seconds": 119.66157984733582,
+      "avg_forward_calls": 32.0,
+      "stop_rates": {
+        "max_steps": 0.82,
+        "stable_label": 0.18
+      },
+      "peak_mem_gb": 15.037288188934326
+    }
+  },
+  "rows": [
+    {
+      "task": "commonsenseqa",
+      "id": "8b25332de2894ab38784235838d38cec",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 2.7954933643341064,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "snake"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "8ea5720718c0e122efa6277edb511569",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 2.7917838096618652,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "watch film"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "4acd496cc78d96c2431279a5fd87de7c",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 2.7432990074157715,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "helping"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "01794dde3ca2991615f1aa2f63fb22e3",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 2.607063055038452,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "landing"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "41bab71fea3fa04e5a4e10a2f86996df",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 1.9532642364501953,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "mezzanine"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "c7ce02d9365fe9275f88338ad51cbde6",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.9298679828643799,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "exercise"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "c9f7d07e6d363a99f5fadd68a4dfa35a",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.9032883644104004,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "toothpick"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "29c194d032a266a7160bff6f546a4d9d",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.8741531372070312,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "chips"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "32d5b7fcae24f0d4871cfb219c5a4b47",
+      "gold": "C",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 1.8812437057495117,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "metal"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "46351b3a6beb694c5f623583a3b1473d",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8658764362335205,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "light source"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "5a50ea4bb2d13dc4f620ebd45025d445",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 1.8935072422027588,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "dream"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "5c2bc4335c8860342ec2d568ceb6ac6b",
+      "gold": "C",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 1.8929829597473145,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "shelf"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "b3dc6d6a5e2f9d7da8eb72816c80b3f8_1",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.4154515266418457,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "projectile ball"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "9889e5389917d812c09d6e5d382d333d",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.798975944519043,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "success"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "4ef3d70648ee3cea028bc5ed0fdfda28",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 2.8365907669067383,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "eating breakfast in bed"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "359aed918343d228e67cef329b693904",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.905411958694458,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "chef"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "011096bcfff30fd38046cf9db3a411c5",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.916414737701416,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "human"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "0f2377604e628c55ba588366139396b9",
+      "gold": "E",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.8851795196533203,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "quill"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "900492bd731f8f615ed7c08155737d44",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 1.8459041118621826,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "run"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "0b52cc905fff0ca69a45e6353d10e401",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.9082427024841309,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "dollar"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "6f48ee564a48293eb501cc0d8197bdd9",
+      "gold": "C",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8872883319854736,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "picture"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "ba640b9634ad6b4ad98b17b4f152e562",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8937268257141113,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "lizard"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "5d4233146435ab0ca211e8ac9bfce76f",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.875304937362671,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "condoms"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "bd773d64f4e22db2358c6e00cbdf2d83",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.6573665142059326,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "dust"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "ef3d5d35128678937c36438466e0fc93",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 2.8922739028930664,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "program"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "9dffd2021771e0ecddb19031acf3701b",
+      "gold": "C",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.816617488861084,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "person"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "8b3b598a647dfd2d63fcedce5f461040",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.80918550491333,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "saw"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "821b32d39f57396979069b948030afe9",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 2.8634274005889893,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "kids"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "8f2976690c83be6b8fa3a1196dfd9722",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 2.824169874191284,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "remembering"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "66bfb6e209c94e6be5b0d04b0c7e2064",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 2.756448745727539,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "office"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "0bf4d64ad0eee7224acb3a4eb85accb2",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.800414800643921,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "ice"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "ec86900559a0faf2aef066e511a4cfa6",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "B",
+      "metric": "letter",
+      "seconds": 2.7764599323272705,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "ink"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "7c45033e9fd9f1a759923971b14390ed",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 2.798245906829834,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "most people"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "0f7425ecbe369bf41a230aab92d84132",
+      "gold": "B",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 2.8782198429107666,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "running twenty six miles"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "42520bf3f93f8de23670044e019001a3",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 2.7973382472991943,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "stone"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "07fd8b0aed06406fedb137d11b07a890",
+      "gold": "D",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 2.840362071990967,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "percussion instrument"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "3eb397b96b6c3a245c81ab30205943f1",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 2.8510050773620605,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "having fun"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "ed50555f8db2b8f66caf9868dcd7e13b",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.731485605239868,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "universe"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "ec224c1dbfb569cce7ec317fe987ae68",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.7453458309173584,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "animal"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "42c46e28baf0fc617a07419286178c0a",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 2.8834455013275146,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "monkey"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "cf8e30dd6956d03e3f0f0397112a8696",
+      "gold": "A",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 2.77713942527771,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "monkey"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "549cf641318edfc0510fa7c7dbb359e1",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 2.725743532180786,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "rosebush"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "5c171b9837af49211891ce40e4a10204",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 2.774190664291382,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "dirt"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "303aedda3a5ab8d853cbe4edc4b914c6",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 2.827491521835327,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "person"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "1d8d9e3504c8c58a3b923ddc155c19b0",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.2364699840545654,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "earth"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "8b23cd355ffc8b6e7aa5459ffb21b4e0",
+      "gold": "B",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 1.826432704925537,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "dining area"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "d78baca23e0a636a8961e17119047e63",
+      "gold": "C",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 1.8626899719238281,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "soccer field"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "a5dcac512870e79f5aa2b22dbd662404",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8525967597961426,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "clothing"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "c7526b682e64f355384631b35cd78fc9",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8719477653503418,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "bar stool"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "1ef68db97654f30cd3701b942fadc934",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8847506046295166,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "concept": "furniture"
+      }
+    }
+  ],
+  "source_file": "results/domain_shift/task_aware/solid_v2/a100_final/raw/llada8b_prophet_early_commit_limit50_seed23.json"
+}

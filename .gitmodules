@@ -1,0 +1,3 @@
+[submodule "external/Masked-Diffusion-Model-Reproduction-Experiment"]
+	path = external/Masked-Diffusion-Model-Reproduction-Experiment
+	url = https://github.com/Hyperion2829/Masked-Diffusion-Model-Reproduction-Experiment.git

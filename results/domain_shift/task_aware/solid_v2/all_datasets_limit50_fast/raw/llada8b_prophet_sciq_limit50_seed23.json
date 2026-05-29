@@ -1,0 +1,3037 @@
+{
+  "method": "prophet_style_early_commit",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "sciq",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/all_datasets_limit50_fast/raw/llada8b_prophet_sciq_limit50_seed23.json",
+    "max_steps": 32,
+    "min_steps": 8,
+    "check_interval": 4,
+    "patience": 2,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "schedule": "uniform",
+    "stop_on_invalid": false
+  },
+  "summary": {
+    "sciq": {
+      "accuracy": 0.86,
+      "n": 50,
+      "seconds": 66.2256212234497,
+      "avg_forward_calls": 32.0,
+      "stop_rates": {
+        "max_steps": 0.8,
+        "stable_label": 0.2
+      },
+      "peak_mem_gb": 15.043050289154053
+    }
+  },
+  "rows": [
+    {
+      "task": "sciq",
+      "id": "947",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 2.991633892059326,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "incubation"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "798",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.6060073375701904,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "hydrocarbons"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "971",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.58316969871521,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "polyploid"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "296",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 2.596295118331909,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "nervous system"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "913",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 2.588200092315674,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "orbit the earth"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "849",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.5973293781280518,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "octet rule"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "85",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.8731663227081299,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "vision"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "17",
+      "gold": "B",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.792083501815796,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "oxygen"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "606",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.7750568389892578,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "medications"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "314",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.1127996444702148,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "epiphytes"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "433",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.0900719165802002,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "they are lower"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "388",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.0899479389190674,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "complete and incomplete"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "542",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.0890493392944336,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "fossilization"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "366",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.0955018997192383,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "erosion"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "133",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.0977935791015625,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "head"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "743",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.086111068725586,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "kingdom"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "196",
+      "gold": "C",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.0890312194824219,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "lava"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "273",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.1116337776184082,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "solution"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "455",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.0971717834472656,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "hydrocarbons"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "14",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.091404676437378,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "photosynthesis"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "226",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.0940992832183838,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "fuse"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "635",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.0923435688018799,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "natural"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "465",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.0978126525878906,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "refractive index"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "923",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.0904412269592285,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "slowly"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "25",
+      "gold": "C",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.089141607284546,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "immune system"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "108",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.098290205001831,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "camouflage"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "87",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.1036746501922607,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "parasitic"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "727",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.1047453880310059,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "chemical"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "510",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.1010682582855225,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "air"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "431",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.0913138389587402,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "equilibrium"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "20",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.0913617610931396,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "diffusion"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "524",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.11163330078125,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "genetic code"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "642",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.0933496952056885,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "aquarius"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "751",
+      "gold": "D",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.092409372329712,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "pedalfer"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "441",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.0978708267211914,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "evolution"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "367",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.1089105606079102,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "elements"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "789",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.0990002155303955,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "flowers"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "58",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.0968561172485352,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "central nervous"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "210",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.099494218826294,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "lunar"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "801",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.0837597846984863,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "solvation"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "36",
+      "gold": "B",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.0833971500396729,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "joules"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "603",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.0821373462677002,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "chordates"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "377",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.0825135707855225,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "cells"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "673",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.0883653163909912,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "red blood cells"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "176",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.08829665184021,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "cytosol"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "221",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.083845615386963,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "intraspecific competition"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "994",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.0825669765472412,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "cratons"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "752",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.082123041152954,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "the voltage drop"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "371",
+      "gold": "C",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.0826539993286133,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "cell-level organization"
+      }
+    },
+    {
+      "task": "sciq",
+      "id": "579",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.078685998916626,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "gold_text": "abrasion"
+      }
+    }
+  ]
+}

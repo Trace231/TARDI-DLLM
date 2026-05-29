@@ -1,0 +1,49 @@
+method,task,task_label,accuracy,n,seconds,adapter,model,protocol
+qwen_base_control,mmlu_pro,MMLU-Pro,0.38,100,8.887081623077393,,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,base
+qwen_base_control,pubmedqa,PubMedQA,0.51,100,10.18404245376587,,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,base
+qwen_base_control,ceval_computer_network,C-Eval CN,0.73,100,6.943231582641602,,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,base
+qwen_base_control,sciq,SciQ,0.97,100,6.859624147415161,,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,base
+qwen_base_control,winogrande,WinoGrande,0.63,100,6.993641138076782,,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,base
+qwen_base_control,commonsenseqa,CommonsenseQA,0.82,100,6.932344198226929,,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,base
+qwen_lora_control_v2,mmlu_pro,MMLU-Pro,0.4,100,27.93834161758423,results/adaptation/qwen25_domain_mix_final_typed_control_lora_r8_steps200/final_adapter,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,controlled_v2
+qwen_lora_control_v2,pubmedqa,PubMedQA,0.77,100,29.94577956199646,results/adaptation/qwen25_domain_mix_final_typed_control_lora_r8_steps200/final_adapter,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,controlled_v2
+qwen_lora_control_v2,ceval_computer_network,C-Eval CN,0.75,100,25.8500075340271,results/adaptation/qwen25_domain_mix_final_typed_control_lora_r8_steps200/final_adapter,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,controlled_v2
+qwen_lora_control_v2,sciq,SciQ,0.97,100,25.68538212776184,results/adaptation/qwen25_domain_mix_final_typed_control_lora_r8_steps200/final_adapter,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,controlled_v2
+qwen_lora_control_v2,winogrande,WinoGrande,0.72,100,26.38448143005371,results/adaptation/qwen25_domain_mix_final_typed_control_lora_r8_steps200/final_adapter,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,controlled_v2
+qwen_lora_control_v2,commonsenseqa,CommonsenseQA,0.86,100,26.555967092514038,results/adaptation/qwen25_domain_mix_final_typed_control_lora_r8_steps200/final_adapter,/data/hf/models/Qwen/Qwen2.5-7B-Instruct,controlled_v2
+llada_base_control,mmlu_pro,MMLU-Pro,0.35,100,223.6224546432495,,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,base
+llada_base_control,pubmedqa,PubMedQA,0.75,100,289.78835225105286,,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,base
+llada_base_control,ceval_computer_network,C-Eval CN,0.58,100,155.50079321861267,,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,base
+llada_base_control,sciq,SciQ,0.92,100,155.2403700351715,,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,base
+llada_base_control,winogrande,WinoGrande,0.63,100,154.7958528995514,,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,base
+llada_base_control,commonsenseqa,CommonsenseQA,0.87,100,155.19827008247375,,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,base
+llada_lora_control_v2,mmlu_pro,MMLU-Pro,0.35,100,245.04063034057617,results/adaptation/llada_domain_mix_final_typed_control_grpo_lora_r8_steps200/checkpoint-200,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,controlled_v2
+llada_lora_control_v2,pubmedqa,PubMedQA,0.75,100,317.2149910926819,results/adaptation/llada_domain_mix_final_typed_control_grpo_lora_r8_steps200/checkpoint-200,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,controlled_v2
+llada_lora_control_v2,ceval_computer_network,C-Eval CN,0.57,100,169.20125722885132,results/adaptation/llada_domain_mix_final_typed_control_grpo_lora_r8_steps200/checkpoint-200,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,controlled_v2
+llada_lora_control_v2,sciq,SciQ,0.92,100,168.63690185546875,results/adaptation/llada_domain_mix_final_typed_control_grpo_lora_r8_steps200/checkpoint-200,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,controlled_v2
+llada_lora_control_v2,winogrande,WinoGrande,0.63,100,167.8670678138733,results/adaptation/llada_domain_mix_final_typed_control_grpo_lora_r8_steps200/checkpoint-200,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,controlled_v2
+llada_lora_control_v2,commonsenseqa,CommonsenseQA,0.87,100,168.29373335838318,results/adaptation/llada_domain_mix_final_typed_control_grpo_lora_r8_steps200/checkpoint-200,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,controlled_v2
+llada_lora_original,mmlu_pro,MMLU-Pro,0.44,100,241.01015377044678,results/adaptation/llada_domain_mix_final_typed_grpo_lora_r8_steps50/checkpoint-50,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,original_ddm_lora
+llada_lora_original,pubmedqa,PubMedQA,0.72,100,319.61200404167175,results/adaptation/llada_domain_mix_final_typed_grpo_lora_r8_steps50/checkpoint-50,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,original_ddm_lora
+llada_lora_original,ceval_computer_network,C-Eval CN,0.54,100,170.19722867012024,results/adaptation/llada_domain_mix_final_typed_grpo_lora_r8_steps50/checkpoint-50,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,original_ddm_lora
+llada_lora_original,sciq,SciQ,0.88,100,168.38918590545654,results/adaptation/llada_domain_mix_final_typed_grpo_lora_r8_steps50/checkpoint-50,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,original_ddm_lora
+llada_lora_original,winogrande,WinoGrande,0.78,100,167.922376871109,results/adaptation/llada_domain_mix_final_typed_grpo_lora_r8_steps50/checkpoint-50,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,original_ddm_lora
+llada_lora_original,commonsenseqa,CommonsenseQA,0.8,100,168.06602215766907,results/adaptation/llada_domain_mix_final_typed_grpo_lora_r8_steps50/checkpoint-50,/data/hf/models/GSAI-ML/LLaDA-8B-Instruct,original_ddm_lora
+ar_lora_control_gain,ceval_computer_network,C-Eval CN,0.020000000000000018,100,,,,gain
+ar_lora_control_gain,commonsenseqa,CommonsenseQA,0.040000000000000036,100,,,,gain
+ar_lora_control_gain,mmlu_pro,MMLU-Pro,0.020000000000000018,100,,,,gain
+ar_lora_control_gain,pubmedqa,PubMedQA,0.26,100,,,,gain
+ar_lora_control_gain,sciq,SciQ,0.0,100,,,,gain
+ar_lora_control_gain,winogrande,WinoGrande,0.08999999999999997,100,,,,gain
+ddm_lora_control_gain,ceval_computer_network,C-Eval CN,-0.010000000000000009,100,,,,gain
+ddm_lora_control_gain,commonsenseqa,CommonsenseQA,0.0,100,,,,gain
+ddm_lora_control_gain,mmlu_pro,MMLU-Pro,0.0,100,,,,gain
+ddm_lora_control_gain,pubmedqa,PubMedQA,0.0,100,,,,gain
+ddm_lora_control_gain,sciq,SciQ,0.0,100,,,,gain
+ddm_lora_control_gain,winogrande,WinoGrande,0.0,100,,,,gain
+ddm_lora_original_gain,ceval_computer_network,C-Eval CN,-0.039999999999999925,100,,,,gain
+ddm_lora_original_gain,commonsenseqa,CommonsenseQA,-0.06999999999999995,100,,,,gain
+ddm_lora_original_gain,mmlu_pro,MMLU-Pro,0.09000000000000002,100,,,,gain
+ddm_lora_original_gain,pubmedqa,PubMedQA,-0.030000000000000027,100,,,,gain
+ddm_lora_original_gain,sciq,SciQ,-0.040000000000000036,100,,,,gain
+ddm_lora_original_gain,winogrande,WinoGrande,0.15000000000000002,100,,,,gain

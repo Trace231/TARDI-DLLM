@@ -1,0 +1,5 @@
+file,task,n,accuracy,invalid,invalid_rate,blank,blank_rate,avg_forward_calls,invalid_examples
+llada8b_calibrated_controller_wino_cqa_limit1000_seed23.json,commonsenseqa,1000,0.817,0,0.0,0,0.0,9.064,[]
+llada8b_calibrated_controller_wino_cqa_limit1000_seed23.json,winogrande,1000,0.756,0,0.0,0,0.0,17.56,[]
+llada8b_32step_wino_cqa_limit1000_seed23.json,commonsenseqa,1000,0.819,0,0.0,0,0.0,,[]
+llada8b_32step_wino_cqa_limit1000_seed23.json,winogrande,1000,0.756,0,0.0,0,0.0,,[]

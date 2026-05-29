@@ -1,0 +1,4776 @@
+{
+  "method": "selective_remask_refinement_controller",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "mmlu_pro",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/all_datasets_limit50_fast/raw/llada8b_refinement_mmlu_pro_limit50_seed23.json",
+    "budgets": "8,16,24,32",
+    "scout_steps": 8,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "risk_t16": 0.24,
+    "risk_t24": 0.38,
+    "risk_t32": 0.56,
+    "margin_target": 0.18,
+    "fill_confidence_target": 0.7,
+    "binary_direct_full_threshold": 0.52,
+    "multi_direct_full_threshold": 0.36,
+    "multi_direct_full_entropy": 0.98,
+    "binary_post_disagree_confidence": 0.72,
+    "multi_post_disagree_confidence": 0.7,
+    "multi_disagreement_policy": "ignore",
+    "remask_min_fraction": 0.2,
+    "remask_max_fraction": 0.55,
+    "remask_min_tokens": 4,
+    "max_refinements": 3
+  },
+  "summary": {
+    "mmlu_pro": {
+      "accuracy": 0.4,
+      "n": 50,
+      "seconds": 291.78210973739624,
+      "avg_forward_calls": 32.64,
+      "route_rates": {
+        "32": 0.98,
+        "8->16": 0.02
+      },
+      "final_budget_rates": {
+        "16": 0.02,
+        "32": 0.98
+      },
+      "peak_mem_gb": 15.492851734161377
+    }
+  },
+  "rows": [
+    {
+      "task": "mmlu_pro",
+      "id": "4888",
+      "gold": "H",
+      "pred": "H",
+      "correct": true,
+      "output": "H",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 367
+      },
+      "probe": {
+        "available": true,
+        "top_label": "H",
+        "top_prob": 0.9843473434448242,
+        "margin": 0.9772871052846313,
+        "probs": {
+          "A": 0.0002914108627010137,
+          "B": 7.843216008041054e-05,
+          "C": 0.005498519632965326,
+          "D": 0.0003302117402199656,
+          "E": 0.0070602381601929665,
+          "F": 0.0005444271373562515,
+          "G": 0.0009554993011988699,
+          "H": 0.9843473434448242,
+          "I": 0.0008432252216152847,
+          "J": 5.0639613618841395e-05
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 4,
+        "mean_fill_confidence": 0.98388671875,
+        "min_fill_confidence": 0.6953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "H"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.996563196182251,
+      "forward_calls": 33,
+      "meta": {
+        "category": "history",
+        "src": "ori_mmlu-high_school_european_history"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "1458",
+      "gold": "C",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I"
+        ],
+        "n_labels": 9,
+        "prompt_tokens": 590
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.4125227928161621,
+        "margin": 0.26076412200927734,
+        "probs": {
+          "A": 0.046283770352602005,
+          "B": 0.03604583814740181,
+          "C": 0.10430209338665009,
+          "D": 0.08646947145462036,
+          "E": 0.07630904763936996,
+          "F": 0.052446383982896805,
+          "G": 0.15175867080688477,
+          "H": 0.033861931413412094,
+          "I": 0.4125227928161621
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.965301513671875,
+        "min_fill_confidence": 0.2294921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 9.35494065284729,
+      "forward_calls": 33,
+      "meta": {
+        "category": "law",
+        "src": "ori_mmlu-professional_law"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "351",
+      "gold": "H",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 203
+      },
+      "probe": {
+        "available": true,
+        "top_label": "E",
+        "top_prob": 0.3111611008644104,
+        "margin": 0.12243235111236572,
+        "probs": {
+          "A": 0.008292161859571934,
+          "B": 0.018686676397919655,
+          "C": 0.13807690143585205,
+          "D": 0.027188953012228012,
+          "E": 0.3111611008644104,
+          "F": 0.042111072689294815,
+          "G": 0.027188953012228012,
+          "H": 0.18872874975204468,
+          "I": 0.17729423940181732,
+          "J": 0.061271246522665024
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "E",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9930419921875,
+        "min_fill_confidence": 0.8125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "E"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.651105880737305,
+      "forward_calls": 33,
+      "meta": {
+        "category": "business",
+        "src": "stemez-Business"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "9891",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 250
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.31932470202445984,
+        "margin": 0.17762522399425507,
+        "probs": {
+          "A": 0.027902280911803246,
+          "B": 0.059069130569696426,
+          "C": 0.08594507724046707,
+          "D": 0.04321589693427086,
+          "E": 0.059069130569696426,
+          "F": 0.12504933774471283,
+          "G": 0.07584626972675323,
+          "H": 0.14169947803020477,
+          "I": 0.31932470202445984,
+          "J": 0.06287875771522522
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "I",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97991943359375,
+        "min_fill_confidence": 0.400390625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "I"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.807052135467529,
+      "forward_calls": 33,
+      "meta": {
+        "category": "physics",
+        "src": "stemez-Physics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "5167",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 103
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9725726246833801,
+        "margin": 0.9496999084949493,
+        "probs": {
+          "A": 0.022872716188430786,
+          "B": 0.9725726246833801,
+          "C": 0.0017637544078752398,
+          "D": 0.00030649459222331643,
+          "E": 0.00053791468963027,
+          "F": 0.0006906961789354682,
+          "G": 0.0006095371791161597,
+          "H": 6.035235492163338e-05,
+          "I": 0.00034730383777059615,
+          "J": 0.00023869822325650603
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9971923828125,
+        "min_fill_confidence": 0.9609375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.603044748306274,
+      "forward_calls": 33,
+      "meta": {
+        "category": "other",
+        "src": "ori_mmlu-miscellaneous"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7112",
+      "gold": "G",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 146
+      },
+      "probe": {
+        "available": true,
+        "top_label": "H",
+        "top_prob": 0.2983832359313965,
+        "margin": 0.0,
+        "probs": {
+          "A": 0.2983832359313965,
+          "B": 0.026072436943650246,
+          "C": 0.0854882299900055,
+          "D": 0.058755140751600266,
+          "E": 0.08030875772237778,
+          "F": 0.09100174158811569,
+          "G": 0.012315747328102589,
+          "H": 0.2983832359313965,
+          "I": 0.033477671444416046,
+          "J": 0.015813732519745827
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9757080078125,
+        "min_fill_confidence": 0.3203125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "H"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.792311191558838,
+      "forward_calls": 33,
+      "meta": {
+        "category": "economics",
+        "src": "ori_mmlu-high_school_microeconomics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6376",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 270
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.575192391872406,
+        "margin": 0.3354165405035019,
+        "probs": {
+          "A": 0.00929711852222681,
+          "B": 0.0030183326452970505,
+          "C": 0.0019487820100039244,
+          "D": 0.575192391872406,
+          "E": 0.164795383810997,
+          "F": 0.0015177129535004497,
+          "G": 0.0032129983883351088,
+          "H": 0.000716916867531836,
+          "I": 0.2397758513689041,
+          "J": 0.0005245075444690883
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "E",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.982421875,
+        "min_fill_confidence": 0.52734375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "E"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.891104459762573,
+      "forward_calls": 33,
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-professional_medicine"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "8872",
+      "gold": "A",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 125
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.4082052409648895,
+        "margin": 0.06979119777679443,
+        "probs": {
+          "A": 0.15017032623291016,
+          "B": 0.10321044921875,
+          "C": 0.3384140431880951,
+          "D": 0.4082052409648895
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.976806640625,
+        "min_fill_confidence": 0.33203125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.629490375518799,
+      "forward_calls": 33,
+      "meta": {
+        "category": "math",
+        "src": "ori_mmlu-abstract_algebra"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6026",
+      "gold": "A",
+      "pred": "F",
+      "correct": false,
+      "output": "Final answer: F",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "n_labels": 6,
+        "prompt_tokens": 124
+      },
+      "probe": {
+        "available": true,
+        "top_label": "F",
+        "top_prob": 0.6416387557983398,
+        "margin": 0.4984697997570038,
+        "probs": {
+          "A": 0.09243683516979218,
+          "B": 0.024879034608602524,
+          "C": 0.011040003970265388,
+          "D": 0.08683636039495468,
+          "E": 0.14316895604133606,
+          "F": 0.6416387557983398
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.35836124420166016,
+        "probe_entropy": 0.6345490080952774,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.6666666666666666,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.2982232871960822,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.0625
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.21875
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.59375
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": null,
+        "valid_seen": 0,
+        "mean_fill_confidence": 0.9853515625,
+        "min_fill_confidence": 0.796875
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "F",
+          "risk_score": 0.2982232871960822,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "F",
+          "remasked_tokens": 10
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 2.257479190826416,
+      "forward_calls": 15,
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-anatomy"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "2234",
+      "gold": "C",
+      "pred": "I",
+      "correct": false,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 276
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.44536375999450684,
+        "margin": 0.07614421844482422,
+        "probs": {
+          "A": 0.003400393994525075,
+          "B": 0.02512570470571518,
+          "C": 0.3692195415496826,
+          "D": 0.05319111794233322,
+          "E": 0.005967877805233002,
+          "F": 0.05319111794233322,
+          "G": 0.03891545161604881,
+          "H": 0.005266633350402117,
+          "I": 0.44536375999450684,
+          "J": 0.000358398916432634
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "I",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98291015625,
+        "min_fill_confidence": 0.5234375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "I"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.260286092758179,
+      "forward_calls": 33,
+      "meta": {
+        "category": "psychology",
+        "src": "stemez-Psychology"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "12119",
+      "gold": "F",
+      "pred": "I",
+      "correct": false,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 625
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.5557509064674377,
+        "margin": 0.45917588472366333,
+        "probs": {
+          "A": 0.0485609732568264,
+          "B": 0.005621341057121754,
+          "C": 0.0428549125790596,
+          "D": 0.029453720897436142,
+          "E": 0.062353525310754776,
+          "F": 0.058575715869665146,
+          "G": 0.0485609732568264,
+          "H": 0.051692888140678406,
+          "I": 0.5557509064674377,
+          "J": 0.09657502174377441
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "I",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97515869140625,
+        "min_fill_confidence": 0.306640625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "I"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 9.387873411178589,
+      "forward_calls": 33,
+      "meta": {
+        "category": "engineering",
+        "src": "stemez-ElectronicCommunications"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "3266",
+      "gold": "J",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 136
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9877296090126038,
+        "margin": 0.9834326435811818,
+        "probs": {
+          "A": 0.004296965431421995,
+          "B": 0.9877296090126038,
+          "C": 0.0006589609547518194,
+          "D": 0.0007014602888375521,
+          "E": 0.00014703406486660242,
+          "F": 8.91806703293696e-05,
+          "G": 0.00016661142581142485,
+          "H": 0.004296965431421995,
+          "I": 0.00012189551489427686,
+          "J": 0.001791241578757763
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.995849609375,
+        "min_fill_confidence": 0.89453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.7670464515686035,
+      "forward_calls": 33,
+      "meta": {
+        "category": "biology",
+        "src": "ori_mmlu-high_school_biology"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "4512",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 111
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.8539542555809021,
+        "margin": 0.8140142820775509,
+        "probs": {
+          "A": 0.011442993767559528,
+          "B": 0.01886630617082119,
+          "C": 0.00652002077549696,
+          "D": 0.8539542555809021,
+          "E": 0.03993997350335121,
+          "F": 0.010098406113684177,
+          "G": 0.0274503156542778,
+          "H": 0.02578718401491642,
+          "I": 0.005405287258327007,
+          "J": 0.0005351959262043238
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9940185546875,
+        "min_fill_confidence": 0.90625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.5833964347839355,
+      "forward_calls": 33,
+      "meta": {
+        "category": "chemistry",
+        "src": "ori_mmlu-college_chemistry"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7463",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 366
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9866905212402344,
+        "margin": 0.9821212370879948,
+        "probs": {
+          "A": 0.0006183852674439549,
+          "B": 0.0004815989814233035,
+          "C": 0.0012298061046749353,
+          "D": 0.9866905212402344,
+          "E": 0.0008997453260235488,
+          "F": 0.004569284152239561,
+          "G": 0.00355856167152524,
+          "H": 0.0005126594332978129,
+          "I": 0.0004815989814233035,
+          "J": 0.0009577738237567246
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9957275390625,
+        "min_fill_confidence": 0.9140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.10784387588501,
+      "forward_calls": 33,
+      "meta": {
+        "category": "economics",
+        "src": "stemez-Economics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "302",
+      "gold": "H",
+      "pred": "H",
+      "correct": true,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 141
+      },
+      "probe": {
+        "available": true,
+        "top_label": "H",
+        "top_prob": 0.43697819113731384,
+        "margin": 0.2859625667333603,
+        "probs": {
+          "A": 0.12519635260105133,
+          "B": 0.01919948123395443,
+          "C": 0.02175586111843586,
+          "D": 0.035869352519512177,
+          "E": 0.052189603447914124,
+          "F": 0.027935078367590904,
+          "G": 0.049027591943740845,
+          "H": 0.43697819113731384,
+          "I": 0.080832839012146,
+          "J": 0.15101562440395355
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98779296875,
+        "min_fill_confidence": 0.69921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "H"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.855743169784546,
+      "forward_calls": 33,
+      "meta": {
+        "category": "business",
+        "src": "stemez-Business"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "3744",
+      "gold": "A",
+      "pred": "I",
+      "correct": false,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 191
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.35787543654441833,
+        "margin": 0.22622041404247284,
+        "probs": {
+          "A": 0.04274212568998337,
+          "B": 0.03771979361772537,
+          "C": 0.04549875110387802,
+          "D": 0.04274212568998337,
+          "E": 0.10914583504199982,
+          "F": 0.04274212568998337,
+          "G": 0.1316550225019455,
+          "H": 0.12367844581604004,
+          "I": 0.35787543654441833,
+          "J": 0.06620030105113983
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "I",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97998046875,
+        "min_fill_confidence": 0.40625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "I"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.877411365509033,
+      "forward_calls": 33,
+      "meta": {
+        "category": "chemistry",
+        "src": "stemez-Chemistry"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "10362",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 276
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.16971105337142944,
+        "margin": 0.010282278060913086,
+        "probs": {
+          "A": 0.04290967434644699,
+          "B": 0.07530882209539413,
+          "C": 0.14069540798664093,
+          "D": 0.16971105337142944,
+          "E": 0.14976947009563446,
+          "F": 0.0313933864235878,
+          "G": 0.07530882209539413,
+          "H": 0.07530882209539413,
+          "I": 0.08016582578420639,
+          "J": 0.15942877531051636
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.971771240234375,
+        "min_fill_confidence": 0.1982421875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.148990154266357,
+      "forward_calls": 33,
+      "meta": {
+        "category": "computer science",
+        "src": "ori_mmlu-college_computer_science"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7638",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 193
+      },
+      "probe": {
+        "available": true,
+        "top_label": "E",
+        "top_prob": 0.7854903340339661,
+        "margin": 0.5868872702121735,
+        "probs": {
+          "A": 0.0004081208899151534,
+          "B": 8.554678788641468e-05,
+          "C": 0.008726010099053383,
+          "D": 0.003637542249634862,
+          "E": 0.7854903340339661,
+          "F": 0.000811645295470953,
+          "G": 0.001947036013007164,
+          "H": 0.1986030638217926,
+          "I": 0.000205216056201607,
+          "J": 8.554678788641468e-05
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "E",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.984619140625,
+        "min_fill_confidence": 0.7734375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "E"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.011019945144653,
+      "forward_calls": 33,
+      "meta": {
+        "category": "economics",
+        "src": "ori_mmlu-high_school_macroeconomics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "479",
+      "gold": "B",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 205
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.17587436735630035,
+        "margin": 0.02066577970981598,
+        "probs": {
+          "A": 0.08843518793582916,
+          "B": 0.05363864824175835,
+          "C": 0.06470057368278503,
+          "D": 0.17587436735630035,
+          "E": 0.12087657302618027,
+          "F": 0.06887339055538177,
+          "G": 0.09413877129554749,
+          "H": 0.07804378122091293,
+          "I": 0.15520858764648438,
+          "J": 0.10021018981933594
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "E",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9725341796875,
+        "min_fill_confidence": 0.23828125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "E"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.020325660705566,
+      "forward_calls": 33,
+      "meta": {
+        "category": "business",
+        "src": "stemez-Business"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "1830",
+      "gold": "I",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 377
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.7826420068740845,
+        "margin": 0.7098449617624283,
+        "probs": {
+          "A": 0.03896544873714447,
+          "B": 0.008167602121829987,
+          "C": 0.07279704511165619,
+          "D": 0.7826420068740845,
+          "E": 0.023633740842342377,
+          "F": 0.0152590898796916,
+          "G": 0.017290813848376274,
+          "H": 0.008694367483258247,
+          "I": 0.017290813848376274,
+          "J": 0.0152590898796916
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97381591796875,
+        "min_fill_confidence": 0.416015625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.313901901245117,
+      "forward_calls": 33,
+      "meta": {
+        "category": "law",
+        "src": "ori_mmlu-professional_law"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "1496",
+      "gold": "C",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 439
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.290353924036026,
+        "margin": 0.04964207112789154,
+        "probs": {
+          "A": 0.08855293691158295,
+          "B": 0.03467782959342003,
+          "C": 0.22612786293029785,
+          "D": 0.24071185290813446,
+          "E": 0.00823670718818903,
+          "F": 0.017437107861042023,
+          "G": 0.03467782959342003,
+          "H": 0.008767928928136826,
+          "I": 0.290353924036026,
+          "J": 0.05045593902468681
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.967041015625,
+        "min_fill_confidence": 0.32421875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.600397825241089,
+      "forward_calls": 33,
+      "meta": {
+        "category": "law",
+        "src": "ori_mmlu-professional_law"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "11856",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 386
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.20143470168113708,
+        "margin": 0.05406193435192108,
+        "probs": {
+          "A": 0.05771201103925705,
+          "B": 0.047844938933849335,
+          "C": 0.11477402597665787,
+          "D": 0.11477402597665787,
+          "E": 0.147372767329216,
+          "F": 0.11477402597665787,
+          "G": 0.08938610553741455,
+          "H": 0.05421541631221771,
+          "I": 0.20143470168113708,
+          "J": 0.05771201103925705
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "I",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.981201171875,
+        "min_fill_confidence": 0.50390625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "I"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.451382398605347,
+      "forward_calls": 33,
+      "meta": {
+        "category": "engineering",
+        "src": "stemez-MachineDesign"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "8350",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 207
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.9825881123542786,
+        "margin": 0.9716725442558527,
+        "probs": {
+          "A": 0.0001999255910050124,
+          "B": 3.698251748573966e-05,
+          "C": 0.00032962157274596393,
+          "D": 0.0004505392862483859,
+          "E": 0.0003096508444286883,
+          "F": 0.0003096508444286883,
+          "G": 0.010915568098425865,
+          "H": 0.0003096508444286883,
+          "I": 0.9825881123542786,
+          "J": 0.00455028610303998
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "I",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.990234375,
+        "min_fill_confidence": 0.734375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "I"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.923335552215576,
+      "forward_calls": 33,
+      "meta": {
+        "category": "math",
+        "src": "ori_mmlu-elementary_mathematics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7071",
+      "gold": "F",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 170
+      },
+      "probe": {
+        "available": true,
+        "top_label": "E",
+        "top_prob": 0.6096975803375244,
+        "margin": 0.4237503409385681,
+        "probs": {
+          "A": 0.0034057428129017353,
+          "B": 0.0034057428129017353,
+          "C": 0.010490425862371922,
+          "D": 0.0072099571116268635,
+          "E": 0.6096975803375244,
+          "F": 0.1859472393989563,
+          "G": 0.10594954341650009,
+          "H": 0.026788242161273956,
+          "I": 0.010490425862371922,
+          "J": 0.03661518543958664
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "E",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.990966796875,
+        "min_fill_confidence": 0.85546875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "E"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.699732065200806,
+      "forward_calls": 33,
+      "meta": {
+        "category": "economics",
+        "src": "stemez-Economics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "393",
+      "gold": "J",
+      "pred": "J",
+      "correct": true,
+      "output": "Final answer: J",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 178
+      },
+      "probe": {
+        "available": true,
+        "top_label": "J",
+        "top_prob": 0.552302896976471,
+        "margin": 0.37299638986587524,
+        "probs": {
+          "A": 0.006531238555908203,
+          "B": 0.008386276662349701,
+          "C": 0.031158799305558205,
+          "D": 0.027497541159391403,
+          "E": 0.04258902743458748,
+          "F": 0.0227962639182806,
+          "G": 0.07474607229232788,
+          "H": 0.05468539521098137,
+          "I": 0.1793065071105957,
+          "J": 0.552302896976471
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "J",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9893798828125,
+        "min_fill_confidence": 0.71875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "J"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.352771520614624,
+      "forward_calls": 33,
+      "meta": {
+        "category": "business",
+        "src": "stemez-Business"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "8585",
+      "gold": "C",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 133
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.4706606864929199,
+        "margin": 0.35165902972221375,
+        "probs": {
+          "A": 0.005565781146287918,
+          "B": 0.003593538422137499,
+          "C": 0.11900165677070618,
+          "D": 0.4706606864929199,
+          "E": 0.08706347644329071,
+          "F": 0.06780510395765305,
+          "G": 0.06780510395765305,
+          "H": 0.02067938819527626,
+          "I": 0.05280666425824165,
+          "J": 0.10501860082149506
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9822998046875,
+        "min_fill_confidence": 0.53125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.505934953689575,
+      "forward_calls": 33,
+      "meta": {
+        "category": "math",
+        "src": "ori_mmlu-high_school_mathematics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "10488",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 167
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.961647629737854,
+        "margin": 0.9360205885022879,
+        "probs": {
+          "A": 0.0011985927121713758,
+          "B": 0.00015238394553307444,
+          "C": 0.00041422253707423806,
+          "D": 0.961647629737854,
+          "E": 0.0006026902119629085,
+          "F": 0.02562704123556614,
+          "G": 0.007342269644141197,
+          "H": 0.00016221187252085656,
+          "I": 0.0008769091218709946,
+          "J": 0.0019761451985687017
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9920654296875,
+        "min_fill_confidence": 0.8125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.560696125030518,
+      "forward_calls": 33,
+      "meta": {
+        "category": "computer science",
+        "src": "ori_mmlu-machine_learning"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "12254",
+      "gold": "F",
+      "pred": "F",
+      "correct": true,
+      "output": "Final answer: F",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 255
+      },
+      "probe": {
+        "available": true,
+        "top_label": "F",
+        "top_prob": 0.5532933473587036,
+        "margin": 0.4443434327840805,
+        "probs": {
+          "A": 0.029323473572731018,
+          "B": 0.025877876207232475,
+          "C": 0.05831668898463249,
+          "D": 0.051464296877384186,
+          "E": 0.10894991457462311,
+          "F": 0.5532933473587036,
+          "G": 0.04834623262286186,
+          "H": 0.027546854689717293,
+          "I": 0.04541708528995514,
+          "J": 0.051464296877384186
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "F",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98974609375,
+        "min_fill_confidence": 0.734375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "F"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.583368539810181,
+      "forward_calls": 33,
+      "meta": {
+        "category": "engineering",
+        "src": "stemez-TransportPhenomena"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7239",
+      "gold": "F",
+      "pred": "F",
+      "correct": true,
+      "output": "Final answer: F",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 205
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.2050403207540512,
+        "margin": 0.045354753732681274,
+        "probs": {
+          "A": 0.035630661994218826,
+          "B": 0.04037483036518097,
+          "C": 0.08029494434595108,
+          "D": 0.15968556702136993,
+          "E": 0.1243632435798645,
+          "F": 0.14092202484607697,
+          "G": 0.09098608791828156,
+          "H": 0.07086004316806793,
+          "I": 0.2050403207540512,
+          "J": 0.05184231325984001
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "F",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97259521484375,
+        "min_fill_confidence": 0.197265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "F"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.297305583953857,
+      "forward_calls": 33,
+      "meta": {
+        "category": "economics",
+        "src": "ori_mmlu-high_school_microeconomics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6041",
+      "gold": "B",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 296
+      },
+      "probe": {
+        "available": true,
+        "top_label": "H",
+        "top_prob": 0.45060235261917114,
+        "margin": 0.17729821801185608,
+        "probs": {
+          "A": 0.02107495255768299,
+          "B": 0.025421246886253357,
+          "C": 0.030663874000310898,
+          "D": 0.10054297745227814,
+          "E": 0.047493137419223785,
+          "F": 0.00935195293277502,
+          "G": 0.027060775086283684,
+          "H": 0.45060235261917114,
+          "I": 0.27330413460731506,
+          "J": 0.014484589919447899
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9874267578125,
+        "min_fill_confidence": 0.81640625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "H"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.3633012771606445,
+      "forward_calls": 33,
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-professional_medicine"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "1021",
+      "gold": "E",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I"
+        ],
+        "n_labels": 9,
+        "prompt_tokens": 401
+      },
+      "probe": {
+        "available": true,
+        "top_label": "H",
+        "top_prob": 0.5080713033676147,
+        "margin": 0.1999104619026184,
+        "probs": {
+          "A": 0.00250458181835711,
+          "B": 0.0010440649930387735,
+          "C": 0.004980956204235554,
+          "D": 0.0016170797171071172,
+          "E": 0.13674554228782654,
+          "F": 0.004395678173750639,
+          "G": 0.0324799120426178,
+          "H": 0.5080713033676147,
+          "I": 0.30816084146499634
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.987060546875,
+        "min_fill_confidence": 0.68359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "H"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.60378360748291,
+      "forward_calls": 33,
+      "meta": {
+        "category": "law",
+        "src": "ori_mmlu-professional_law"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "3489",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 140
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.8288030028343201,
+        "margin": 0.764892578125,
+        "probs": {
+          "A": 0.00492824288085103,
+          "B": 0.0023279371671378613,
+          "C": 0.004349159076809883,
+          "D": 0.05640075355768204,
+          "E": 0.009800980798900127,
+          "F": 0.005584430880844593,
+          "G": 0.01831064373254776,
+          "H": 0.06391042470932007,
+          "I": 0.8288030028343201,
+          "J": 0.005584430880844593
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "I",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.995361328125,
+        "min_fill_confidence": 0.90625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "I"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.872094392776489,
+      "forward_calls": 33,
+      "meta": {
+        "category": "biology",
+        "src": "ori_mmlu-high_school_biology"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "654",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 175
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.2575330138206482,
+        "margin": 0.030260920524597168,
+        "probs": {
+          "A": 0.17699968814849854,
+          "B": 0.06511454284191132,
+          "C": 0.027143780142068863,
+          "D": 0.030757933855056763,
+          "E": 0.030757933855056763,
+          "F": 0.04763881862163544,
+          "G": 0.09474111348390579,
+          "H": 0.22727209329605103,
+          "I": 0.2575330138206482,
+          "J": 0.0420411080121994
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.976318359375,
+        "min_fill_confidence": 0.29296875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.948618412017822,
+      "forward_calls": 33,
+      "meta": {
+        "category": "business",
+        "src": "stemez-Business"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "9843",
+      "gold": "A",
+      "pred": "I",
+      "correct": false,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 258
+      },
+      "probe": {
+        "available": true,
+        "top_label": "J",
+        "top_prob": 0.1933172643184662,
+        "margin": 0.022715389728546143,
+        "probs": {
+          "A": 0.07570412009954453,
+          "B": 0.0488782562315464,
+          "C": 0.06276092678308487,
+          "D": 0.1101488471031189,
+          "E": 0.09131661057472229,
+          "F": 0.07570412009954453,
+          "G": 0.08578401058912277,
+          "H": 0.08578401058912277,
+          "I": 0.17060187458992004,
+          "J": 0.1933172643184662
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "I",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.970733642578125,
+        "min_fill_confidence": 0.1767578125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "I"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.3576133251190186,
+      "forward_calls": 33,
+      "meta": {
+        "category": "physics",
+        "src": "theoremQA-Physics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6209",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 198
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.9989520311355591,
+        "margin": 0.9983259612345137,
+        "probs": {
+          "A": 3.53204486600589e-05,
+          "B": 7.403568361041835e-06,
+          "C": 6.198931077960879e-05,
+          "D": 1.8324006305192597e-05,
+          "E": 3.117018786724657e-05,
+          "F": 2.427536492177751e-05,
+          "G": 0.0001685044408077374,
+          "H": 0.0006260699010454118,
+          "I": 0.9989520311355591,
+          "J": 7.47733938624151e-05
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "I",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9986572265625,
+        "min_fill_confidence": 0.98046875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "I"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.921711683273315,
+      "forward_calls": 33,
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-clinical_knowledge"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "10994",
+      "gold": "E",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 210
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.46529462933540344,
+        "margin": 0.16487783193588257,
+        "probs": {
+          "A": 0.007520787417888641,
+          "B": 0.46529462933540344,
+          "C": 0.0808560773730278,
+          "D": 0.004855785518884659,
+          "E": 0.05557151883840561,
+          "F": 0.3004167973995209,
+          "G": 0.0808560773730278,
+          "H": 0.0008438089280389249,
+          "I": 0.001017827889882028,
+          "J": 0.0027667428366839886
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98028564453125,
+        "min_fill_confidence": 0.466796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.684651613235474,
+      "forward_calls": 33,
+      "meta": {
+        "category": "philosophy",
+        "src": "ori_mmlu-moral_disputes"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "2934",
+      "gold": "F",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 424
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.1874604970216751,
+        "margin": 0.03205028176307678,
+        "probs": {
+          "A": 0.12103359401226044,
+          "B": 0.1874604970216751,
+          "C": 0.12103359401226044,
+          "D": 0.04452577233314514,
+          "E": 0.06478461623191833,
+          "F": 0.13714902102947235,
+          "G": 0.12883958220481873,
+          "H": 0.027006246149539948,
+          "I": 0.012756846845149994,
+          "J": 0.15541021525859833
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97344970703125,
+        "min_fill_confidence": 0.353515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.713836669921875,
+      "forward_calls": 33,
+      "meta": {
+        "category": "biology",
+        "src": "ori_mmlu-college_biology"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "10376",
+      "gold": "A",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I"
+        ],
+        "n_labels": 9,
+        "prompt_tokens": 660
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.2832939922809601,
+        "margin": 0.07603169977664948,
+        "probs": {
+          "A": 0.2832939922809601,
+          "B": 0.012064113281667233,
+          "C": 0.16141603887081146,
+          "D": 0.2072622925043106,
+          "E": 0.010318983346223831,
+          "F": 0.046246472746133804,
+          "G": 0.055783890187740326,
+          "H": 0.14244915544986725,
+          "I": 0.08116509020328522
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9837646484375,
+        "min_fill_confidence": 0.55078125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "H"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 9.456741571426392,
+      "forward_calls": 33,
+      "meta": {
+        "category": "computer science",
+        "src": "stemez-ComputerScience"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "3660",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I"
+        ],
+        "n_labels": 9,
+        "prompt_tokens": 251
+      },
+      "probe": {
+        "available": true,
+        "top_label": "F",
+        "top_prob": 0.26105839014053345,
+        "margin": 0.030675172805786133,
+        "probs": {
+          "A": 0.0660059005022049,
+          "B": 0.23038321733474731,
+          "C": 0.03318984806537628,
+          "D": 0.058250002562999725,
+          "E": 0.08475325256586075,
+          "F": 0.26105839014053345,
+          "G": 0.19099439680576324,
+          "H": 0.03533041104674339,
+          "I": 0.04003460332751274
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9788818359375,
+        "min_fill_confidence": 0.50390625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.132150888442993,
+      "forward_calls": 33,
+      "meta": {
+        "category": "chemistry",
+        "src": "stemez-OrganicChemistry"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6104",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 450
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.40504834055900574,
+        "margin": 0.22530922293663025,
+        "probs": {
+          "A": 0.09620741754770279,
+          "B": 0.1797391176223755,
+          "C": 0.06612232327461243,
+          "D": 0.035392727702856064,
+          "E": 0.1090172827243805,
+          "F": 0.03324839472770691,
+          "G": 0.024325042963027954,
+          "H": 0.010794172994792461,
+          "I": 0.40504834055900574,
+          "J": 0.040105219930410385
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "I",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9794921875,
+        "min_fill_confidence": 0.45703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "I"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.856886386871338,
+      "forward_calls": 33,
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-professional_medicine"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "9454",
+      "gold": "I",
+      "pred": "J",
+      "correct": false,
+      "output": "Final answer: J",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 283
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.27607715129852295,
+        "margin": 0.061068058013916016,
+        "probs": {
+          "A": 0.04506835713982582,
+          "B": 0.06160113960504532,
+          "C": 0.27607715129852295,
+          "D": 0.21500909328460693,
+          "E": 0.12250848859548569,
+          "F": 0.05786891281604767,
+          "G": 0.022661792114377022,
+          "H": 0.03977268561720848,
+          "I": 0.06980323791503906,
+          "J": 0.08962912857532501
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "J",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.970367431640625,
+        "min_fill_confidence": 0.2197265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "J"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.2263007164001465,
+      "forward_calls": 33,
+      "meta": {
+        "category": "physics",
+        "src": "scibench-fund"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6202",
+      "gold": "F",
+      "pred": "G",
+      "correct": false,
+      "output": "Final answer: G",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 162
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.5805055499076843,
+        "margin": 0.2697833180427551,
+        "probs": {
+          "A": 0.0016305206809192896,
+          "B": 0.00029233621899038553,
+          "C": 0.004718068055808544,
+          "D": 0.0015317323850467801,
+          "E": 0.0018476219847798347,
+          "F": 0.037110477685928345,
+          "G": 0.3107222318649292,
+          "H": 0.004163679666817188,
+          "I": 0.5805055499076843,
+          "J": 0.05747783184051514
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "G",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9786376953125,
+        "min_fill_confidence": 0.55859375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "G"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.82467246055603,
+      "forward_calls": 33,
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-nutrition"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "9561",
+      "gold": "F",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 234
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.1512427181005478,
+        "margin": 0.009163334965705872,
+        "probs": {
+          "A": 0.08095439523458481,
+          "B": 0.10394749790430069,
+          "C": 0.08095439523458481,
+          "D": 0.1512427181005478,
+          "E": 0.11065153032541275,
+          "F": 0.07144200056791306,
+          "G": 0.10394749790430069,
+          "H": 0.06304734200239182,
+          "I": 0.09173334389925003,
+          "J": 0.14207938313484192
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.971710205078125,
+        "min_fill_confidence": 0.1416015625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.196066617965698,
+      "forward_calls": 33,
+      "meta": {
+        "category": "physics",
+        "src": "scibench-fund"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "4740",
+      "gold": "C",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 446
+      },
+      "probe": {
+        "available": true,
+        "top_label": "H",
+        "top_prob": 0.3878726661205292,
+        "margin": 0.0663149356842041,
+        "probs": {
+          "A": 0.3215577304363251,
+          "B": 0.0019120520446449518,
+          "C": 0.014128260314464569,
+          "D": 0.016009416431188583,
+          "E": 0.09806956350803375,
+          "F": 0.0013988872524350882,
+          "G": 0.003802569815889001,
+          "H": 0.3878726661205292,
+          "I": 0.0033557559363543987,
+          "J": 0.15189310908317566
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9815673828125,
+        "min_fill_confidence": 0.59375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "H"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.97705864906311,
+      "forward_calls": 33,
+      "meta": {
+        "category": "history",
+        "src": "ori_mmlu-high_school_us_history"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "11039",
+      "gold": "D",
+      "pred": "J",
+      "correct": false,
+      "output": "Final answer: J",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 181
+      },
+      "probe": {
+        "available": true,
+        "top_label": "J",
+        "top_prob": 0.22254888713359833,
+        "margin": 0.04922764003276825,
+        "probs": {
+          "A": 0.12680453062057495,
+          "B": 0.07225104421377182,
+          "C": 0.0769108384847641,
+          "D": 0.11190460622310638,
+          "E": 0.056269168853759766,
+          "F": 0.06376132369041443,
+          "G": 0.03633010759949684,
+          "H": 0.059898220002651215,
+          "I": 0.17332124710083008,
+          "J": 0.22254888713359833
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "J",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9744873046875,
+        "min_fill_confidence": 0.28515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "J"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.309035539627075,
+      "forward_calls": 33,
+      "meta": {
+        "category": "philosophy",
+        "src": "ori_mmlu-moral_disputes"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "5292",
+      "gold": "C",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 442
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.6990671753883362,
+        "margin": 0.5430842041969299,
+        "probs": {
+          "A": 0.13765446841716766,
+          "B": 0.0072954208590090275,
+          "C": 0.15598297119140625,
+          "D": 0.6990671753883362
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.982421875,
+        "min_fill_confidence": 0.57421875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.182359218597412,
+      "forward_calls": 33,
+      "meta": {
+        "category": "other",
+        "src": "ori_mmlu-security_studies"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "9576",
+      "gold": "B",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 687
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.1985645741224289,
+        "margin": 0.04392233490943909,
+        "probs": {
+          "A": 0.11313867568969727,
+          "B": 0.09379526227712631,
+          "C": 0.07775899767875671,
+          "D": 0.07775899767875671,
+          "E": 0.044305745512247086,
+          "F": 0.06446447968482971,
+          "G": 0.13647130131721497,
+          "H": 0.1546422392129898,
+          "I": 0.1985645741224289,
+          "J": 0.03909967839717865
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9913330078125,
+        "min_fill_confidence": 0.7734375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "H"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.577505111694336,
+      "forward_calls": 33,
+      "meta": {
+        "category": "physics",
+        "src": "stemez-Optics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "1495",
+      "gold": "D",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 196
+      },
+      "probe": {
+        "available": true,
+        "top_label": "H",
+        "top_prob": 0.9038199782371521,
+        "margin": 0.8559192754328251,
+        "probs": {
+          "A": 0.00018389878096058965,
+          "B": 0.00012639166379813105,
+          "C": 0.0011265166103839874,
+          "D": 0.04790070280432701,
+          "E": 0.0032596837263554335,
+          "F": 0.0006418697885237634,
+          "G": 0.00943220779299736,
+          "H": 0.9038199782371521,
+          "I": 0.02905324660241604,
+          "J": 0.004455459304153919
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "H",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9920654296875,
+        "min_fill_confidence": 0.796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "H"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 2.828582763671875,
+      "forward_calls": 33,
+      "meta": {
+        "category": "law",
+        "src": "ori_mmlu-international_law"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7950",
+      "gold": "C",
+      "pred": "I",
+      "correct": false,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 146
+      },
+      "probe": {
+        "available": true,
+        "top_label": "I",
+        "top_prob": 0.3798616826534271,
+        "margin": 0.2112990766763687,
+        "probs": {
+          "A": 0.020131932571530342,
+          "B": 0.027517089620232582,
+          "C": 0.05472426861524582,
+          "D": 0.06601005792617798,
+          "E": 0.0453680083155632,
+          "F": 0.1685626059770584,
+          "G": 0.04829398915171623,
+          "H": 0.05825367942452431,
+          "I": 0.3798616826534271,
+          "J": 0.1312766969203949
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "I",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.978271484375,
+        "min_fill_confidence": 0.38671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "I"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 2.891354560852051,
+      "forward_calls": 33,
+      "meta": {
+        "category": "math",
+        "src": "ori_mmlu-high_school_mathematics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "3028",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J"
+        ],
+        "n_labels": 10,
+        "prompt_tokens": 281
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.999187171459198,
+        "margin": 0.9988073514541611,
+        "probs": {
+          "A": 0.0003798200050368905,
+          "B": 4.0032726246863604e-05,
+          "C": 0.0002164148900192231,
+          "D": 0.999187171459198,
+          "E": 4.0032726246863604e-05,
+          "F": 4.261461799615063e-05,
+          "G": 4.0032726246863604e-05,
+          "H": 1.0774663678603247e-05,
+          "I": 2.928857247752603e-05,
+          "J": 1.3834942365065217e-05
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9986572265625,
+        "min_fill_confidence": 0.9765625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.565929412841797,
+      "forward_calls": 33,
+      "meta": {
+        "category": "biology",
+        "src": "stemez-Genetics"
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+task,task_label,n,mean_first_final_step,mean_flip_count,late_instability_rate
+commonsenseqa,CommonsenseQA,200,7.44,0.715,0.715
+winogrande,WinoGrande,200,15.89,0.345,0.325

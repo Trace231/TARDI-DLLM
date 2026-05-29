@@ -1,0 +1,8 @@
+[control_v2] qwen base eval
+[control_v2] qwen lora train
+[control_v2] qwen lora eval
+[control_v2] llada base eval
+[control_v2] llada lora train
+[control_v2] llada lora eval
+[control_v2] analyze
+[control_v2] completed

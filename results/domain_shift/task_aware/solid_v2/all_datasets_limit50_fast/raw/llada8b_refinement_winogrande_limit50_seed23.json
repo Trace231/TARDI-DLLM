@@ -1,0 +1,4600 @@
+{
+  "method": "selective_remask_refinement_controller",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "winogrande,commonsenseqa,arc_challenge,hellaswag,boolq",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/a100_clean_priority/raw/llada8b_refinement_controller_limit50_seed23.json",
+    "budgets": "8,16,24,32",
+    "scout_steps": 8,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "risk_t16": 0.24,
+    "risk_t24": 0.38,
+    "risk_t32": 0.56,
+    "margin_target": 0.18,
+    "fill_confidence_target": 0.7,
+    "binary_direct_full_threshold": 0.52,
+    "multi_direct_full_threshold": 0.36,
+    "multi_direct_full_entropy": 0.98,
+    "binary_post_disagree_confidence": 0.72,
+    "multi_post_disagree_confidence": 0.7,
+    "multi_disagreement_policy": "ignore",
+    "remask_min_fraction": 0.2,
+    "remask_max_fraction": 0.55,
+    "remask_min_tokens": 4,
+    "max_refinements": 3
+  },
+  "summary": {
+    "winogrande": {
+      "accuracy": 0.76,
+      "n": 50,
+      "seconds": 23.96767807006836,
+      "avg_forward_calls": 13.32,
+      "route_rates": {
+        "32": 0.04,
+        "8": 0.62,
+        "8->16": 0.26,
+        "8->24": 0.08
+      },
+      "final_budget_rates": {
+        "16": 0.26,
+        "24": 0.08,
+        "32": 0.04,
+        "8": 0.62
+      },
+      "peak_mem_gb": 15.061839580535889
+    }
+  },
+  "rows": [
+    {
+      "task": "winogrande",
+      "id": "593",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 70
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7310585379600525,
+        "margin": 0.46211710572242737,
+        "probs": {
+          "A": 0.2689414322376251,
+          "B": 0.7310585379600525
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.2689414620399475,
+        "probe_entropy": 0.839941583188612,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.22316127996764967,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9593505859375,
+        "min_fill_confidence": 0.52734375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.22316127996764967,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 1.3550174236297607,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "171",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 74
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.622459352016449,
+        "margin": 0.24491867423057556,
+        "probs": {
+          "A": 0.622459352016449,
+          "B": 0.3775406777858734
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.377540647983551,
+        "probe_entropy": 0.9562865232515951,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.25868759488154075,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9486083984375,
+        "min_fill_confidence": 0.5390625
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.25868759488154075,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "A",
+          "remasked_tokens": 9
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.7264633178710938,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "34",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 65
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.665410578250885,
+        "margin": 0.33082112669944763,
+        "probs": {
+          "A": 0.3345894515514374,
+          "B": 0.665410578250885
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.334589421749115,
+        "probe_entropy": 0.919546808252366,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.24556435361004192,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.94647216796875,
+        "min_fill_confidence": 0.396484375
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.24556435361004192,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "B",
+          "remasked_tokens": 9
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.5815739631652832,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1212",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 70
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.665410578250885,
+        "margin": 0.33082112669944763,
+        "probs": {
+          "A": 0.3345894515514374,
+          "B": 0.665410578250885
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.334589421749115,
+        "probe_entropy": 0.919546808252366,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.24556435361004192,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.94268798828125,
+        "min_fill_confidence": 0.490234375
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.24556435361004192,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "B",
+          "remasked_tokens": 9
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.58022141456604,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "628",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 66
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7981867790222168,
+        "margin": 0.5963735580444336,
+        "probs": {
+          "A": 0.2018132209777832,
+          "B": 0.7981867790222168
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.2018132209777832,
+        "probe_entropy": 0.7255397476187341,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.1969528833769857,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9454345703125,
+        "min_fill_confidence": 0.5390625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.1969528833769857,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3087940216064453,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "867",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.6076632142066956,
+        "margin": 0.21532636880874634,
+        "probs": {
+          "A": 0.3923368453979492,
+          "B": 0.6076632142066956
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.39233678579330444,
+        "probe_entropy": 0.9662910075193468,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 1.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.4629431936264617,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.95257568359375,
+        "min_fill_confidence": 0.365234375
+      },
+      "route": "8->24",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.4629431936264617,
+          "target_budget": 24
+        },
+        {
+          "budget": 24,
+          "mode": "refine",
+          "reason": "risk_high_24",
+          "pred": "A",
+          "remasked_tokens": 13
+        }
+      ],
+      "final_budget": 24,
+      "seconds": 0.850078821182251,
+      "forward_calls": 25,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "776",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 73
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.7662936449050903,
+        "margin": 0.5325873047113419,
+        "probs": {
+          "A": 0.7662936449050903,
+          "B": 0.23370634019374847
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.23370635509490967,
+        "probe_entropy": 0.7844165594241084,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.20985705406329097,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9583740234375,
+        "min_fill_confidence": 0.57421875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.20985705406329097,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30895018577575684,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1085",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 63
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.531209409236908,
+        "margin": 0.06241875886917114,
+        "probs": {
+          "A": 0.4687906503677368,
+          "B": 0.531209409236908
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.46879059076309204,
+        "probe_entropy": 0.9971877028425042,
+        "margin_deficit": 0.6532291173934937,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.3743047766872198,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.92645263671875,
+        "min_fill_confidence": 0.275390625
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.3743047766872198,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "B",
+          "remasked_tokens": 11
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.5948169231414795,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "733",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 63
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9859364032745361,
+        "margin": 0.9718727767467499,
+        "probs": {
+          "A": 0.9859364032745361,
+          "B": 0.014063626527786255
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.014063596725463867,
+        "probe_entropy": 0.1066639847465752,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.09376038975425957,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.939208984375,
+        "min_fill_confidence": 0.4609375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.09376038975425957,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3084452152252197,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "266",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7057850360870361,
+        "margin": 0.41157007217407227,
+        "probs": {
+          "A": 0.29421496391296387,
+          "B": 0.7057850360870361
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.29421496391296387,
+        "probe_entropy": 0.874103929759115,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.23213768503676357,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.951171875,
+        "min_fill_confidence": 0.421875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.23213768503676357,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3084592819213867,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "393",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 66
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.622459352016449,
+        "margin": 0.24491867423057556,
+        "probs": {
+          "A": 0.3775406777858734,
+          "B": 0.622459352016449
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.377540647983551,
+        "probe_entropy": 0.9562865232515951,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.25868759488154075,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.94403076171875,
+        "min_fill_confidence": 0.412109375
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.25868759488154075,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "B",
+          "remasked_tokens": 9
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.5794956684112549,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "547",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 66
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.5467381477355957,
+        "margin": 0.09347626566886902,
+        "probs": {
+          "A": 0.4532618820667267,
+          "B": 0.5467381477355957
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.4532618522644043,
+        "probe_entropy": 0.9936877764958595,
+        "margin_deficit": 0.48068741295072764,
+        "probe_scout_disagree": 1.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.5463826229608568,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.944091796875,
+        "min_fill_confidence": 0.34375
+      },
+      "route": "8->24",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.5463826229608568,
+          "target_budget": 24
+        },
+        {
+          "budget": 24,
+          "mode": "refine",
+          "reason": "risk_high_24",
+          "pred": "A",
+          "remasked_tokens": 14
+        }
+      ],
+      "final_budget": 24,
+      "seconds": 0.8488988876342773,
+      "forward_calls": 25,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "910",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 64
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9196425676345825,
+        "margin": 0.839285098016262,
+        "probs": {
+          "A": 0.08035746961832047,
+          "B": 0.9196425676345825
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.08035743236541748,
+        "probe_entropy": 0.4034374566012144,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.1380223807805133,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.935546875,
+        "min_fill_confidence": 0.51171875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.1380223807805133,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30805540084838867,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "28",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 63
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.851952850818634,
+        "margin": 0.7039056569337845,
+        "probs": {
+          "A": 0.851952850818634,
+          "B": 0.14804719388484955
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.14804714918136597,
+        "probe_entropy": 0.6049316998691936,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.1730635428068199,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9384765625,
+        "min_fill_confidence": 0.546875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.1730635428068199,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30797672271728516,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "452",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 77
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.8267117738723755,
+        "margin": 0.6534235775470734,
+        "probs": {
+          "A": 0.8267117738723755,
+          "B": 0.17328819632530212
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.1732882261276245,
+        "probe_entropy": 0.6651718194919962,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.18464059169727703,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.942626953125,
+        "min_fill_confidence": 0.5859375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.18464059169727703,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3080713748931885,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "931",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 67
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7185943722724915,
+        "margin": 0.4371887743473053,
+        "probs": {
+          "A": 0.28140559792518616,
+          "B": 0.7185943722724915
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.28140562772750854,
+        "probe_entropy": 0.8573590029334152,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.2276451383933934,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.93988037109375,
+        "min_fill_confidence": 0.341796875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.2276451383933934,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3084900379180908,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "50",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.5156199336051941,
+        "margin": 0.031239837408065796,
+        "probs": {
+          "A": 0.4843800961971283,
+          "B": 0.5156199336051941
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.973388671875,
+        "min_fill_confidence": 0.54296875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "binary_direct_full",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1668636798858643,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "216",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 69
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.637030839920044,
+        "margin": 0.2740616202354431,
+        "probs": {
+          "A": 0.36296921968460083,
+          "B": 0.637030839920044
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.36296916007995605,
+        "probe_entropy": 0.9451202476389028,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 1.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.45436523998148065,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.94769287109375,
+        "min_fill_confidence": 0.369140625
+      },
+      "route": "8->24",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.45436523998148065,
+          "target_budget": 24
+        },
+        {
+          "budget": 24,
+          "mode": "refine",
+          "reason": "risk_high_24",
+          "pred": "A",
+          "remasked_tokens": 13
+        }
+      ],
+      "final_budget": 24,
+      "seconds": 0.8485338687896729,
+      "forward_calls": 25,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "175",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 67
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9241418242454529,
+        "margin": 0.8482836484909058,
+        "probs": {
+          "A": 0.07585817575454712,
+          "B": 0.9241418242454529
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.07585817575454712,
+        "probe_entropy": 0.38741436337083046,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.13543023500308343,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.961669921875,
+        "min_fill_confidence": 0.66796875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.13543023500308343,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3088254928588867,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1020",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 75
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7057850360870361,
+        "margin": 0.41157007217407227,
+        "probs": {
+          "A": 0.29421496391296387,
+          "B": 0.7057850360870361
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.29421496391296387,
+        "probe_entropy": 0.874103929759115,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.23213768503676357,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9434814453125,
+        "min_fill_confidence": 0.37890625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.23213768503676357,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3076479434967041,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "862",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 72
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.6076632142066956,
+        "margin": 0.21532636880874634,
+        "probs": {
+          "A": 0.3923368453979492,
+          "B": 0.6076632142066956
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.39233678579330444,
+        "probe_entropy": 0.9662910075193468,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 1.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.4629431936264617,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.94927978515625,
+        "min_fill_confidence": 0.435546875
+      },
+      "route": "8->24",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.4629431936264617,
+          "target_budget": 24
+        },
+        {
+          "budget": 24,
+          "mode": "refine",
+          "reason": "risk_high_24",
+          "pred": "A",
+          "remasked_tokens": 13
+        }
+      ],
+      "final_budget": 24,
+      "seconds": 0.8482859134674072,
+      "forward_calls": 25,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "40",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 65
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.7772998809814453,
+        "margin": 0.5545997321605682,
+        "probs": {
+          "A": 0.7772998809814453,
+          "B": 0.22270014882087708
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.2227001190185547,
+        "probe_entropy": 0.7650673045352681,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.20550075663760886,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.948486328125,
+        "min_fill_confidence": 0.57421875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.20550075663760886,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30800962448120117,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1049",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 72
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7772998809814453,
+        "margin": 0.5545997321605682,
+        "probs": {
+          "A": 0.22270014882087708,
+          "B": 0.7772998809814453
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.2227001190185547,
+        "probe_entropy": 0.7650673045352681,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.20550075663760886,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9512939453125,
+        "min_fill_confidence": 0.44921875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.20550075663760886,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30727243423461914,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "883",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 70
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.6076632142066956,
+        "margin": 0.21532636880874634,
+        "probs": {
+          "A": 0.3923368453979492,
+          "B": 0.6076632142066956
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.39233678579330444,
+        "probe_entropy": 0.9662910075193468,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.2629431936264617,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.94732666015625,
+        "min_fill_confidence": 0.443359375
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.2629431936264617,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "B",
+          "remasked_tokens": 9
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.5778653621673584,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "735",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 66
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.6926419734954834,
+        "margin": 0.3852839469909668,
+        "probs": {
+          "A": 0.6926419734954834,
+          "B": 0.3073580265045166
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.3073580265045166,
+        "probe_entropy": 0.8901001778228964,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.23662878361328332,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.94775390625,
+        "min_fill_confidence": 0.44921875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.23662878361328332,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3075714111328125,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "117",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 71
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7879312038421631,
+        "margin": 0.575862392783165,
+        "probs": {
+          "A": 0.2120688110589981,
+          "B": 0.7879312038421631
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.21206879615783691,
+        "probe_entropy": 0.7454186149302824,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.20119699664775237,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9541015625,
+        "min_fill_confidence": 0.58984375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.20119699664775237,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3078601360321045,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "421",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 65
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.7549149990081787,
+        "margin": 0.5098299831151962,
+        "probs": {
+          "A": 0.7549149990081787,
+          "B": 0.24508501589298248
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.2450850009918213,
+        "probe_entropy": 0.8033946960101104,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.21425816981921175,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9578857421875,
+        "min_fill_confidence": 0.5234375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.21425816981921175,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3076202869415283,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "72",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 74
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.5774953961372375,
+        "margin": 0.1549907624721527,
+        "probs": {
+          "A": 0.5774953961372375,
+          "B": 0.42250463366508484
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.42250460386276245,
+        "probe_entropy": 0.9826016262543129,
+        "margin_deficit": 0.13894020848804048,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.2906628046635647,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9344482421875,
+        "min_fill_confidence": 0.44921875
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.2906628046635647,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "A",
+          "remasked_tokens": 10
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.5801630020141602,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1206",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 66
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9525741338729858,
+        "margin": 0.9051482602953911,
+        "probs": {
+          "A": 0.9525741338729858,
+          "B": 0.04742587357759476
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.04742586612701416,
+        "probe_entropy": 0.27535993879938053,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.11796968442788117,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9501953125,
+        "min_fill_confidence": 0.6171875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.11796968442788117,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3083798885345459,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "755",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 66
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9944451451301575,
+        "margin": 0.9888902199454606,
+        "probs": {
+          "A": 0.9944451451301575,
+          "B": 0.005554925184696913
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.005554854869842529,
+        "probe_entropy": 0.04960925487447353,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.0861829935588127,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.964599609375,
+        "min_fill_confidence": 0.76171875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.0861829935588127,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30820369720458984,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "352",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 65
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.5926666259765625,
+        "margin": 0.18533319234848022,
+        "probs": {
+          "A": 0.4073334336280823,
+          "B": 0.5926666259765625
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.4073333740234375,
+        "probe_entropy": 0.9750790196972445,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.2671212442548807,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.93597412109375,
+        "min_fill_confidence": 0.380859375
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.2671212442548807,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "B",
+          "remasked_tokens": 9
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.5796146392822266,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "442",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 66
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.562176525592804,
+        "margin": 0.12435302138328552,
+        "probs": {
+          "A": 0.562176525592804,
+          "B": 0.43782350420951843
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.43782347440719604,
+        "probe_entropy": 0.9888163762558327,
+        "margin_deficit": 0.3091498812039693,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.3184837853637221,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9542236328125,
+        "min_fill_confidence": 0.4921875
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.3184837853637221,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "A",
+          "remasked_tokens": 10
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.5792241096496582,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "742",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 64
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7431679368019104,
+        "margin": 0.4863359332084656,
+        "probs": {
+          "A": 0.2568320035934448,
+          "B": 0.7431679368019104
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.2568320631980896,
+        "probe_entropy": 0.8219281554907492,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.21869586945265462,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9423828125,
+        "min_fill_confidence": 0.5
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.21869586945265462,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30730128288269043,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1158",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 69
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7185943722724915,
+        "margin": 0.4371887743473053,
+        "probs": {
+          "A": 0.28140559792518616,
+          "B": 0.7185943722724915
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.28140562772750854,
+        "probe_entropy": 0.8573590029334152,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.2276451383933934,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9439697265625,
+        "min_fill_confidence": 0.34375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.2276451383933934,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3069117069244385,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1171",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 66
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.8438951373100281,
+        "margin": 0.6877902299165726,
+        "probs": {
+          "A": 0.1561049073934555,
+          "B": 0.8438951373100281
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.15610486268997192,
+        "probe_entropy": 0.6249092320387121,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.17683399299566505,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.938232421875,
+        "min_fill_confidence": 0.51953125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.17683399299566505,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3078930377960205,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "576",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 62
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.8740772008895874,
+        "margin": 0.7481544315814972,
+        "probs": {
+          "A": 0.8740772008895874,
+          "B": 0.1259227693080902
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.1259227991104126,
+        "probe_entropy": 0.5461494173532759,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.16231795753961836,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.96435546875,
+        "min_fill_confidence": 0.6953125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.16231795753961836,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3080112934112549,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "643",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 69
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9724147915840149,
+        "margin": 0.9448295067995787,
+        "probs": {
+          "A": 0.027585284784436226,
+          "B": 0.9724147915840149
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.027585208415985107,
+        "probe_entropy": 0.18213361821899424,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.10428210767341614,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9339599609375,
+        "min_fill_confidence": 0.63671875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.10428210767341614,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30674266815185547,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1173",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 70
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7879312038421631,
+        "margin": 0.575862392783165,
+        "probs": {
+          "A": 0.2120688110589981,
+          "B": 0.7879312038421631
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.21206879615783691,
+        "probe_entropy": 0.7454186149302824,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.20119699664775237,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.93817138671875,
+        "min_fill_confidence": 0.423828125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.20119699664775237,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30642199516296387,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "970",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 63
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.7310585379600525,
+        "margin": 0.46211710572242737,
+        "probs": {
+          "A": 0.7310585379600525,
+          "B": 0.2689414322376251
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.2689414620399475,
+        "probe_entropy": 0.839941583188612,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.22316127996764967,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9334716796875,
+        "min_fill_confidence": 0.50390625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.22316127996764967,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3075437545776367,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "363",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 70
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.5156199336051941,
+        "margin": 0.031239837408065796,
+        "probs": {
+          "A": 0.4843800961971283,
+          "B": 0.5156199336051941
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9771728515625,
+        "min_fill_confidence": 0.55859375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "binary_direct_full",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1160104274749756,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "989",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.622459352016449,
+        "margin": 0.24491867423057556,
+        "probs": {
+          "A": 0.622459352016449,
+          "B": 0.3775406777858734
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.377540647983551,
+        "probe_entropy": 0.9562865232515951,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.25868759488154075,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.952880859375,
+        "min_fill_confidence": 0.6015625
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.25868759488154075,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "A",
+          "remasked_tokens": 9
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.5797243118286133,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1209",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 67
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.8991213440895081,
+        "margin": 0.7982427328824997,
+        "probs": {
+          "A": 0.10087861120700836,
+          "B": 0.8991213440895081
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.10087865591049194,
+        "probe_entropy": 0.47177461167281054,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.14937076546758926,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9560546875,
+        "min_fill_confidence": 0.6484375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.14937076546758926,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3079402446746826,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "916",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 64
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9196425676345825,
+        "margin": 0.839285098016262,
+        "probs": {
+          "A": 0.9196425676345825,
+          "B": 0.08035746961832047
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.08035743236541748,
+        "probe_entropy": 0.4034374566012144,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.1380223807805133,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.939697265625,
+        "min_fill_confidence": 0.45703125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.1380223807805133,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3073136806488037,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "335",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 66
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9241418242454529,
+        "margin": 0.8482836484909058,
+        "probs": {
+          "A": 0.9241418242454529,
+          "B": 0.07585817575454712
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.07585817575454712,
+        "probe_entropy": 0.38741436337083046,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.13543023500308343,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9644775390625,
+        "min_fill_confidence": 0.74609375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "A",
+          "risk_score": 0.13543023500308343,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30741333961486816,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "372",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 63
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7772998809814453,
+        "margin": 0.5545997321605682,
+        "probs": {
+          "A": 0.22270014882087708,
+          "B": 0.7772998809814453
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.2227001190185547,
+        "probe_entropy": 0.7650673045352681,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.20550075663760886,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.92962646484375,
+        "min_fill_confidence": 0.4375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.20550075663760886,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30854153633117676,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "365",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9553191661834717,
+        "margin": 0.9106382913887501,
+        "probs": {
+          "A": 0.0446808747947216,
+          "B": 0.9553191661834717
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.04468083381652832,
+        "probe_entropy": 0.2633567186630697,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.1161654553059432,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9752197265625,
+        "min_fill_confidence": 0.8046875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.1161654553059432,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3084104061126709,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1092",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 76
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.531209409236908,
+        "margin": 0.06241875886917114,
+        "probs": {
+          "A": 0.4687906503677368,
+          "B": 0.531209409236908
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.46879059076309204,
+        "probe_entropy": 0.9971877028425042,
+        "margin_deficit": 0.6532291173934937,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.3743047766872198,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.919189453125,
+        "min_fill_confidence": 0.3046875
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.3743047766872198,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "A",
+          "remasked_tokens": 11
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.5789716243743896,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "662",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 63
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.622459352016449,
+        "margin": 0.24491867423057556,
+        "probs": {
+          "A": 0.3775406777858734,
+          "B": 0.622459352016449
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.377540647983551,
+        "probe_entropy": 0.9562865232515951,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.25868759488154075,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.95355224609375,
+        "min_fill_confidence": 0.486328125
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.25868759488154075,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "B",
+          "remasked_tokens": 9
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.5792875289916992,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1065",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 70
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.8807970285415649,
+        "margin": 0.7615941092371941,
+        "probs": {
+          "A": 0.11920291930437088,
+          "B": 0.8807970285415649
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.11920297145843506,
+        "probe_entropy": 0.5270653988534406,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.15893119360619978,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.94342041015625,
+        "min_fill_confidence": 0.486328125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.15893119360619978,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30733227729797363,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "400",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 65
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.5926666259765625,
+        "margin": 0.18533319234848022,
+        "probs": {
+          "A": 0.4073334336280823,
+          "B": 0.5926666259765625
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.4073333740234375,
+        "probe_entropy": 0.9750790196972445,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.2671212442548807,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9488525390625,
+        "min_fill_confidence": 0.53125
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "B",
+          "risk_score": 0.2671212442548807,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "B",
+          "remasked_tokens": 9
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 0.5801568031311035,
+      "forward_calls": 17,
+      "meta": {}
+    }
+  ],
+  "source_file": "results/domain_shift/task_aware/solid_v2/a100_final/raw/llada8b_refinement_controller_limit50_seed23.json"
+}

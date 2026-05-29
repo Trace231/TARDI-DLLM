@@ -1,0 +1,3057 @@
+{
+  "method": "prophet_style_early_commit",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "mmlu_pro",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/all_datasets_limit50_fast/raw/llada8b_prophet_mmlu_pro_limit50_seed23.json",
+    "max_steps": 32,
+    "min_steps": 8,
+    "check_interval": 4,
+    "patience": 2,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "schedule": "uniform",
+    "stop_on_invalid": false
+  },
+  "summary": {
+    "mmlu_pro": {
+      "accuracy": 0.4,
+      "n": 50,
+      "seconds": 265.32665514945984,
+      "avg_forward_calls": 31.6,
+      "stop_rates": {
+        "max_steps": 0.98,
+        "stable_label": 0.02
+      },
+      "peak_mem_gb": 15.315186023712158
+    }
+  },
+  "rows": [
+    {
+      "task": "mmlu_pro",
+      "id": "4888",
+      "gold": "H",
+      "pred": "H",
+      "correct": true,
+      "output": "H",
+      "metric": "letter",
+      "seconds": 0.954026460647583,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "H",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "H",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {
+        "category": "history",
+        "src": "ori_mmlu-high_school_european_history"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "1458",
+      "gold": "C",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.0711405277252197,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "law",
+        "src": "ori_mmlu-professional_law"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "351",
+      "gold": "H",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 1.2564647197723389,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "business",
+        "src": "stemez-Business"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "9891",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "seconds": 3.933579206466675,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "I",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "physics",
+        "src": "stemez-Physics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "5167",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 4.226751327514648,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "other",
+        "src": "ori_mmlu-miscellaneous"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7112",
+      "gold": "G",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "seconds": 4.511749267578125,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "H",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "economics",
+        "src": "ori_mmlu-high_school_microeconomics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6376",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 5.5555195808410645,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-professional_medicine"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "8872",
+      "gold": "A",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 4.168567657470703,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "math",
+        "src": "ori_mmlu-abstract_algebra"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6026",
+      "gold": "A",
+      "pred": "F",
+      "correct": false,
+      "output": "Final answer: F",
+      "metric": "letter",
+      "seconds": 3.930063247680664,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "F",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-anatomy"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "2234",
+      "gold": "C",
+      "pred": "I",
+      "correct": false,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "seconds": 5.342799186706543,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "I",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "psychology",
+        "src": "stemez-Psychology"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "12119",
+      "gold": "F",
+      "pred": "I",
+      "correct": false,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "seconds": 8.469177007675171,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "I",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "engineering",
+        "src": "stemez-ElectronicCommunications"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "3266",
+      "gold": "J",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 4.092318534851074,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "biology",
+        "src": "ori_mmlu-high_school_biology"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "4512",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 3.9561686515808105,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "chemistry",
+        "src": "ori_mmlu-college_chemistry"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7463",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 6.517437696456909,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "economics",
+        "src": "stemez-Economics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "302",
+      "gold": "H",
+      "pred": "H",
+      "correct": true,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "seconds": 4.449662446975708,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "H",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "business",
+        "src": "stemez-Business"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "3744",
+      "gold": "A",
+      "pred": "I",
+      "correct": false,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "seconds": 5.330698728561401,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "I",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "chemistry",
+        "src": "stemez-Chemistry"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "10362",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 5.404253721237183,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "computer science",
+        "src": "ori_mmlu-college_computer_science"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7638",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 5.096999645233154,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "economics",
+        "src": "ori_mmlu-high_school_macroeconomics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "479",
+      "gold": "B",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 5.226003408432007,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "business",
+        "src": "stemez-Business"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "1830",
+      "gold": "I",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 6.568788766860962,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "law",
+        "src": "ori_mmlu-professional_law"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "1496",
+      "gold": "C",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 7.886007308959961,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "law",
+        "src": "ori_mmlu-professional_law"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "11856",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "seconds": 6.745805263519287,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "I",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "engineering",
+        "src": "stemez-MachineDesign"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "8350",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "seconds": 5.424257516860962,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "I",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "math",
+        "src": "ori_mmlu-elementary_mathematics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7071",
+      "gold": "F",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "metric": "letter",
+      "seconds": 5.383795499801636,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "E",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "economics",
+        "src": "stemez-Economics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "393",
+      "gold": "J",
+      "pred": "J",
+      "correct": true,
+      "output": "Final answer: J",
+      "metric": "letter",
+      "seconds": 5.41322135925293,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "J",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "business",
+        "src": "stemez-Business"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "8585",
+      "gold": "C",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 4.288459300994873,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "math",
+        "src": "ori_mmlu-high_school_mathematics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "10488",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 5.423368692398071,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "computer science",
+        "src": "ori_mmlu-machine_learning"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "12254",
+      "gold": "F",
+      "pred": "F",
+      "correct": true,
+      "output": "Final answer: F",
+      "metric": "letter",
+      "seconds": 5.577631235122681,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "F",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "engineering",
+        "src": "stemez-TransportPhenomena"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7239",
+      "gold": "F",
+      "pred": "F",
+      "correct": true,
+      "output": "Final answer: F",
+      "metric": "letter",
+      "seconds": 5.391987085342407,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "F",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "economics",
+        "src": "ori_mmlu-high_school_microeconomics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6041",
+      "gold": "B",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "seconds": 6.396676540374756,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "H",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-professional_medicine"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "1021",
+      "gold": "E",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "seconds": 5.363051891326904,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "H",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "law",
+        "src": "ori_mmlu-professional_law"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "3489",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "seconds": 3.0632102489471436,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "I",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "biology",
+        "src": "ori_mmlu-high_school_biology"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "654",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 4.070754051208496,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "business",
+        "src": "stemez-Business"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "9843",
+      "gold": "A",
+      "pred": "I",
+      "correct": false,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "seconds": 4.18234920501709,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "I",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "physics",
+        "src": "theoremQA-Physics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6209",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "seconds": 3.853222370147705,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "I",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-clinical_knowledge"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "10994",
+      "gold": "E",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.9162437915802,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "philosophy",
+        "src": "ori_mmlu-moral_disputes"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "2934",
+      "gold": "F",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 6.002593755722046,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "biology",
+        "src": "ori_mmlu-college_biology"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "10376",
+      "gold": "A",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "seconds": 8.457766056060791,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "H",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "computer science",
+        "src": "stemez-ComputerScience"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "3660",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 5.5468292236328125,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "chemistry",
+        "src": "stemez-OrganicChemistry"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6104",
+      "gold": "I",
+      "pred": "I",
+      "correct": true,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "seconds": 8.169556140899658,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "I",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-professional_medicine"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "9454",
+      "gold": "I",
+      "pred": "J",
+      "correct": false,
+      "output": "Final answer: J",
+      "metric": "letter",
+      "seconds": 5.547654628753662,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "J",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "physics",
+        "src": "scibench-fund"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "6202",
+      "gold": "F",
+      "pred": "G",
+      "correct": false,
+      "output": "Final answer: G",
+      "metric": "letter",
+      "seconds": 4.160968542098999,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "G",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "health",
+        "src": "ori_mmlu-nutrition"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "9561",
+      "gold": "F",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 5.585355758666992,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "physics",
+        "src": "scibench-fund"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "4740",
+      "gold": "C",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "seconds": 8.126981258392334,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "H",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "history",
+        "src": "ori_mmlu-high_school_us_history"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "11039",
+      "gold": "D",
+      "pred": "J",
+      "correct": false,
+      "output": "Final answer: J",
+      "metric": "letter",
+      "seconds": 5.334246873855591,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "J",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "philosophy",
+        "src": "ori_mmlu-moral_disputes"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "5292",
+      "gold": "C",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 7.926925182342529,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "other",
+        "src": "ori_mmlu-security_studies"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "9576",
+      "gold": "B",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "seconds": 11.78400444984436,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "H",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "physics",
+        "src": "stemez-Optics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "1495",
+      "gold": "D",
+      "pred": "H",
+      "correct": false,
+      "output": "Final answer: H",
+      "metric": "letter",
+      "seconds": 5.234248399734497,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "H",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "law",
+        "src": "ori_mmlu-international_law"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "7950",
+      "gold": "C",
+      "pred": "I",
+      "correct": false,
+      "output": "Final answer: I",
+      "metric": "letter",
+      "seconds": 4.319913387298584,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "I",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "math",
+        "src": "ori_mmlu-high_school_mathematics"
+      }
+    },
+    {
+      "task": "mmlu_pro",
+      "id": "3028",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 5.6874003410339355,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {
+        "category": "biology",
+        "src": "stemez-Genetics"
+      }
+    }
+  ]
+}

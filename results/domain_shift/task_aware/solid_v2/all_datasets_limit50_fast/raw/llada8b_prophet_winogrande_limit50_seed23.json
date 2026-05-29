@@ -1,0 +1,2938 @@
+{
+  "method": "prophet_style_early_commit",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "winogrande,commonsenseqa,arc_challenge,hellaswag,boolq",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/a100_related_parallel/raw/llada8b_prophet_early_commit_limit50_seed23.json",
+    "max_steps": 32,
+    "min_steps": 8,
+    "check_interval": 4,
+    "patience": 2,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "schedule": "uniform",
+    "stop_on_invalid": false
+  },
+  "summary": {
+    "winogrande": {
+      "accuracy": 0.76,
+      "n": 50,
+      "seconds": 115.86836910247803,
+      "avg_forward_calls": 32.0,
+      "stop_rates": {
+        "max_steps": 0.94,
+        "stable_label": 0.06
+      },
+      "peak_mem_gb": 15.022941589355469
+    }
+  },
+  "rows": [
+    {
+      "task": "winogrande",
+      "id": "593",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.3365421295166016,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "171",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.8348088264465332,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "34",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8252694606781006,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1212",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8121609687805176,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "628",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8496737480163574,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "867",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.8301844596862793,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "776",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.8511595726013184,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1085",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.3993308544158936,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "733",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.6790707111358643,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "266",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.674283742904663,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "393",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.674028158187866,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "547",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.3201398849487305,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "910",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.7577569484710693,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "28",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.7604756355285645,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "452",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.7814993858337402,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "931",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.7600371837615967,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "50",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.2072558403015137,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "216",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.755061149597168,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "175",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.689678907394409,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1020",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.735574245452881,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "862",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.7372541427612305,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "40",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.75026798248291,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1049",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.747319459915161,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "883",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.7836718559265137,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "735",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.7373287677764893,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "117",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.773477554321289,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "421",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.7303922176361084,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "72",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.77537202835083,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1206",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.7020039558410645,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "755",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.665688991546631,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "352",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.718466281890869,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "442",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.686262607574463,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "742",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.866290807723999,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1158",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8749001026153564,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1171",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8903682231903076,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "576",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.8806884288787842,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "643",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.891474962234497,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1173",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.9055931568145752,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "970",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.7773182392120361,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "363",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.8746755123138428,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "989",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.916067123413086,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1209",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.880697250366211,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "916",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.890136957168579,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "335",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.3091299533843994,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "372",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.7674975395202637,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "365",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.7185893058776855,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1092",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.821027994155884,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "662",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.779928684234619,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1065",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.7363877296447754,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "400",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.7460994720458984,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    }
+  ],
+  "source_file": "results/domain_shift/task_aware/solid_v2/a100_final/raw/llada8b_prophet_early_commit_limit50_seed23.json"
+}

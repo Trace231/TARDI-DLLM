@@ -1,0 +1,3950 @@
+{
+  "method": "selective_remask_refinement_controller",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "pubmedqa",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/all_datasets_limit50_fast/raw/llada8b_refinement_pubmedqa_limit50_seed23.json",
+    "budgets": "8,16,24,32",
+    "scout_steps": 8,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "risk_t16": 0.24,
+    "risk_t24": 0.38,
+    "risk_t32": 0.56,
+    "margin_target": 0.18,
+    "fill_confidence_target": 0.7,
+    "binary_direct_full_threshold": 0.52,
+    "multi_direct_full_threshold": 0.36,
+    "multi_direct_full_entropy": 0.98,
+    "binary_post_disagree_confidence": 0.72,
+    "multi_post_disagree_confidence": 0.7,
+    "multi_disagreement_policy": "ignore",
+    "remask_min_fraction": 0.2,
+    "remask_max_fraction": 0.55,
+    "remask_min_tokens": 4,
+    "max_refinements": 3
+  },
+  "summary": {
+    "pubmedqa": {
+      "accuracy": 0.64,
+      "n": 50,
+      "seconds": 368.4811851978302,
+      "avg_forward_calls": 33.0,
+      "route_rates": {
+        "32": 1.0
+      },
+      "final_budget_rates": {
+        "32": 1.0
+      },
+      "peak_mem_gb": 15.486992359161377
+    }
+  },
+  "rows": [
+    {
+      "task": "pubmedqa",
+      "id": "24098953",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 302
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9750198721885681,
+        "margin": 0.9602149771526456,
+        "probs": {
+          "yes": 0.9750198721885681,
+          "no": 0.010175245814025402,
+          "maybe": 0.014804895035922527
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9808349609375,
+        "min_fill_confidence": 0.65625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.783513307571411,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "25103647",
+      "gold": "maybe",
+      "pred": "yes",
+      "correct": false,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 445
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.43828269839286804,
+        "margin": 0.09694778919219971,
+        "probs": {
+          "yes": 0.34133490920066833,
+          "no": 0.22038237750530243,
+          "maybe": 0.43828269839286804
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9775390625,
+        "min_fill_confidence": 0.69140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.82846474647522,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "23972333",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 519
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.8023303151130676,
+        "margin": 0.6792889758944511,
+        "probs": {
+          "yes": 0.8023303151130676,
+          "no": 0.07462833821773529,
+          "maybe": 0.12304133921861649
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97900390625,
+        "min_fill_confidence": 0.671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 9.396528720855713,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "10759659",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 201
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9059933423995972,
+        "margin": 0.8361306339502335,
+        "probs": {
+          "yes": 0.9059933423995972,
+          "no": 0.024143904447555542,
+          "maybe": 0.06986270844936371
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9776611328125,
+        "min_fill_confidence": 0.6484375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.859761953353882,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "21880023",
+      "gold": "no",
+      "pred": "yes",
+      "correct": false,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 360
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.3995474874973297,
+        "margin": 0.0,
+        "probs": {
+          "yes": 0.3995474874973297,
+          "no": 0.20090508460998535,
+          "maybe": 0.3995474874973297
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.96893310546875,
+        "min_fill_confidence": 0.486328125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.452899217605591,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "14627582",
+      "gold": "no",
+      "pred": "yes",
+      "correct": false,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 481
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.5066384673118591,
+        "margin": 0.1584312617778778,
+        "probs": {
+          "yes": 0.5066384673118591,
+          "no": 0.14515435695648193,
+          "maybe": 0.3482072055339813
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9747314453125,
+        "min_fill_confidence": 0.6328125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 9.018075942993164,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "22427593",
+      "gold": "maybe",
+      "pred": "yes",
+      "correct": false,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 328
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.6990228295326233,
+        "margin": 0.49874943494796753,
+        "probs": {
+          "yes": 0.6990228295326233,
+          "no": 0.10070379078388214,
+          "maybe": 0.20027339458465576
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9713134765625,
+        "min_fill_confidence": 0.5625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.3062028884887695,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "17096624",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 200
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.889772891998291,
+        "margin": 0.8211609721183777,
+        "probs": {
+          "yes": 0.889772891998291,
+          "no": 0.041615232825279236,
+          "maybe": 0.06861191987991333
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9818115234375,
+        "min_fill_confidence": 0.7265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.282721996307373,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "20497146",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 292
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.5990613102912903,
+        "margin": 0.31608477234840393,
+        "probs": {
+          "yes": 0.5990613102912903,
+          "no": 0.11796215921640396,
+          "maybe": 0.28297653794288635
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9830322265625,
+        "min_fill_confidence": 0.73046875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.327548027038574,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "15939071",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 271
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.8749285936355591,
+        "margin": 0.7882989272475243,
+        "probs": {
+          "yes": 0.8749285936355591,
+          "no": 0.03844168037176132,
+          "maybe": 0.08662966638803482
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9814453125,
+        "min_fill_confidence": 0.703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.0427632331848145,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "17259061",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 387
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.7960131764411926,
+        "margin": 0.6813366040587425,
+        "probs": {
+          "yes": 0.7960131764411926,
+          "no": 0.1146765723824501,
+          "maybe": 0.08931019902229309
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9793701171875,
+        "min_fill_confidence": 0.609375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.623649835586548,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "21346501",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 340
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.973451554775238,
+        "margin": 0.9577171765267849,
+        "probs": {
+          "yes": 0.973451554775238,
+          "no": 0.010814070701599121,
+          "maybe": 0.01573437824845314
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9775390625,
+        "min_fill_confidence": 0.578125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.698688983917236,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "26818046",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 390
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.47660455107688904,
+        "margin": 0.08148548007011414,
+        "probs": {
+          "yes": 0.47660455107688904,
+          "no": 0.12827637791633606,
+          "maybe": 0.3951190710067749
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9783935546875,
+        "min_fill_confidence": 0.65625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.354687690734863,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "26548832",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 622
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.6127092242240906,
+        "margin": 0.40096257627010345,
+        "probs": {
+          "yes": 0.21174664795398712,
+          "no": 0.1755441278219223,
+          "maybe": 0.6127092242240906
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9703369140625,
+        "min_fill_confidence": 0.55859375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.525557518005371,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "25311479",
+      "gold": "yes",
+      "pred": "maybe",
+      "correct": false,
+      "output": "maybe",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 393
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.6283429861068726,
+        "margin": 0.4367092251777649,
+        "probs": {
+          "yes": 0.18002328276634216,
+          "no": 0.19163376092910767,
+          "maybe": 0.6283429861068726
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "maybe",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.96533203125,
+        "min_fill_confidence": 0.3046875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "maybe"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.441166877746582,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "23088164",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "no",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 255
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.6135581135749817,
+        "margin": 0.2639632821083069,
+        "probs": {
+          "yes": 0.03684702888131142,
+          "no": 0.3495948314666748,
+          "maybe": 0.6135581135749817
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9718017578125,
+        "min_fill_confidence": 0.6015625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "no"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.634488582611084,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "18714572",
+      "gold": "maybe",
+      "pred": "yes",
+      "correct": false,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 363
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.453073114156723,
+        "margin": 0.05323749780654907,
+        "probs": {
+          "yes": 0.39983561635017395,
+          "no": 0.14709129929542542,
+          "maybe": 0.453073114156723
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9764404296875,
+        "min_fill_confidence": 0.57421875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.385415315628052,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "14551704",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 327
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9606947898864746,
+        "margin": 0.9350931420922279,
+        "probs": {
+          "yes": 0.9606947898864746,
+          "no": 0.013703574426472187,
+          "maybe": 0.025601647794246674
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.982666015625,
+        "min_fill_confidence": 0.72265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.716923236846924,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "20353735",
+      "gold": "no",
+      "pred": "maybe",
+      "correct": false,
+      "output": "maybe",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 541
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.6118921637535095,
+        "margin": 0.28436988592147827,
+        "probs": {
+          "yes": 0.06058552861213684,
+          "no": 0.32752227783203125,
+          "maybe": 0.6118921637535095
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "maybe",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9678955078125,
+        "min_fill_confidence": 0.4296875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "maybe"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.885221004486084,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "24866606",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 337
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.6924798488616943,
+        "margin": 0.46766456961631775,
+        "probs": {
+          "yes": 0.6924798488616943,
+          "no": 0.08270492404699326,
+          "maybe": 0.2248152792453766
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9744873046875,
+        "min_fill_confidence": 0.5390625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.104719161987305,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "22236315",
+      "gold": "no",
+      "pred": "yes",
+      "correct": false,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 304
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.6043412089347839,
+        "margin": 0.28086063265800476,
+        "probs": {
+          "yes": 0.6043412089347839,
+          "no": 0.07217826694250107,
+          "maybe": 0.3234805762767792
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9791259765625,
+        "min_fill_confidence": 0.6796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.5920116901397705,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "12970636",
+      "gold": "no",
+      "pred": "yes",
+      "correct": false,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 410
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.4503217041492462,
+        "margin": 0.07699188590049744,
+        "probs": {
+          "yes": 0.1763485074043274,
+          "no": 0.4503217041492462,
+          "maybe": 0.3733298182487488
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9593505859375,
+        "min_fill_confidence": 0.328125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.715831995010376,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "10490564",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 445
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.8279687166213989,
+        "margin": 0.7159153372049332,
+        "probs": {
+          "yes": 0.8279687166213989,
+          "no": 0.059977855533361435,
+          "maybe": 0.11205337941646576
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9801025390625,
+        "min_fill_confidence": 0.6640625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.580062627792358,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "9722752",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 350
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.45518508553504944,
+        "margin": 0.07782337069511414,
+        "probs": {
+          "yes": 0.45518508553504944,
+          "no": 0.16745325922966003,
+          "maybe": 0.3773617148399353
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9793701171875,
+        "min_fill_confidence": 0.6796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.5373101234436035,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "10966943",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "no",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 263
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.8010345697402954,
+        "margin": 0.6331285983324051,
+        "probs": {
+          "yes": 0.03105948120355606,
+          "no": 0.8010345697402954,
+          "maybe": 0.16790597140789032
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97998046875,
+        "min_fill_confidence": 0.71875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "no"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.389793395996094,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "27217036",
+      "gold": "yes",
+      "pred": "no",
+      "correct": false,
+      "output": "no",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 500
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.4653274118900299,
+        "margin": 0.028192758560180664,
+        "probs": {
+          "yes": 0.09753791987895966,
+          "no": 0.43713465332984924,
+          "maybe": 0.4653274118900299
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.96429443359375,
+        "min_fill_confidence": 0.427734375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "no"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 9.384225130081177,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "19757704",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 440
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.7666276097297668,
+        "margin": 0.6248157620429993,
+        "probs": {
+          "yes": 0.7666276097297668,
+          "no": 0.09156061708927155,
+          "maybe": 0.14181184768676758
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97900390625,
+        "min_fill_confidence": 0.625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 9.314960479736328,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "24599411",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 317
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.6720890998840332,
+        "margin": 0.4538937211036682,
+        "probs": {
+          "yes": 0.6720890998840332,
+          "no": 0.1097155287861824,
+          "maybe": 0.218195378780365
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9815673828125,
+        "min_fill_confidence": 0.74609375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.493833780288696,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "19419587",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 401
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.8490124344825745,
+        "margin": 0.7595271840691566,
+        "probs": {
+          "yes": 0.8490124344825745,
+          "no": 0.08948525041341782,
+          "maybe": 0.061502259224653244
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.980712890625,
+        "min_fill_confidence": 0.70703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.789904117584229,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "10158597",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 368
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.8632616400718689,
+        "margin": 0.7722745314240456,
+        "probs": {
+          "yes": 0.8632616400718689,
+          "no": 0.045751191675662994,
+          "maybe": 0.09098710864782333
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.980224609375,
+        "min_fill_confidence": 0.62109375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.845451354980469,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "19394934",
+      "gold": "yes",
+      "pred": "maybe",
+      "correct": false,
+      "output": "maybe",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 388
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.564341127872467,
+        "margin": 0.2805725932121277,
+        "probs": {
+          "yes": 0.1518903523683548,
+          "no": 0.28376853466033936,
+          "maybe": 0.564341127872467
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "maybe",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.96441650390625,
+        "min_fill_confidence": 0.294921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "maybe"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.96040678024292,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "14976655",
+      "gold": "yes",
+      "pred": "maybe",
+      "correct": false,
+      "output": "maybe",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 385
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.4755883514881134,
+        "margin": 0.02881443500518799,
+        "probs": {
+          "yes": 0.07763766497373581,
+          "no": 0.4467739164829254,
+          "maybe": 0.4755883514881134
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "maybe",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.96624755859375,
+        "min_fill_confidence": 0.349609375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "maybe"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.891942024230957,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "26175531",
+      "gold": "no",
+      "pred": "maybe",
+      "correct": false,
+      "output": "maybe",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 538
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.5945042967796326,
+        "margin": 0.21066346764564514,
+        "probs": {
+          "yes": 0.021654818207025528,
+          "no": 0.3838408291339874,
+          "maybe": 0.5945042967796326
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "maybe",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9700927734375,
+        "min_fill_confidence": 0.578125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "maybe"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 9.768855571746826,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "12790890",
+      "gold": "maybe",
+      "pred": "maybe",
+      "correct": true,
+      "output": "maybe",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 333
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.5511388182640076,
+        "margin": 0.1723470389842987,
+        "probs": {
+          "yes": 0.07006943225860596,
+          "no": 0.37879177927970886,
+          "maybe": 0.5511388182640076
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "maybe",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.96954345703125,
+        "min_fill_confidence": 0.431640625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "maybe"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.704552412033081,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "14631523",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "no",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 315
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.8510124087333679,
+        "margin": 0.7120884507894516,
+        "probs": {
+          "yes": 0.01006361749023199,
+          "no": 0.8510124087333679,
+          "maybe": 0.13892395794391632
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.981689453125,
+        "min_fill_confidence": 0.75390625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "no"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.579275369644165,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "15879722",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 391
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.8553600907325745,
+        "margin": 0.7321337759494781,
+        "probs": {
+          "yes": 0.8553600907325745,
+          "no": 0.021413521841168404,
+          "maybe": 0.12322631478309631
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.982421875,
+        "min_fill_confidence": 0.7421875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.864467144012451,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "18319270",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "no",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 426
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.5137624740600586,
+        "margin": 0.06036868691444397,
+        "probs": {
+          "yes": 0.032843735069036484,
+          "no": 0.4533937871456146,
+          "maybe": 0.5137624740600586
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9638671875,
+        "min_fill_confidence": 0.38671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "no"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 9.004654884338379,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "14612308",
+      "gold": "no",
+      "pred": "yes",
+      "correct": false,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 322
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.7248902320861816,
+        "margin": 0.5172057002782822,
+        "probs": {
+          "yes": 0.7248902320861816,
+          "no": 0.06742528825998306,
+          "maybe": 0.20768453180789948
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98193359375,
+        "min_fill_confidence": 0.73046875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.597230672836304,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "25488308",
+      "gold": "no",
+      "pred": "yes",
+      "correct": false,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 457
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.5489178895950317,
+        "margin": 0.25510331988334656,
+        "probs": {
+          "yes": 0.5489178895950317,
+          "no": 0.15726761519908905,
+          "maybe": 0.2938145697116852
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9794921875,
+        "min_fill_confidence": 0.72265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 9.286279201507568,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "18802997",
+      "gold": "maybe",
+      "pred": "yes",
+      "correct": false,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 381
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.7547740340232849,
+        "margin": 0.5754994750022888,
+        "probs": {
+          "yes": 0.7547740340232849,
+          "no": 0.06595142185688019,
+          "maybe": 0.1792745590209961
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9775390625,
+        "min_fill_confidence": 0.59765625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.464581727981567,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "8847047",
+      "gold": "no",
+      "pred": "yes",
+      "correct": false,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 349
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.4077838361263275,
+        "margin": 0.04791584610939026,
+        "probs": {
+          "yes": 0.35986799001693726,
+          "no": 0.2323482185602188,
+          "maybe": 0.4077838361263275
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97119140625,
+        "min_fill_confidence": 0.515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.676900148391724,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "25255719",
+      "gold": "yes",
+      "pred": "no",
+      "correct": false,
+      "output": "no",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 306
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.8817178606987,
+        "margin": 0.8046742156147957,
+        "probs": {
+          "yes": 0.04123849421739578,
+          "no": 0.8817178606987,
+          "maybe": 0.07704364508390427
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.978759765625,
+        "min_fill_confidence": 0.70703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "no"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.610124826431274,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "19852337",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 364
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9664815068244934,
+        "margin": 0.9451291505247355,
+        "probs": {
+          "yes": 0.9664815068244934,
+          "no": 0.021352356299757957,
+          "maybe": 0.01216620672494173
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9818115234375,
+        "min_fill_confidence": 0.640625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.7497053146362305,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "2503176",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 491
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.6683973073959351,
+        "margin": 0.47689826786518097,
+        "probs": {
+          "yes": 0.6683973073959351,
+          "no": 0.14010368287563324,
+          "maybe": 0.1914990395307541
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.982421875,
+        "min_fill_confidence": 0.73828125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 6.8789708614349365,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "25156467",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 500
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.8582254648208618,
+        "margin": 0.7619352415204048,
+        "probs": {
+          "yes": 0.8582254648208618,
+          "no": 0.045484282076358795,
+          "maybe": 0.096290223300457
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9775390625,
+        "min_fill_confidence": 0.57421875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.878912448883057,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "26485091",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "no",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 302
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9018619656562805,
+        "margin": 0.8125655353069305,
+        "probs": {
+          "yes": 0.008841544389724731,
+          "no": 0.9018619656562805,
+          "maybe": 0.08929643034934998
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9818115234375,
+        "min_fill_confidence": 0.75390625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "no"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.008667469024658,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "10456814",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "no",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 476
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.548917829990387,
+        "margin": 0.2551032602787018,
+        "probs": {
+          "yes": 0.15726760029792786,
+          "no": 0.548917829990387,
+          "maybe": 0.2938145697116852
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.971923828125,
+        "min_fill_confidence": 0.54296875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "no"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 8.717574119567871,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "23449952",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "no",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 549
+      },
+      "probe": {
+        "available": true,
+        "top_label": "maybe",
+        "top_prob": 0.41463157534599304,
+        "margin": 0.025121241807937622,
+        "probs": {
+          "yes": 0.19585809111595154,
+          "no": 0.3895103335380554,
+          "maybe": 0.41463157534599304
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.96527099609375,
+        "min_fill_confidence": 0.283203125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "no"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 9.285919666290283,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "18948835",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 320
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.5529543161392212,
+        "margin": 0.32244865596294403,
+        "probs": {
+          "yes": 0.5529543161392212,
+          "no": 0.21654002368450165,
+          "maybe": 0.23050566017627716
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9764404296875,
+        "min_fill_confidence": 0.66015625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.056509494781494,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "pubmedqa",
+      "id": "17089900",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "decision",
+      "profile": {
+        "metric": "decision",
+        "label_space": [
+          "yes",
+          "no",
+          "maybe"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 332
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9130832552909851,
+        "margin": 0.8615706227719784,
+        "probs": {
+          "yes": 0.9130832552909851,
+          "no": 0.03540407866239548,
+          "maybe": 0.05151263251900673
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9820556640625,
+        "min_fill_confidence": 0.7109375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 7.183272123336792,
+      "forward_calls": 33,
+      "meta": {}
+    }
+  ]
+}

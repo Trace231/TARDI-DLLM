@@ -1,0 +1,4543 @@
+{
+  "method": "selective_remask_refinement_controller",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "winogrande,commonsenseqa,arc_challenge,hellaswag,boolq",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/a100_clean_priority/raw/llada8b_refinement_controller_limit50_seed23.json",
+    "budgets": "8,16,24,32",
+    "scout_steps": 8,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "risk_t16": 0.24,
+    "risk_t24": 0.38,
+    "risk_t32": 0.56,
+    "margin_target": 0.18,
+    "fill_confidence_target": 0.7,
+    "binary_direct_full_threshold": 0.52,
+    "multi_direct_full_threshold": 0.36,
+    "multi_direct_full_entropy": 0.98,
+    "binary_post_disagree_confidence": 0.72,
+    "multi_post_disagree_confidence": 0.7,
+    "multi_disagreement_policy": "ignore",
+    "remask_min_fraction": 0.2,
+    "remask_max_fraction": 0.55,
+    "remask_min_tokens": 4,
+    "max_refinements": 3
+  },
+  "summary": {
+    "boolq": {
+      "accuracy": 0.84,
+      "n": 50,
+      "seconds": 43.548240661621094,
+      "avg_forward_calls": 11.08,
+      "route_rates": {
+        "32": 0.02,
+        "8": 0.84,
+        "8->16": 0.08,
+        "8->24": 0.06
+      },
+      "final_budget_rates": {
+        "16": 0.08,
+        "24": 0.06,
+        "32": 0.02,
+        "8": 0.84
+      },
+      "peak_mem_gb": 15.307074546813965
+    }
+  },
+  "rows": [
+    {
+      "task": "boolq",
+      "id": "3192",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes answer yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 74
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9875683188438416,
+        "margin": 0.9751366674900055,
+        "probs": {
+          "yes": 0.9875683188438416,
+          "no": 0.01243165135383606
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.012431681156158447,
+        "probe_entropy": 0.09651352015119129,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.09238632186947399,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.912109375,
+        "min_fill_confidence": 0.32421875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.09238632186947399,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3584434986114502,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1187",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "Final answer: no",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 201
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9976769089698792,
+        "margin": 0.9953537464607507,
+        "probs": {
+          "yes": 0.0023231625091284513,
+          "no": 0.9976769089698792
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.0023230910301208496,
+        "probe_entropy": 0.023674577507463723,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.08287853777737296,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.916748046875,
+        "min_fill_confidence": 0.439453125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.08287853777737296,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.46204686164855957,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "342",
+      "gold": "yes",
+      "pred": "no",
+      "correct": false,
+      "output": "No answer:",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 243
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.970687747001648,
+        "margin": 0.9413755163550377,
+        "probs": {
+          "yes": 0.02931223064661026,
+          "no": 0.970687747001648
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.02931225299835205,
+        "probe_entropy": 0.19093094646307798,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.10554179030594525,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91796875,
+        "min_fill_confidence": 0.451171875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.10554179030594525,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.34720301628112793,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "69",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes answer yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 231
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9783847332000732,
+        "margin": 0.9567693993449211,
+        "probs": {
+          "yes": 0.9783847332000732,
+          "no": 0.02161533385515213
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.021615266799926758,
+        "probe_entropy": 0.1504164824597641,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.0997970069419603,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.911376953125,
+        "min_fill_confidence": 0.3984375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.0997970069419603,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3450438976287842,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2424",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Final answer: yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 194
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9284088015556335,
+        "margin": 0.8568176031112671,
+        "probs": {
+          "yes": 0.9284088015556335,
+          "no": 0.07159119844436646
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.07159119844436646,
+        "probe_entropy": 0.3718338306750307,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.1329334467252637,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9129638671875,
+        "min_fill_confidence": 0.384765625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.1329334467252637,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.33702778816223145,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1256",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 92
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9669140577316284,
+        "margin": 0.9338280782103539,
+        "probs": {
+          "yes": 0.03308597952127457,
+          "no": 0.9669140577316284
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.03308594226837158,
+        "probe_entropy": 0.20963923527821346,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.10824283082686309,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9415283203125,
+        "min_fill_confidence": 0.55859375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.10824283082686309,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30992722511291504,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1735",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No answer:",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 275
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9046505093574524,
+        "margin": 0.8093010485172272,
+        "probs": {
+          "yes": 0.09534946084022522,
+          "no": 0.9046505093574524
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.09534949064254761,
+        "probe_entropy": 0.45407798148861955,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.037109375
+      },
+      "risk_score": 0.14786906109022244,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91864013671875,
+        "min_fill_confidence": 0.466796875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.14786906109022244,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3513615131378174,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1553",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No answer:",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 171
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9867772459983826,
+        "margin": 0.9735544230788946,
+        "probs": {
+          "yes": 0.013222822919487953,
+          "no": 0.9867772459983826
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.013222754001617432,
+        "probe_entropy": 0.10147105757023542,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.09305611163737938,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9163818359375,
+        "min_fill_confidence": 0.392578125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.09305611163737938,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.342418909072876,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2171",
+      "gold": "no",
+      "pred": "yes",
+      "correct": false,
+      "output": "Final answer: yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 227
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.7431679368019104,
+        "margin": 0.4863359332084656,
+        "probs": {
+          "yes": 0.7431679368019104,
+          "no": 0.2568320035934448
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.2568320631980896,
+        "probe_entropy": 0.8219281554907492,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.21869586945265462,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91839599609375,
+        "min_fill_confidence": 0.330078125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.21869586945265462,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.34467124938964844,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1466",
+      "gold": "yes",
+      "pred": "no",
+      "correct": false,
+      "output": "No answer",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 157
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.7662936449050903,
+        "margin": 0.5325873047113419,
+        "probs": {
+          "yes": 0.23370634019374847,
+          "no": 0.7662936449050903
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.23370635509490967,
+        "probe_entropy": 0.7844165594241084,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.20985705406329097,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.92041015625,
+        "min_fill_confidence": 0.30859375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.20985705406329097,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.31025123596191406,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "533",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 208
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.5926666259765625,
+        "margin": 0.18533319234848022,
+        "probs": {
+          "yes": 0.5926666259765625,
+          "no": 0.4073334336280823
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.4073333740234375,
+        "probe_entropy": 0.9750790196972445,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 1.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.5071212442548807,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": null,
+        "valid_seen": 0,
+        "mean_fill_confidence": 0.91162109375,
+        "min_fill_confidence": 0.294921875
+      },
+      "route": "8->24",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "",
+          "risk_score": 0.5071212442548807,
+          "target_budget": 24
+        },
+        {
+          "budget": 24,
+          "mode": "refine",
+          "reason": "risk_high_24",
+          "pred": "no",
+          "remasked_tokens": 14
+        }
+      ],
+      "final_budget": 24,
+      "seconds": 0.9431214332580566,
+      "forward_calls": 25,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2973",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes answer yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 101
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9937100410461426,
+        "margin": 0.9874201393686235,
+        "probs": {
+          "yes": 0.9937100410461426,
+          "no": 0.006289901677519083
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.006289958953857422,
+        "probe_entropy": 0.055042351957684844,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.08688802616561712,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91595458984375,
+        "min_fill_confidence": 0.359375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.08688802616561712,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.30898499488830566,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "786",
+      "gold": "no",
+      "pred": "yes",
+      "correct": false,
+      "output": "Yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 105
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.7549149990081787,
+        "margin": 0.5098299831151962,
+        "probs": {
+          "yes": 0.7549149990081787,
+          "no": 0.24508501589298248
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.2450850009918213,
+        "probe_entropy": 0.8033946960101104,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 1.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.45425816981921174,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": null,
+        "valid_seen": 0,
+        "mean_fill_confidence": 0.91253662109375,
+        "min_fill_confidence": 0.38671875
+      },
+      "route": "8->24",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "",
+          "risk_score": 0.45425816981921174,
+          "target_budget": 24
+        },
+        {
+          "budget": 24,
+          "mode": "refine",
+          "reason": "risk_high_24",
+          "pred": "yes",
+          "remasked_tokens": 13
+        }
+      ],
+      "final_budget": 24,
+      "seconds": 0.8592672348022461,
+      "forward_calls": 25,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1095",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Final answer: yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 208
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9883127808570862,
+        "margin": 0.9766255235299468,
+        "probs": {
+          "yes": 0.9883127808570862,
+          "no": 0.011687257327139378
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.011687219142913818,
+        "probe_entropy": 0.09178174458548873,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.09174936266998991,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91552734375,
+        "min_fill_confidence": 0.427734375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.09174936266998991,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.34421706199645996,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1820",
+      "gold": "yes",
+      "pred": "no",
+      "correct": false,
+      "output": "No answer:",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 115
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9046505093574524,
+        "margin": 0.8093010485172272,
+        "probs": {
+          "yes": 0.09534946084022522,
+          "no": 0.9046505093574524
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.09534949064254761,
+        "probe_entropy": 0.45407798148861955,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.14638468609022243,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91552734375,
+        "min_fill_confidence": 0.361328125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.14638468609022243,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3219568729400635,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "57",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes answer yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 98
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9724147915840149,
+        "margin": 0.9448295067995787,
+        "probs": {
+          "yes": 0.9724147915840149,
+          "no": 0.027585284784436226
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.027585208415985107,
+        "probe_entropy": 0.18213361821899424,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.10428210767341614,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91339111328125,
+        "min_fill_confidence": 0.306640625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.10428210767341614,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.3240780830383301,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "905",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Final answer: yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 292
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.8740772008895874,
+        "margin": 0.7481544315814972,
+        "probs": {
+          "yes": 0.8740772008895874,
+          "no": 0.1259227693080902
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.1259227991104126,
+        "probe_entropy": 0.5461494173532759,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0703125
+      },
+      "risk_score": 0.16513045753961836,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9346923828125,
+        "min_fill_confidence": 0.52734375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.16513045753961836,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.43617820739746094,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2540",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 318
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9859364032745361,
+        "margin": 0.9718727767467499,
+        "probs": {
+          "yes": 0.014063626527786255,
+          "no": 0.9859364032745361
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.014063596725463867,
+        "probe_entropy": 0.1066639847465752,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.12109375
+      },
+      "risk_score": 0.09860413975425956,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.92620849609375,
+        "min_fill_confidence": 0.44140625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.09860413975425956,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.8689897060394287,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1863",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes answer yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 125
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9940890073776245,
+        "margin": 0.9881779383867979,
+        "probs": {
+          "yes": 0.9940890073776245,
+          "no": 0.005911068990826607
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.005910992622375488,
+        "probe_entropy": 0.05225839771741638,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.08652625814866424,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9132080078125,
+        "min_fill_confidence": 0.322265625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.08652625814866424,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.5442173480987549,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "101",
+      "gold": "no",
+      "pred": "yes",
+      "correct": false,
+      "output": "Final answer: yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 145
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.8872045874595642,
+        "margin": 0.7744091898202896,
+        "probs": {
+          "yes": 0.8872045874595642,
+          "no": 0.1127953976392746
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.11279541254043579,
+        "probe_entropy": 0.5082905850588052,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.1556440492647764,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.92193603515625,
+        "min_fill_confidence": 0.390625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.1556440492647764,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.7662136554718018,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "433",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No answer",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 156
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.977022647857666,
+        "margin": 0.9540452770888805,
+        "probs": {
+          "yes": 0.022977370768785477,
+          "no": 0.977022647857666
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.022977352142333984,
+        "probe_entropy": 0.15784611065360493,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.10083962853667397,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.924072265625,
+        "min_fill_confidence": 0.4609375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.10083962853667397,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.9077889919281006,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "351",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "Final answer: no",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 114
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9940890073776245,
+        "margin": 0.9881779383867979,
+        "probs": {
+          "yes": 0.005911068990826607,
+          "no": 0.9940890073776245
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.005910992622375488,
+        "probe_entropy": 0.05225839771741638,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 1.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.32652625814866426,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": null,
+        "valid_seen": 0,
+        "mean_fill_confidence": 0.92059326171875,
+        "min_fill_confidence": 0.40234375
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "",
+          "risk_score": 0.32652625814866426,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "no",
+          "remasked_tokens": 10
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 1.6540734767913818,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2908",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 171
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9241418242454529,
+        "margin": 0.8482836484909058,
+        "probs": {
+          "yes": 0.07585817575454712,
+          "no": 0.9241418242454529
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.07585817575454712,
+        "probe_entropy": 0.38741436337083046,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.13543023500308343,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.925048828125,
+        "min_fill_confidence": 0.5234375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.13543023500308343,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.9191815853118896,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2040",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes answer",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 99
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.957912266254425,
+        "margin": 0.9158245399594307,
+        "probs": {
+          "yes": 0.957912266254425,
+          "no": 0.042087726294994354
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.04208773374557495,
+        "probe_entropy": 0.2517837999285699,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.11443768141688349,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91552734375,
+        "min_fill_confidence": 0.322265625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.11443768141688349,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.8083333969116211,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1725",
+      "gold": "no",
+      "pred": "yes",
+      "correct": false,
+      "output": "Yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 154
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.957912266254425,
+        "margin": 0.9158245399594307,
+        "probs": {
+          "yes": 0.957912266254425,
+          "no": 0.042087726294994354
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.04208773374557495,
+        "probe_entropy": 0.2517837999285699,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.11443768141688349,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9046630859375,
+        "min_fill_confidence": 0.30859375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.11443768141688349,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.8883059024810791,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "80",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "Final answer: no",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 103
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9525741338729858,
+        "margin": 0.9051482602953911,
+        "probs": {
+          "yes": 0.04742587357759476,
+          "no": 0.9525741338729858
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.04742586612701416,
+        "probe_entropy": 0.27535993879938053,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 1.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.3579696844278812,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": null,
+        "valid_seen": 0,
+        "mean_fill_confidence": 0.92962646484375,
+        "min_fill_confidence": 0.462890625
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "",
+          "risk_score": 0.3579696844278812,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "no",
+          "remasked_tokens": 10
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 1.5580790042877197,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2099",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Final answer: yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 252
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.531209409236908,
+        "margin": 0.06241875886917114,
+        "probs": {
+          "yes": 0.531209409236908,
+          "no": 0.4687906503677368
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.46879059076309204,
+        "probe_entropy": 0.9971877028425042,
+        "margin_deficit": 0.6532291173934937,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.3743047766872198,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.92022705078125,
+        "min_fill_confidence": 0.326171875
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.3743047766872198,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "yes",
+          "remasked_tokens": 11
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 2.1357626914978027,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2570",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 193
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.859663724899292,
+        "margin": 0.7193274796009064,
+        "probs": {
+          "yes": 0.14033624529838562,
+          "no": 0.859663724899292
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.140336275100708,
+        "probe_entropy": 0.5851187673314717,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.16938585725530292,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.92437744140625,
+        "min_fill_confidence": 0.482421875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.16938585725530292,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 1.0860021114349365,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "3007",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 159
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.562176525592804,
+        "margin": 0.12435302138328552,
+        "probs": {
+          "yes": 0.43782350420951843,
+          "no": 0.562176525592804
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.43782347440719604,
+        "probe_entropy": 0.9888163762558327,
+        "margin_deficit": 0.3091498812039693,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.3184837853637221,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.92559814453125,
+        "min_fill_confidence": 0.384765625
+      },
+      "route": "8->16",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.3184837853637221,
+          "target_budget": 16
+        },
+        {
+          "budget": 16,
+          "mode": "refine",
+          "reason": "risk_medium_16",
+          "pred": "no",
+          "remasked_tokens": 10
+        }
+      ],
+      "final_budget": 16,
+      "seconds": 1.7005763053894043,
+      "forward_calls": 17,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1766",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 154
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9989677667617798,
+        "margin": 0.9979355357354507,
+        "probs": {
+          "yes": 0.9989677667617798,
+          "no": 0.0010322310263291001
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.0010322332382202148,
+        "probe_entropy": 0.011728179667645828,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.08139990927917304,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91015625,
+        "min_fill_confidence": 0.400390625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.08139990927917304,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.888545036315918,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1470",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 161
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9830850958824158,
+        "margin": 0.9661701824516058,
+        "probs": {
+          "yes": 0.016914913430809975,
+          "no": 0.9830850958824158
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.01691490411758423,
+        "probe_entropy": 0.12374923165218477,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.09609620207108702,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9388427734375,
+        "min_fill_confidence": 0.51953125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.09609620207108702,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.9066662788391113,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "3157",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 166
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.7057850360870361,
+        "margin": 0.41157007217407227,
+        "probs": {
+          "yes": 0.7057850360870361,
+          "no": 0.29421496391296387
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.29421496391296387,
+        "probe_entropy": 0.874103929759115,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 1.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.47213768503676357,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": null,
+        "valid_seen": 0,
+        "mean_fill_confidence": 0.91204833984375,
+        "min_fill_confidence": 0.298828125
+      },
+      "route": "8->24",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "",
+          "risk_score": 0.47213768503676357,
+          "target_budget": 24
+        },
+        {
+          "budget": 24,
+          "mode": "refine",
+          "reason": "risk_high_24",
+          "pred": "yes",
+          "remasked_tokens": 13
+        }
+      ],
+      "final_budget": 24,
+      "seconds": 2.4619712829589844,
+      "forward_calls": 25,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "235",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No answer",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 354
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.985042929649353,
+        "margin": 0.9700858425348997,
+        "probs": {
+          "yes": 0.014957087114453316,
+          "no": 0.985042929649353
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.014957070350646973,
+        "probe_entropy": 0.11210152736447494,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.19140625
+      },
+      "risk_score": 0.10215695821358983,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9327392578125,
+        "min_fill_confidence": 0.46875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.10215695821358983,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 1.3633716106414795,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "842",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Yes answer: yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 245
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9740425944328308,
+        "margin": 0.9480852372944355,
+        "probs": {
+          "yes": 0.9740425944328308,
+          "no": 0.02595735713839531
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.02595740556716919,
+        "probe_entropy": 0.1736942244667078,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.103080051671448,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91473388671875,
+        "min_fill_confidence": 0.361328125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.103080051671448,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 1.1346955299377441,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "3207",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No answer",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 246
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.949669361114502,
+        "margin": 0.8993387296795845,
+        "probs": {
+          "yes": 0.05033063143491745,
+          "no": 0.949669361114502
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.05033063888549805,
+        "probe_entropy": 0.2877998090151959,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.11985272145632916,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9189453125,
+        "min_fill_confidence": 0.5078125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.11985272145632916,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 1.1503114700317383,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "144",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No answer:",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 134
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9956685304641724,
+        "margin": 0.9913370283320546,
+        "probs": {
+          "yes": 0.004331502132117748,
+          "no": 0.9956685304641724
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.004331469535827637,
+        "probe_entropy": 0.04024169948855133,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.08497709324673722,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9168701171875,
+        "min_fill_confidence": 0.4765625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.08497709324673722,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.8817074298858643,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2413",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 302
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.5156199336051941,
+        "margin": 0.031239837408065796,
+        "probs": {
+          "yes": 0.5156199336051941,
+          "no": 0.4843800961971283
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9713134765625,
+        "min_fill_confidence": 0.5
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "binary_direct_full",
+          "pred": "yes"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.2045793533325195,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1511",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Final answer yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 172
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9149009585380554,
+        "margin": 0.8298019170761108,
+        "probs": {
+          "yes": 0.9149009585380554,
+          "no": 0.08509904146194458
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.08509904146194458,
+        "probe_entropy": 0.41989594289619453,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.14071138341124728,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9161376953125,
+        "min_fill_confidence": 0.318359375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.14071138341124728,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.9181454181671143,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2694",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 105
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9688562154769897,
+        "margin": 0.9377123825252056,
+        "probs": {
+          "yes": 0.031143832951784134,
+          "no": 0.9688562154769897
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.031143784523010254,
+        "probe_entropy": 0.20009601538896615,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.10686123413395887,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.940185546875,
+        "min_fill_confidence": 0.53125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.10686123413395887,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.8225011825561523,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "704",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Final answer: yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 165
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9890130758285522,
+        "margin": 0.9780261320993304,
+        "probs": {
+          "yes": 0.9890130758285522,
+          "no": 0.01098694372922182
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.010986924171447754,
+        "probe_entropy": 0.0872671403489259,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.0911438373526111,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9063720703125,
+        "min_fill_confidence": 0.400390625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.0911438373526111,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.9205887317657471,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2543",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Final answer: yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 136
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.998498797416687,
+        "margin": 0.9969976152060553,
+        "probs": {
+          "yes": 0.998498797416687,
+          "no": 0.0015011822106316686
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.0015012025833129883,
+        "probe_entropy": 0.016244767614634132,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.08195474132979227,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9285888671875,
+        "min_fill_confidence": 0.46875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.08195474132979227,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.8823161125183105,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "884",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No answer",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 141
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.8933094143867493,
+        "margin": 0.7866188138723373,
+        "probs": {
+          "yes": 0.10669060051441193,
+          "no": 0.8933094143867493
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.10669058561325073,
+        "probe_entropy": 0.4898523735903039,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.15245716619394556,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91693115234375,
+        "min_fill_confidence": 0.47265625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.15245716619394556,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.918632984161377,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "3011",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 439
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9875683188438416,
+        "margin": 0.9751366674900055,
+        "probs": {
+          "yes": 0.9875683188438416,
+          "no": 0.01243165135383606
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.012431681156158447,
+        "probe_entropy": 0.09651352015119129,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.357421875
+      },
+      "risk_score": 0.10668319686947399,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.90826416015625,
+        "min_fill_confidence": 0.400390625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.10668319686947399,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 1.1358234882354736,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1485",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Yes answer: yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 158
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9553191661834717,
+        "margin": 0.9106382913887501,
+        "probs": {
+          "yes": 0.9553191661834717,
+          "no": 0.0446808747947216
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.04468083381652832,
+        "probe_entropy": 0.2633567186630697,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.1161654553059432,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.92657470703125,
+        "min_fill_confidence": 0.333984375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.1161654553059432,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.5493948459625244,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2316",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No answer:",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 123
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9984021782875061,
+        "margin": 0.9968043327098712,
+        "probs": {
+          "yes": 0.001597845577634871,
+          "no": 0.9984021782875061
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.0015978217124938965,
+        "probe_entropy": 0.017146763087214606,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.08206619708547012,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.914794921875,
+        "min_fill_confidence": 0.353515625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.08206619708547012,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.5367259979248047,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "3112",
+      "gold": "no",
+      "pred": "no",
+      "correct": true,
+      "output": "No answer: no",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 135
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.9959298968315125,
+        "margin": 0.9918597587384284,
+        "probs": {
+          "yes": 0.004070138093084097,
+          "no": 0.9959298968315125
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.004070103168487549,
+        "probe_entropy": 0.038179723935392075,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.08471339509060646,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9102783203125,
+        "min_fill_confidence": 0.361328125
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.08471339509060646,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.5429990291595459,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1510",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Yes answer yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 202
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9626730680465698,
+        "margin": 0.9253461845219135,
+        "probs": {
+          "yes": 0.9626730680465698,
+          "no": 0.037326883524656296
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.037326931953430176,
+        "probe_entropy": 0.2298989221894561,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.11120181724870025,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91314697265625,
+        "min_fill_confidence": 0.357421875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.11120181724870025,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.711897611618042,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2343",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "Yes answer",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 205
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.9976769089698792,
+        "margin": 0.9953537464607507,
+        "probs": {
+          "yes": 0.9976769089698792,
+          "no": 0.0023231625091284513
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.0023230910301208496,
+        "probe_entropy": 0.023674577507463723,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.08287853777737296,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.90545654296875,
+        "min_fill_confidence": 0.3671875
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.08287853777737296,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.711143970489502,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1152",
+      "gold": "yes",
+      "pred": "yes",
+      "correct": true,
+      "output": "yes answer yes",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 123
+      },
+      "probe": {
+        "available": true,
+        "top_label": "yes",
+        "top_prob": 0.997368335723877,
+        "margin": 0.9947366616688669,
+        "probs": {
+          "yes": 0.997368335723877,
+          "no": 0.0026316740550100803
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.002631664276123047,
+        "probe_entropy": 0.02634461825266392,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.08321342796601347,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "yes",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.92193603515625,
+        "min_fill_confidence": 0.427734375
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "yes",
+          "risk_score": 0.08321342796601347,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.5378093719482422,
+      "forward_calls": 9,
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "2705",
+      "gold": "yes",
+      "pred": "no",
+      "correct": false,
+      "output": "No answer",
+      "metric": "bool",
+      "profile": {
+        "metric": "bool",
+        "label_space": [
+          "yes",
+          "no"
+        ],
+        "n_labels": 2,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "no",
+        "top_prob": 0.859663724899292,
+        "margin": 0.7193274796009064,
+        "probs": {
+          "yes": 0.14033624529838562,
+          "no": 0.859663724899292
+        }
+      },
+      "risk_features": {
+        "probe_uncertainty": 0.140336275100708,
+        "probe_entropy": 0.5851187673314717,
+        "margin_deficit": 0.0,
+        "probe_scout_disagree": 0.0,
+        "invalid_or_empty": 0.0,
+        "flip_instability": 0.0,
+        "late_first_final": 1.0,
+        "low_fill_confidence": 0.0,
+        "label_complexity": 0.0,
+        "prompt_complexity": 0.0
+      },
+      "risk_score": 0.16938585725530292,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 1,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.03125
+          },
+          {
+            "local_step": 2,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.09375
+          },
+          {
+            "local_step": 4,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.3125
+          },
+          {
+            "local_step": 8,
+            "pred": "no",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 8,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.91241455078125,
+        "min_fill_confidence": 0.31640625
+      },
+      "route": "8",
+      "route_steps": [
+        {
+          "budget": 8,
+          "mode": "scout",
+          "reason": "scout",
+          "pred": "no",
+          "risk_score": 0.16938585725530292,
+          "target_budget": 8
+        }
+      ],
+      "final_budget": 8,
+      "seconds": 0.48469066619873047,
+      "forward_calls": 9,
+      "meta": {}
+    }
+  ],
+  "source_file": "results/domain_shift/task_aware/solid_v2/a100_final/raw/llada8b_refinement_controller_limit50_seed23.json"
+}

@@ -1,0 +1,12 @@
+task,comparison,delta
+arc_challenge,32step_minus_8step,0.033333333333333326
+arc_challenge,calibrated_minus_32step,0.0
+arc_challenge,llada32_minus_qwen,-0.033333333333333326
+boolq,32step_minus_8step,0.023333333333333317
+boolq,calibrated_minus_32step,-0.013333333333333308
+boolq,llada32_minus_qwen,0.043333333333333335
+gsm8k,32step_minus_8step,0.25999999999999995
+gsm8k,llada32_minus_qwen,-0.19000000000000006
+hellaswag,32step_minus_8step,0.020000000000000018
+hellaswag,calibrated_minus_32step,0.0
+hellaswag,llada32_minus_qwen,-0.06999999999999995

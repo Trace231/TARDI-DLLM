@@ -1,0 +1,2937 @@
+{
+  "method": "prophet_style_early_commit",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "ceval_computer_network",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/all_datasets_limit50_fast/raw/llada8b_prophet_ceval_computer_network_limit50_seed23.json",
+    "max_steps": 32,
+    "min_steps": 8,
+    "check_interval": 4,
+    "patience": 2,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "schedule": "uniform",
+    "stop_on_invalid": false
+  },
+  "summary": {
+    "ceval_computer_network": {
+      "accuracy": 0.56,
+      "n": 50,
+      "seconds": 143.4063844680786,
+      "avg_forward_calls": 32.0,
+      "stop_rates": {
+        "max_steps": 0.94,
+        "stable_label": 0.06
+      },
+      "peak_mem_gb": 15.059185028076172
+    }
+  },
+  "rows": [
+    {
+      "task": "ceval_computer_network",
+      "id": "74",
+      "gold": "B",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 3.4608821868896484,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "21",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 2.052689790725708,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "4",
+      "gold": "A",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 1.7776415348052979,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "151",
+      "gold": "C",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.787714958190918,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "78",
+      "gold": "D",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.851597547531128,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "108",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.833174467086792,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "97",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8046519756317139,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "135",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.8086426258087158,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "91",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.841937780380249,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "33",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8914330005645752,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "49",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.8456878662109375,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "68",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.4213769435882568,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "113",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 1.4876394271850586,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "3",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 1.7422680854797363,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "56",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 1.7815511226654053,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "116",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.0576634407043457,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "6",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 2.8337149620056152,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "27",
+      "gold": "C",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.574732780456543,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "169",
+      "gold": "D",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 2.60683274269104,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "127",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.8845603466033936,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "107",
+      "gold": "D",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 2.573697805404663,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "5",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.7334725856781006,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "131",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 3.2001543045043945,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "110",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 3.493762969970703,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "162",
+      "gold": "A",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 3.7583796977996826,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "14",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.490784168243408,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "52",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 3.4730417728424072,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "9",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.8654608726501465,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "94",
+      "gold": "B",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 3.901639699935913,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "44",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 3.6985156536102295,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "55",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.4518094062805176,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "92",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.452124834060669,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "142",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.4556539058685303,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "72",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 3.714184522628784,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "80",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 3.5174992084503174,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "152",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.4851467609405518,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "121",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 3.456230640411377,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "45",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 3.506981611251831,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "123",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.490067958831787,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "114",
+      "gold": "C",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.9044241905212402,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "41",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 3.524181842803955,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "46",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "seconds": 3.466163396835327,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "C",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "133",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.4915032386779785,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "82",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.829801082611084,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "86",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 3.5101420879364014,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "104",
+      "gold": "A",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 3.4914841651916504,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "66",
+      "gold": "B",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "seconds": 3.147925853729248,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "D",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "25",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.7784032821655273,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "170",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "seconds": 2.592621326446533,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "B",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "145",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "seconds": 2.604732036590576,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": false,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "A",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    }
+  ]
+}

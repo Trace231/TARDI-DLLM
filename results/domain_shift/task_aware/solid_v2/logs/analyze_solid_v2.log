@@ -1,0 +1,6 @@
+{
+  "root": "results/domain_shift/task_aware/solid_v2",
+  "tables": "results/domain_shift/task_aware/solid_v2/tables",
+  "figures": "results/domain_shift/task_aware/solid_v2/figures",
+  "reports": "results/domain_shift/task_aware/solid_v2/reports"
+}

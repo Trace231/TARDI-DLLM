@@ -1,0 +1,4049 @@
+{
+  "method": "selective_remask_refinement_controller",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "winogrande,commonsenseqa,arc_challenge,hellaswag,boolq",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/a100_clean_priority/raw/llada8b_refinement_controller_limit50_seed23.json",
+    "budgets": "8,16,24,32",
+    "scout_steps": 8,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "risk_t16": 0.24,
+    "risk_t24": 0.38,
+    "risk_t32": 0.56,
+    "margin_target": 0.18,
+    "fill_confidence_target": 0.7,
+    "binary_direct_full_threshold": 0.52,
+    "multi_direct_full_threshold": 0.36,
+    "multi_direct_full_entropy": 0.98,
+    "binary_post_disagree_confidence": 0.72,
+    "multi_post_disagree_confidence": 0.7,
+    "multi_disagreement_policy": "ignore",
+    "remask_min_fraction": 0.2,
+    "remask_max_fraction": 0.55,
+    "remask_min_tokens": 4,
+    "max_refinements": 3
+  },
+  "summary": {
+    "arc_challenge": {
+      "accuracy": 0.86,
+      "n": 50,
+      "seconds": 57.0412814617157,
+      "avg_forward_calls": 33.0,
+      "route_rates": {
+        "32": 1.0
+      },
+      "final_budget_rates": {
+        "32": 1.0
+      },
+      "peak_mem_gb": 15.118195533752441
+    }
+  },
+  "rows": [
+    {
+      "task": "arc_challenge",
+      "id": "593",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 70
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9956647753715515,
+        "margin": 0.9918422524351627,
+        "probs": {
+          "A": 0.9956647753715515,
+          "B": 0.00017878176004160196,
+          "C": 0.00382252293638885,
+          "D": 0.00033400830579921603
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9976806640625,
+        "min_fill_confidence": 0.953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.142829418182373,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "171",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 97
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9905688166618347,
+        "margin": 0.9825179530307651,
+        "probs": {
+          "A": 0.0007971434388309717,
+          "B": 0.0005832025781273842,
+          "C": 0.00805086363106966,
+          "D": 0.9905688166618347
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.998291015625,
+        "min_fill_confidence": 0.97265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1389930248260498,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "34",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 63
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.3938683867454529,
+        "margin": 0.10570812225341797,
+        "probs": {
+          "A": 0.3938683867454529,
+          "B": 0.09355194121599197,
+          "C": 0.2881602644920349,
+          "D": 0.22441942989826202
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9852294921875,
+        "min_fill_confidence": 0.6328125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.138934850692749,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "628",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9229863882064819,
+        "margin": 0.8639818429946899,
+        "probs": {
+          "A": 0.01316569373011589,
+          "B": 0.004843388218432665,
+          "C": 0.9229863882064819,
+          "D": 0.05900454521179199
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9947509765625,
+        "min_fill_confidence": 0.93359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1412243843078613,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "867",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 78
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9987583160400391,
+        "margin": 0.9983003623201512,
+        "probs": {
+          "A": 0.0004041427164338529,
+          "B": 0.00045795371988788247,
+          "C": 0.9987583160400391,
+          "D": 0.0003796569653786719
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9931640625,
+        "min_fill_confidence": 0.87890625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.141993761062622,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "776",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 104
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9917951226234436,
+        "margin": 0.988218150800094,
+        "probs": {
+          "A": 0.9917951226234436,
+          "B": 0.002169542945921421,
+          "C": 0.003576971823349595,
+          "D": 0.0024584142956882715
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9979248046875,
+        "min_fill_confidence": 0.9765625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.129018783569336,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "1085",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 128
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.99982088804245,
+        "margin": 0.9997119987747283,
+        "probs": {
+          "A": 0.99982088804245,
+          "B": 2.7531517844181508e-05,
+          "C": 0.00010888926772167906,
+          "D": 4.264164454070851e-05
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.996337890625,
+        "min_fill_confidence": 0.9296875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.13517165184021,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "733",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 85
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.7555270791053772,
+        "margin": 0.5390649437904358,
+        "probs": {
+          "A": 0.024286378175020218,
+          "B": 0.0037244365084916353,
+          "C": 0.7555270791053772,
+          "D": 0.2164621353149414
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9930419921875,
+        "min_fill_confidence": 0.8515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1347203254699707,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "266",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 79
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.8250885605812073,
+        "margin": 0.6724625080823898,
+        "probs": {
+          "A": 0.8250885605812073,
+          "B": 0.15262605249881744,
+          "C": 0.014196433126926422,
+          "D": 0.008088883943855762
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.996337890625,
+        "min_fill_confidence": 0.9453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1355581283569336,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "393",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 99
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.8997940421104431,
+        "margin": 0.8161001652479172,
+        "probs": {
+          "A": 0.08369387686252594,
+          "B": 0.8997940421104431,
+          "C": 0.0036772526800632477,
+          "D": 0.012834872119128704
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9935302734375,
+        "min_fill_confidence": 0.91796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1426434516906738,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "547",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 63
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9984097480773926,
+        "margin": 0.9970850775716826,
+        "probs": {
+          "A": 0.0013246705057099462,
+          "B": 0.00019083687220700085,
+          "C": 0.9984097480773926,
+          "D": 7.473280129488558e-05
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9979248046875,
+        "min_fill_confidence": 0.953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.142291784286499,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "910",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 57
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9992493987083435,
+        "margin": 0.9987912198121194,
+        "probs": {
+          "A": 0.0004581788962241262,
+          "B": 6.200776988407597e-05,
+          "C": 0.00023038680956233293,
+          "D": 0.9992493987083435
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.998046875,
+        "min_fill_confidence": 0.94921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1398630142211914,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "28",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 107
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.8623579144477844,
+        "margin": 0.7301110476255417,
+        "probs": {
+          "A": 0.001144159585237503,
+          "B": 0.0042510684579610825,
+          "C": 0.8623579144477844,
+          "D": 0.13224686682224274
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.990478515625,
+        "min_fill_confidence": 0.765625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1345961093902588,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "452",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 75
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9594409465789795,
+        "margin": 0.9354218114167452,
+        "probs": {
+          "A": 0.012856516055762768,
+          "B": 0.9594409465789795,
+          "C": 0.024019135162234306,
+          "D": 0.003683453658595681
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.99609375,
+        "min_fill_confidence": 0.90625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1388261318206787,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "931",
+      "gold": "B",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 77
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.8519747257232666,
+        "margin": 0.721320167183876,
+        "probs": {
+          "A": 0.01465903501957655,
+          "B": 0.13065455853939056,
+          "C": 0.8519747257232666,
+          "D": 0.002711649052798748
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9962158203125,
+        "min_fill_confidence": 0.94140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1392927169799805,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "50",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 132
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9962838292121887,
+        "margin": 0.9933049944229424,
+        "probs": {
+          "A": 0.0003342159907333553,
+          "B": 0.00040314142825081944,
+          "C": 0.0029788347892463207,
+          "D": 0.9962838292121887
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9979248046875,
+        "min_fill_confidence": 0.95703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1336064338684082,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "216",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 78
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9993784427642822,
+        "margin": 0.9988591910223477,
+        "probs": {
+          "A": 7.480531348846853e-05,
+          "B": 2.751933607214596e-05,
+          "C": 0.0005192517419345677,
+          "D": 0.9993784427642822
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9970703125,
+        "min_fill_confidence": 0.91796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.139352798461914,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "175",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 133
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.37117820978164673,
+        "margin": 0.043614596128463745,
+        "probs": {
+          "A": 0.16470932960510254,
+          "B": 0.327563613653183,
+          "C": 0.13654884696006775,
+          "D": 0.37117820978164673
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.985595703125,
+        "min_fill_confidence": 0.63671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1361279487609863,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "1020",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 104
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9505196809768677,
+        "margin": 0.9031960926949978,
+        "probs": {
+          "A": 0.0008142472943291068,
+          "B": 0.0013424669159576297,
+          "C": 0.9505196809768677,
+          "D": 0.04732358828186989
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.996337890625,
+        "min_fill_confidence": 0.98046875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1320507526397705,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "862",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 124
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9991018772125244,
+        "margin": 0.9985136507893912,
+        "probs": {
+          "A": 0.0005882264231331646,
+          "B": 7.960778748383746e-05,
+          "C": 0.000230352787184529,
+          "D": 0.9991018772125244
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.998291015625,
+        "min_fill_confidence": 0.95703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1322851181030273,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "40",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 88
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9932097792625427,
+        "margin": 0.9891507579013705,
+        "probs": {
+          "A": 0.0014932304620742798,
+          "B": 0.0012379316613078117,
+          "C": 0.9932097792625427,
+          "D": 0.004059021361172199
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9979248046875,
+        "min_fill_confidence": 0.95703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.135361671447754,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "1049",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 87
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.5955535173416138,
+        "margin": 0.23433205485343933,
+        "probs": {
+          "A": 0.36122146248817444,
+          "B": 0.5955535173416138,
+          "C": 0.038072459399700165,
+          "D": 0.005152547266334295
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9888916015625,
+        "min_fill_confidence": 0.7265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1377089023590088,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "883",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 95
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.5477873086929321,
+        "margin": 0.14701756834983826,
+        "probs": {
+          "A": 0.006477839779108763,
+          "B": 0.044965121895074844,
+          "C": 0.5477873086929321,
+          "D": 0.40076974034309387
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9871826171875,
+        "min_fill_confidence": 0.70703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.258592128753662,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "735",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 87
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.758898913860321,
+        "margin": 0.5546440482139587,
+        "probs": {
+          "A": 0.017847592011094093,
+          "B": 0.758898913860321,
+          "C": 0.018998662009835243,
+          "D": 0.2042548656463623
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.995361328125,
+        "min_fill_confidence": 0.9140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.2605583667755127,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "117",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 84
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.999481737613678,
+        "margin": 0.9992206144961528,
+        "probs": {
+          "A": 0.0002611231175251305,
+          "B": 6.602227222174406e-05,
+          "C": 0.999481737613678,
+          "D": 0.00019104176317341626
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9989013671875,
+        "min_fill_confidence": 0.97265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1348586082458496,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "421",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 126
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9996178150177002,
+        "margin": 0.9994491982797626,
+        "probs": {
+          "A": 0.0001233626389876008,
+          "B": 9.025404142448679e-05,
+          "C": 0.9996178150177002,
+          "D": 0.00016861673793755472
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.99853515625,
+        "min_fill_confidence": 0.9765625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1337039470672607,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "72",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 113
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.956962525844574,
+        "margin": 0.9280647616833448,
+        "probs": {
+          "A": 0.01204637996852398,
+          "B": 0.956962525844574,
+          "C": 0.028897764161229134,
+          "D": 0.0020933470223098993
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.996337890625,
+        "min_fill_confidence": 0.9296875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1347103118896484,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "755",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 109
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.8462017774581909,
+        "margin": 0.6991539746522903,
+        "probs": {
+          "A": 0.006069387774914503,
+          "B": 0.0006809664773754776,
+          "C": 0.14704780280590057,
+          "D": 0.8462017774581909
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98046875,
+        "min_fill_confidence": 0.5546875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1291873455047607,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "352",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 79
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9918395280838013,
+        "margin": 0.988682720111683,
+        "probs": {
+          "A": 0.0031568079721182585,
+          "B": 0.002965546678751707,
+          "C": 0.0020381882786750793,
+          "D": 0.9918395280838013
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9976806640625,
+        "min_fill_confidence": 0.953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1359810829162598,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "442",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 95
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.8847311735153198,
+        "margin": 0.816508024930954,
+        "probs": {
+          "A": 0.8847311735153198,
+          "B": 0.0029975157231092453,
+          "C": 0.06822314858436584,
+          "D": 0.04404817149043083
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9970703125,
+        "min_fill_confidence": 0.95703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1349387168884277,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "742",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 96
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.7199215292930603,
+        "margin": 0.6023975685238838,
+        "probs": {
+          "A": 0.052150946110486984,
+          "B": 0.11752396076917648,
+          "C": 0.11040355265140533,
+          "D": 0.7199215292930603
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.983642578125,
+        "min_fill_confidence": 0.51953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1389715671539307,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "1158",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9994837045669556,
+        "margin": 0.9991878126456868,
+        "probs": {
+          "A": 0.9994837045669556,
+          "B": 6.202230724738911e-05,
+          "C": 0.00029589192126877606,
+          "D": 0.00015837950923014432
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9954833984375,
+        "min_fill_confidence": 0.890625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.137174129486084,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "1171",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 90
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.6746212840080261,
+        "margin": 0.4104357957839966,
+        "probs": {
+          "A": 0.26418548822402954,
+          "B": 0.6746212840080261,
+          "C": 0.03155246004462242,
+          "D": 0.029640790075063705
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97979736328125,
+        "min_fill_confidence": 0.482421875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1347813606262207,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "576",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 81
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9694550037384033,
+        "margin": 0.9516988154500723,
+        "probs": {
+          "A": 0.9694550037384033,
+          "B": 0.0032845644745975733,
+          "C": 0.017756188288331032,
+          "D": 0.009504202753305435
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.997802734375,
+        "min_fill_confidence": 0.9375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1331274509429932,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "643",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 78
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9911822080612183,
+        "margin": 0.9852884234860539,
+        "probs": {
+          "A": 0.005893784575164318,
+          "B": 0.9911822080612183,
+          "C": 0.001688597840256989,
+          "D": 0.0012354045175015926
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.997314453125,
+        "min_fill_confidence": 0.92578125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.13663649559021,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "970",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 84
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9880849719047546,
+        "margin": 0.977773379534483,
+        "probs": {
+          "A": 0.9880849719047546,
+          "B": 0.00029251736123114824,
+          "C": 0.001310971798375249,
+          "D": 0.010311592370271683
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.998291015625,
+        "min_fill_confidence": 0.98046875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1358835697174072,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "363",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 76
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9553265571594238,
+        "margin": 0.9158955179154873,
+        "probs": {
+          "A": 0.9553265571594238,
+          "B": 0.0008183650788851082,
+          "C": 0.0044240402057766914,
+          "D": 0.03943103924393654
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9945068359375,
+        "min_fill_confidence": 0.87890625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1369221210479736,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "989",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 86
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.496734082698822,
+        "margin": 0.10987716913223267,
+        "probs": {
+          "A": 0.06722564995288849,
+          "B": 0.496734082698822,
+          "C": 0.04918333888053894,
+          "D": 0.38685691356658936
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98150634765625,
+        "min_fill_confidence": 0.486328125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1342558860778809,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "916",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 98
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9840314388275146,
+        "margin": 0.9755178987979889,
+        "probs": {
+          "A": 0.008513540029525757,
+          "B": 0.9840314388275146,
+          "C": 0.005163723137229681,
+          "D": 0.0022913881111890078
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9991455078125,
+        "min_fill_confidence": 0.98046875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1374177932739258,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "335",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 102
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9952579140663147,
+        "margin": 0.9920902261510491,
+        "probs": {
+          "A": 0.00316768791526556,
+          "B": 0.0003338718379382044,
+          "C": 0.0012404844164848328,
+          "D": 0.9952579140663147
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9930419921875,
+        "min_fill_confidence": 0.89453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1309447288513184,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "372",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 116
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.8207130432128906,
+        "margin": 0.7533448189496994,
+        "probs": {
+          "A": 0.05246642604470253,
+          "B": 0.8207130432128906,
+          "C": 0.06736822426319122,
+          "D": 0.059452254325151443
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.998046875,
+        "min_fill_confidence": 0.96875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1329376697540283,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "365",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 88
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9854769110679626,
+        "margin": 0.9730715872719884,
+        "probs": {
+          "A": 0.012405323795974255,
+          "B": 0.9854769110679626,
+          "C": 0.0017871562158688903,
+          "D": 0.00033059067209251225
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.997802734375,
+        "min_fill_confidence": 0.9453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1337459087371826,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "1092",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 145
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.8577595353126526,
+        "margin": 0.7615215852856636,
+        "probs": {
+          "A": 0.09623795002698898,
+          "B": 0.8577595353126526,
+          "C": 0.031243890523910522,
+          "D": 0.01475856825709343
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.995849609375,
+        "min_fill_confidence": 0.9375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1333374977111816,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "662",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 91
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9994514584541321,
+        "margin": 0.9991364933375735,
+        "probs": {
+          "A": 0.0003149651165585965,
+          "B": 0.00010225419828202575,
+          "C": 0.9994514584541321,
+          "D": 0.0001312969980062917
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9990234375,
+        "min_fill_confidence": 0.98046875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.133502721786499,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "1065",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 154
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.551616370677948,
+        "margin": 0.2742462456226349,
+        "probs": {
+          "A": 0.15804074704647064,
+          "B": 0.2773701250553131,
+          "C": 0.551616370677948,
+          "D": 0.012972773984074593
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98052978515625,
+        "min_fill_confidence": 0.451171875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.132176160812378,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "400",
+      "gold": "C",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C"
+        ],
+        "n_labels": 3,
+        "prompt_tokens": 61
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7213991284370422,
+        "margin": 0.45601120591163635,
+        "probs": {
+          "A": 0.01321288663893938,
+          "B": 0.7213991284370422,
+          "C": 0.2653879225254059
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9842529296875,
+        "min_fill_confidence": 0.64453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1364433765411377,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "234",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 83
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.5930446982383728,
+        "margin": 0.3458268791437149,
+        "probs": {
+          "A": 0.042960017919540405,
+          "B": 0.11677742004394531,
+          "C": 0.5930446982383728,
+          "D": 0.2472178190946579
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9857177734375,
+        "min_fill_confidence": 0.73046875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.134864330291748,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "168",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 77
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9988251328468323,
+        "margin": 0.998070044326596,
+        "probs": {
+          "A": 0.9988251328468323,
+          "B": 8.47185801831074e-05,
+          "C": 0.00033506850013509393,
+          "D": 0.0007550885202363133
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.99560546875,
+        "min_fill_confidence": 0.953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1375019550323486,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "201",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 93
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9997560381889343,
+        "margin": 0.9996537528277258,
+        "probs": {
+          "A": 0.0001022853612084873,
+          "B": 5.1432311011012644e-05,
+          "C": 0.9997560381889343,
+          "D": 9.026651969179511e-05
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.998779296875,
+        "min_fill_confidence": 0.98046875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1350092887878418,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "arc_challenge",
+      "id": "872",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 107
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9994224309921265,
+        "margin": 0.9991265572316479,
+        "probs": {
+          "A": 0.00015836978855077177,
+          "B": 0.0001233385264640674,
+          "C": 0.9994224309921265,
+          "D": 0.00029587376047857106
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.99853515625,
+        "min_fill_confidence": 0.9765625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 1.1306657791137695,
+      "forward_calls": 33,
+      "meta": {}
+    }
+  ],
+  "source_file": "results/domain_shift/task_aware/solid_v2/a100_final/raw/llada8b_refinement_controller_limit50_seed23.json"
+}

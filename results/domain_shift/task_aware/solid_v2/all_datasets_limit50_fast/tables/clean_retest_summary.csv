@@ -1,0 +1,45 @@
+method,task,n,accuracy,wilson_lo,wilson_hi,avg_forward_calls,route_rates,stop_rates,final_budget_rates
+llada8b_fixed32_arc_challenge_limit50_seed23,arc_challenge,50,0.86,0.738135428014719,0.9304925473797714,32.0,{},{},{}
+llada8b_jys_middle16_arc_challenge_limit50_seed23,arc_challenge,50,0.86,0.738135428014719,0.9304925473797714,16.0,{},{},{}
+llada8b_prophet_arc_challenge_limit50_seed23,arc_challenge,50,0.86,0.738135428014719,0.9304925473797714,32.0,{},"{""max_steps"": 0.86, ""stable_label"": 0.14}",{}
+llada8b_refinement_arc_challenge_limit50_seed23,arc_challenge,50,0.86,0.738135428014719,0.9304925473797714,33.0,"{""32"": 1.0}",{},"{""32"": 1.0}"
+llada8b_fixed32_boolq_limit50_seed23,boolq,50,0.86,0.738135428014719,0.9304925473797714,32.0,{},{},{}
+llada8b_jys_middle16_boolq_limit50_seed23,boolq,50,0.86,0.738135428014719,0.9304925473797714,16.0,{},{},{}
+llada8b_prophet_boolq_limit50_seed23,boolq,50,0.86,0.738135428014719,0.9304925473797714,32.0,{},"{""max_steps"": 1.0}",{}
+llada8b_refinement_boolq_limit50_seed23,boolq,50,0.84,0.7148551903823401,0.9166267863791231,11.08,"{""32"": 0.02, ""8"": 0.84, ""8->16"": 0.08, ""8->24"": 0.06}",{},"{""16"": 0.08, ""24"": 0.06, ""32"": 0.02, ""8"": 0.84}"
+llada8b_fixed32_ceval_computer_network_limit50_seed23,ceval_computer_network,50,0.56,0.4230578680014353,0.6883801278976466,32.0,{},{},{}
+llada8b_jys_middle16_ceval_computer_network_limit50_seed23,ceval_computer_network,50,0.56,0.4230578680014353,0.6883801278976466,16.0,{},{},{}
+llada8b_prophet_ceval_computer_network_limit50_seed23,ceval_computer_network,50,0.56,0.4230578680014353,0.6883801278976466,32.0,{},"{""max_steps"": 0.94, ""stable_label"": 0.06}",{}
+llada8b_refinement_ceval_computer_network_limit50_seed23,ceval_computer_network,50,0.56,0.4230578680014353,0.6883801278976466,33.0,"{""32"": 1.0}",{},"{""32"": 1.0}"
+llada8b_fixed32_commonsenseqa_limit50_seed23,commonsenseqa,50,0.8,0.6696262789551477,0.8875637005402612,32.0,{},{},{}
+llada8b_jys_middle16_commonsenseqa_limit50_seed23,commonsenseqa,50,0.8,0.6696262789551477,0.8875637005402612,16.0,{},{},{}
+llada8b_prophet_commonsenseqa_limit50_seed23,commonsenseqa,50,0.8,0.6696262789551477,0.8875637005402612,32.0,{},"{""max_steps"": 0.82, ""stable_label"": 0.18}",{}
+llada8b_refinement_commonsenseqa_limit50_seed23,commonsenseqa,50,0.8,0.6696262789551477,0.8875637005402612,10.04,"{""32"": 0.02, ""8"": 0.78, ""8->16"": 0.18, ""8->24"": 0.02}",{},"{""16"": 0.18, ""24"": 0.02, ""32"": 0.02, ""8"": 0.78}"
+llada8b_fixed32_drop_span_limit50_seed23,drop_span,50,0.0,0.0,0.07135003417431873,32.0,{},{},{}
+llada8b_jys_middle16_drop_span_limit50_seed23,drop_span,50,0.0,0.0,0.07135003417431873,16.0,{},{},{}
+llada8b_prophet_drop_span_limit50_seed23,drop_span,50,0.0,0.0,0.07135003417431873,31.44,{},"{""max_steps"": 0.96, ""stable_label"": 0.04}",{}
+llada8b_refinement_drop_span_limit50_seed23,drop_span,50,0.0,0.0,0.07135003417431873,32.0,"{""32"": 1.0}",{},"{""32"": 1.0}"
+llada8b_fixed32_gsm8k_limit50_seed23,gsm8k,50,0.78,0.6475818431054045,0.8724621377569771,32.0,{},{},{}
+llada8b_jys_middle16_gsm8k_limit50_seed23,gsm8k,50,0.64,0.5014076201030195,0.7586143703281711,16.0,{},{},{}
+llada8b_prophet_gsm8k_limit50_seed23,gsm8k,50,0.64,0.5014076201030195,0.7586143703281711,15.84,{},"{""max_steps"": 0.14, ""stable_label"": 0.86}",{}
+llada8b_refinement_gsm8k_limit50_seed23,gsm8k,50,0.78,0.6475818431054045,0.8724621377569771,32.0,"{""32"": 1.0}",{},"{""32"": 1.0}"
+llada8b_fixed32_hellaswag_limit50_seed23,hellaswag,50,0.74,0.6044657801100008,0.8412862034863262,32.0,{},{},{}
+llada8b_jys_middle16_hellaswag_limit50_seed23,hellaswag,50,0.74,0.6044657801100008,0.8412862034863262,16.0,{},{},{}
+llada8b_prophet_hellaswag_limit50_seed23,hellaswag,50,0.74,0.6044657801100008,0.8412862034863262,32.0,{},"{""max_steps"": 0.74, ""stable_label"": 0.26}",{}
+llada8b_refinement_hellaswag_limit50_seed23,hellaswag,50,0.74,0.6044657801100008,0.8412862034863262,33.0,"{""32"": 1.0}",{},"{""32"": 1.0}"
+llada8b_fixed32_mmlu_pro_limit50_seed23,mmlu_pro,50,0.4,0.2760818978624575,0.5381881089724063,32.0,{},{},{}
+llada8b_jys_middle16_mmlu_pro_limit50_seed23,mmlu_pro,50,0.4,0.2760818978624575,0.5381881089724063,16.0,{},{},{}
+llada8b_prophet_mmlu_pro_limit50_seed23,mmlu_pro,50,0.4,0.2760818978624575,0.5381881089724063,31.6,{},"{""max_steps"": 0.98, ""stable_label"": 0.02}",{}
+llada8b_refinement_mmlu_pro_limit50_seed23,mmlu_pro,50,0.4,0.2760818978624575,0.5381881089724063,32.64,"{""32"": 0.98, ""8->16"": 0.02}",{},"{""16"": 0.02, ""32"": 0.98}"
+llada8b_fixed32_pubmedqa_limit50_seed23,pubmedqa,50,0.62,0.4815019502239357,0.7413740415742278,32.0,{},{},{}
+llada8b_jys_middle16_pubmedqa_limit50_seed23,pubmedqa,50,0.62,0.4815019502239357,0.7413740415742278,16.0,{},{},{}
+llada8b_prophet_pubmedqa_limit50_seed23,pubmedqa,50,0.64,0.5014076201030195,0.7586143703281711,32.0,{},"{""max_steps"": 1.0}",{}
+llada8b_refinement_pubmedqa_limit50_seed23,pubmedqa,50,0.64,0.5014076201030195,0.7586143703281711,33.0,"{""32"": 1.0}",{},"{""32"": 1.0}"
+llada8b_fixed32_sciq_limit50_seed23,sciq,50,0.86,0.738135428014719,0.9304925473797714,32.0,{},{},{}
+llada8b_jys_middle16_sciq_limit50_seed23,sciq,50,0.86,0.738135428014719,0.9304925473797714,16.0,{},{},{}
+llada8b_prophet_sciq_limit50_seed23,sciq,50,0.86,0.738135428014719,0.9304925473797714,32.0,{},"{""max_steps"": 0.8, ""stable_label"": 0.2}",{}
+llada8b_refinement_sciq_limit50_seed23,sciq,50,0.86,0.738135428014719,0.9304925473797714,33.0,"{""32"": 1.0}",{},"{""32"": 1.0}"
+llada8b_fixed32_winogrande_limit50_seed23,winogrande,50,0.76,0.6258705062480763,0.8570274759812779,32.0,{},{},{}
+llada8b_jys_middle16_winogrande_limit50_seed23,winogrande,50,0.74,0.6044657801100008,0.8412862034863262,16.0,{},{},{}
+llada8b_prophet_winogrande_limit50_seed23,winogrande,50,0.76,0.6258705062480763,0.8570274759812779,32.0,{},"{""max_steps"": 0.94, ""stable_label"": 0.06}",{}
+llada8b_refinement_winogrande_limit50_seed23,winogrande,50,0.76,0.6258705062480763,0.8570274759812779,13.32,"{""32"": 0.04, ""8"": 0.62, ""8->16"": 0.26, ""8->24"": 0.08}",{},"{""16"": 0.26, ""24"": 0.08, ""32"": 0.04, ""8"": 0.62}"

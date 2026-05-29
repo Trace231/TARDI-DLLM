@@ -1,0 +1,3074 @@
+{
+  "method": "prophet_style_early_commit",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "drop_span",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/all_datasets_limit50_fast/raw/llada8b_prophet_drop_span_limit50_seed23.json",
+    "max_steps": 32,
+    "min_steps": 8,
+    "check_interval": 4,
+    "patience": 2,
+    "gen_length": 96,
+    "block_length": 96,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "schedule": "uniform",
+    "stop_on_invalid": false
+  },
+  "summary": {
+    "drop_span": {
+      "accuracy": 0.0,
+      "n": 50,
+      "seconds": 234.38795733451843,
+      "avg_forward_calls": 31.44,
+      "stop_rates": {
+        "max_steps": 0.96,
+        "stable_label": 0.04
+      },
+      "peak_mem_gb": 15.247690200805664
+    }
+  },
+  "rows": [
+    {
+      "task": "drop_span",
+      "id": "b850b3c4-671c-4944-b8df-39dcdc624be1",
+      "gold": [
+        "Peyton Manning",
+        "Rivers",
+        "Rivers",
+        "Peyton Manning"
+      ],
+      "pred": "Final answer: Rivers",
+      "correct": false,
+      "output": "Final answer: Rivers",
+      "metric": "span_contains",
+      "seconds": 7.240395784378052,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: Rivers",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "3119334a-b767-4071-b25c-7cd7006eafd2",
+      "gold": [
+        "200 horse and 1,000 foot soldiers",
+        "3300",
+        "1200"
+      ],
+      "pred": "Final answer: 200 horse and 1,000 foot soldiers",
+      "correct": false,
+      "output": "Final answer: 200 horse and 1,000 foot soldiers",
+      "metric": "span_contains",
+      "seconds": 6.8256754875183105,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "Final answer: 200",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 200 horse and 1,000 foot soldiers",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "775c49ab-37b3-49a4-b26b-652142f4a615",
+      "gold": [
+        "2",
+        "3"
+      ],
+      "pred": "Final answer: 2",
+      "correct": false,
+      "output": "Final answer: 2",
+      "metric": "span_contains",
+      "seconds": 8.104872703552246,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 2",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "b1135420-64b6-4aee-8b7f-fe16ced46567",
+      "gold": [
+        "9",
+        "90"
+      ],
+      "pred": "Final answer: 90",
+      "correct": false,
+      "output": "Final answer: 90",
+      "metric": "span_contains",
+      "seconds": 8.51052451133728,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 90",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "8647c387-9782-4ca0-b91a-0a26f4528a28",
+      "gold": [
+        "10",
+        "7"
+      ],
+      "pred": "Final answer: 1",
+      "correct": false,
+      "output": "Final answer: 1",
+      "metric": "span_contains",
+      "seconds": 6.903055191040039,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 1",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "d87fa251-9dc4-46d7-b994-93b774659477",
+      "gold": [
+        "Indonesia",
+        "Indonesia"
+      ],
+      "pred": "Final answer: Indonesia",
+      "correct": false,
+      "output": "Final answer: Indonesia",
+      "metric": "span_contains",
+      "seconds": 6.878397703170776,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: Indonesia",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "25c8ffbf-0519-4bdf-a4b3-cbab57608e2e",
+      "gold": [
+        "19",
+        "19"
+      ],
+      "pred": "Final answer: 19",
+      "correct": false,
+      "output": "Final answer: 19",
+      "metric": "span_contains",
+      "seconds": 6.995256185531616,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 19",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "dfb70b82-048c-421c-9b1c-c3e2cfad5eb4",
+      "gold": [
+        "10",
+        "2"
+      ],
+      "pred": "Final answer: 10",
+      "correct": false,
+      "output": "Final answer: 10",
+      "metric": "span_contains",
+      "seconds": 6.830920696258545,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 10",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "706376ab-ebc2-498c-95d6-5b1929adb779",
+      "gold": [
+        "89.5",
+        "89.5"
+      ],
+      "pred": "Final answer: 89.5%",
+      "correct": false,
+      "output": "Final answer: 89.5%",
+      "metric": "span_contains",
+      "seconds": 5.678987503051758,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 89.5%",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "c4039f6f-71b5-4f61-80eb-7f7ccbae4cb7",
+      "gold": [
+        "24",
+        "24",
+        "24"
+      ],
+      "pred": "Final answer: 24",
+      "correct": false,
+      "output": "Final answer: 24",
+      "metric": "span_contains",
+      "seconds": 8.211863279342651,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 24",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "b52da368-96fa-47f7-88db-afc88162027c",
+      "gold": [
+        "2",
+        "2"
+      ],
+      "pred": "Final answer: 2",
+      "correct": false,
+      "output": "Final answer: 2",
+      "metric": "span_contains",
+      "seconds": 8.473193883895874,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 2",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "cd2dc672-54c8-4135-a658-a33a73cc5b8a",
+      "gold": [
+        "36",
+        "36"
+      ],
+      "pred": "Final answer: 36",
+      "correct": false,
+      "output": "Final answer: 36",
+      "metric": "span_contains",
+      "seconds": 8.46368145942688,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 36",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "15dce16f-9aac-4c3f-b620-ae51c5867c25",
+      "gold": [
+        "7",
+        "75",
+        "73"
+      ],
+      "pred": "Final answer: 73",
+      "correct": false,
+      "output": "Final answer: 73",
+      "metric": "span_contains",
+      "seconds": 5.818047761917114,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 73",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "d3bc4a55-84c8-4379-a2df-610e30794d1a",
+      "gold": [
+        "18",
+        "18"
+      ],
+      "pred": "Final answer: 18",
+      "correct": false,
+      "output": "Final answer: 18",
+      "metric": "span_contains",
+      "seconds": 8.500188112258911,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 18",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "db36038b-1a43-4fa9-9542-993be002f6f1",
+      "gold": [
+        "74.84",
+        "74.84"
+      ],
+      "pred": "Final answer: 74.84%",
+      "correct": false,
+      "output": "Final answer: 74.84%",
+      "metric": "span_contains",
+      "seconds": 6.744871139526367,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 74.84%",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "067516a2-0cac-499b-9c4b-e242105d5dd1",
+      "gold": [
+        "A.J. Green"
+      ],
+      "pred": "Final answer: A.J. Green",
+      "correct": false,
+      "output": "Final answer: A.J. Green",
+      "metric": "span_contains",
+      "seconds": 6.725687503814697,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: A.J. Green",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "9f9a1562-264f-4ccd-95e8-f70d169d0beb",
+      "gold": [
+        "3",
+        "3"
+      ],
+      "pred": "Final answer: 3",
+      "correct": false,
+      "output": "Final answer: 3",
+      "metric": "span_contains",
+      "seconds": 6.655047655105591,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 3",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "c1abc27a-fa51-4758-9d45-25e8861b8544",
+      "gold": [
+        "82.8",
+        "116.7"
+      ],
+      "pred": "Final answer: 82.8%",
+      "correct": false,
+      "output": "Final answer: 82.8%",
+      "metric": "span_contains",
+      "seconds": 6.984259605407715,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 82.8%",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "0279c8c8-6cc8-4dc8-b7df-527fca017649",
+      "gold": [
+        "35.74",
+        "35.74"
+      ],
+      "pred": "Final answer: 35.74%",
+      "correct": false,
+      "output": "Final answer: 35.74%",
+      "metric": "span_contains",
+      "seconds": 4.891203880310059,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 35.74%",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "7f18bf62-abf6-46fa-8a8c-a2f19a59d1e0",
+      "gold": [
+        "20",
+        "20"
+      ],
+      "pred": "Final answer: 20",
+      "correct": false,
+      "output": "Final answer: 20",
+      "metric": "span_contains",
+      "seconds": 5.015260934829712,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 20",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "28553293-d719-441b-8f00-ce3dc6df5398",
+      "gold": [
+        "Derrick Mason",
+        "Derrick Mason",
+        "Derrick Mason"
+      ],
+      "pred": "Final answer: Derrick Mason",
+      "correct": false,
+      "output": "Final answer: Derrick Mason",
+      "metric": "span_contains",
+      "seconds": 4.202017068862915,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: Derrick Mason",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "63c0b9f0-19f7-411b-9c3c-0e9c51012246",
+      "gold": [
+        "people",
+        "housing units",
+        "people",
+        "housing units"
+      ],
+      "pred": "Final answer: ...",
+      "correct": false,
+      "output": "Final answer: ...",
+      "metric": "span_contains",
+      "seconds": 4.964724063873291,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "Final",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: ...",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "dd5eb12c-84e9-441e-aac5-9567d459c040",
+      "gold": [
+        "Brees",
+        "Brees"
+      ],
+      "pred": "Final answer: Drew Brees",
+      "correct": false,
+      "output": "Final answer: Drew Brees",
+      "metric": "span_contains",
+      "seconds": 6.224169731140137,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: Drew Brees",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "d817453d-6145-42cb-bb39-0c7bf1dcebaa",
+      "gold": [
+        "75.65",
+        "75.65"
+      ],
+      "pred": "Final answer: 75.65%",
+      "correct": false,
+      "output": "Final answer: 75.65%",
+      "metric": "span_contains",
+      "seconds": 4.166898012161255,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 75.65%",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "d54c0048-631a-4958-b39b-6da9c1b1cb0b",
+      "gold": [
+        "20,000 repatriation to the abbey",
+        "repatriation to the abbey",
+        "20,000 repatriation",
+        "repatriation to the abbey"
+      ],
+      "pred": "Final answer:",
+      "correct": false,
+      "output": "Final answer:",
+      "metric": "span_contains",
+      "seconds": 1.8455719947814941,
+      "forward_calls": 12,
+      "committed_step": 12,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "Final answer:",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "Final answer:",
+          "valid": true,
+          "filled_ratio": 0.375
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "761fe680-9e36-4b78-968e-e89e5fe779dc",
+      "gold": [
+        "Siam",
+        "Kengtung"
+      ],
+      "pred": "In Siam",
+      "correct": false,
+      "output": "In Siam",
+      "metric": "span_contains",
+      "seconds": 6.147494792938232,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "In Siam",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "57aca09c-e162-4c47-a311-d1f22a736216",
+      "gold": [
+        "17",
+        "17",
+        "17",
+        "17",
+        "17",
+        "17",
+        "17",
+        "17",
+        "20"
+      ],
+      "pred": "Final answer: 17",
+      "correct": false,
+      "output": "Final answer: 17",
+      "metric": "span_contains",
+      "seconds": 6.277740001678467,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 17",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "c91c3b0f-c77c-41f9-bd9a-d5cc0e897783",
+      "gold": [
+        "96.0",
+        "96.2",
+        "3.8",
+        "96.2",
+        "96.2"
+      ],
+      "pred": "Final answer: 96.2",
+      "correct": false,
+      "output": "Final answer: 96.2",
+      "metric": "span_contains",
+      "seconds": 4.228889226913452,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 96.2",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "85517b0e-22c7-4711-b5fc-877b5c94a670",
+      "gold": [
+        "Japanese began sending troops"
+      ],
+      "pred": "Final answer: overnight",
+      "correct": false,
+      "output": "Final answer: overnight",
+      "metric": "span_contains",
+      "seconds": 6.153538942337036,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "answer",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: overnight",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "be649d2b-99a6-42e1-8bfa-2bea5354f22f",
+      "gold": [
+        "T. J. Houshmandzadeh",
+        "T. J. Houshmandzadeh",
+        "T. J. Houshmandzadeh"
+      ],
+      "pred": "T. J Houshmandzadeh",
+      "correct": false,
+      "output": "T. J Houshmandzadeh",
+      "metric": "span_contains",
+      "seconds": 4.947051525115967,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "T. J Houshmandzadeh",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "8b2b0e03-ae5a-4a55-adf8-5445ed05d105",
+      "gold": [
+        "41",
+        "41",
+        "41",
+        "41",
+        "41"
+      ],
+      "pred": "Final answer: 41",
+      "correct": false,
+      "output": "Final answer: 41",
+      "metric": "span_contains",
+      "seconds": 6.435467958450317,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 41",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "ea1da574-7edf-49ff-af33-8231572dd341",
+      "gold": [
+        "2",
+        "2"
+      ],
+      "pred": "Final answer: 3",
+      "correct": false,
+      "output": "Final answer: 3",
+      "metric": "span_contains",
+      "seconds": 5.259218454360962,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 3",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "7f09cd77-75f4-4fce-8bdd-110721362765",
+      "gold": [
+        "0.5",
+        "0.5"
+      ],
+      "pred": "Final answer: 0.5",
+      "correct": false,
+      "output": "Final answer: 0.5",
+      "metric": "span_contains",
+      "seconds": 3.258037805557251,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 0.5",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "60294197-781f-4514-89db-655e423c8ae0",
+      "gold": [
+        "2007",
+        "2005"
+      ],
+      "pred": "Final answer: 2007",
+      "correct": false,
+      "output": "Final answer: 2007",
+      "metric": "span_contains",
+      "seconds": 3.3515899181365967,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 2007",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "990b1242-2437-490a-8e56-5996a2853a86",
+      "gold": [
+        "Australia",
+        "Africa",
+        "Australia",
+        "Africa"
+      ],
+      "pred": "Final answer: Africa and Africa",
+      "correct": false,
+      "output": "Final answer: Africa and Africa",
+      "metric": "span_contains",
+      "seconds": 2.5843541622161865,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: Africa and Africa",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "1259b53d-86f8-42da-860f-60006eb653ba",
+      "gold": [
+        "76.5",
+        "76.5"
+      ],
+      "pred": "Final answer: 76.50%",
+      "correct": false,
+      "output": "Final answer: 76.50%",
+      "metric": "span_contains",
+      "seconds": 1.2487614154815674,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 76.50%",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "52227811-99dd-4f38-8cc5-272e506c22c9",
+      "gold": [
+        "22.8",
+        "22.8"
+      ],
+      "pred": "Final answer: 22.8%",
+      "correct": false,
+      "output": "Final answer: 22.8%",
+      "metric": "span_contains",
+      "seconds": 1.554023027420044,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 22.8%",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "e4fa103e-c498-41b1-bd11-544f3ca3a4a3",
+      "gold": [
+        "Americans ancestry",
+        "Americans ancestry"
+      ],
+      "pred": "Final answer: Americans American",
+      "correct": false,
+      "output": "Final answer: Americans American",
+      "metric": "span_contains",
+      "seconds": 1.5826258659362793,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: Americans American",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "10bb8622-8c5c-46e8-9267-3360f8dd65e4",
+      "gold": [
+        "3853",
+        "3853"
+      ],
+      "pred": "Final answer: 35",
+      "correct": false,
+      "output": "Final answer: 35",
+      "metric": "span_contains",
+      "seconds": 1.9055159091949463,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 35",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "23e5f993-8682-40dc-a61e-7d268890daa8",
+      "gold": [
+        "Protestant hostility to the Habsburgs",
+        "Protestant hostility to the Habsburgs"
+      ],
+      "pred": "The answer is the convergence of Protestant hostility to the Habsburgs. According to the passage, \"The time seemed oppor",
+      "correct": false,
+      "output": "The answer is the convergence of Protestant hostility to the Habsburgs. According to the passage, \"The time seemed opportune, with the apparent convergence of Protestant hostility to the Habsburgs, and explains French participation in the London talks with Mansfeld.\" This.\n\nFinal answer: convergence of Protestant hostility to the Habsburgs",
+      "metric": "span_contains",
+      "seconds": 1.2064287662506104,
+      "forward_calls": 24,
+      "committed_step": 24,
+      "stop_reason": "stable_label",
+      "history": [
+        {
+          "step": 8,
+          "pred": "The answer is the of togs\n\nFinal answer: convergence of Protestant hostility to the Habsburgs",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "The answer is the convergence of Protestant hostility to the Habsburgs. According to passage.\n\nFinal answer: convergence",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "The answer is the convergence of Protestant hostility to the Habsburgs. According to the passage, apparent convergence o",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "The answer is the convergence of Protestant hostility to the Habsburgs. According to the passage, \"The time seemed oppor",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "The answer is the convergence of Protestant hostility to the Habsburgs. According to the passage, \"The time seemed oppor",
+          "valid": true,
+          "filled_ratio": 0.75
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "9aab4aae-6a2c-4a68-ba5b-0e3a29ffdb9c",
+      "gold": [
+        "9.5",
+        "9.5"
+      ],
+      "pred": "Final answer: 9.5",
+      "correct": false,
+      "output": "Final answer: 9.5",
+      "metric": "span_contains",
+      "seconds": 1.2701308727264404,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 9.5",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "fabfaffa-53a2-44ce-8411-c6b14cfeab61",
+      "gold": [
+        "97.82",
+        "97.82"
+      ],
+      "pred": "Final answer: 97.82%",
+      "correct": false,
+      "output": "Final answer: 97.82%",
+      "metric": "span_contains",
+      "seconds": 1.5274136066436768,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 97.82%",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "2cb576cf-7a80-41b7-aeb2-a522a7019dbe",
+      "gold": [
+        "17",
+        "17",
+        "18"
+      ],
+      "pred": "Final answer: 7 months",
+      "correct": false,
+      "output": "Final answer: 7 months",
+      "metric": "span_contains",
+      "seconds": 1.8930482864379883,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 7 months",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "7e76faee-e2d6-4173-8afd-bd642fc5fe5a",
+      "gold": [
+        "92",
+        "90"
+      ],
+      "pred": "Final answer: 92",
+      "correct": false,
+      "output": "Final answer: 92",
+      "metric": "span_contains",
+      "seconds": 1.5601069927215576,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 92",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "6cbe18a5-09e1-4eed-a56a-9cab4b240bea",
+      "gold": [
+        "Khitans",
+        "Korea",
+        "Khitans",
+        "Korea"
+      ],
+      "pred": "Final answer: Khitans and Goryeo",
+      "correct": false,
+      "output": "Final answer: Khitans and Goryeo",
+      "metric": "span_contains",
+      "seconds": 1.5820097923278809,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: Khitans and Goryeo",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "c0c88600-4eeb-47f8-b2b5-7d88d2f203fc",
+      "gold": [
+        "7.66",
+        "7.66"
+      ],
+      "pred": "Final answer: 7.66",
+      "correct": false,
+      "output": "Final answer: 7.66",
+      "metric": "span_contains",
+      "seconds": 1.5399343967437744,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 7.66",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "7b83ff8b-36c8-4b85-80e0-40e3ad25d010",
+      "gold": [
+        "3400",
+        "3400"
+      ],
+      "pred": "Final answer: 3400",
+      "correct": false,
+      "output": "Final answer: 3400",
+      "metric": "span_contains",
+      "seconds": 1.954833984375,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 3400",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "6c75926c-e454-491f-9ff6-d336a1d41db2",
+      "gold": [
+        "19.1",
+        "19.1"
+      ],
+      "pred": "Final answer: 19.1%",
+      "correct": false,
+      "output": "Final answer: 19.1%",
+      "metric": "span_contains",
+      "seconds": 1.5707323551177979,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 19.1%",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "9ff05bae-c423-4406-b54c-903589221446",
+      "gold": [
+        "45",
+        "45",
+        "45"
+      ],
+      "pred": "Final answer: 45",
+      "correct": false,
+      "output": "Final answer: 45",
+      "metric": "span_contains",
+      "seconds": 1.5784242153167725,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: 45",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    },
+    {
+      "task": "drop_span",
+      "id": "3c2949c3-be3e-4706-a65e-f9079898bfe3",
+      "gold": [
+        "Princess Kiko",
+        "Princess Kiko",
+        "Princess Kiko"
+      ],
+      "pred": "Final answer: Princess Kiko",
+      "correct": false,
+      "output": "Final answer: Princess Kiko",
+      "metric": "span_contains",
+      "seconds": 1.9158132076263428,
+      "forward_calls": 32,
+      "committed_step": 32,
+      "stop_reason": "max_steps",
+      "history": [
+        {
+          "step": 8,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.25
+        },
+        {
+          "step": 12,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.375
+        },
+        {
+          "step": 16,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.5
+        },
+        {
+          "step": 20,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.625
+        },
+        {
+          "step": 24,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.75
+        },
+        {
+          "step": 28,
+          "pred": "",
+          "valid": true,
+          "filled_ratio": 0.875
+        },
+        {
+          "step": 32,
+          "pred": "Final answer: Princess Kiko",
+          "valid": true,
+          "filled_ratio": 1.0
+        }
+      ],
+      "meta": {}
+    }
+  ]
+}

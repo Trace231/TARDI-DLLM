@@ -1,0 +1,115 @@
+/miniconda3/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.5.0) or chardet (6.0.0.post1)/charset_normalizer (3.4.4) doesn't match a supported version!
+  warnings.warn(
+/data/venvs/llada/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  2.75it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:00<00:00,  2.77it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  2.70it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.83it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.79it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+{"task": "gsm8k", "id": "593", "gold": "3", "pred": "3", "correct": true}
+{"task": "gsm8k", "id": "171", "gold": "1210", "pred": "1210", "correct": true}
+{"task": "gsm8k", "id": "34", "gold": "23", "pred": "23", "correct": true}
+{"task": "gsm8k", "id": "1212", "gold": "150", "pred": "150", "correct": true}
+{"task": "gsm8k", "id": "628", "gold": "4", "pred": "4", "correct": true}
+{"task": "gsm8k", "id": "867", "gold": "7", "pred": "7", "correct": true}
+{"task": "gsm8k", "id": "776", "gold": "800", "pred": "800", "correct": true}
+{"task": "gsm8k", "id": "1085", "gold": "26", "pred": "26", "correct": true}
+{"task": "gsm8k", "id": "733", "gold": "5", "pred": "5", "correct": true}
+{"task": "gsm8k", "id": "266", "gold": "118000", "pred": "32000", "correct": false}
+{"task": "gsm8k", "id": "393", "gold": "20", "pred": "20", "correct": true}
+{"task": "gsm8k", "id": "547", "gold": "81", "pred": "81", "correct": true}
+{"task": "gsm8k", "id": "910", "gold": "700", "pred": "700", "correct": true}
+{"task": "gsm8k", "id": "28", "gold": "25", "pred": "25", "correct": true}
+{"task": "gsm8k", "id": "452", "gold": "50", "pred": "3", "correct": false}
+{"task": "gsm8k", "id": "1270", "gold": "3528", "pred": "352", "correct": false}
+{"task": "gsm8k", "id": "931", "gold": "50", "pred": "20", "correct": false}
+{"task": "gsm8k", "id": "50", "gold": "294", "pred": "294", "correct": true}
+{"task": "gsm8k", "id": "216", "gold": "220", "pred": "220", "correct": true}
+{"task": "gsm8k", "id": "175", "gold": "15", "pred": "5", "correct": false}
+{"task": "gsm8k", "id": "1020", "gold": "22", "pred": "22", "correct": true}
+{"task": "gsm8k", "id": "862", "gold": "40", "pred": "40", "correct": true}
+{"task": "gsm8k", "id": "40", "gold": "8", "pred": "8", "correct": true}
+{"task": "gsm8k", "id": "1049", "gold": "20", "pred": "20", "correct": true}
+{"task": "gsm8k", "id": "1285", "gold": "1218", "pred": "1218", "correct": true}
+{"task": "gsm8k", "id": "883", "gold": "25", "pred": "25", "correct": true}
+{"task": "gsm8k", "id": "735", "gold": "50", "pred": "50", "correct": true}
+{"task": "gsm8k", "id": "117", "gold": "360", "pred": "360", "correct": true}
+{"task": "gsm8k", "id": "421", "gold": "12", "pred": "12", "correct": true}
+{"task": "gsm8k", "id": "72", "gold": "221", "pred": "221", "correct": true}
+{"task": "gsm8k", "id": "1206", "gold": "40000", "pred": "40000", "correct": true}
+{"task": "gsm8k", "id": "755", "gold": "7", "pred": "7", "correct": true}
+{"task": "gsm8k", "id": "352", "gold": "21", "pred": "21", "correct": true}
+{"task": "gsm8k", "id": "1271", "gold": "43", "pred": "43", "correct": true}
+{"task": "gsm8k", "id": "442", "gold": "49", "pred": "49", "correct": true}
+{"task": "gsm8k", "id": "742", "gold": "24", "pred": "24", "correct": true}
+{"task": "gsm8k", "id": "1158", "gold": "7300", "pred": "4200", "correct": false}
+{"task": "gsm8k", "id": "1171", "gold": "3160", "pred": "960", "correct": false}
+{"task": "gsm8k", "id": "576", "gold": "11232", "pred": "52", "correct": false}
+{"task": "gsm8k", "id": "643", "gold": "840", "pred": "840", "correct": true}
+{"task": "gsm8k", "id": "1173", "gold": "10", "pred": "0.10", "correct": false}
+{"task": "gsm8k", "id": "970", "gold": "33", "pred": "33", "correct": true}
+{"task": "gsm8k", "id": "363", "gold": "6", "pred": "6", "correct": true}
+{"task": "gsm8k", "id": "989", "gold": "45", "pred": "90", "correct": false}
+{"task": "gsm8k", "id": "1209", "gold": "29", "pred": "29", "correct": true}
+{"task": "gsm8k", "id": "916", "gold": "14", "pred": "14", "correct": true}
+{"task": "gsm8k", "id": "1315", "gold": "5", "pred": "5", "correct": true}
+{"task": "gsm8k", "id": "335", "gold": "310", "pred": "310", "correct": true}
+{"task": "gsm8k", "id": "372", "gold": "5", "pred": "5", "correct": true}
+{"task": "gsm8k", "id": "365", "gold": "18", "pred": "18", "correct": true}
+{"task": "gsm8k", "id": "1092", "gold": "1080", "pred": "270", "correct": false}
+{"task": "gsm8k", "id": "662", "gold": "7", "pred": "7", "correct": true}
+{"task": "gsm8k", "id": "1065", "gold": "95", "pred": "95", "correct": true}
+{"task": "gsm8k", "id": "400", "gold": "48", "pred": "48", "correct": true}
+{"task": "gsm8k", "id": "1192", "gold": "280", "pred": "280", "correct": true}
+{"task": "gsm8k", "id": "234", "gold": "21", "pred": "21", "correct": true}
+{"task": "gsm8k", "id": "168", "gold": "18", "pred": "18", "correct": true}
+{"task": "gsm8k", "id": "201", "gold": "114200", "pred": "114200", "correct": true}
+{"task": "gsm8k", "id": "872", "gold": "13", "pred": "13.00", "correct": true}
+{"task": "gsm8k", "id": "79", "gold": "70", "pred": "70", "correct": true}
+{"task": "gsm8k", "id": "1163", "gold": "12", "pred": "12", "correct": true}
+{"task": "gsm8k", "id": "564", "gold": "240", "pred": "120", "correct": false}
+{"task": "gsm8k", "id": "574", "gold": "37", "pred": "3.30", "correct": false}
+{"task": "gsm8k", "id": "1208", "gold": "27", "pred": "27", "correct": true}
+{"task": "gsm8k", "id": "677", "gold": "36", "pred": "36", "correct": true}
+{"task": "gsm8k", "id": "223", "gold": "20000", "pred": "20000", "correct": true}
+{"task": "gsm8k", "id": "757", "gold": "75", "pred": "7", "correct": false}
+{"task": "gsm8k", "id": "590", "gold": "319", "pred": "8", "correct": false}
+{"task": "gsm8k", "id": "1110", "gold": "60", "pred": "7500", "correct": false}
+{"task": "gsm8k", "id": "624", "gold": "85", "pred": "85", "correct": true}
+{"task": "gsm8k", "id": "1124", "gold": "64", "pred": "64", "correct": true}
+{"task": "gsm8k", "id": "447", "gold": "5", "pred": "5", "correct": true}
+{"task": "gsm8k", "id": "529", "gold": "11", "pred": "11", "correct": true}
+{"task": "gsm8k", "id": "306", "gold": "10", "pred": "10", "correct": true}
+{"task": "gsm8k", "id": "219", "gold": "54", "pred": "49", "correct": false}
+{"task": "gsm8k", "id": "1269", "gold": "54", "pred": "54", "correct": true}
+{"task": "gsm8k", "id": "244", "gold": "20", "pred": "20", "correct": true}
+{"task": "gsm8k", "id": "1009", "gold": "1875", "pred": "3000", "correct": false}
+{"task": "gsm8k", "id": "487", "gold": "4", "pred": "4", "correct": true}
+{"task": "gsm8k", "id": "672", "gold": "2", "pred": "14", "correct": false}
+{"task": "gsm8k", "id": "1117", "gold": "9", "pred": "9", "correct": true}
+{"task": "gsm8k", "id": "291", "gold": "2", "pred": "2", "correct": true}
+{"task": "gsm8k", "id": "1213", "gold": "31", "pred": "31", "correct": true}
+{"task": "gsm8k", "id": "205", "gold": "98", "pred": "1", "correct": false}
+{"task": "gsm8k", "id": "784", "gold": "15", "pred": "15", "correct": true}
+{"task": "gsm8k", "id": "342", "gold": "87", "pred": "87", "correct": true}
+{"task": "gsm8k", "id": "920", "gold": "47", "pred": "7", "correct": false}
+{"task": "gsm8k", "id": "69", "gold": "60", "pred": "60", "correct": true}
+{"task": "gsm8k", "id": "114", "gold": "6", "pred": "6", "correct": true}
+{"task": "gsm8k", "id": "1291", "gold": "27", "pred": "27", "correct": true}
+{"task": "gsm8k", "id": "852", "gold": "123", "pred": "123", "correct": true}
+{"task": "gsm8k", "id": "805", "gold": "1170", "pred": "1170", "correct": true}
+{"task": "gsm8k", "id": "47", "gold": "800", "pred": "900", "correct": false}
+{"task": "gsm8k", "id": "332", "gold": "44", "pred": "44", "correct": true}
+{"task": "gsm8k", "id": "462", "gold": "71", "pred": "71", "correct": true}
+{"task": "gsm8k", "id": "26", "gold": "243", "pred": "243", "correct": true}
+{"task": "gsm8k", "id": "455", "gold": "1920", "pred": "1", "correct": false}
+{"task": "gsm8k", "id": "116", "gold": "42", "pred": "42", "correct": true}
+{"task": "gsm8k", "id": "1103", "gold": "90", "pred": "90", "correct": true}
+{"task": "gsm8k", "id": "911", "gold": "64", "pred": "64", "correct": true}
+{
+  "gsm8k": {
+    "accuracy": 0.77,
+    "n": 100,
+    "seconds": 216.78513765335083,
+    "peak_mem_gb": 14.24509572982788
+  }
+}

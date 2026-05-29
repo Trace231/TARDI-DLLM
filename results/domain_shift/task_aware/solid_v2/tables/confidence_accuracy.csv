@@ -1,0 +1,12 @@
+task,task_label,bin,lo,hi,n,accuracy
+commonsenseqa,CommonsenseQA,"[0.0,0.5)",0,0.5,64,0.4375
+commonsenseqa,CommonsenseQA,"[0.5,0.6)",0.5,0.6,57,0.5789473684210527
+commonsenseqa,CommonsenseQA,"[0.6,0.7)",0.6,0.7,71,0.5352112676056338
+commonsenseqa,CommonsenseQA,"[0.7,0.8)",0.7,0.8,73,0.6438356164383562
+commonsenseqa,CommonsenseQA,"[0.8,0.9)",0.8,0.9,89,0.7303370786516854
+commonsenseqa,CommonsenseQA,"[0.9,1.0)",0.9,1.01,646,0.9380804953560371
+winogrande,WinoGrande,"[0.5,0.6)",0.5,0.6,175,0.6628571428571428
+winogrande,WinoGrande,"[0.6,0.7)",0.6,0.7,163,0.6503067484662577
+winogrande,WinoGrande,"[0.7,0.8)",0.7,0.8,226,0.7123893805309734
+winogrande,WinoGrande,"[0.8,0.9)",0.8,0.9,221,0.7782805429864253
+winogrande,WinoGrande,"[0.9,1.0)",0.9,1.01,215,0.9348837209302325

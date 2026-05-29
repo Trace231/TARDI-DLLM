@@ -1,0 +1,5 @@
+{
+  "csv": "results/domain_shift/task_aware/solid_v2/tables/lora_control_v2.csv",
+  "report": "results/domain_shift/task_aware/solid_v2/reports/LoRA_Control_v2_Report.md",
+  "rows": 48
+}

@@ -1,0 +1,4050 @@
+{
+  "method": "selective_remask_refinement_controller",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "tasks": "ceval_computer_network",
+    "limit": 50,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/all_datasets_limit50_fast/raw/llada8b_refinement_ceval_computer_network_limit50_seed23.json",
+    "budgets": "8,16,24,32",
+    "scout_steps": 8,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "risk_t16": 0.24,
+    "risk_t24": 0.38,
+    "risk_t32": 0.56,
+    "margin_target": 0.18,
+    "fill_confidence_target": 0.7,
+    "binary_direct_full_threshold": 0.52,
+    "multi_direct_full_threshold": 0.36,
+    "multi_direct_full_entropy": 0.98,
+    "binary_post_disagree_confidence": 0.72,
+    "multi_post_disagree_confidence": 0.7,
+    "multi_disagreement_policy": "ignore",
+    "remask_min_fraction": 0.2,
+    "remask_max_fraction": 0.55,
+    "remask_min_tokens": 4,
+    "max_refinements": 3
+  },
+  "summary": {
+    "ceval_computer_network": {
+      "accuracy": 0.56,
+      "n": 50,
+      "seconds": 192.95265579223633,
+      "avg_forward_calls": 33.0,
+      "route_rates": {
+        "32": 1.0
+      },
+      "final_budget_rates": {
+        "32": 1.0
+      },
+      "peak_mem_gb": 15.11446762084961
+    }
+  },
+  "rows": [
+    {
+      "task": "ceval_computer_network",
+      "id": "74",
+      "gold": "B",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 152
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.42723211646080017,
+        "margin": 0.13360005617141724,
+        "probs": {
+          "A": 0.08955271542072296,
+          "B": 0.18958310782909393,
+          "C": 0.29363206028938293,
+          "D": 0.42723211646080017
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97552490234375,
+        "min_fill_confidence": 0.376953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 5.361940622329712,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "21",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 88
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9993588328361511,
+        "margin": 0.9991135604796,
+        "probs": {
+          "A": 0.00024527235655114055,
+          "B": 0.00021645207016263157,
+          "C": 0.9993588328361511,
+          "D": 0.00017944506544154137
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.996826171875,
+        "min_fill_confidence": 0.95703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.552020311355591,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "4",
+      "gold": "A",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 71
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.5415245294570923,
+        "margin": 0.3657172620296478,
+        "probs": {
+          "A": 0.14574934542179108,
+          "B": 0.17580726742744446,
+          "C": 0.136918842792511,
+          "D": 0.5415245294570923
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97332763671875,
+        "min_fill_confidence": 0.341796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.373351573944092,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "151",
+      "gold": "C",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 94
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.3240334689617157,
+        "margin": 0.05540028214454651,
+        "probs": {
+          "A": 0.1846286952495575,
+          "B": 0.3240334689617157,
+          "C": 0.2227047234773636,
+          "D": 0.2686331868171692
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97900390625,
+        "min_fill_confidence": 0.46484375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.468868970870972,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "78",
+      "gold": "D",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 85
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.3922530710697174,
+        "margin": 0.04609096050262451,
+        "probs": {
+          "A": 0.08752349019050598,
+          "B": 0.17406123876571655,
+          "C": 0.3922530710697174,
+          "D": 0.3461621105670929
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9769287109375,
+        "min_fill_confidence": 0.41796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.418233871459961,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "108",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 61
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.5570542216300964,
+        "margin": 0.12321993708610535,
+        "probs": {
+          "A": 0.5570542216300964,
+          "B": 0.4338342845439911,
+          "C": 0.006188313942402601,
+          "D": 0.002923152409493923
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9869384765625,
+        "min_fill_confidence": 0.67578125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.380821466445923,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "97",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 89
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.5308963060379028,
+        "margin": 0.2953124940395355,
+        "probs": {
+          "A": 0.15210434794425964,
+          "B": 0.5308963060379028,
+          "C": 0.0814155861735344,
+          "D": 0.2355838119983673
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9827880859375,
+        "min_fill_confidence": 0.58203125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.5631020069122314,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "135",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 65
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9829117059707642,
+        "margin": 0.9697406813502312,
+        "probs": {
+          "A": 0.9829117059707642,
+          "B": 0.0020198419224470854,
+          "C": 0.01317102462053299,
+          "D": 0.0018974660197272897
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.993408203125,
+        "min_fill_confidence": 0.8828125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.386335849761963,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "91",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.4645669460296631,
+        "margin": 0.05458807945251465,
+        "probs": {
+          "A": 0.40997886657714844,
+          "B": 0.11746091395616531,
+          "C": 0.4645669460296631,
+          "D": 0.00799331534653902
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9866943359375,
+        "min_fill_confidence": 0.703125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.335912227630615,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "33",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 107
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.3871001899242401,
+        "margin": 0.13716952502727509,
+        "probs": {
+          "A": 0.14240621030330658,
+          "B": 0.3871001899242401,
+          "C": 0.24993066489696503,
+          "D": 0.22056302428245544
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9766845703125,
+        "min_fill_confidence": 0.53125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.6375720500946045,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "49",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 101
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.7367668747901917,
+        "margin": 0.5916888862848282,
+        "probs": {
+          "A": 0.09971055388450623,
+          "B": 0.7367668747901917,
+          "C": 0.14507798850536346,
+          "D": 0.018444597721099854
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.987060546875,
+        "min_fill_confidence": 0.8671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.057675361633301,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "68",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 106
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.5996158719062805,
+        "margin": 0.39239415526390076,
+        "probs": {
+          "A": 0.0593700110912323,
+          "B": 0.13379238545894623,
+          "C": 0.5996158719062805,
+          "D": 0.20722171664237976
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9840087890625,
+        "min_fill_confidence": 0.66796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.4846882820129395,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "113",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 106
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.6651864051818848,
+        "margin": 0.37001171708106995,
+        "probs": {
+          "A": 0.03311768174171448,
+          "B": 0.2951746881008148,
+          "C": 0.006521258503198624,
+          "D": 0.6651864051818848
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9884033203125,
+        "min_fill_confidence": 0.6953125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.624840259552002,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "3",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.6316245794296265,
+        "margin": 0.3842768520116806,
+        "probs": {
+          "A": 0.6316245794296265,
+          "B": 0.017917810007929802,
+          "C": 0.24734772741794586,
+          "D": 0.10310988128185272
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98150634765625,
+        "min_fill_confidence": 0.486328125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.327484607696533,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "56",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 72
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.8525696992874146,
+        "margin": 0.7441776320338249,
+        "probs": {
+          "A": 0.8525696992874146,
+          "B": 0.021343665197491646,
+          "C": 0.10839206725358963,
+          "D": 0.017694519832730293
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9951171875,
+        "min_fill_confidence": 0.90625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.3036627769470215,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "116",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 113
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.4362679123878479,
+        "margin": 0.21689863502979279,
+        "probs": {
+          "A": 0.19359271228313446,
+          "B": 0.1507701575756073,
+          "C": 0.21936927735805511,
+          "D": 0.4362679123878479
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97393798828125,
+        "min_fill_confidence": 0.267578125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.5097930431365967,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "6",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 107
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.40873876214027405,
+        "margin": 0.06988239288330078,
+        "probs": {
+          "A": 0.07102814316749573,
+          "B": 0.18137672543525696,
+          "C": 0.40873876214027405,
+          "D": 0.33885636925697327
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98004150390625,
+        "min_fill_confidence": 0.447265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.430600166320801,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "27",
+      "gold": "C",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 72
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.4095199406147003,
+        "margin": 0.1611335426568985,
+        "probs": {
+          "A": 0.18172337114810944,
+          "B": 0.16037030518054962,
+          "C": 0.4095199406147003,
+          "D": 0.24838639795780182
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.974365234375,
+        "min_fill_confidence": 0.33203125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.2930431365966797,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "169",
+      "gold": "D",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 73
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.5943493843078613,
+        "margin": 0.375700443983078,
+        "probs": {
+          "A": 0.04583130404353142,
+          "B": 0.14117035269737244,
+          "C": 0.5943493843078613,
+          "D": 0.21864894032478333
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97711181640625,
+        "min_fill_confidence": 0.443359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.167121648788452,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "127",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 136
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.43002355098724365,
+        "margin": 0.18500353395938873,
+        "probs": {
+          "A": 0.10872698575258255,
+          "B": 0.2162294238805771,
+          "C": 0.24502001702785492,
+          "D": 0.43002355098724365
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97796630859375,
+        "min_fill_confidence": 0.361328125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.849778413772583,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "107",
+      "gold": "D",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 61
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9932108521461487,
+        "margin": 0.9879989600740373,
+        "probs": {
+          "A": 0.0013177726650610566,
+          "B": 0.00025948480470106006,
+          "C": 0.9932108521461487,
+          "D": 0.005211892072111368
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98876953125,
+        "min_fill_confidence": 0.8125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.289454221725464,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "5",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 102
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.3893870413303375,
+        "margin": 0.08613210916519165,
+        "probs": {
+          "A": 0.13456857204437256,
+          "B": 0.3032549321651459,
+          "C": 0.17278945446014404,
+          "D": 0.3893870413303375
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9803466796875,
+        "min_fill_confidence": 0.4375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.535068511962891,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "131",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 108
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.7044105529785156,
+        "margin": 0.5370983779430389,
+        "probs": {
+          "A": 0.7044105529785156,
+          "B": 0.03294571861624718,
+          "C": 0.0953315943479538,
+          "D": 0.16731217503547668
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.990966796875,
+        "min_fill_confidence": 0.796875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.551010370254517,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "110",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 81
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.8436318635940552,
+        "margin": 0.697030633687973,
+        "probs": {
+          "A": 0.005339949391782284,
+          "B": 0.00442697387188673,
+          "C": 0.14660122990608215,
+          "D": 0.8436318635940552
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9869384765625,
+        "min_fill_confidence": 0.6640625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.6387884616851807,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "162",
+      "gold": "A",
+      "pred": "C",
+      "correct": false,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 104
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.34865081310272217,
+        "margin": 0.10902684926986694,
+        "probs": {
+          "A": 0.225105881690979,
+          "B": 0.1866193413734436,
+          "C": 0.23962396383285522,
+          "D": 0.34865081310272217
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9742431640625,
+        "min_fill_confidence": 0.28515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.317894458770752,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "14",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 84
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.608882486820221,
+        "margin": 0.4730224311351776,
+        "probs": {
+          "A": 0.12762869894504547,
+          "B": 0.608882486820221,
+          "C": 0.12762869894504547,
+          "D": 0.13586005568504333
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9844970703125,
+        "min_fill_confidence": 0.72265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.182720422744751,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "52",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 67
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9890363812446594,
+        "margin": 0.9835116690956056,
+        "probs": {
+          "A": 0.005524712149053812,
+          "B": 0.001396865933202207,
+          "C": 0.004041965585201979,
+          "D": 0.9890363812446594
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9964599609375,
+        "min_fill_confidence": 0.90625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.1016461849212646,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "9",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 121
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.34753474593162537,
+        "margin": 0.10867783427238464,
+        "probs": {
+          "A": 0.17475144565105438,
+          "B": 0.23885691165924072,
+          "C": 0.23885691165924072,
+          "D": 0.34753474593162537
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9765625,
+        "min_fill_confidence": 0.32421875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.401136875152588,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "94",
+      "gold": "B",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 144
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.3573201596736908,
+        "margin": 0.04198622703552246,
+        "probs": {
+          "A": 0.1585598587989807,
+          "B": 0.16878609359264374,
+          "C": 0.31533393263816833,
+          "D": 0.3573201596736908
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9744873046875,
+        "min_fill_confidence": 0.40234375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.4939661026000977,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "44",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 109
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.8075260519981384,
+        "margin": 0.7169241458177567,
+        "probs": {
+          "A": 0.09060190618038177,
+          "B": 0.03131118044257164,
+          "C": 0.07056083530187607,
+          "D": 0.8075260519981384
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9935302734375,
+        "min_fill_confidence": 0.87109375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.289092779159546,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "55",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.6978623270988464,
+        "margin": 0.4411331117153168,
+        "probs": {
+          "A": 0.25672921538352966,
+          "B": 0.6978623270988464,
+          "C": 0.03937070071697235,
+          "D": 0.0060376920737326145
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98779296875,
+        "min_fill_confidence": 0.73828125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.1404576301574707,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "92",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 62
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.815019428730011,
+        "margin": 0.748118557035923,
+        "probs": {
+          "A": 0.06690087169408798,
+          "B": 0.815019428730011,
+          "C": 0.05903981253504753,
+          "D": 0.05903981253504753
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9937744140625,
+        "min_fill_confidence": 0.8671875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.0458269119262695,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "142",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 61
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9557715654373169,
+        "margin": 0.9269097652286291,
+        "probs": {
+          "A": 0.028861800208687782,
+          "B": 0.9557715654373169,
+          "C": 0.013633348047733307,
+          "D": 0.0017332857241854072
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9957275390625,
+        "min_fill_confidence": 0.92578125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.175379276275635,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "72",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 96
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9644938111305237,
+        "margin": 0.9498487459495664,
+        "probs": {
+          "A": 0.014645065180957317,
+          "B": 0.009455565363168716,
+          "C": 0.9644938111305237,
+          "D": 0.011405588127672672
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9959716796875,
+        "min_fill_confidence": 0.92578125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.425377607345581,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "80",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 81
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9890555143356323,
+        "margin": 0.9799466282129288,
+        "probs": {
+          "A": 0.0007477028993889689,
+          "B": 0.009108886122703552,
+          "C": 0.0010879012988880277,
+          "D": 0.9890555143356323
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9967041015625,
+        "min_fill_confidence": 0.93359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.1436848640441895,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "152",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 70
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9897123575210571,
+        "margin": 0.9805974224582314,
+        "probs": {
+          "A": 0.00911493506282568,
+          "B": 0.9897123575210571,
+          "C": 0.0007964542019180954,
+          "D": 0.0003762183478102088
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9976806640625,
+        "min_fill_confidence": 0.94921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.188910961151123,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "121",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.5152230858802795,
+        "margin": 0.2394440472126007,
+        "probs": {
+          "A": 0.030941549688577652,
+          "B": 0.17805634438991547,
+          "C": 0.5152230858802795,
+          "D": 0.27577903866767883
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9840087890625,
+        "min_fill_confidence": 0.72265625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.174377679824829,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "45",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 81
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.3852490186691284,
+        "margin": 0.06586635112762451,
+        "probs": {
+          "A": 0.3852490186691284,
+          "B": 0.3193826675415039,
+          "C": 0.07586002349853516,
+          "D": 0.21950826048851013
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9808349609375,
+        "min_fill_confidence": 0.44921875
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.217539310455322,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "123",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 90
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.9164789319038391,
+        "margin": 0.8412497565150261,
+        "probs": {
+          "A": 0.07522917538881302,
+          "B": 0.9164789319038391,
+          "C": 0.006997402757406235,
+          "D": 0.0012943894835188985
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.996826171875,
+        "min_fill_confidence": 0.9453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.218329668045044,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "114",
+      "gold": "C",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 126
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.35339924693107605,
+        "margin": 0.0,
+        "probs": {
+          "A": 0.0788540318608284,
+          "B": 0.2143474817276001,
+          "C": 0.35339924693107605,
+          "D": 0.35339924693107605
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97967529296875,
+        "min_fill_confidence": 0.443359375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.620510816574097,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "41",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 95
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9481983184814453,
+        "margin": 0.9177185315638781,
+        "probs": {
+          "A": 0.9481983184814453,
+          "B": 0.0028350616339594126,
+          "C": 0.030479786917567253,
+          "D": 0.018486924469470978
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.99365234375,
+        "min_fill_confidence": 0.89453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 4.175698518753052,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "46",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 58
+      },
+      "probe": {
+        "available": true,
+        "top_label": "C",
+        "top_prob": 0.9961596727371216,
+        "margin": 0.9929891147185117,
+        "probs": {
+          "A": 0.00031392776872962713,
+          "B": 0.0031705580186098814,
+          "C": 0.9961596727371216,
+          "D": 0.00035572671913541853
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "C",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.994873046875,
+        "min_fill_confidence": 0.8984375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "C"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.679246425628662,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "133",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 93
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.3546612560749054,
+        "margin": 0.13954833149909973,
+        "probs": {
+          "A": 0.21511292457580566,
+          "B": 0.21511292457580566,
+          "C": 0.21511292457580566,
+          "D": 0.3546612560749054
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9818115234375,
+        "min_fill_confidence": 0.484375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 2.999192476272583,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "82",
+      "gold": "D",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 121
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.32992690801620483,
+        "margin": 0.03876742720603943,
+        "probs": {
+          "A": 0.1375339925289154,
+          "B": 0.2911594808101654,
+          "C": 0.24137967824935913,
+          "D": 0.32992690801620483
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.976318359375,
+        "min_fill_confidence": 0.4140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.295689582824707,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "86",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 77
+      },
+      "probe": {
+        "available": true,
+        "top_label": "B",
+        "top_prob": 0.37754690647125244,
+        "margin": 0.11806297302246094,
+        "probs": {
+          "A": 0.21511971950531006,
+          "B": 0.37754690647125244,
+          "C": 0.14784948527812958,
+          "D": 0.2594839334487915
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.973876953125,
+        "min_fill_confidence": 0.53515625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 2.979839324951172,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "104",
+      "gold": "A",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 73
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.9066802263259888,
+        "margin": 0.8586279340088367,
+        "probs": {
+          "A": 0.04805229231715202,
+          "B": 0.007844320498406887,
+          "C": 0.037423163652420044,
+          "D": 0.9066802263259888
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.993896484375,
+        "min_fill_confidence": 0.90234375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 2.9356422424316406,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "66",
+      "gold": "B",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 112
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.4285537004470825,
+        "margin": 0.1340133249759674,
+        "probs": {
+          "A": 0.07447145879268646,
+          "B": 0.2945403754711151,
+          "C": 0.2024344503879547,
+          "D": 0.4285537004470825
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "D",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.98077392578125,
+        "min_fill_confidence": 0.490234375
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "D"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.1538357734680176,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "25",
+      "gold": "B",
+      "pred": "A",
+      "correct": false,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 96
+      },
+      "probe": {
+        "available": true,
+        "top_label": "A",
+        "top_prob": 0.9017419815063477,
+        "margin": 0.8475881665945053,
+        "probs": {
+          "A": 0.9017419815063477,
+          "B": 0.054153814911842346,
+          "C": 0.03721933811903,
+          "D": 0.006884884554892778
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9964599609375,
+        "min_fill_confidence": 0.94140625
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 3.182649612426758,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "170",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 74
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.49377214908599854,
+        "margin": 0.2294749617576599,
+        "probs": {
+          "A": 0.15059198439121246,
+          "B": 0.2642971873283386,
+          "C": 0.09133866429328918,
+          "D": 0.49377214908599854
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "B",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.9742431640625,
+        "min_fill_confidence": 0.578125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "B"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 2.9627504348754883,
+      "forward_calls": 33,
+      "meta": {}
+    },
+    {
+      "task": "ceval_computer_network",
+      "id": "145",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "metric": "letter",
+      "profile": {
+        "metric": "letter",
+        "label_space": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "n_labels": 4,
+        "prompt_tokens": 68
+      },
+      "probe": {
+        "available": true,
+        "top_label": "D",
+        "top_prob": 0.6230917572975159,
+        "margin": 0.36334848403930664,
+        "probs": {
+          "A": 0.25974327325820923,
+          "B": 0.008887926116585732,
+          "C": 0.1082770973443985,
+          "D": 0.6230917572975159
+        }
+      },
+      "risk_features": {},
+      "risk_score": null,
+      "scout_stats": {
+        "history": [
+          {
+            "local_step": 8,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.25
+          },
+          {
+            "local_step": 16,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.5
+          },
+          {
+            "local_step": 24,
+            "pred": "",
+            "valid": false,
+            "filled_ratio": 0.75
+          },
+          {
+            "local_step": 32,
+            "pred": "A",
+            "valid": true,
+            "filled_ratio": 1.0
+          }
+        ],
+        "flip_count": 0,
+        "first_final_step": 32,
+        "valid_seen": 1,
+        "mean_fill_confidence": 0.97454833984375,
+        "min_fill_confidence": 0.439453125
+      },
+      "route": "32",
+      "route_steps": [
+        {
+          "budget": 32,
+          "mode": "direct_full",
+          "reason": "profile_conservative",
+          "pred": "A"
+        }
+      ],
+      "final_budget": 32,
+      "seconds": 2.9100916385650635,
+      "forward_calls": 33,
+      "meta": {}
+    }
+  ]
+}
