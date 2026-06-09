@@ -10,6 +10,8 @@ import torch.nn.functional as F
 from peft import LoraConfig, get_peft_model
 from transformers import AutoModel, AutoTokenizer
 
+from nara_adapter import install_nara_adapter, save_nara_adapter
+
 
 MASK_ID = 126336
 LETTER_RE = re.compile(r"^\s*([A-J])\s*[\.\)\uff0e\uff09]\s+", re.M)
@@ -205,6 +207,7 @@ def main():
     ap.add_argument("--train-jsonl", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--mode", choices=["vanilla", "label", "choice_noise"], default="choice_noise")
+    ap.add_argument("--peft-variant", choices=["lora", "rslora", "dora", "nara"], default="lora")
     ap.add_argument("--seed", type=int, default=23)
     ap.add_argument("--max-steps", type=int, default=200)
     ap.add_argument("--batch-size", type=int, default=1)
@@ -214,6 +217,7 @@ def main():
     ap.add_argument("--lora-r", type=int, default=8)
     ap.add_argument("--lora-alpha", type=int, default=16)
     ap.add_argument("--lora-dropout", type=float, default=0.05)
+    ap.add_argument("--nara-buckets", type=int, default=4)
     ap.add_argument("--noise-ratios", default="0.15,0.35,0.65,0.85")
     ap.add_argument("--denoise-weight", type=float, default=0.15)
     ap.add_argument("--consistency-weight", type=float, default=0.05)
@@ -242,18 +246,41 @@ def main():
             print(f"gradient_checkpointing skipped: {exc}", flush=True)
     if hasattr(model, "enable_input_require_grads"):
         model.enable_input_require_grads()
-    model = get_peft_model(
-        model,
-        LoraConfig(
+    target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+    if args.peft_variant == "nara":
+        model = install_nara_adapter(
+            model,
+            target_modules=target_modules,
             r=args.lora_r,
-            lora_alpha=args.lora_alpha,
-            lora_dropout=args.lora_dropout,
-            bias="none",
-            task_type="CAUSAL_LM",
-            target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
-        ),
-    )
-    model.print_trainable_parameters()
+            alpha=args.lora_alpha,
+            dropout=args.lora_dropout,
+            num_buckets=args.nara_buckets,
+        )
+        trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+        total = sum(p.numel() for p in model.parameters())
+        print(f"trainable params: {trainable:,} || all params: {total:,} || trainable%: {100*trainable/total:.4f}", flush=True)
+    else:
+        lora_kwargs = {
+            "r": args.lora_r,
+            "lora_alpha": args.lora_alpha,
+            "lora_dropout": args.lora_dropout,
+            "bias": "none",
+            "task_type": "CAUSAL_LM",
+            "target_modules": target_modules,
+        }
+        if args.peft_variant == "rslora":
+            lora_kwargs["use_rslora"] = True
+        if args.peft_variant == "dora":
+            lora_kwargs["use_dora"] = True
+        try:
+            config = LoraConfig(**lora_kwargs)
+        except TypeError as exc:
+            raise TypeError(
+                f"Installed PEFT does not support --peft-variant {args.peft_variant}. "
+                f"Original error: {exc}"
+            )
+        model = get_peft_model(model, config)
+        model.print_trainable_parameters()
     model.train()
     optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=args.lr)
 
@@ -333,10 +360,16 @@ def main():
             if step % 10 == 0 or step == 1:
                 print(json.dumps(rec), flush=True)
             if args.save_every and step % args.save_every == 0:
-                model.save_pretrained(str(out_dir / f"checkpoint-{step}"))
+                if args.peft_variant == "nara":
+                    save_nara_adapter(model, out_dir / f"checkpoint-{step}", tokenizer=tokenizer)
+                else:
+                    model.save_pretrained(str(out_dir / f"checkpoint-{step}"))
 
-    model.save_pretrained(str(out_dir / "final_adapter"))
-    tokenizer.save_pretrained(str(out_dir / "final_adapter"))
+    if args.peft_variant == "nara":
+        save_nara_adapter(model, out_dir / "final_adapter", tokenizer=tokenizer)
+    else:
+        model.save_pretrained(str(out_dir / "final_adapter"))
+        tokenizer.save_pretrained(str(out_dir / "final_adapter"))
     (out_dir / "train_log.json").write_text(json.dumps(running, indent=2))
 
 

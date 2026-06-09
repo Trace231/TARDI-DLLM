@@ -8,6 +8,11 @@ try:
     from peft import PeftModel
 except Exception:
     PeftModel = None
+try:
+    from nara_adapter import is_nara_adapter, load_nara_adapter
+except Exception:
+    is_nara_adapter = None
+    load_nara_adapter = None
 
 sys.path.insert(0, '/data/llada_eval/LLaDA')
 from generate import generate as llada_generate
@@ -109,6 +114,11 @@ def load_llada(path, adapter=None):
     tok.padding_side = 'left'
     model = AutoModel.from_pretrained(path, trust_remote_code=True, torch_dtype=torch.bfloat16).to('cuda')
     if adapter:
+        if is_nara_adapter is not None and is_nara_adapter(adapter):
+            model = load_nara_adapter(model, adapter)
+            model.to('cuda')
+            model.eval()
+            return tok, model
         if PeftModel is None:
             raise RuntimeError('peft is required for --adapter')
         model = PeftModel.from_pretrained(model, adapter)

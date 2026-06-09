@@ -1,0 +1,9 @@
+method,status,tasks,total_correct,total_n,macro_accuracy,micro_accuracy
+llada_vanilla_lora_fixed32,complete,9,335,450,0.7444444444444445,0.7444444444444445
+llada_vanilla_lora_controller,complete,9,334,450,0.7422222222222222,0.7422222222222222
+llada_choice_noise_lora_fixed32,complete,9,332,450,0.7377777777777778,0.7377777777777778
+llada_base_fixed32,complete,9,325,450,0.7222222222222222,0.7222222222222222
+llada_rslora_vanilla_fixed32,missing,,,,,
+llada_dora_vanilla_fixed32,missing,,,,,
+llada_nara_vanilla_fixed32,missing,,,,,
+llada_nara_choice_noise_fixed32,missing,,,,,
