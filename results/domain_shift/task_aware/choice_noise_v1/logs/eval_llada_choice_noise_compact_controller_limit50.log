@@ -1,0 +1,43 @@
+Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 6/6 [00:00<00:00, 161.41it/s]
+{"task": "mmlu_pro", "id": "4888", "gold": "H", "pred": "H", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "1458", "gold": "C", "pred": "I", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "351", "gold": "H", "pred": "H", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "9891", "gold": "I", "pred": "I", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "5167", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "7112", "gold": "G", "pred": "H", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "6376", "gold": "E", "pred": "E", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "8872", "gold": "A", "pred": "C", "correct": false, "route": "8", "forward_calls": 8, "risk_score": 0.3007163073271161}
+{"task": "mmlu_pro", "id": "6026", "gold": "A", "pred": "F", "correct": false, "route": "8", "forward_calls": 8, "risk_score": 0.2101454910014311}
+{"task": "mmlu_pro", "id": "2234", "gold": "C", "pred": "I", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "12119", "gold": "F", "pred": "F", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "3266", "gold": "J", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "4512", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "7463", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "302", "gold": "H", "pred": "H", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "3744", "gold": "A", "pred": "I", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "10362", "gold": "A", "pred": "C", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "7638", "gold": "E", "pred": "E", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "479", "gold": "B", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "1830", "gold": "I", "pred": "A", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "1496", "gold": "C", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "11856", "gold": "I", "pred": "I", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "8350", "gold": "I", "pred": "I", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "7071", "gold": "F", "pred": "E", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "393", "gold": "J", "pred": "J", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "8585", "gold": "C", "pred": "E", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "10488", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "12254", "gold": "F", "pred": "F", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "7239", "gold": "F", "pred": "F", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "6041", "gold": "B", "pred": "H", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "1021", "gold": "E", "pred": "H", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "3489", "gold": "I", "pred": "I", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "654", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "9843", "gold": "A", "pred": "J", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "6209", "gold": "I", "pred": "I", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "10994", "gold": "E", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "2934", "gold": "F", "pred": "A", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "10376", "gold": "A", "pred": "H", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "3660", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "6104", "gold": "I", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "9454", "gold": "I", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "6202", "gold": "F", "pred": "G", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}

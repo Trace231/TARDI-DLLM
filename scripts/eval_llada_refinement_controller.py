@@ -194,6 +194,27 @@ def refinement_fraction(score, target_budget, args):
     return base
 
 
+def maybe_enable_compact_choice_scout(profile, first_policy, args):
+    if not args.compact_choice_fast:
+        return first_policy
+    if first_policy.get("fast_candidate"):
+        return first_policy
+    if profile.get("metric") not in {"letter", "bool"}:
+        return first_policy
+    if profile.get("prompt_tokens", 10**9) > args.compact_choice_max_prompt_tokens:
+        return first_policy
+    n_labels = profile.get("n_labels", 0)
+    if n_labels <= 0 or n_labels > args.compact_choice_max_labels:
+        return first_policy
+    return {
+        "steps": args.scout_steps,
+        "schedule": "back_loaded" if n_labels <= 2 else "middle_heavy",
+        "prompt": "typed",
+        "fast_candidate": True,
+        "reason": "compact low-cardinality choice task uses calibrated scout",
+    }
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True)
@@ -224,6 +245,9 @@ def main():
     ap.add_argument("--remask-max-fraction", type=float, default=0.55)
     ap.add_argument("--remask-min-tokens", type=int, default=4)
     ap.add_argument("--max-refinements", type=int, default=3)
+    ap.add_argument("--compact-choice-fast", action="store_true")
+    ap.add_argument("--compact-choice-max-labels", type=int, default=5)
+    ap.add_argument("--compact-choice-max-prompt-tokens", type=int, default=512)
     args = ap.parse_args()
 
     budgets = parse_budgets(args.budgets)
@@ -243,6 +267,7 @@ def main():
             profile = task_profile(raw, tokenizer)
             labels = infer_label_space(raw)
             first_policy = choose_policy(profile)
+            first_policy = maybe_enable_compact_choice_scout(profile, first_policy, args)
             sample = apply_prompt(raw, first_policy["prompt"])
             t0 = time.time()
             probe = probe_label_distribution(model, tokenizer, sample, labels)

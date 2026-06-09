@@ -1,0 +1,586 @@
+Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 6/6 [00:00<00:00, 135.05it/s]
+Using the latest cached version of the dataset since TIGER-Lab/MMLU-Pro couldn't be found on the Hugging Face Hub
+Found the latest cached dataset configuration 'default' at /root/.cache/huggingface/datasets/TIGER-Lab___mmlu-pro/default/0.0.0/b189ec765aa7ed75c8acfea42df31fdae71f97be (last modified on Tue Jun  9 21:21:47 2026).
+{"task": "mmlu_pro", "id": "4888", "gold": "H", "pred": "H", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "1458", "gold": "C", "pred": "I", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "351", "gold": "H", "pred": "E", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "9891", "gold": "I", "pred": "I", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "5167", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "7112", "gold": "G", "pred": "A", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "6376", "gold": "E", "pred": "E", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "8872", "gold": "A", "pred": "C", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "6026", "gold": "A", "pred": "F", "correct": false, "route": "8->16", "forward_calls": 15, "risk_score": 0.2455426896697972}
+{"task": "mmlu_pro", "id": "2234", "gold": "C", "pred": "I", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "12119", "gold": "F", "pred": "I", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "3266", "gold": "J", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "4512", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "7463", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "302", "gold": "H", "pred": "H", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "3744", "gold": "A", "pred": "I", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "10362", "gold": "A", "pred": "C", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "7638", "gold": "E", "pred": "E", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "479", "gold": "B", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "1830", "gold": "I", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "1496", "gold": "C", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "11856", "gold": "I", "pred": "I", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "8350", "gold": "I", "pred": "I", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "7071", "gold": "F", "pred": "E", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "393", "gold": "J", "pred": "J", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "8585", "gold": "C", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "10488", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "12254", "gold": "F", "pred": "F", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "7239", "gold": "F", "pred": "I", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "6041", "gold": "B", "pred": "H", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "1021", "gold": "E", "pred": "H", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "3489", "gold": "I", "pred": "I", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "654", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "9843", "gold": "A", "pred": "I", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "6209", "gold": "I", "pred": "I", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "10994", "gold": "E", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "2934", "gold": "F", "pred": "F", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "10376", "gold": "A", "pred": "H", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "3660", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "6104", "gold": "I", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "9454", "gold": "I", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "6202", "gold": "F", "pred": "G", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "9561", "gold": "F", "pred": "H", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "4740", "gold": "C", "pred": "H", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "11039", "gold": "D", "pred": "J", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "5292", "gold": "C", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "9576", "gold": "B", "pred": "H", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "1495", "gold": "D", "pred": "H", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "7950", "gold": "C", "pred": "I", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "mmlu_pro", "id": "3028", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "24098953", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "25103647", "gold": "maybe", "pred": "yes", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "23972333", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "10759659", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "21880023", "gold": "no", "pred": "yes", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "14627582", "gold": "no", "pred": "yes", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "22427593", "gold": "maybe", "pred": "yes", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "17096624", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "20497146", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "15939071", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "17259061", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "21346501", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "26818046", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "26548832", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "25311479", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "23088164", "gold": "no", "pred": "no", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "18714572", "gold": "maybe", "pred": "yes", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "14551704", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "20353735", "gold": "no", "pred": "no", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "24866606", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "22236315", "gold": "no", "pred": "yes", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "12970636", "gold": "no", "pred": "no", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "10490564", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "9722752", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "10966943", "gold": "no", "pred": "no", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "27217036", "gold": "yes", "pred": "no", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "19757704", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "24599411", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "19419587", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "10158597", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "19394934", "gold": "yes", "pred": "no", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "14976655", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "26175531", "gold": "no", "pred": "no", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "12790890", "gold": "maybe", "pred": "no", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "14631523", "gold": "no", "pred": "no", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "15879722", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "18319270", "gold": "no", "pred": "no", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "14612308", "gold": "no", "pred": "yes", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "25488308", "gold": "no", "pred": "yes", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "18802997", "gold": "maybe", "pred": "yes", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "8847047", "gold": "no", "pred": "no", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "25255719", "gold": "yes", "pred": "no", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "19852337", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "2503176", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "25156467", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "26485091", "gold": "no", "pred": "no", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "10456814", "gold": "no", "pred": "no", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "23449952", "gold": "no", "pred": "no", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "18948835", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "pubmedqa", "id": "17089900", "gold": "yes", "pred": "yes", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "74", "gold": "B", "pred": "C", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "21", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "4", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "151", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "78", "gold": "D", "pred": "C", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "108", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "97", "gold": "B", "pred": "A", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "135", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "91", "gold": "B", "pred": "A", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "33", "gold": "A", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "49", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "68", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "113", "gold": "D", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "3", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "56", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "116", "gold": "B", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "6", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "27", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "169", "gold": "D", "pred": "C", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "127", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "107", "gold": "D", "pred": "C", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "5", "gold": "D", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "131", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "110", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "162", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "14", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "52", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "9", "gold": "D", "pred": "A", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "94", "gold": "B", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "44", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "55", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "92", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "142", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "72", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "80", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "152", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "121", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "45", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "123", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "114", "gold": "C", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "41", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "46", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "133", "gold": "D", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "82", "gold": "D", "pred": "A", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "86", "gold": "A", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "104", "gold": "A", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "66", "gold": "B", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "25", "gold": "B", "pred": "A", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "170", "gold": "A", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "ceval_computer_network", "id": "145", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "947", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "798", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "971", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "296", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "913", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "849", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "85", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "17", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "606", "gold": "B", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "314", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "433", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "388", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "542", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "366", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "133", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "743", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "196", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "273", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "455", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "14", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "226", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "635", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "465", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "923", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "25", "gold": "C", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "108", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "87", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "727", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "510", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "431", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "20", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "524", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "642", "gold": "A", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "751", "gold": "D", "pred": "A", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "441", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "367", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "789", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "58", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "210", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "801", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "36", "gold": "B", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "603", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "377", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "673", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "176", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "221", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "994", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "752", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "371", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "sciq", "id": "579", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "winogrande", "id": "593", "gold": "A", "pred": "B", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.20119699664775237}
+{"task": "winogrande", "id": "171", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08400143911876629}
+{"task": "winogrande", "id": "34", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.1969528833769857}
+{"task": "winogrande", "id": "1212", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.23662878361328327}
+{"task": "winogrande", "id": "628", "gold": "A", "pred": "B", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.11120181724870025}
+{"task": "winogrande", "id": "867", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.1380223807805133}
+{"task": "winogrande", "id": "776", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.0997970069419603}
+{"task": "winogrande", "id": "1085", "gold": "A", "pred": "B", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.14937076546758926}
+{"task": "winogrande", "id": "733", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08139990927917304}
+{"task": "winogrande", "id": "266", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.18866907939399333}
+{"task": "winogrande", "id": "393", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.15893119360619978}
+{"task": "winogrande", "id": "547", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.10824283082686309}
+{"task": "winogrande", "id": "910", "gold": "A", "pred": "B", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.13053038107794812}
+{"task": "winogrande", "id": "28", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08053884601190704}
+{"task": "winogrande", "id": "452", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08125196684547598}
+{"task": "winogrande", "id": "931", "gold": "B", "pred": "A", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.15245716619394556}
+{"task": "winogrande", "id": "50", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.15245716619394556}
+{"task": "winogrande", "id": "216", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.18866907939399333}
+{"task": "winogrande", "id": "175", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08853889470847941}
+{"task": "winogrande", "id": "1020", "gold": "B", "pred": "A", "correct": false, "route": "8->16", "forward_calls": 17, "risk_score": 0.3184837853637221}
+{"task": "winogrande", "id": "862", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.1127839204224102}
+{"task": "winogrande", "id": "40", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08218390711184811}
+{"task": "winogrande", "id": "1049", "gold": "A", "pred": "B", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.1329334467252637}
+{"task": "winogrande", "id": "883", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.14071138341124728}
+{"task": "winogrande", "id": "735", "gold": "B", "pred": "B", "correct": true, "route": "8->16", "forward_calls": 17, "risk_score": 0.2671212442548807}
+{"task": "winogrande", "id": "117", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.18866907939399333}
+{"task": "winogrande", "id": "421", "gold": "B", "pred": "A", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.22316127996764967}
+{"task": "winogrande", "id": "72", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.1806941862596963}
+{"task": "winogrande", "id": "1206", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08075577882910806}
+{"task": "winogrande", "id": "755", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08017285482167713}
+{"task": "winogrande", "id": "352", "gold": "B", "pred": "A", "correct": false, "route": "8->16", "forward_calls": 17, "risk_score": 0.2671212442548807}
+{"task": "winogrande", "id": "442", "gold": "B", "pred": "A", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.09527874086799709}
+{"task": "winogrande", "id": "742", "gold": "A", "pred": "B", "correct": false, "route": "8->16", "forward_calls": 17, "risk_score": 0.2499871387454296}
+{"task": "winogrande", "id": "1158", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.14937076546758926}
+{"task": "winogrande", "id": "1171", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.11796968442788117}
+{"task": "winogrande", "id": "576", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08358630491725748}
+{"task": "winogrande", "id": "643", "gold": "A", "pred": "B", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.08900784870794361}
+{"task": "winogrande", "id": "1173", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.12599794710240775}
+{"task": "winogrande", "id": "970", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08139990927917304}
+{"task": "winogrande", "id": "363", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.15245716619394556}
+{"task": "winogrande", "id": "989", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08230821780893177}
+{"task": "winogrande", "id": "1209", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09238632186947399}
+{"task": "winogrande", "id": "916", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08050920707904141}
+{"task": "winogrande", "id": "335", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08024346807465571}
+{"task": "winogrande", "id": "372", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.0997970069419603}
+{"task": "winogrande", "id": "365", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08652625814866424}
+{"task": "winogrande", "id": "1092", "gold": "B", "pred": "A", "correct": false, "route": "8->32", "forward_calls": 25, "risk_score": 0.5743047766872198}
+{"task": "winogrande", "id": "662", "gold": "A", "pred": "B", "correct": false, "route": "8->16", "forward_calls": 17, "risk_score": 0.24556435361004192}
+{"task": "winogrande", "id": "1065", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09880336823342664}
+{"task": "winogrande", "id": "400", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09880336823342664}
+{"task": "commonsenseqa", "id": "8b25332de2894ab38784235838d38cec", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.2081082986772695}
+{"task": "commonsenseqa", "id": "8ea5720718c0e122efa6277edb511569", "gold": "D", "pred": "D", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.15753615469659393}
+{"task": "commonsenseqa", "id": "4acd496cc78d96c2431279a5fd87de7c", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.15813969449634863}
+{"task": "commonsenseqa", "id": "01794dde3ca2991615f1aa2f63fb22e3", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.18395785523936986}
+{"task": "commonsenseqa", "id": "41bab71fea3fa04e5a4e10a2f86996df", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.13407850813113403}
+{"task": "commonsenseqa", "id": "c7ce02d9365fe9275f88338ad51cbde6", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11237304773634713}
+{"task": "commonsenseqa", "id": "c9f7d07e6d363a99f5fadd68a4dfa35a", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.12056387972913696}
+{"task": "commonsenseqa", "id": "29c194d032a266a7160bff6f546a4d9d", "gold": "D", "pred": "D", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.1359448208300645}
+{"task": "commonsenseqa", "id": "32d5b7fcae24f0d4871cfb219c5a4b47", "gold": "C", "pred": "C", "correct": true, "route": "8->16", "forward_calls": 15, "risk_score": 0.3550693505748335}
+{"task": "commonsenseqa", "id": "46351b3a6beb694c5f623583a3b1473d", "gold": "B", "pred": "B", "correct": true, "route": "8->16", "forward_calls": 15, "risk_score": 0.2860449064152345}
+{"task": "commonsenseqa", "id": "5a50ea4bb2d13dc4f620ebd45025d445", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11356868169726965}
+{"task": "commonsenseqa", "id": "5c2bc4335c8860342ec2d568ceb6ac6b", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.22374761942547972}
+{"task": "commonsenseqa", "id": "b3dc6d6a5e2f9d7da8eb72816c80b3f8_1", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11173710784467199}
+{"task": "commonsenseqa", "id": "9889e5389917d812c09d6e5d382d333d", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11930023785937383}
+{"task": "commonsenseqa", "id": "4ef3d70648ee3cea028bc5ed0fdfda28", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11110191555507815}
+{"task": "commonsenseqa", "id": "359aed918343d228e67cef329b693904", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11417571916912697}
+{"task": "commonsenseqa", "id": "011096bcfff30fd38046cf9db3a411c5", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11443814019151827}
+{"task": "commonsenseqa", "id": "0f2377604e628c55ba588366139396b9", "gold": "E", "pred": "D", "correct": false, "route": "8", "forward_calls": 8, "risk_score": 0.1742489068333249}
+{"task": "commonsenseqa", "id": "900492bd731f8f615ed7c08155737d44", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.1280244617324161}
+{"task": "commonsenseqa", "id": "0b52cc905fff0ca69a45e6353d10e401", "gold": "D", "pred": "D", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11322218650633545}
+{"task": "commonsenseqa", "id": "6f48ee564a48293eb501cc0d8197bdd9", "gold": "C", "pred": "B", "correct": false, "route": "8->16", "forward_calls": 15, "risk_score": 0.24989316924179406}
+{"task": "commonsenseqa", "id": "ba640b9634ad6b4ad98b17b4f152e562", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.1160279561633893}
+{"task": "commonsenseqa", "id": "5d4233146435ab0ca211e8ac9bfce76f", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.1204015460742021}
+{"task": "commonsenseqa", "id": "bd773d64f4e22db2358c6e00cbdf2d83", "gold": "A", "pred": "A", "correct": true, "route": "8->16", "forward_calls": 15, "risk_score": 0.34914439567064043}
+{"task": "commonsenseqa", "id": "ef3d5d35128678937c36438466e0fc93", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11851502820287114}
+{"task": "commonsenseqa", "id": "9dffd2021771e0ecddb19031acf3701b", "gold": "C", "pred": "B", "correct": false, "route": "8", "forward_calls": 8, "risk_score": 0.1353529572502384}
+{"task": "commonsenseqa", "id": "8b3b598a647dfd2d63fcedce5f461040", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11085991708754475}
+{"task": "commonsenseqa", "id": "821b32d39f57396979069b948030afe9", "gold": "D", "pred": "D", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.2033054113947601}
+{"task": "commonsenseqa", "id": "8f2976690c83be6b8fa3a1196dfd9722", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.12211793883369101}
+{"task": "commonsenseqa", "id": "66bfb6e209c94e6be5b0d04b0c7e2064", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.1760444485390859}
+{"task": "commonsenseqa", "id": "0bf4d64ad0eee7224acb3a4eb85accb2", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11215800166993804}
+{"task": "commonsenseqa", "id": "ec86900559a0faf2aef066e511a4cfa6", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11483152394989442}
+{"task": "commonsenseqa", "id": "7c45033e9fd9f1a759923971b14390ed", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11148677270456549}
+{"task": "commonsenseqa", "id": "0f7425ecbe369bf41a230aab92d84132", "gold": "B", "pred": "B", "correct": true, "route": "8->16", "forward_calls": 15, "risk_score": 0.340315476576231}
+{"task": "commonsenseqa", "id": "42520bf3f93f8de23670044e019001a3", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.20257006737036531}
+{"task": "commonsenseqa", "id": "07fd8b0aed06406fedb137d11b07a890", "gold": "D", "pred": "C", "correct": false, "route": "8", "forward_calls": 8, "risk_score": 0.17873314888206632}
+{"task": "commonsenseqa", "id": "3eb397b96b6c3a245c81ab30205943f1", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.15694478157218805}
+{"task": "commonsenseqa", "id": "ed50555f8db2b8f66caf9868dcd7e13b", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.1454687906602275}
+{"task": "commonsenseqa", "id": "ec224c1dbfb569cce7ec317fe987ae68", "gold": "B", "pred": "B", "correct": true, "route": "8->24", "forward_calls": 22, "risk_score": 0.4179412890916667}
+{"task": "commonsenseqa", "id": "42c46e28baf0fc617a07419286178c0a", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11319735149654338}
+{"task": "commonsenseqa", "id": "cf8e30dd6956d03e3f0f0397112a8696", "gold": "A", "pred": "A", "correct": true, "route": "8->16", "forward_calls": 15, "risk_score": 0.24848105594538916}
+{"task": "commonsenseqa", "id": "549cf641318edfc0510fa7c7dbb359e1", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11090955589613333}
+{"task": "commonsenseqa", "id": "5c171b9837af49211891ce40e4a10204", "gold": "D", "pred": "D", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11450239779374806}
+{"task": "commonsenseqa", "id": "303aedda3a5ab8d853cbe4edc4b914c6", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11495602149010783}
+{"task": "commonsenseqa", "id": "1d8d9e3504c8c58a3b923ddc155c19b0", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.1211171397572673}
+{"task": "commonsenseqa", "id": "8b23cd355ffc8b6e7aa5459ffb21b4e0", "gold": "B", "pred": "E", "correct": false, "route": "8->16", "forward_calls": 15, "risk_score": 0.32416660888043}
+{"task": "commonsenseqa", "id": "d78baca23e0a636a8961e17119047e63", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.15445177192523826}
+{"task": "commonsenseqa", "id": "a5dcac512870e79f5aa2b22dbd662404", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.12287660111077141}
+{"task": "commonsenseqa", "id": "c7526b682e64f355384631b35cd78fc9", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.1300995045943747}
+{"task": "commonsenseqa", "id": "1ef68db97654f30cd3701b942fadc934", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 8, "risk_score": 0.11197247134704558}
+{"task": "arc_challenge", "id": "593", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "171", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "34", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "628", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "867", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "776", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "1085", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "733", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "266", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "393", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "547", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "910", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "28", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "452", "gold": "D", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "931", "gold": "B", "pred": "C", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "50", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "216", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "175", "gold": "A", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "1020", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "862", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "40", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "1049", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "883", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "735", "gold": "D", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "117", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "421", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "72", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "755", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "352", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "442", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "742", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "1158", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "1171", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "576", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "643", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "970", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "363", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "989", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "916", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "335", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "372", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "365", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "1092", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "662", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "1065", "gold": "C", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "400", "gold": "C", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "234", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "168", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "201", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "arc_challenge", "id": "872", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "4749", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "1368", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "279", "gold": "A", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "9699", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "5025", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "6942", "gold": "C", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "6212", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "8684", "gold": "B", "pred": "C", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "5866", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "2134", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "3145", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "4380", "gold": "A", "pred": "C", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "7283", "gold": "B", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "230", "gold": "B", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "3621", "gold": "A", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "7455", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "405", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "1735", "gold": "A", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "1405", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "8163", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "6901", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "320", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "8398", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "7066", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "5881", "gold": "A", "pred": "A", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "942", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "3368", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "578", "gold": "D", "pred": "C", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "9652", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "6047", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "2816", "gold": "C", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "3539", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "5943", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "9265", "gold": "B", "pred": "A", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "6040", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "9372", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "4608", "gold": "C", "pred": "A", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "5150", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "9387", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "1404", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "7767", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "2910", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "7914", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "9676", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "7331", "gold": "A", "pred": "B", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "2680", "gold": "C", "pred": "C", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "2982", "gold": "B", "pred": "B", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "2925", "gold": "B", "pred": "D", "correct": false, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "8742", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "hellaswag", "id": "5298", "gold": "D", "pred": "D", "correct": true, "route": "32", "forward_calls": 33, "risk_score": null}
+{"task": "boolq", "id": "3192", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08853889470847941}
+{"task": "boolq", "id": "1187", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08089456970060446}
+{"task": "boolq", "id": "342", "gold": "yes", "pred": "no", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.09238632186947399}
+{"task": "boolq", "id": "69", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.0809462339898852}
+{"task": "boolq", "id": "2424", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09785664702925242}
+{"task": "boolq", "id": "1256", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09376038975425957}
+{"task": "boolq", "id": "1735", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.1344178217252637}
+{"task": "boolq", "id": "1553", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.0842262471927092}
+{"task": "boolq", "id": "2171", "gold": "no", "pred": "yes", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.1730635428068199}
+{"task": "boolq", "id": "1466", "gold": "yes", "pred": "no", "correct": false, "route": "8->16", "forward_calls": 17, "risk_score": 0.2671212442548807}
+{"task": "boolq", "id": "533", "gold": "no", "pred": "yes", "correct": false, "route": "8->16", "forward_calls": 17, "risk_score": 0.3184837853637221}
+{"task": "boolq", "id": "2973", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08471339509060646}
+{"task": "boolq", "id": "786", "gold": "no", "pred": "no", "correct": true, "route": "8->16", "forward_calls": 17, "risk_score": 0.25868759488154075}
+{"task": "boolq", "id": "1095", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08100082380345623}
+{"task": "boolq", "id": "1820", "gold": "yes", "pred": "no", "correct": false, "route": "8->16", "forward_calls": 17, "risk_score": 0.36580333131608084}
+{"task": "boolq", "id": "57", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08497709324673722}
+{"task": "boolq", "id": "905", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.10967373413395887}
+{"task": "boolq", "id": "2540", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.0903920171693091}
+{"task": "boolq", "id": "1863", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08358630491725748}
+{"task": "boolq", "id": "101", "gold": "no", "pred": "yes", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.20119699664775237}
+{"task": "boolq", "id": "433", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08688802616561712}
+{"task": "boolq", "id": "351", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.0842262471927092}
+{"task": "boolq", "id": "2908", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09695490384321492}
+{"task": "boolq", "id": "2040", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.103080051671448}
+{"task": "boolq", "id": "1725", "gold": "no", "pred": "yes", "correct": false, "route": "8", "forward_calls": 9, "risk_score": 0.10193327236633754}
+{"task": "boolq", "id": "80", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09376038975425957}
+{"task": "boolq", "id": "2099", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.1969528833769857}
+{"task": "boolq", "id": "2570", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.14349848094551268}
+{"task": "boolq", "id": "3007", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.10554179030594525}
+{"task": "boolq", "id": "1766", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08050920707904141}
+{"task": "boolq", "id": "1470", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08900784870794361}
+{"task": "boolq", "id": "3157", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.15893119360619978}
+{"task": "boolq", "id": "235", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09454427616561713}
+{"task": "boolq", "id": "842", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09305611163737938}
+{"task": "boolq", "id": "3207", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09527874086799709}
+{"task": "boolq", "id": "144", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08165461965681936}
+{"task": "boolq", "id": "2413", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.11328266162227808}
+{"task": "boolq", "id": "1511", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.10083962853667397}
+{"task": "boolq", "id": "2694", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.0911438373526111}
+{"task": "boolq", "id": "704", "gold": "yes", "pred": "yes", "correct": true, "route": "8->16", "forward_calls": 17, "risk_score": 0.3235863049172575}
+{"task": "boolq", "id": "2543", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08118391945474869}
+{"task": "boolq", "id": "884", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.10554179030594525}
+{"task": "boolq", "id": "3011", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09562079492947685}
+{"task": "boolq", "id": "1485", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.09002128768956402}
+{"task": "boolq", "id": "2316", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08139990927917304}
+{"task": "boolq", "id": "3112", "gold": "no", "pred": "no", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08230821780893177}
+{"task": "boolq", "id": "1510", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.103080051671448}
+{"task": "boolq", "id": "2343", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08092005052991692}
+{"task": "boolq", "id": "1152", "gold": "yes", "pred": "yes", "correct": true, "route": "8", "forward_calls": 9, "risk_score": 0.08156500435168317}
+{"task": "boolq", "id": "2705", "gold": "yes", "pred": "no", "correct": false, "route": "8->24", "forward_calls": 25, "risk_score": 0.4011969966477524}
+{
+  "mmlu_pro": {
+    "accuracy": 0.38,
+    "n": 50,
+    "seconds": 96.24955821037292,
+    "avg_forward_calls": 32.64,
+    "route_rates": {
+      "32": 0.98,
+      "8->16": 0.02
+    },
+    "final_budget_rates": {
+      "16": 0.02,
+      "32": 0.98
+    },
+    "peak_mem_gb": 15.531914234161377
+  },
+  "pubmedqa": {
+    "accuracy": 0.74,
+    "n": 50,
+    "seconds": 127.17054176330566,
+    "avg_forward_calls": 33.0,
+    "route_rates": {
+      "32": 1.0
+    },
+    "final_budget_rates": {
+      "32": 1.0
+    },
+    "peak_mem_gb": 15.531914234161377
+  },
+  "ceval_computer_network": {
+    "accuracy": 0.6,
+    "n": 50,
+    "seconds": 60.27035450935364,
+    "avg_forward_calls": 33.0,
+    "route_rates": {
+      "32": 1.0
+    },
+    "final_budget_rates": {
+      "32": 1.0
+    },
+    "peak_mem_gb": 15.531914234161377
+  },
+  "sciq": {
+    "accuracy": 0.9,
+    "n": 50,
+    "seconds": 61.82649636268616,
+    "avg_forward_calls": 33.0,
+    "route_rates": {
+      "32": 1.0
+    },
+    "final_budget_rates": {
+      "32": 1.0
+    },
+    "peak_mem_gb": 15.531914234161377
+  },
+  "winogrande": {
+    "accuracy": 0.72,
+    "n": 50,
+    "seconds": 18.968717098236084,
+    "avg_forward_calls": 10.12,
+    "route_rates": {
+      "8": 0.88,
+      "8->16": 0.1,
+      "8->32": 0.02
+    },
+    "final_budget_rates": {
+      "16": 0.1,
+      "32": 0.02,
+      "8": 0.88
+    },
+    "peak_mem_gb": 15.531914234161377
+  },
+  "commonsenseqa": {
+    "accuracy": 0.9,
+    "n": 50,
+    "seconds": 17.439885139465332,
+    "avg_forward_calls": 9.26,
+    "route_rates": {
+      "8": 0.84,
+      "8->16": 0.14,
+      "8->24": 0.02
+    },
+    "final_budget_rates": {
+      "16": 0.14,
+      "24": 0.02,
+      "8": 0.84
+    },
+    "peak_mem_gb": 15.531914234161377
+  },
+  "arc_challenge": {
+    "accuracy": 0.88,
+    "n": 50,
+    "seconds": 60.354352951049805,
+    "avg_forward_calls": 33.0,
+    "route_rates": {
+      "32": 1.0
+    },
+    "final_budget_rates": {
+      "32": 1.0
+    },
+    "peak_mem_gb": 15.531914234161377
+  },
+  "hellaswag": {
+    "accuracy": 0.72,
+    "n": 50,
+    "seconds": 79.77586889266968,
+    "avg_forward_calls": 33.0,
+    "route_rates": {
+      "32": 1.0
+    },
+    "final_budget_rates": {
+      "32": 1.0
+    },
+    "peak_mem_gb": 15.531914234161377
+  },
+  "boolq": {
+    "accuracy": 0.84,
+    "n": 50,
+    "seconds": 21.849387168884277,
+    "avg_forward_calls": 10.12,
+    "route_rates": {
+      "8": 0.88,
+      "8->16": 0.1,
+      "8->24": 0.02
+    },
+    "final_budget_rates": {
+      "16": 0.1,
+      "24": 0.02,
+      "8": 0.88
+    },
+    "peak_mem_gb": 15.531914234161377
+  }
+}

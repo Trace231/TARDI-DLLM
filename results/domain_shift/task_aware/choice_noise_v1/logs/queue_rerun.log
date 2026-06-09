@@ -1,0 +1,28 @@
+Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 6/6 [00:00<00:00, 145.41it/s]
+{"task": "winogrande", "id": "593", "gold": "A", "pred": "B", "correct": false}
+{"task": "winogrande", "id": "171", "gold": "A", "pred": "A", "correct": true}
+{"task": "commonsenseqa", "id": "8b25332de2894ab38784235838d38cec", "gold": "E", "pred": "E", "correct": true}
+{"task": "commonsenseqa", "id": "8ea5720718c0e122efa6277edb511569", "gold": "D", "pred": "D", "correct": true}
+{
+  "winogrande": {
+    "accuracy": 0.5,
+    "n": 2,
+    "seconds": 1.2137625217437744,
+    "peak_mem_gb": 15.061256408691406
+  },
+  "commonsenseqa": {
+    "accuracy": 1.0,
+    "n": 2,
+    "seconds": 0.5506641864776611,
+    "peak_mem_gb": 15.061727523803711
+  }
+}
+Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 6/6 [00:00<00:00, 181.66it/s]
+gradient_checkpointing skipped: LLaDAModelLM does not support gradient checkpointing.
+trainable params: 10,485,760 || all params: 8,026,066,944 || trainable%: 0.1306
+Traceback (most recent call last):
+  File "/data/llada_eval/scripts/train_llada_choice_noise_lora.py", line 336, in <module>
+    main()
+  File "/data/llada_eval/scripts/train_llada_choice_noise_lora.py", line 254, in main
+    raise RuntimeError("No usable training examples after tokenization.")
+RuntimeError: No usable training examples after tokenization.

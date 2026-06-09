@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="500" viewBox="0 0 820 500">
+<rect width="100%" height="100%" fill="white"/>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; fill: #1f2933; }
+.title { font-size: 20px; font-weight: 700; }
+.axis { font-size: 12px; fill: #4b5563; }
+.label { font-size: 11px; fill: #374151; }
+.value { font-size: 12px; font-weight: 650; }
+.grid { stroke: #d9dee5; stroke-width: 1; }
+</style>
+<text x="74" y="34" class="title">Accuracy-cost trade-off</text>
+<line x1="99.8" y1="60" x2="99.8" y2="430" class="grid"/>
+<text x="99.8" y="452" text-anchor="middle" class="axis">24</text>
+<line x1="203.0" y1="60" x2="203.0" y2="430" class="grid"/>
+<text x="203.0" y="452" text-anchor="middle" class="axis">26</text>
+<line x1="306.2" y1="60" x2="306.2" y2="430" class="grid"/>
+<text x="306.2" y="452" text-anchor="middle" class="axis">28</text>
+<line x1="409.4" y1="60" x2="409.4" y2="430" class="grid"/>
+<text x="409.4" y="452" text-anchor="middle" class="axis">30</text>
+<line x1="512.6" y1="60" x2="512.6" y2="430" class="grid"/>
+<text x="512.6" y="452" text-anchor="middle" class="axis">32</text>
+<line x1="74" y1="377.1" x2="590" y2="377.1" class="grid"/>
+<text x="62" y="381.1" text-anchor="end" class="axis">0.72</text>
+<line x1="74" y1="271.4" x2="590" y2="271.4" class="grid"/>
+<text x="62" y="275.4" text-anchor="end" class="axis">0.73</text>
+<line x1="74" y1="165.7" x2="590" y2="165.7" class="grid"/>
+<text x="62" y="169.7" text-anchor="end" class="axis">0.74</text>
+<line x1="74" y1="60.0" x2="590" y2="60.0" class="grid"/>
+<text x="62" y="64.0" text-anchor="end" class="axis">0.75</text>
+<circle cx="512.6" cy="118.7" r="7" fill="#E76F51" stroke="white" stroke-width="2"/>
+<text x="524.6" y="122.7" class="label">Vanilla LoRA 32</text>
+<circle cx="163.7" cy="142.2" r="7" fill="#2A9D8F" stroke="white" stroke-width="2"/>
+<text x="175.7" y="146.2" class="label">Vanilla + Ctrl</text>
+<circle cx="512.6" cy="189.2" r="7" fill="#00A6A6" stroke="white" stroke-width="2"/>
+<text x="524.6" y="193.2" class="label">Choice-noise 32</text>
+<circle cx="512.6" cy="236.2" r="7" fill="#7E57C2" stroke="white" stroke-width="2"/>
+<text x="524.6" y="240.2" class="label">Label LoRA 32</text>
+<circle cx="166.8" cy="236.2" r="7" fill="#2A9D8F" stroke="white" stroke-width="2"/>
+<text x="178.8" y="240.2" class="label">Choice-noise + Ctrl</text>
+<circle cx="512.6" cy="353.7" r="7" fill="#5B6770" stroke="white" stroke-width="2"/>
+<text x="524.6" y="357.7" class="label">Base 32</text>
+<text x="332.0" y="482" text-anchor="middle" class="axis">Average forward calls</text>
+<text transform="translate(18,245.0) rotate(-90)" text-anchor="middle" class="axis">Macro accuracy</text>
+</svg>
