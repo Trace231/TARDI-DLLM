@@ -10,6 +10,8 @@ EXTERNAL_METHODS = {
     "llada_dora_vanilla_fixed32": "llada_dora_vanilla_fixed32_limit{limit}_seed{seed}.json",
     "llada_nara_vanilla_fixed32": "llada_nara_vanilla_fixed32_limit{limit}_seed{seed}.json",
     "llada_nara_choice_noise_fixed32": "llada_nara_choice_noise_fixed32_limit{limit}_seed{seed}.json",
+    "llada_nara_r32_vanilla_fixed32": "llada_nara_r32_vanilla_fixed32_limit{limit}_seed{seed}.json",
+    "llada_nara_r32_choice_noise_fixed32": "llada_nara_r32_choice_noise_fixed32_limit{limit}_seed{seed}.json",
 }
 
 CHOICE_METHODS = {
@@ -68,6 +70,23 @@ def write_csv(path, rows, fields):
 def make_report(macro_rows, task_rows, out_root):
     complete = [r for r in macro_rows if r.get("status") == "complete"]
     complete.sort(key=lambda r: r["macro_accuracy"], reverse=True)
+    by_method = {r["method"]: r for r in complete}
+    external_names = {
+        "llada_rslora_vanilla_fixed32",
+        "llada_dora_vanilla_fixed32",
+        "llada_nara_vanilla_fixed32",
+        "llada_nara_r32_vanilla_fixed32",
+    }
+    our_names = {
+        "llada_vanilla_lora_controller",
+        "llada_choice_noise_lora_fixed32",
+        "llada_nara_choice_noise_fixed32",
+        "llada_nara_r32_choice_noise_fixed32",
+    }
+    completed_external = [r for r in complete if r["method"] in external_names]
+    completed_ours = [r for r in complete if r["method"] in our_names]
+    best_external = max(completed_external, key=lambda r: r["macro_accuracy"], default=None)
+    best_ours = max(completed_ours, key=lambda r: r["macro_accuracy"], default=None)
     lines = ["# External Improved LoRA Baseline Comparison\n\n"]
     lines.append("This report compares external/improved LoRA baselines under the same LLaDA fixed-label protocol when their raw outputs are available.\n\n")
     lines.append("## Macro Results\n\n")
@@ -80,13 +99,35 @@ def make_report(macro_rows, task_rows, out_root):
     if complete:
         best = complete[0]
         lines.append(f"\nCurrent best completed method: `{best['method']}` with macro accuracy `{best['macro_accuracy']:.3f}`.\n")
+    lines.append("\n## Win/Loss Audit\n\n")
+    if best_external and best_ours:
+        delta = best_ours["macro_accuracy"] - best_external["macro_accuracy"]
+        relation = "wins over" if delta > 0 else "ties" if abs(delta) < 1e-9 else "does not beat"
+        lines.append(
+            f"Best ours `{best_ours['method']}` ({best_ours['macro_accuracy']:.3f}) "
+            f"{relation} best completed external baseline `{best_external['method']}` "
+            f"({best_external['macro_accuracy']:.3f}); delta={delta:+.3f}.\n"
+        )
+    elif not best_external:
+        lines.append("External improved LoRA baselines are not complete yet, so no superiority claim is allowed.\n")
+    else:
+        lines.append("Our comparison rows are missing; inspect raw outputs before making a claim.\n")
+
+    nara_cn = by_method.get("llada_nara_choice_noise_fixed32")
+    nara_base = by_method.get("llada_nara_vanilla_fixed32")
+    if nara_cn and nara_base:
+        delta = nara_cn["macro_accuracy"] - nara_base["macro_accuracy"]
+        lines.append(
+            f"NaRA-style choice-noise vs NaRA-style vanilla delta: {delta:+.3f}. "
+            "Positive means the fixed-label objective improves a dLLM-specific adapter.\n"
+        )
     missing = [r["method"] for r in macro_rows if r.get("status") != "complete"]
     if missing:
         lines.append("\nMissing methods still need GPU runs:\n\n")
         for m in missing:
             lines.append(f"- `{m}`\n")
     lines.append("\n## Interpretation Guardrail\n\n")
-    lines.append("NaRA-style here is a mechanism-level reproduction using a mask-ratio-conditioned dynamic core `B C(lambda) A x`; it is not claimed to be the official authors' code unless the official implementation is later plugged in.\n")
+    lines.append("NaRA-style here is a mechanism-level reproduction using `B C(lambda) A x`, where `C(lambda)=I+eta F(GaussianFourier(lambda))` is produced by a shared hypernetwork; it is not claimed to be the official authors' code unless the official implementation is later plugged in.\n")
     lines.append(f"\nOutputs live in `{out_root}`.\n")
     return "".join(lines)
 

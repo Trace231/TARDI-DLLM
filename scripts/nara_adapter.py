@@ -3,34 +3,74 @@ from pathlib import Path
 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 
 
 MASK_ID = 126336
 
 
-class NaRALinear(nn.Module):
-    """Noise-aware low-rank adapter with a bucketed dynamic core matrix.
+class GaussianFourierProjection(nn.Module):
+    def __init__(self, embed_dim=64, scale=16.0):
+        super().__init__()
+        if embed_dim % 2 != 0:
+            raise ValueError(f"embed_dim must be even, got {embed_dim}")
+        self.embed_dim = int(embed_dim)
+        self.register_buffer("W", torch.randn(1, embed_dim // 2) * float(scale))
 
-    This is a lightweight NaRA-style implementation for masked diffusion LMs:
-    the adapter computes B C(lambda) A x, where the core C is selected from the
-    current mask-ratio bucket. It is a mechanism-level baseline rather than a
-    dependency on a specific external codebase.
+    def forward(self, x):
+        if x.dim() == 1:
+            x = x.unsqueeze(-1)
+        x_proj = x.float() @ self.W.float()
+        return torch.cat([torch.sin(x_proj), torch.cos(x_proj)], dim=-1).to(self.W.dtype)
+
+
+class NARAMapper(nn.Module):
+    def __init__(self, r, embedding_dim=64, hidden1=256, hidden2=512):
+        super().__init__()
+        self.r = int(r)
+        self.net = nn.Sequential(
+            nn.Linear(embedding_dim, hidden1),
+            nn.SiLU(),
+            nn.Linear(hidden1, hidden2),
+            nn.SiLU(),
+            nn.Linear(hidden2, self.r * self.r),
+        )
+        self.reset_parameters()
+
+    def reset_parameters(self):
+        linear_layers = [m for m in self.net if isinstance(m, nn.Linear)]
+        for layer in linear_layers[:-1]:
+            nn.init.kaiming_uniform_(layer.weight, a=5**0.5)
+            nn.init.zeros_(layer.bias)
+        nn.init.zeros_(linear_layers[-1].weight)
+        nn.init.zeros_(linear_layers[-1].bias)
+
+    def forward(self, emb):
+        return self.net(emb).view(emb.shape[0], self.r, self.r)
+
+
+class NaRALinear(nn.Module):
+    """Noise-aware low-rank adapter with a shared dynamic core matrix.
+
+    The adapter computes B C(lambda) A x, where C(lambda)=I+eta F(e_lambda)
+    is produced by a globally shared hypernetwork from a Gaussian Fourier
+    embedding of the current mask ratio. This matches the mechanism described
+    by NaRA while keeping the implementation local to this project.
     """
 
-    def __init__(self, base, name, r=8, alpha=16, dropout=0.05, num_buckets=4):
+    def __init__(self, base, name, mapper, embedding, r=8, alpha=16, dropout=0.05, c_scale=0.1):
         super().__init__()
         self.base = base
         self.name = name
+        self.mapper = mapper
+        self.embedding = embedding
         self.r = int(r)
         self.alpha = float(alpha)
         self.scaling = self.alpha / max(1, self.r)
-        self.num_buckets = int(num_buckets)
+        self.c_scale = float(c_scale)
         self.dropout = nn.Dropout(float(dropout))
         self.lora_A = nn.Linear(base.in_features, self.r, bias=False)
         self.lora_B = nn.Linear(self.r, base.out_features, bias=False)
-        self.core = nn.Parameter(torch.zeros(self.num_buckets, self.r, self.r))
-        self.register_buffer("current_bucket", torch.zeros(1, dtype=torch.long), persistent=False)
+        self.register_buffer("current_noise_level", torch.ones(1, dtype=torch.float32), persistent=False)
         self.reset_parameters()
         for p in self.base.parameters():
             p.requires_grad_(False)
@@ -38,29 +78,33 @@ class NaRALinear(nn.Module):
     def reset_parameters(self):
         nn.init.kaiming_uniform_(self.lora_A.weight, a=5**0.5)
         nn.init.zeros_(self.lora_B.weight)
-        with torch.no_grad():
-            eye = torch.eye(self.r)
-            for i in range(self.num_buckets):
-                self.core[i].copy_(eye)
 
-    def set_bucket(self, bucket):
-        if not torch.is_tensor(bucket):
-            bucket = torch.tensor([int(bucket)], dtype=torch.long, device=self.current_bucket.device)
-        bucket = bucket.detach().to(device=self.current_bucket.device, dtype=torch.long)
-        bucket = torch.clamp(bucket, 0, self.num_buckets - 1)
-        self.current_bucket = bucket
+    def set_noise_level(self, noise_level):
+        if not torch.is_tensor(noise_level):
+            noise_level = torch.tensor([float(noise_level)], dtype=torch.float32, device=self.current_noise_level.device)
+        noise_level = noise_level.detach().to(device=self.current_noise_level.device, dtype=torch.float32)
+        self.current_noise_level = torch.clamp(noise_level.view(-1), 0.0, 1.0)
 
     def forward(self, x):
         base_out = self.base(x)
         dtype = self.lora_A.weight.dtype
         z = self.lora_A(self.dropout(x).to(dtype))
-        bucket = self.current_bucket.to(z.device)
-        if z.dim() == 3 and bucket.numel() == z.shape[0]:
-            core = self.core.to(z.dtype)[bucket]
+        noise = self.current_noise_level.to(device=z.device, dtype=torch.float32)
+        if z.dim() == 3 and noise.numel() == z.shape[0]:
+            pass
+        elif noise.numel() == 1:
+            noise = noise.expand(z.shape[0] if z.dim() == 3 else 1)
+        else:
+            noise = noise[:1].expand(z.shape[0] if z.dim() == 3 else 1)
+
+        emb = self.embedding(noise).to(dtype)
+        core_delta = self.mapper(emb).to(dtype) * self.c_scale
+        eye = torch.eye(self.r, device=z.device, dtype=dtype).unsqueeze(0)
+        core = eye + core_delta
+        if z.dim() == 3:
             z = torch.einsum("blr,brs->bls", z, core)
         else:
-            core = self.core.to(z.dtype)[int(bucket.flatten()[0].item())]
-            z = torch.matmul(z, core)
+            z = torch.matmul(z, core[0])
         update = self.lora_B(z).to(base_out.dtype) * self.scaling
         return base_out + update
 
@@ -82,15 +126,13 @@ def _iter_target_linears(model, target_modules):
             yield name, module
 
 
-def _bucket_from_input(input_ids, num_buckets):
+def _noise_level_from_input(input_ids):
     if input_ids is None:
-        return torch.zeros(1, dtype=torch.long)
-    mask_ratio = (input_ids == MASK_ID).float().mean(dim=1)
-    bucket = torch.floor(mask_ratio * num_buckets).long()
-    return torch.clamp(bucket, 0, num_buckets - 1)
+        return torch.ones(1, dtype=torch.float32)
+    return (input_ids == MASK_ID).float().mean(dim=1).clamp(0.0, 1.0)
 
 
-def _register_noise_hook(model, num_buckets):
+def _register_noise_hook(model):
     if getattr(model, "_nara_noise_hook_registered", False):
         return
 
@@ -99,58 +141,83 @@ def _register_noise_hook(model, num_buckets):
         if input_ids is None and args:
             input_ids = args[0]
         if input_ids is None or not torch.is_tensor(input_ids):
-            bucket = torch.zeros(1, dtype=torch.long, device=next(model.parameters()).device)
+            noise_level = torch.ones(1, dtype=torch.float32, device=next(model.parameters()).device)
         else:
-            bucket = _bucket_from_input(input_ids, num_buckets).to(input_ids.device)
+            noise_level = _noise_level_from_input(input_ids).to(input_ids.device)
         for layer in getattr(model, "_nara_layers", []):
-            layer.set_bucket(bucket)
+            layer.set_noise_level(noise_level)
 
     try:
         model.register_forward_pre_hook(hook, with_kwargs=True)
     except TypeError:
         def old_hook(_module, args):
             input_ids = args[0] if args else None
-            bucket = _bucket_from_input(input_ids, num_buckets).to(input_ids.device) if torch.is_tensor(input_ids) else torch.zeros(1, dtype=torch.long)
+            noise_level = _noise_level_from_input(input_ids).to(input_ids.device) if torch.is_tensor(input_ids) else torch.ones(1, dtype=torch.float32)
             for layer in getattr(model, "_nara_layers", []):
-                layer.set_bucket(bucket)
+                layer.set_noise_level(noise_level)
         model.register_forward_pre_hook(old_hook)
     model._nara_noise_hook_registered = True
 
 
-def install_nara_adapter(model, target_modules, r=8, alpha=16, dropout=0.05, num_buckets=4):
+def install_nara_adapter(
+    model,
+    target_modules,
+    r=8,
+    alpha=16,
+    dropout=0.05,
+    num_buckets=4,
+    embedding_dim=64,
+    mapper_hidden1=256,
+    mapper_hidden2=512,
+    c_scale=0.1,
+):
     for p in model.parameters():
         p.requires_grad_(False)
+    mapper = NARAMapper(r, embedding_dim=embedding_dim, hidden1=mapper_hidden1, hidden2=mapper_hidden2)
+    embedding = GaussianFourierProjection(embedding_dim)
+    device = next(model.parameters()).device
+    dtype = next(model.parameters()).dtype
+    mapper.to(device=device, dtype=dtype)
+    embedding.to(device=device, dtype=dtype)
     layers = []
     names = []
     for name, module in _iter_target_linears(model, set(target_modules)):
         parent, child = _find_parent(model, name)
-        wrapped = NaRALinear(module, name=name, r=r, alpha=alpha, dropout=dropout, num_buckets=num_buckets)
+        wrapped = NaRALinear(module, name=name, mapper=mapper, embedding=embedding, r=r, alpha=alpha, dropout=dropout, c_scale=c_scale)
         setattr(parent, child, wrapped)
         layers.append(wrapped)
         names.append(name)
     if not layers:
         raise RuntimeError(f"No target Linear modules found for NaRA adapter: {target_modules}")
     model._nara_layers = layers
+    model._nara_mapper = mapper
+    model._nara_embedding = embedding
     model._nara_config = {
-        "type": "nara_style",
+        "type": "nara_style_hypernetwork",
         "target_modules": list(target_modules),
         "r": int(r),
         "alpha": float(alpha),
         "dropout": float(dropout),
         "num_buckets": int(num_buckets),
+        "embedding_dim": int(embedding_dim),
+        "mapper_hidden1": int(mapper_hidden1),
+        "mapper_hidden2": int(mapper_hidden2),
+        "c_scale": float(c_scale),
         "module_names": names,
+        "official_mechanism": "C(lambda)=I+c_scale*MLP(GaussianFourier(lambda)); shared mapper across layers",
     }
-    _register_noise_hook(model, int(num_buckets))
+    _register_noise_hook(model)
     return model
 
 
 def nara_state_dict(model):
     state = {}
+    state["__mapper__"] = {k: v.detach().cpu() for k, v in model._nara_mapper.state_dict().items()}
+    state["__embedding__"] = {k: v.detach().cpu() for k, v in model._nara_embedding.state_dict().items()}
     for layer in getattr(model, "_nara_layers", []):
         prefix = layer.name
         state[f"{prefix}.lora_A.weight"] = layer.lora_A.weight.detach().cpu()
         state[f"{prefix}.lora_B.weight"] = layer.lora_B.weight.detach().cpu()
-        state[f"{prefix}.core"] = layer.core.detach().cpu()
     return state
 
 
@@ -173,15 +240,22 @@ def load_nara_adapter(model, adapter_dir):
         alpha=config["alpha"],
         dropout=config.get("dropout", 0.0),
         num_buckets=config.get("num_buckets", 4),
+        embedding_dim=config.get("embedding_dim", 64),
+        mapper_hidden1=config.get("mapper_hidden1", 256),
+        mapper_hidden2=config.get("mapper_hidden2", 512),
+        c_scale=config.get("c_scale", 0.1),
     )
     state = torch.load(adapter_dir / "nara_adapter.pt", map_location="cpu")
+    if "__mapper__" in state:
+        model._nara_mapper.load_state_dict({k: v.to(next(model._nara_mapper.parameters()).device) for k, v in state["__mapper__"].items()})
+    if "__embedding__" in state:
+        model._nara_embedding.load_state_dict({k: v.to(model._nara_embedding.W.device) for k, v in state["__embedding__"].items()})
     by_name = {layer.name: layer for layer in model._nara_layers}
     missing = []
     for name, layer in by_name.items():
         for attr, target in [
             ("lora_A.weight", layer.lora_A.weight),
             ("lora_B.weight", layer.lora_B.weight),
-            ("core", layer.core),
         ]:
             key = f"{name}.{attr}"
             if key not in state:

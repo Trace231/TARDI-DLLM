@@ -14,8 +14,14 @@ This report compares external/improved LoRA baselines under the same LLaDA fixed
 | llada_dora_vanilla_fixed32 | missing |  |  |
 | llada_nara_vanilla_fixed32 | missing |  |  |
 | llada_nara_choice_noise_fixed32 | missing |  |  |
+| llada_nara_r32_vanilla_fixed32 | missing |  |  |
+| llada_nara_r32_choice_noise_fixed32 | missing |  |  |
 
 Current best completed method: `llada_vanilla_lora_fixed32` with macro accuracy `0.744`.
+
+## Win/Loss Audit
+
+External improved LoRA baselines are not complete yet, so no superiority claim is allowed.
 
 Missing methods still need GPU runs:
 
@@ -23,9 +29,11 @@ Missing methods still need GPU runs:
 - `llada_dora_vanilla_fixed32`
 - `llada_nara_vanilla_fixed32`
 - `llada_nara_choice_noise_fixed32`
+- `llada_nara_r32_vanilla_fixed32`
+- `llada_nara_r32_choice_noise_fixed32`
 
 ## Interpretation Guardrail
 
-NaRA-style here is a mechanism-level reproduction using a mask-ratio-conditioned dynamic core `B C(lambda) A x`; it is not claimed to be the official authors' code unless the official implementation is later plugged in.
+NaRA-style here is a mechanism-level reproduction using `B C(lambda) A x`, where `C(lambda)=I+eta F(GaussianFourier(lambda))` is produced by a shared hypernetwork; it is not claimed to be the official authors' code unless the official implementation is later plugged in.
 
 Outputs live in `results/domain_shift/task_aware/lora_external_v1`.

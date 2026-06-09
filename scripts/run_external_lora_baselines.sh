@@ -65,10 +65,15 @@ run_train_eval() {
 # External / improved LoRA baselines under the same denoising objective.
 run_train_eval "rslora_vanilla" "rslora" "vanilla" 100
 run_train_eval "dora_vanilla" "dora" "vanilla" 100
-run_train_eval "nara_vanilla" "nara" "vanilla" 100 "--nara-buckets 4"
+run_train_eval "nara_vanilla" "nara" "vanilla" 100 "--nara-c-scale 0.1 --nara-embedding-dim 64 --nara-hidden1 256 --nara-hidden2 512"
 
 # Our NaRA-style extension: dynamic noise-aware adapter plus fixed-label objective.
-run_train_eval "nara_choice_noise" "nara" "choice_noise" 150 "--nara-buckets 4 --denoise-weight 0.15 --consistency-weight 0.05"
+run_train_eval "nara_choice_noise" "nara" "choice_noise" 150 "--nara-c-scale 0.1 --nara-embedding-dim 64 --nara-hidden1 256 --nara-hidden2 512 --denoise-weight 0.15 --consistency-weight 0.05"
+
+if [ "${RUN_OFFICIAL_SCALE_NARA:-0}" = "1" ]; then
+  run_train_eval "nara_r32_vanilla" "nara" "vanilla" 100 "--lora-r 32 --lora-alpha 32 --nara-c-scale 0.1 --nara-embedding-dim 64 --nara-hidden1 256 --nara-hidden2 512"
+  run_train_eval "nara_r32_choice_noise" "nara" "choice_noise" 150 "--lora-r 32 --lora-alpha 32 --nara-c-scale 0.1 --nara-embedding-dim 64 --nara-hidden1 256 --nara-hidden2 512 --denoise-weight 0.15 --consistency-weight 0.05"
+fi
 
 python3 scripts/analyze_external_lora_baselines.py \
   --external-root "$ROOT" \

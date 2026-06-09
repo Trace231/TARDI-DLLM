@@ -218,6 +218,10 @@ def main():
     ap.add_argument("--lora-alpha", type=int, default=16)
     ap.add_argument("--lora-dropout", type=float, default=0.05)
     ap.add_argument("--nara-buckets", type=int, default=4)
+    ap.add_argument("--nara-c-scale", type=float, default=0.1)
+    ap.add_argument("--nara-embedding-dim", type=int, default=64)
+    ap.add_argument("--nara-hidden1", type=int, default=256)
+    ap.add_argument("--nara-hidden2", type=int, default=512)
     ap.add_argument("--noise-ratios", default="0.15,0.35,0.65,0.85")
     ap.add_argument("--denoise-weight", type=float, default=0.15)
     ap.add_argument("--consistency-weight", type=float, default=0.05)
@@ -255,6 +259,10 @@ def main():
             alpha=args.lora_alpha,
             dropout=args.lora_dropout,
             num_buckets=args.nara_buckets,
+            embedding_dim=args.nara_embedding_dim,
+            mapper_hidden1=args.nara_hidden1,
+            mapper_hidden2=args.nara_hidden2,
+            c_scale=args.nara_c_scale,
         )
         trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
         total = sum(p.numel() for p in model.parameters())

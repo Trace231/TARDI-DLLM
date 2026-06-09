@@ -25,13 +25,42 @@ LoRA + selective re-masking controller
 | NaRA-style vanilla | dLLM-specific improved LoRA | mask-ratio-conditioned dynamic core `B C(lambda) A x`，复现 NaRA 的机制思想 |
 | NaRA-style choice-noise | 我们的扩展 | 在 NaRA-style adapter 上加入 choice/noise objective |
 
+默认运行的是 **parameter-matched** 设置：`r=8, alpha=16`，和已有 vanilla/choice-noise LoRA 对齐。若要更贴近官方 NaRA commonsense config，可开启：
+
+```bash
+RUN_OFFICIAL_SCALE_NARA=1 bash scripts/run_external_lora_baselines.sh
+```
+
+这会额外跑：
+
+```text
+nara_r32_vanilla
+nara_r32_choice_noise
+```
+
+其中 `r=32, alpha=32, c_scale=0.1`，更接近官方 NaRA config，但训练显存和时间更高。
+
 注意：
 
 ```text
 NaRA-style 是机制级复现，不声称调用了官方作者代码。
 ```
 
-因为目前没有接入可验证的官方 NaRA repo。报告中应写成 `NaRA-style` 或 `mechanism-level reproduction`。
+官方 NaRA repo 已定位：
+
+```text
+https://github.com/generaldi/NaRA
+commit = 15718ac88896ab2b48b7d3ce4b067455f841ed57
+```
+
+官方 README 中的核心机制是：
+
+```text
+h = W0 x + B C(lambda) A x
+C(lambda) = I + eta * F_phi(e_lambda)
+```
+
+其中 `e_lambda` 是 Gaussian Fourier embedding，`F_phi` 是全局共享 MLP hypernetwork。本项目的 `scripts/nara_adapter.py` 已按这个机制实现 continuous NaRA-style adapter，而不是离散 bucket 版本。由于没有直接复用官方训练框架和数据管线，报告中仍应写成 `NaRA-style mechanism reproduction`。
 
 ## 3. 已实现代码
 
@@ -51,7 +80,10 @@ scripts/train_llada_choice_noise_lora.py
 
 ```bash
 --peft-variant lora|rslora|dora|nara
---nara-buckets 4
+  --nara-c-scale 0.1
+  --nara-embedding-dim 64
+  --nara-hidden1 256
+  --nara-hidden2 512
 ```
 
 评测自动加载：
@@ -129,8 +161,10 @@ results/domain_shift/task_aware/lora_external_v1/
 ```text
 rsLoRA fixed-32
 DoRA fixed-32
-NaRA-style fixed-32
-NaRA-style choice-noise fixed-32
+NaRA-style r8 fixed-32
+NaRA-style r8 choice-noise fixed-32
+optional NaRA-style r32 fixed-32
+optional NaRA-style r32 choice-noise fixed-32
 ```
 
 如果：

@@ -51,6 +51,14 @@
     {
       "method": "llada_nara_choice_noise_fixed32",
       "status": "missing"
+    },
+    {
+      "method": "llada_nara_r32_vanilla_fixed32",
+      "status": "missing"
+    },
+    {
+      "method": "llada_nara_r32_choice_noise_fixed32",
+      "status": "missing"
     }
   ],
   "task_rows": [
