@@ -176,7 +176,39 @@ Controller 的行为具有明显任务依赖：
 3. 修正：重新构造 fixed-label denoising / choice posterior 训练后，新 LLaDA LoRA 在 9 任务上超过 base。
 4. 推理控制：适配后仍有样本级 reverse budget heterogeneity，因此 controller 可以进一步省算。
 
-## 8. Related Sampler Baseline
+## 8. External Improved LoRA Baseline
+
+为避免训练侧贡献只停留在自家消融，本轮补充复现并比较了多种 LoRA 改良方法：rsLoRA、DoRA、LoRA+ 与 NaRA-style noise-aware adapter。所有方法使用相同 LLaDA-8B-Instruct、相同 fixed-label prompt、相同 9 个任务、相同 `limit=50` 和 `seed=23`，并统一使用 32-step fixed-label evaluation。
+
+| Method | Macro Acc. | Correct / N | 解释 |
+|---|---:|---:|---|
+| Vanilla LoRA fixed-32 | 0.744 | 335 / 450 | 并列最高 |
+| NaRA-style vanilla fixed-32 | 0.744 | 335 / 450 | 并列最高 |
+| Vanilla LoRA + controller | 0.742 | 334 / 450 | 接近最高且省算 |
+| LoRA+ vanilla fixed-32 | 0.742 | 334 / 450 | 接近最高 |
+| NaRA-style choice-noise fixed-32 | 0.740 | 333 / 450 | 低于 NaRA vanilla |
+| Choice-noise LoRA fixed-32 | 0.738 | 332 / 450 | 低于 vanilla |
+| rsLoRA vanilla fixed-32 | 0.736 | 331 / 450 | 低于 vanilla |
+| Label-focused LoRA fixed-32 | 0.733 | 330 / 450 | 负结果 |
+| DoRA vanilla fixed-32 | 0.733 | 330 / 450 | 低于 vanilla |
+| Base fixed-32 | 0.722 | 325 / 450 | 基础线 |
+
+这组结果改变了训练侧叙事：不能声称 choice-noise LoRA 全面超过现有 LoRA 改良。更稳的结论是，通用 improved LoRA 并不会自动解决 masked diffusion LM 的 fixed-label reasoning 适配；NaRA-style 的 noise-aware 结构可以达到 vanilla LoRA 水平，但额外的 choice/noise objective 在当前规模下没有稳定提升。
+
+因此最终贡献应收束为：
+
+1. 训练侧给出系统诊断：DDM LoRA objective 会改变任务偏置，但 choice-aware/label-focused 目标短训下存在负迁移。
+2. Related LoRA baseline 已补齐：rsLoRA、DoRA、LoRA+、NaRA-style 均在同一协议下比较。
+3. 推理侧是稳定正结果：controller 在 0.742 macro accuracy 下接近最高 0.744，同时保持此前约 21% forward-call 节省。
+
+完整 external LoRA 结果见：
+
+```text
+External_LoRA_Baseline_Final_Results.md
+results/domain_shift/task_aware/lora_external_v1/
+```
+
+## 9. Related Sampler Baseline
 
 已有 solid_v2 的 sampler baseline 覆盖 11 任务、每任务 50：
 
@@ -194,7 +226,7 @@ Controller 的行为具有明显任务依赖：
 
 也就是说，controller 的价值不是“我也能 early stop”，而是它和训练侧 fixed-label adaptation 共同解决 DDM 下游选择题的两个错位。
 
-## 9. 最推荐的 Pre 叙事
+## 10. 最推荐的 Pre 叙事
 
 建议不要说：
 
@@ -218,14 +250,14 @@ selective re-masking controller 可以在几乎不损失准确率的前提下降
 2. **训练侧实验**：比较 vanilla、label-focused、choice-noise 三种 DDM LoRA objective，证明 DDM LoRA 可以提升固定标签任务，但 objective 决定任务偏置。
 3. **推理侧控制**：在 LoRA 后接入 selective re-masking controller，实现几乎保分的推理预算压缩。
 
-## 10. 局限性
+## 11. 局限性
 
 1. 新 LoRA/controller 实验为 `limit=50 × 9 tasks`，样本量比 1000 样本主对照小，适合 course project/pre，不应夸成大规模 benchmark SOTA。
 2. Vanilla LoRA overall 最强，choice-noise 目前不是全局最优 objective。后续可做 balanced loss sweep，例如提高 denoise weight、降低 consistency weight。
 3. Controller 对高风险任务保守，因此全局平均 calls 下降约 21%，不是 40% 以上；但这也说明它不是盲目压缩。
 4. 方法没有修改 LLaDA 架构。LoRA 是参数高效适配，controller 是 inference-loop 改进。
 
-## 11. 文件索引
+## 12. 文件索引
 
 新实验主表：
 

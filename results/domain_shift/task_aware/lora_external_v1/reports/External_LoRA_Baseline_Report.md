@@ -7,14 +7,15 @@ This report compares external/improved LoRA baselines under the same LLaDA fixed
 | Method | Status | Macro Acc. | Correct / N |
 |---|---|---:|---:|
 | llada_vanilla_lora_fixed32 | complete | 0.744 | 335 / 450 |
+| llada_nara_vanilla_fixed32 | complete | 0.744 | 335 / 450 |
 | llada_vanilla_lora_controller | complete | 0.742 | 334 / 450 |
+| llada_loraplus_vanilla_fixed32 | complete | 0.742 | 334 / 450 |
+| llada_nara_choice_noise_fixed32 | complete | 0.740 | 333 / 450 |
 | llada_choice_noise_lora_fixed32 | complete | 0.738 | 332 / 450 |
+| llada_rslora_vanilla_fixed32 | complete | 0.736 | 331 / 450 |
+| llada_label_lora_fixed32 | complete | 0.733 | 330 / 450 |
+| llada_dora_vanilla_fixed32 | complete | 0.733 | 330 / 450 |
 | llada_base_fixed32 | complete | 0.722 | 325 / 450 |
-| llada_rslora_vanilla_fixed32 | missing |  |  |
-| llada_dora_vanilla_fixed32 | missing |  |  |
-| llada_loraplus_vanilla_fixed32 | missing |  |  |
-| llada_nara_vanilla_fixed32 | missing |  |  |
-| llada_nara_choice_noise_fixed32 | missing |  |  |
 | llada_nara_r32_vanilla_fixed32 | missing |  |  |
 | llada_nara_r32_choice_noise_fixed32 | missing |  |  |
 | llada_nara_official_targets_vanilla_fixed32 | missing |  |  |
@@ -24,15 +25,11 @@ Current best completed method: `llada_vanilla_lora_fixed32` with macro accuracy 
 
 ## Win/Loss Audit
 
-External improved LoRA baselines are not complete yet, so no superiority claim is allowed.
+Best ours `llada_vanilla_lora_controller` (0.742) does not beat best completed external baseline `llada_nara_vanilla_fixed32` (0.744); delta=-0.002.
+NaRA-style choice-noise vs NaRA-style vanilla delta: -0.004. Positive means the fixed-label objective improves a dLLM-specific adapter.
 
 Missing methods still need GPU runs:
 
-- `llada_rslora_vanilla_fixed32`
-- `llada_dora_vanilla_fixed32`
-- `llada_loraplus_vanilla_fixed32`
-- `llada_nara_vanilla_fixed32`
-- `llada_nara_choice_noise_fixed32`
 - `llada_nara_r32_vanilla_fixed32`
 - `llada_nara_r32_choice_noise_fixed32`
 - `llada_nara_official_targets_vanilla_fixed32`

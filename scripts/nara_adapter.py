@@ -184,6 +184,7 @@ def install_nara_adapter(
     for name, module in _iter_target_linears(model, set(target_modules)):
         parent, child = _find_parent(model, name)
         wrapped = NaRALinear(module, name=name, mapper=mapper, embedding=embedding, r=r, alpha=alpha, dropout=dropout, c_scale=c_scale)
+        wrapped.to(device=device, dtype=dtype)
         setattr(parent, child, wrapped)
         layers.append(wrapped)
         names.append(name)

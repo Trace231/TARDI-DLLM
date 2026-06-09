@@ -20,6 +20,7 @@ EXTERNAL_METHODS = {
 CHOICE_METHODS = {
     "llada_base_fixed32": "llada_base_fixed32_limit50_seed23.json",
     "llada_vanilla_lora_fixed32": "llada_vanilla_fixed32_limit50_seed23.json",
+    "llada_label_lora_fixed32": "llada_label_fixed32_limit50_seed23.json",
     "llada_choice_noise_lora_fixed32": "llada_choice_noise_fixed32_limit50_seed23.json",
     "llada_vanilla_lora_controller": "llada_vanilla_controller_limit50_seed23.json",
 }

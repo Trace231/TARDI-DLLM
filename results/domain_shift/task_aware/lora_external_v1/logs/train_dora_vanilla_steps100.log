@@ -1,0 +1,14 @@
+Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 6/6 [00:00<00:00, 163.49it/s]
+gradient_checkpointing skipped: LLaDAModelLM does not support gradient checkpointing.
+trainable params: 11,272,192 || all params: 8,026,853,376 || trainable%: 0.1404
+{"step": 1, "loss": 0.035245638340711594, "choice_loss": 0.0005279577453620732, "denoise_loss": 0.035245638340711594, "consistency_loss": 0.0}
+{"step": 10, "loss": 0.4369864761829376, "choice_loss": 0.42870065569877625, "denoise_loss": 0.4369864761829376, "consistency_loss": 0.0}
+{"step": 20, "loss": 0.07387299090623856, "choice_loss": 0.0697668120265007, "denoise_loss": 0.07387299090623856, "consistency_loss": 0.0}
+{"step": 30, "loss": 0.6573857069015503, "choice_loss": 0.6353616118431091, "denoise_loss": 0.6573857069015503, "consistency_loss": 0.0}
+{"step": 40, "loss": 0.014233144000172615, "choice_loss": 0.012241940945386887, "denoise_loss": 0.014233144000172615, "consistency_loss": 0.0}
+{"step": 50, "loss": 1.3718695640563965, "choice_loss": 1.3396656513214111, "denoise_loss": 1.3718695640563965, "consistency_loss": 0.0}
+{"step": 60, "loss": 0.005742955021560192, "choice_loss": 0.0023258081637322903, "denoise_loss": 0.005742955021560192, "consistency_loss": 0.0}
+{"step": 70, "loss": 0.0030725435353815556, "choice_loss": 0.0021983047481626272, "denoise_loss": 0.0030725435353815556, "consistency_loss": 0.0}
+{"step": 80, "loss": 0.036983001977205276, "choice_loss": 0.03458451107144356, "denoise_loss": 0.036983001977205276, "consistency_loss": 0.0}
+{"step": 90, "loss": 1.5677026510238647, "choice_loss": 1.5639148950576782, "denoise_loss": 1.5677026510238647, "consistency_loss": 0.0}
+{"step": 100, "loss": 0.0019154074834659696, "choice_loss": 0.0008562712464481592, "denoise_loss": 0.0019154074834659696, "consistency_loss": 0.0}
