@@ -22,6 +22,7 @@ LoRA + selective re-masking controller
 |---|---|---|
 | rsLoRA | 通用 improved LoRA | rank-stabilized LoRA，测试缩放方式是否比 vanilla LoRA 稳 |
 | DoRA | 通用 improved LoRA | weight-decomposed LoRA，测试方向/幅度分解是否提升 fixed-label reasoning |
+| LoRA+ | 通用 improved LoRA | 对 LoRA A/B 使用不同学习率，测试优化层面的 PEFT 改进 |
 | NaRA-style vanilla | dLLM-specific improved LoRA | mask-ratio-conditioned dynamic core `B C(lambda) A x`，复现 NaRA 的机制思想 |
 | NaRA-style choice-noise | 我们的扩展 | 在 NaRA-style adapter 上加入 choice/noise objective |
 
@@ -39,6 +40,30 @@ nara_r32_choice_noise
 ```
 
 其中 `r=32, alpha=32, c_scale=0.1`，更接近官方 NaRA config，但训练显存和时间更高。
+
+另一个公平性维度是 target modules。默认使用已经在本项目中验证过的 full target：
+
+```text
+q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj
+```
+
+若要额外跑官方 NaRA config 中更接近 attention-only 的 target：
+
+```bash
+RUN_NARA_OFFICIAL_TARGETS=1 bash scripts/run_external_lora_baselines.sh
+```
+
+默认 official target 为：
+
+```text
+q_proj,k_proj,v_proj,attn_out
+```
+
+可用环境变量覆盖：
+
+```bash
+NARA_OFFICIAL_TARGET_MODULES=q_proj,k_proj,v_proj,attn_out bash scripts/run_external_lora_baselines.sh
+```
 
 注意：
 
@@ -161,10 +186,13 @@ results/domain_shift/task_aware/lora_external_v1/
 ```text
 rsLoRA fixed-32
 DoRA fixed-32
+LoRA+ fixed-32
 NaRA-style r8 fixed-32
 NaRA-style r8 choice-noise fixed-32
 optional NaRA-style r32 fixed-32
 optional NaRA-style r32 choice-noise fixed-32
+optional NaRA-style official-target fixed-32
+optional NaRA-style official-target choice-noise fixed-32
 ```
 
 如果：

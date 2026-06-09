@@ -12,10 +12,13 @@ This report compares external/improved LoRA baselines under the same LLaDA fixed
 | llada_base_fixed32 | complete | 0.722 | 325 / 450 |
 | llada_rslora_vanilla_fixed32 | missing |  |  |
 | llada_dora_vanilla_fixed32 | missing |  |  |
+| llada_loraplus_vanilla_fixed32 | missing |  |  |
 | llada_nara_vanilla_fixed32 | missing |  |  |
 | llada_nara_choice_noise_fixed32 | missing |  |  |
 | llada_nara_r32_vanilla_fixed32 | missing |  |  |
 | llada_nara_r32_choice_noise_fixed32 | missing |  |  |
+| llada_nara_official_targets_vanilla_fixed32 | missing |  |  |
+| llada_nara_official_targets_choice_noise_fixed32 | missing |  |  |
 
 Current best completed method: `llada_vanilla_lora_fixed32` with macro accuracy `0.744`.
 
@@ -27,10 +30,13 @@ Missing methods still need GPU runs:
 
 - `llada_rslora_vanilla_fixed32`
 - `llada_dora_vanilla_fixed32`
+- `llada_loraplus_vanilla_fixed32`
 - `llada_nara_vanilla_fixed32`
 - `llada_nara_choice_noise_fixed32`
 - `llada_nara_r32_vanilla_fixed32`
 - `llada_nara_r32_choice_noise_fixed32`
+- `llada_nara_official_targets_vanilla_fixed32`
+- `llada_nara_official_targets_choice_noise_fixed32`
 
 ## Interpretation Guardrail
 

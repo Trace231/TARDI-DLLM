@@ -8,10 +8,13 @@ from pathlib import Path
 EXTERNAL_METHODS = {
     "llada_rslora_vanilla_fixed32": "llada_rslora_vanilla_fixed32_limit{limit}_seed{seed}.json",
     "llada_dora_vanilla_fixed32": "llada_dora_vanilla_fixed32_limit{limit}_seed{seed}.json",
+    "llada_loraplus_vanilla_fixed32": "llada_loraplus_vanilla_fixed32_limit{limit}_seed{seed}.json",
     "llada_nara_vanilla_fixed32": "llada_nara_vanilla_fixed32_limit{limit}_seed{seed}.json",
     "llada_nara_choice_noise_fixed32": "llada_nara_choice_noise_fixed32_limit{limit}_seed{seed}.json",
     "llada_nara_r32_vanilla_fixed32": "llada_nara_r32_vanilla_fixed32_limit{limit}_seed{seed}.json",
     "llada_nara_r32_choice_noise_fixed32": "llada_nara_r32_choice_noise_fixed32_limit{limit}_seed{seed}.json",
+    "llada_nara_official_targets_vanilla_fixed32": "llada_nara_official_targets_vanilla_fixed32_limit{limit}_seed{seed}.json",
+    "llada_nara_official_targets_choice_noise_fixed32": "llada_nara_official_targets_choice_noise_fixed32_limit{limit}_seed{seed}.json",
 }
 
 CHOICE_METHODS = {
@@ -74,14 +77,17 @@ def make_report(macro_rows, task_rows, out_root):
     external_names = {
         "llada_rslora_vanilla_fixed32",
         "llada_dora_vanilla_fixed32",
+        "llada_loraplus_vanilla_fixed32",
         "llada_nara_vanilla_fixed32",
         "llada_nara_r32_vanilla_fixed32",
+        "llada_nara_official_targets_vanilla_fixed32",
     }
     our_names = {
         "llada_vanilla_lora_controller",
         "llada_choice_noise_lora_fixed32",
         "llada_nara_choice_noise_fixed32",
         "llada_nara_r32_choice_noise_fixed32",
+        "llada_nara_official_targets_choice_noise_fixed32",
     }
     completed_external = [r for r in complete if r["method"] in external_names]
     completed_ours = [r for r in complete if r["method"] in our_names]

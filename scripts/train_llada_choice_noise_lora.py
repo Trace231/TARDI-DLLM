@@ -207,16 +207,18 @@ def main():
     ap.add_argument("--train-jsonl", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--mode", choices=["vanilla", "label", "choice_noise"], default="choice_noise")
-    ap.add_argument("--peft-variant", choices=["lora", "rslora", "dora", "nara"], default="lora")
+    ap.add_argument("--peft-variant", choices=["lora", "rslora", "dora", "loraplus", "nara"], default="lora")
     ap.add_argument("--seed", type=int, default=23)
     ap.add_argument("--max-steps", type=int, default=200)
     ap.add_argument("--batch-size", type=int, default=1)
     ap.add_argument("--grad-accum", type=int, default=8)
     ap.add_argument("--max-length", type=int, default=1536)
     ap.add_argument("--lr", type=float, default=1e-4)
+    ap.add_argument("--loraplus-lr-ratio", type=float, default=16.0)
     ap.add_argument("--lora-r", type=int, default=8)
     ap.add_argument("--lora-alpha", type=int, default=16)
     ap.add_argument("--lora-dropout", type=float, default=0.05)
+    ap.add_argument("--target-modules", default="q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj")
     ap.add_argument("--nara-buckets", type=int, default=4)
     ap.add_argument("--nara-c-scale", type=float, default=0.1)
     ap.add_argument("--nara-embedding-dim", type=int, default=64)
@@ -250,7 +252,7 @@ def main():
             print(f"gradient_checkpointing skipped: {exc}", flush=True)
     if hasattr(model, "enable_input_require_grads"):
         model.enable_input_require_grads()
-    target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+    target_modules = [x.strip() for x in args.target_modules.split(",") if x.strip()]
     if args.peft_variant == "nara":
         model = install_nara_adapter(
             model,
@@ -290,7 +292,31 @@ def main():
         model = get_peft_model(model, config)
         model.print_trainable_parameters()
     model.train()
-    optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=args.lr)
+    if args.peft_variant == "loraplus":
+        group_a, group_b, group_other = [], [], []
+        for name, param in model.named_parameters():
+            if not param.requires_grad:
+                continue
+            if "lora_A" in name:
+                group_a.append(param)
+            elif "lora_B" in name:
+                group_b.append(param)
+            else:
+                group_other.append(param)
+        optimizer = torch.optim.AdamW(
+            [
+                {"params": group_a, "lr": args.lr},
+                {"params": group_b, "lr": args.lr * args.loraplus_lr_ratio},
+                {"params": group_other, "lr": args.lr},
+            ]
+        )
+        print(
+            f"LoRA+ optimizer: lr_A={args.lr:g}, lr_B={args.lr * args.loraplus_lr_ratio:g}, "
+            f"n_A={sum(p.numel() for p in group_a):,}, n_B={sum(p.numel() for p in group_b):,}",
+            flush=True,
+        )
+    else:
+        optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=args.lr)
 
     usable = [r for r in rows if encode_one(tokenizer, r, args, rng) is not None]
     if not usable:

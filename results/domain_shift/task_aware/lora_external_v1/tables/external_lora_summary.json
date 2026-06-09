@@ -45,6 +45,10 @@
       "status": "missing"
     },
     {
+      "method": "llada_loraplus_vanilla_fixed32",
+      "status": "missing"
+    },
+    {
       "method": "llada_nara_vanilla_fixed32",
       "status": "missing"
     },
@@ -58,6 +62,14 @@
     },
     {
       "method": "llada_nara_r32_choice_noise_fixed32",
+      "status": "missing"
+    },
+    {
+      "method": "llada_nara_official_targets_vanilla_fixed32",
+      "status": "missing"
+    },
+    {
+      "method": "llada_nara_official_targets_choice_noise_fixed32",
       "status": "missing"
     }
   ],

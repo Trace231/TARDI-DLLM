@@ -9,6 +9,8 @@ ROOT="${ROOT:-results/domain_shift/task_aware/lora_external_v1}"
 TASKS="${TASKS:-mmlu_pro,pubmedqa,ceval_computer_network,sciq,winogrande,commonsenseqa,arc_challenge,hellaswag,boolq}"
 LIMIT="${LIMIT:-50}"
 SEED="${SEED:-23}"
+TARGET_MODULES="${TARGET_MODULES:-q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj}"
+NARA_OFFICIAL_TARGET_MODULES="${NARA_OFFICIAL_TARGET_MODULES:-q_proj,k_proj,v_proj,attn_out}"
 
 mkdir -p "$ROOT"/{adapters,raw,logs,tables,reports}
 
@@ -36,6 +38,7 @@ run_train_eval() {
       --batch-size 1 \
       --lr 1e-4 \
       --seed "$SEED" \
+      --target-modules "$TARGET_MODULES" \
       $extra \
       2>&1 | tee "$ROOT/logs/train_${name}_steps${steps}.log"
   else
@@ -65,6 +68,7 @@ run_train_eval() {
 # External / improved LoRA baselines under the same denoising objective.
 run_train_eval "rslora_vanilla" "rslora" "vanilla" 100
 run_train_eval "dora_vanilla" "dora" "vanilla" 100
+run_train_eval "loraplus_vanilla" "loraplus" "vanilla" 100 "--loraplus-lr-ratio 16"
 run_train_eval "nara_vanilla" "nara" "vanilla" 100 "--nara-c-scale 0.1 --nara-embedding-dim 64 --nara-hidden1 256 --nara-hidden2 512"
 
 # Our NaRA-style extension: dynamic noise-aware adapter plus fixed-label objective.
@@ -73,6 +77,11 @@ run_train_eval "nara_choice_noise" "nara" "choice_noise" 150 "--nara-c-scale 0.1
 if [ "${RUN_OFFICIAL_SCALE_NARA:-0}" = "1" ]; then
   run_train_eval "nara_r32_vanilla" "nara" "vanilla" 100 "--lora-r 32 --lora-alpha 32 --nara-c-scale 0.1 --nara-embedding-dim 64 --nara-hidden1 256 --nara-hidden2 512"
   run_train_eval "nara_r32_choice_noise" "nara" "choice_noise" 150 "--lora-r 32 --lora-alpha 32 --nara-c-scale 0.1 --nara-embedding-dim 64 --nara-hidden1 256 --nara-hidden2 512 --denoise-weight 0.15 --consistency-weight 0.05"
+fi
+
+if [ "${RUN_NARA_OFFICIAL_TARGETS:-0}" = "1" ]; then
+  run_train_eval "nara_official_targets_vanilla" "nara" "vanilla" 100 "--target-modules $NARA_OFFICIAL_TARGET_MODULES --nara-c-scale 0.1 --nara-embedding-dim 64 --nara-hidden1 256 --nara-hidden2 512"
+  run_train_eval "nara_official_targets_choice_noise" "nara" "choice_noise" 150 "--target-modules $NARA_OFFICIAL_TARGET_MODULES --nara-c-scale 0.1 --nara-embedding-dim 64 --nara-hidden1 256 --nara-hidden2 512 --denoise-weight 0.15 --consistency-weight 0.05"
 fi
 
 python3 scripts/analyze_external_lora_baselines.py \
