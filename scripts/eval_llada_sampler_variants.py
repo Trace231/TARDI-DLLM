@@ -167,6 +167,7 @@ def generate_variant(model, prompt, attention_mask=None, steps=32, gen_length=32
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--model", required=True)
+    p.add_argument("--adapter", default=None)
     p.add_argument("--tasks", default="winogrande,commonsenseqa")
     p.add_argument("--limit", type=int, default=50)
     p.add_argument("--seed", type=int, default=11)
@@ -184,7 +185,7 @@ def main():
     args = p.parse_args()
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
-    tok, model = base.load_llada(args.model)
+    tok, model = base.load_llada(args.model, args.adapter)
     torch.cuda.reset_peak_memory_stats()
     rows=[]; summary={}
     for task in [t for t in args.tasks.split(',') if t]:
