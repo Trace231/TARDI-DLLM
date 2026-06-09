@@ -228,7 +228,10 @@ def main():
     model = AutoModel.from_pretrained(args.model, trust_remote_code=True, torch_dtype=torch.bfloat16).to("cuda")
     model.config.use_cache = False
     if hasattr(model, "gradient_checkpointing_enable"):
-        model.gradient_checkpointing_enable()
+        try:
+            model.gradient_checkpointing_enable()
+        except ValueError as exc:
+            print(f"gradient_checkpointing skipped: {exc}", flush=True)
     if hasattr(model, "enable_input_require_grads"):
         model.enable_input_require_grads()
     model = get_peft_model(
