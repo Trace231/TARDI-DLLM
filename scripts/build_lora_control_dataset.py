@@ -187,6 +187,82 @@ def build(limit_per_task, seed, excluded):
         if count >= limit_per_task:
             break
 
+    ds = load_dataset("ai2_arc", "ARC-Challenge", split="train")
+    idxs = list(range(len(ds)))
+    rng.shuffle(idxs)
+    count = 0
+    for i in idxs:
+        ex = ds[i]
+        sid = str(i)
+        if sid in excluded.get("arc_challenge", set()):
+            continue
+        labels = ex["choices"]["label"]
+        texts = ex["choices"]["text"]
+        label_to_letter = {lab: LETTERS[j] for j, lab in enumerate(labels)}
+        gold = label_to_letter.get(ex["answerKey"], ex["answerKey"])
+        add(
+            rows,
+            "arc_challenge",
+            sid,
+            format_final_label_mc(
+                "Question: " + ex["question"],
+                texts,
+                "Answer this grade-school science multiple-choice question.",
+            ),
+            gold,
+            "letter",
+        )
+        count += 1
+        if count >= limit_per_task:
+            break
+
+    ds = load_dataset("Rowan/hellaswag", split="train")
+    idxs = list(range(len(ds)))
+    rng.shuffle(idxs)
+    count = 0
+    for i in idxs:
+        ex = ds[i]
+        sid = str(i)
+        if sid in excluded.get("hellaswag", set()):
+            continue
+        add(
+            rows,
+            "hellaswag",
+            sid,
+            format_final_label_mc(
+                "Context: " + ex["ctx"],
+                list(ex["endings"]),
+                "Choose the most plausible continuation.",
+            ),
+            LETTERS[int(ex["label"])],
+            "letter",
+        )
+        count += 1
+        if count >= limit_per_task:
+            break
+
+    ds = load_dataset("google/boolq", split="train")
+    idxs = list(range(len(ds)))
+    rng.shuffle(idxs)
+    count = 0
+    for i in idxs:
+        ex = ds[i]
+        sid = str(i)
+        if sid in excluded.get("boolq", set()):
+            continue
+        answer = "yes" if ex["answer"] else "no"
+        prompt = (
+            DECISION_FINAL_LABEL_SYSTEM_PROMPT.replace("<yes|no|maybe>", "<yes|no>").replace("yes, no, or maybe", "yes or no")
+            + "\nRead the passage and answer yes or no.\n\nPassage:\n"
+            + ex["passage"]
+            + "\n\nQuestion: "
+            + ex["question"]
+        )
+        add(rows, "boolq", sid, prompt, answer, "bool")
+        count += 1
+        if count >= limit_per_task:
+            break
+
     rng.shuffle(rows)
     return rows
 
