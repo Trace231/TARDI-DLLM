@@ -73,6 +73,14 @@ def candidate_token_ids(tokenizer, prefix_text, labels, label_pos):
     return ids
 
 
+def common_prefix_len(a, b):
+    n = min(len(a), len(b))
+    i = 0
+    while i < n and a[i] == b[i]:
+        i += 1
+    return i
+
+
 def encode_one(tokenizer, row, args, rng, forced_ratio=None):
     prompt_text = apply_chat(tokenizer, row)
     target = row.get("target") or f"Final answer: {row['answer']}"
@@ -92,10 +100,10 @@ def encode_one(tokenizer, row, args, rng, forced_ratio=None):
 
     prefix_ids = tokenizer(prefix_text, add_special_tokens=False)["input_ids"]
     full_ids = tokenizer(full_text, add_special_tokens=False)["input_ids"]
-    if len(full_ids) > args.max_length or len(prefix_ids) >= len(full_ids):
+    label_pos = common_prefix_len(prefix_ids, full_ids)
+    if len(full_ids) > args.max_length or label_pos >= len(full_ids):
         return None
 
-    label_pos = len(prefix_ids)
     labels = label_space(row)
     cand_ids = candidate_token_ids(tokenizer, prefix_text, labels, label_pos)
     if not cand_ids:
