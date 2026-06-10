@@ -230,6 +230,9 @@ def main():
     ap.add_argument("--nara-hidden2", type=int, default=512)
     ap.add_argument("--task-list", default="")
     ap.add_argument("--task-embedding-dim", type=int, default=32)
+    ap.add_argument("--task-conditioning", choices=["concat", "residual"], default="concat")
+    ap.add_argument("--task-residual-scale", type=float, default=0.05)
+    ap.add_argument("--task-dropout", type=float, default=0.0)
     ap.add_argument("--noise-ratios", default="0.15,0.35,0.65,0.85")
     ap.add_argument("--denoise-weight", type=float, default=0.15)
     ap.add_argument("--consistency-weight", type=float, default=0.05)
@@ -276,6 +279,9 @@ def main():
             c_scale=args.nara_c_scale,
             task_list=task_list if args.peft_variant == "tasknara" else None,
             task_embedding_dim=args.task_embedding_dim if args.peft_variant == "tasknara" else 0,
+            task_conditioning=args.task_conditioning if args.peft_variant == "tasknara" else "concat",
+            task_residual_scale=args.task_residual_scale,
+            task_dropout=args.task_dropout if args.peft_variant == "tasknara" else 0.0,
         )
         trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
         total = sum(p.numel() for p in model.parameters())

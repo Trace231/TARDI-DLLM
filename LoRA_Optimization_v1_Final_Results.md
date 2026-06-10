@@ -28,7 +28,9 @@ TARDI-LoRA balanced r8 high-noise
 | TARDI-LoRA balanced r16 | 0.776 | 349 / 450 | +0.031 |
 | TaskNaRA r8 high-noise | 0.773 | 348 / 450 | +0.029 |
 | TARDI-LoRA balanced r16 high-noise | 0.769 | 346 / 450 | +0.024 |
+| Mature TaskNaRA residual vanilla high-noise | 0.769 | 346 / 450 | +0.024 |
 | TARDI-LoRA balanced LoRA+ r16 | 0.762 | 343 / 450 | +0.018 |
+| Mature TaskNaRA residual label high-noise | 0.762 | 343 / 450 | +0.018 |
 | TARDI-LoRA balanced r8 | 0.760 | 342 / 450 | +0.016 |
 | TARDI-LoRA balanced r8 lr5e-5 s150 | 0.760 | 342 / 450 | +0.016 |
 | TaskNaRA r16 | 0.758 | 341 / 450 | +0.013 |
@@ -110,11 +112,28 @@ C(task, lambda) = I + c_scale * MLP([Fourier(lambda); Emb(task)])
 
 TaskNaRA r8 high-noise 明显超过 old vanilla LoRA，但没有超过当前最强的 TARDI-LoRA，差距为 `1/450`。这说明 task-aware adapter 是一个真实实现过的非 toy 架构探索，但当前证据不支持把它作为最终主方法。更稳的结论是：在当前数据规模和训练步数下，**训练覆盖 + high-noise final-label denoising** 比更复杂的 task-conditioned hypernetwork 更关键。
 
+我随后又实现了更成熟的 residual 版 TaskNaRA：
+
+```text
+C(task, lambda) = I + c_scale * F(lambda) + sigmoid(g_task) * rho * G(lambda, Emb(task))
+```
+
+它加入了共享 noise core、受控 task residual、learned task gate 和 `0.20` task dropout。结果如下：
+
+| Method | Macro Acc. | Correct / N |
+|---|---:|---:|
+| Mature TaskNaRA residual vanilla high-noise | 0.769 | 346 / 450 |
+| Mature TaskNaRA residual label high-noise | 0.762 | 343 / 450 |
+
+成熟版比 old vanilla LoRA 强，但仍没有超过 TARDI-LoRA，也没有超过第一版 concat TaskNaRA。它的价值在于揭示边界：task-aware residual 能提升 WinoGrande (`0.76 -> 0.80`) 和 PubMedQA (`0.74 -> 0.76`)，但会损失 ARC-Challenge、HellaSwag 和 BoolQ。也就是说，task-aware capacity 不是免费收益，需要校准或路由，而不是简单加结构。
+
 完整结果见：
 
 ```text
 TaskNaRA_v1_Final_Results.md
+TaskNaRA_Mature_v1_Final_Results.md
 results/domain_shift/task_aware/lora_tasknara_v1/raw/
+results/domain_shift/task_aware/lora_tasknara_mature_v1/raw/
 ```
 
 ## 7. 最终可写贡献

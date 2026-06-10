@@ -22,6 +22,8 @@ METHODS = {
     "tardi_lora_balanced_r16_highnoise": ("opt", "llada_balanced_vanilla_r16_highnoise_s100_fixed32_limit50_seed23.json"),
     "tasknara_r8_highnoise": ("tasknara", "llada_tasknara_r8_highnoise_s100_fixed32_limit50_seed23.json"),
     "tasknara_r16": ("tasknara", "llada_tasknara_r16_s100_fixed32_limit50_seed23.json"),
+    "tasknara_residual_vanilla_highnoise": ("tasknara_mature", "llada_tasknara_residual_vanilla_highnoise_s150_fixed32_limit50_seed23.json"),
+    "tasknara_residual_label_highnoise": ("tasknara_mature", "llada_tasknara_residual_label_highnoise_s150_fixed32_limit50_seed23.json"),
 }
 
 
@@ -110,6 +112,7 @@ def main():
     ap.add_argument("--external-root", default="results/domain_shift/task_aware/lora_external_v1")
     ap.add_argument("--opt-root", default="results/domain_shift/task_aware/lora_opt_v1")
     ap.add_argument("--tasknara-root", default="results/domain_shift/task_aware/lora_tasknara_v1")
+    ap.add_argument("--tasknara-mature-root", default="results/domain_shift/task_aware/lora_tasknara_mature_v1")
     ap.add_argument("--out-root", default="results/domain_shift/task_aware/lora_opt_v1")
     args = ap.parse_args()
 
@@ -118,6 +121,7 @@ def main():
         "external": Path(args.external_root) / "raw",
         "opt": Path(args.opt_root) / "raw",
         "tasknara": Path(args.tasknara_root) / "raw",
+        "tasknara_mature": Path(args.tasknara_mature_root) / "raw",
     }
     macro_rows = []
     task_rows = []

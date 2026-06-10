@@ -1,0 +1,19 @@
+Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 6/6 [00:00<00:00, 170.47it/s]
+gradient_checkpointing skipped: LLaDAModelLM does not support gradient checkpointing.
+trainable params: 10,854,241 || all params: 8,026,435,425 || trainable%: 0.1352
+{"step": 1, "loss": 10.819173812866211, "choice_loss": 3.5940499305725098, "denoise_loss": 10.819173812866211, "consistency_loss": 0.0}
+{"step": 10, "loss": 2.054621934890747, "choice_loss": 2.0293359756469727, "denoise_loss": 2.054621934890747, "consistency_loss": 0.0}
+{"step": 20, "loss": 1.2624084949493408, "choice_loss": 1.2183929681777954, "denoise_loss": 1.2624084949493408, "consistency_loss": 0.0}
+{"step": 30, "loss": 0.9097447991371155, "choice_loss": 0.9067637920379639, "denoise_loss": 0.9097447991371155, "consistency_loss": 0.0}
+{"step": 40, "loss": 0.022622952237725258, "choice_loss": 0.020163560286164284, "denoise_loss": 0.022622952237725258, "consistency_loss": 0.0}
+{"step": 50, "loss": 0.2409946471452713, "choice_loss": 0.2383444905281067, "denoise_loss": 0.2409946471452713, "consistency_loss": 0.0}
+{"step": 60, "loss": 0.5794162154197693, "choice_loss": 0.575939416885376, "denoise_loss": 0.5794162154197693, "consistency_loss": 0.0}
+{"step": 70, "loss": 0.0010207447921857238, "choice_loss": 0.0005428509321063757, "denoise_loss": 0.0010207447921857238, "consistency_loss": 0.0}
+{"step": 80, "loss": 0.00043644916149787605, "choice_loss": 0.00024244230007752776, "denoise_loss": 0.00043644916149787605, "consistency_loss": 0.0}
+{"step": 90, "loss": 0.02589314989745617, "choice_loss": 0.023245446383953094, "denoise_loss": 0.02589314989745617, "consistency_loss": 0.0}
+{"step": 100, "loss": 0.00979462917894125, "choice_loss": 0.008703866973519325, "denoise_loss": 0.00979462917894125, "consistency_loss": 0.0}
+{"step": 110, "loss": 0.014016051776707172, "choice_loss": 0.01322521548718214, "denoise_loss": 0.014016051776707172, "consistency_loss": 0.0}
+{"step": 120, "loss": 0.0011634016409516335, "choice_loss": 0.00016866691294126213, "denoise_loss": 0.0011634016409516335, "consistency_loss": 0.0}
+{"step": 130, "loss": 2.528979778289795, "choice_loss": 2.521270275115967, "denoise_loss": 2.528979778289795, "consistency_loss": 0.0}
+{"step": 140, "loss": 0.08822035044431686, "choice_loss": 0.07888974994421005, "denoise_loss": 0.08822035044431686, "consistency_loss": 0.0}
+{"step": 150, "loss": 0.03334200009703636, "choice_loss": 0.03247295320034027, "denoise_loss": 0.03334200009703636, "consistency_loss": 0.0}
