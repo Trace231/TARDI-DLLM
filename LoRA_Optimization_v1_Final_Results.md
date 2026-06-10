@@ -26,10 +26,12 @@ TARDI-LoRA balanced r8 high-noise
 |---|---:|---:|---:|
 | TARDI-LoRA balanced r8 high-noise | 0.776 | 349 / 450 | +0.031 |
 | TARDI-LoRA balanced r16 | 0.776 | 349 / 450 | +0.031 |
+| TaskNaRA r8 high-noise | 0.773 | 348 / 450 | +0.029 |
 | TARDI-LoRA balanced r16 high-noise | 0.769 | 346 / 450 | +0.024 |
 | TARDI-LoRA balanced LoRA+ r16 | 0.762 | 343 / 450 | +0.018 |
 | TARDI-LoRA balanced r8 | 0.760 | 342 / 450 | +0.016 |
 | TARDI-LoRA balanced r8 lr5e-5 s150 | 0.760 | 342 / 450 | +0.016 |
+| TaskNaRA r16 | 0.758 | 341 / 450 | +0.013 |
 | Vanilla LoRA fixed-32 | 0.744 | 335 / 450 | 0.000 |
 | NaRA-style vanilla fixed-32 | 0.744 | 335 / 450 | 0.000 |
 | LoRA+ vanilla fixed-32 | 0.742 | 334 / 450 | -0.002 |
@@ -87,7 +89,35 @@ ARC-Challenge 上 old vanilla LoRA 仍略高，这是边界。
 
 但 `r16 + high-noise` 只有 `0.769`，说明二者不是简单叠加；更大的 rank 在高噪声下可能放大了任务间偏置。
 
-## 6. 最终可写贡献
+## 6. Task-aware Noise-conditioned Adapter
+
+在此基础上，我进一步实现了一个更“架构味”的 adapter，记为 **TaskNaRA**。它不修改 LLaDA backbone，而是在 LoRA 更新中同时注入扩散噪声阶段和任务 embedding：
+
+```text
+W'(task, lambda) = W + B C(task, lambda) A
+C(task, lambda) = I + c_scale * MLP([Fourier(lambda); Emb(task)])
+```
+
+实验结果：
+
+| Method | Macro Acc. | Correct / N |
+|---|---:|---:|
+| TARDI-LoRA balanced r8 high-noise | 0.776 | 349 / 450 |
+| TaskNaRA r8 high-noise | 0.773 | 348 / 450 |
+| TaskNaRA r16 | 0.758 | 341 / 450 |
+| Old vanilla LoRA fixed-32 | 0.744 | 335 / 450 |
+| Base fixed-32 | 0.722 | 325 / 450 |
+
+TaskNaRA r8 high-noise 明显超过 old vanilla LoRA，但没有超过当前最强的 TARDI-LoRA，差距为 `1/450`。这说明 task-aware adapter 是一个真实实现过的非 toy 架构探索，但当前证据不支持把它作为最终主方法。更稳的结论是：在当前数据规模和训练步数下，**训练覆盖 + high-noise final-label denoising** 比更复杂的 task-conditioned hypernetwork 更关键。
+
+完整结果见：
+
+```text
+TaskNaRA_v1_Final_Results.md
+results/domain_shift/task_aware/lora_tasknara_v1/raw/
+```
+
+## 7. 最终可写贡献
 
 建议把训练侧贡献改写为：
 
@@ -97,7 +127,7 @@ ARC-Challenge 上 old vanilla LoRA 仍略高，这是边界。
 
 > 本文提出 TARDI-LoRA：一种面向 masked diffusion LM 固定标签推理的任务均衡、高噪声 final-label denoising LoRA 适配协议。它不依赖新的 backbone 或复杂 LoRA 层，而是修正训练任务覆盖、扩散噪声阶段与下游 fixed-label evaluation 之间的错位。
 
-## 7. 文件位置
+## 8. 文件位置
 
 ```text
 results/domain_shift/task_aware/lora_opt_v1/train/
@@ -107,4 +137,3 @@ results/domain_shift/task_aware/lora_opt_v1/tables/lora_opt_macro_summary.csv
 results/domain_shift/task_aware/lora_opt_v1/tables/lora_opt_task_summary.csv
 results/domain_shift/task_aware/lora_opt_v1/reports/LoRA_Optimization_v1_Report.md
 ```
-

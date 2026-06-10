@@ -225,9 +225,11 @@ train = 9-task balanced, eval-disjoint final-label denoising
 |---|---:|---:|---:|
 | TARDI-LoRA balanced r8 high-noise | 0.776 | 349 / 450 | +0.031 |
 | TARDI-LoRA balanced r16 | 0.776 | 349 / 450 | +0.031 |
+| TaskNaRA r8 high-noise | 0.773 | 348 / 450 | +0.029 |
 | TARDI-LoRA balanced r16 high-noise | 0.769 | 346 / 450 | +0.024 |
 | TARDI-LoRA balanced LoRA+ r16 | 0.762 | 343 / 450 | +0.018 |
 | TARDI-LoRA balanced r8 | 0.760 | 342 / 450 | +0.016 |
+| TaskNaRA r16 | 0.758 | 341 / 450 | +0.013 |
 | Old vanilla LoRA fixed-32 | 0.744 | 335 / 450 | 0.000 |
 | Base fixed-32 | 0.722 | 325 / 450 | -0.022 |
 
@@ -244,7 +246,35 @@ LoRA_Optimization_v1_Final_Results.md
 results/domain_shift/task_aware/lora_opt_v1/
 ```
 
-## 10. Related Sampler Baseline
+## 10. TaskNaRA 架构探索
+
+为了验证“task-aware + noise-aware LoRA”是否能作为更强的训练侧贡献，我进一步实现了 **TaskNaRA**。它不修改 LLaDA backbone，而是在 LoRA correction 中加入 task embedding 和 diffusion noise embedding：
+
+```text
+W'(task, lambda) = W + B C(task, lambda) A
+C(task, lambda) = I + c_scale * MLP([Fourier(lambda); Emb(task)])
+```
+
+这个实现已经接入训练、保存、加载和评测全链路。结果是一个很有价值但需要诚实表述的结论：
+
+| Method | Macro Acc. | Correct / N |
+|---|---:|---:|
+| TARDI-LoRA balanced r8 high-noise | 0.776 | 349 / 450 |
+| TaskNaRA r8 high-noise | 0.773 | 348 / 450 |
+| TaskNaRA r16 | 0.758 | 341 / 450 |
+| Old vanilla LoRA fixed-32 | 0.744 | 335 / 450 |
+| Base fixed-32 | 0.722 | 325 / 450 |
+
+TaskNaRA r8 high-noise 明显超过 old vanilla LoRA，但没有超过更简单的 TARDI-LoRA，差距为 `1/450`。r16 反而下降，说明 task-conditioned adapter 容量可能放大任务间负迁移。因此最终不建议把 TaskNaRA 写成主贡献的“最佳方法”，而应写成架构探索和负结果：在当前小规模 fixed-label adaptation 下，任务覆盖和 high-noise denoising 对齐比复杂 task hypernetwork 更关键。
+
+完整结果见：
+
+```text
+TaskNaRA_v1_Final_Results.md
+results/domain_shift/task_aware/lora_tasknara_v1/
+```
+
+## 11. Related Sampler Baseline
 
 已有 solid_v2 的 sampler baseline 覆盖 11 任务、每任务 50：
 
@@ -262,7 +292,7 @@ results/domain_shift/task_aware/lora_opt_v1/
 
 也就是说，controller 的价值不是“我也能 early stop”，而是它和训练侧 fixed-label adaptation 共同解决 DDM 下游选择题的两个错位。
 
-## 11. 最推荐的 Pre 叙事
+## 12. 最推荐的 Pre 叙事
 
 建议不要说：
 
@@ -276,6 +306,7 @@ results/domain_shift/task_aware/lora_opt_v1/
 我们发现 masked diffusion LM 在 fixed-label reasoning 上存在训练侧和推理侧两个错位。
 训练侧，通用 improved LoRA 和 choice-noise objective 并不会自动超过 vanilla LoRA；
 但修正任务覆盖和扩散噪声阶段错位后，TARDI-LoRA 可以把 macro accuracy 从 0.744 提升到 0.776。
+进一步的 TaskNaRA 架构探索说明 task-aware adapter 可以超过旧 vanilla LoRA，但复杂条件化 adapter 不是免费收益；
 推理侧，适配后的 LLaDA 仍然存在样本级 reverse budget heterogeneity，
 selective re-masking controller 可以在几乎不损失准确率的前提下降低约 21% 平均 forward calls。
 ```
@@ -284,16 +315,17 @@ selective re-masking controller 可以在几乎不损失准确率的前提下降
 
 1. **诊断**：AR LoRA 与旧 DDM LoRA 的增益差异说明 DDM fixed-label adaptation 不能照搬 AR SFT。
 2. **训练侧修复**：提出 TARDI-LoRA，通过 9-task balanced、eval-disjoint 数据和 high-noise final-label denoising，使 LLaDA LoRA 超过原 vanilla、NaRA、LoRA+、rsLoRA、DoRA baseline。
-3. **推理侧控制**：在 LoRA 后接入 selective re-masking controller，实现几乎保分的推理预算压缩。
+3. **架构探索**：实现 TaskNaRA，将 task embedding 与 diffusion noise embedding 注入 LoRA correction；结果接近最优但未超过 TARDI-LoRA，形成可信的负结果和边界分析。
+4. **推理侧控制**：在 LoRA 后接入 selective re-masking controller，实现几乎保分的推理预算压缩。
 
-## 12. 局限性
+## 13. 局限性
 
 1. 新 LoRA/controller 实验为 `limit=50 × 9 tasks`，样本量比 1000 样本主对照小，适合 course project/pre，不应夸成大规模 benchmark SOTA。
-2. TARDI-LoRA 证明数据覆盖和噪声调度有效，但 choice-noise objective 目前不是全局最优 objective。后续可做 balanced loss sweep，例如提高 denoise weight、降低 consistency weight。
+2. TARDI-LoRA 证明数据覆盖和噪声调度有效，但 choice-noise objective 与 TaskNaRA 目前都不是全局最优 objective。后续可做 balanced loss sweep，例如提高 denoise weight、降低 consistency weight，或约束 task-conditioned adapter 的跨任务偏移。
 3. Controller 对高风险任务保守，因此全局平均 calls 下降约 21%，不是 40% 以上；但这也说明它不是盲目压缩。
 4. 方法没有修改 LLaDA 架构。LoRA 是参数高效适配，controller 是 inference-loop 改进。
 
-## 13. 文件索引
+## 14. 文件索引
 
 新实验主表：
 

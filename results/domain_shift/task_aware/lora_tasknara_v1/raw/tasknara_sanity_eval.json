@@ -1,0 +1,56 @@
+{
+  "backend": "llada",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "backend": "llada",
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "adapter": "results/domain_shift/task_aware/lora_tasknara_v1/adapters/_tasknara_sanity_steps1/final_adapter",
+    "tasks": "boolq",
+    "limit": 2,
+    "batch_size": 1,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/lora_tasknara_v1/raw/tasknara_sanity_eval.json",
+    "steps": 4,
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "logits_eos_inf": false,
+    "confidence_eos_eot_inf": false,
+    "max_new_tokens": 96,
+    "prompt_style": "final_label_typed"
+  },
+  "summary": {
+    "boolq": {
+      "accuracy": 0.0,
+      "n": 2,
+      "seconds": 0.733473539352417,
+      "peak_mem_gb": 15.14566421508789
+    }
+  },
+  "rows": [
+    {
+      "task": "boolq",
+      "id": "3192",
+      "gold": "yes",
+      "pred": "",
+      "correct": false,
+      "output": "Final answer",
+      "prompt": "Think briefly, then end with exactly one line:\nFinal answer: <yes|no>\n\nThe final answer must be yes or no only. Do not put any other text after the final answer line.\n\nRead the passage and answer the question with yes or no only.\n\nPassage: The Aquarium's notable specimens include whale sharks, beluga whales, California sea lions, bottlenose dolphins, and manta rays.\n\nQuestion: does the georgia aquarium still have whale sharks\nAnswer:",
+      "metric": "bool",
+      "meta": {}
+    },
+    {
+      "task": "boolq",
+      "id": "1187",
+      "gold": "no",
+      "pred": "",
+      "correct": false,
+      "output": "Final answer:",
+      "prompt": "Think briefly, then end with exactly one line:\nFinal answer: <yes|no>\n\nThe final answer must be yes or no only. Do not put any other text after the final answer line.\n\nRead the passage and answer the question with yes or no only.\n\nPassage: With this characterization of service, all veterans' benefits are lost, regardless of any past honorable service, and this type of discharge is regarded as shameful in the military. In many states a dishonorable discharge is deemed the equivalent of a felony conviction, with attendant loss of civil rights. Additionally, US federal law prohibits possession of firearms by those who have been dishonorably discharged per the Gun Control Act of 1968, and being dishonorably discharged is as well a disqualifying question on the Form 4473, which must be completed and signed to purchase a firearm from a Federal Firearms Licensee (FFL) and will result in a denial by the Brady background check that must be performed and passed to allow a sale.\n\nQuestion: can you buy a gun if you are dishonorably discharged\nAnswer:",
+      "metric": "bool",
+      "meta": {}
+    }
+  ]
+}

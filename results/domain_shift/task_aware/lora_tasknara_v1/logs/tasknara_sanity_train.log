@@ -1,0 +1,4 @@
+Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 6/6 [00:00<00:00, 161.93it/s]
+gradient_checkpointing skipped: LLaDAModelLM does not support gradient checkpointing.
+trainable params: 1,209,248 || all params: 8,016,790,432 || trainable%: 0.0151
+{"step": 1, "loss": 1.9452115297317505, "choice_loss": 1.940475583076477, "denoise_loss": 1.9452115297317505, "consistency_loss": 0.0}

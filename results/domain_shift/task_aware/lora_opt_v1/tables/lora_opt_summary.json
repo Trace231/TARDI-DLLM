@@ -125,6 +125,24 @@
       "n": 450,
       "macro_accuracy": 0.7688888888888888,
       "micro_accuracy": 0.7688888888888888
+    },
+    {
+      "method": "tasknara_r8_highnoise",
+      "status": "complete",
+      "tasks": 9,
+      "correct": 348,
+      "n": 450,
+      "macro_accuracy": 0.7733333333333333,
+      "micro_accuracy": 0.7733333333333333
+    },
+    {
+      "method": "tasknara_r16",
+      "status": "complete",
+      "tasks": 9,
+      "correct": 341,
+      "n": 450,
+      "macro_accuracy": 0.7577777777777778,
+      "micro_accuracy": 0.7577777777777778
     }
   ],
   "task_rows": [
@@ -1008,6 +1026,132 @@
       "task": "winogrande",
       "accuracy": 0.8,
       "correct": 40,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r8_highnoise",
+      "task": "arc_challenge",
+      "accuracy": 0.84,
+      "correct": 42,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r8_highnoise",
+      "task": "boolq",
+      "accuracy": 0.92,
+      "correct": 46,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r8_highnoise",
+      "task": "ceval_computer_network",
+      "accuracy": 0.68,
+      "correct": 34,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r8_highnoise",
+      "task": "commonsenseqa",
+      "accuracy": 0.9,
+      "correct": 45,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r8_highnoise",
+      "task": "hellaswag",
+      "accuracy": 0.78,
+      "correct": 39,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r8_highnoise",
+      "task": "mmlu_pro",
+      "accuracy": 0.42,
+      "correct": 21,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r8_highnoise",
+      "task": "pubmedqa",
+      "accuracy": 0.74,
+      "correct": 37,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r8_highnoise",
+      "task": "sciq",
+      "accuracy": 0.92,
+      "correct": 46,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r8_highnoise",
+      "task": "winogrande",
+      "accuracy": 0.76,
+      "correct": 38,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r16",
+      "task": "arc_challenge",
+      "accuracy": 0.84,
+      "correct": 42,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r16",
+      "task": "boolq",
+      "accuracy": 0.9,
+      "correct": 45,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r16",
+      "task": "ceval_computer_network",
+      "accuracy": 0.62,
+      "correct": 31,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r16",
+      "task": "commonsenseqa",
+      "accuracy": 0.9,
+      "correct": 45,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r16",
+      "task": "hellaswag",
+      "accuracy": 0.74,
+      "correct": 37,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r16",
+      "task": "mmlu_pro",
+      "accuracy": 0.4,
+      "correct": 20,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r16",
+      "task": "pubmedqa",
+      "accuracy": 0.74,
+      "correct": 37,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r16",
+      "task": "sciq",
+      "accuracy": 0.92,
+      "correct": 46,
+      "n": 50
+    },
+    {
+      "method": "tasknara_r16",
+      "task": "winogrande",
+      "accuracy": 0.76,
+      "correct": 38,
       "n": 50
     }
   ]
