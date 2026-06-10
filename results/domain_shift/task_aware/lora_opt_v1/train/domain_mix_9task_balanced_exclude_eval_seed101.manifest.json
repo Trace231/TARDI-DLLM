@@ -1,0 +1,50 @@
+{
+  "tasks": {
+    "mmlu_pro": {
+      "n": 100,
+      "excluded_eval_ids": 50
+    },
+    "pubmedqa": {
+      "n": 100,
+      "excluded_eval_ids": 50
+    },
+    "ceval_computer_network": {
+      "n": 100,
+      "excluded_eval_ids": 50
+    },
+    "sciq": {
+      "n": 100,
+      "excluded_eval_ids": 50
+    },
+    "winogrande": {
+      "n": 100,
+      "excluded_eval_ids": 50
+    },
+    "commonsenseqa": {
+      "n": 100,
+      "excluded_eval_ids": 50
+    },
+    "arc_challenge": {
+      "n": 100,
+      "excluded_eval_ids": 50
+    },
+    "hellaswag": {
+      "n": 100,
+      "excluded_eval_ids": 50
+    },
+    "boolq": {
+      "n": 100,
+      "excluded_eval_ids": 50
+    }
+  },
+  "args": {
+    "tasks": "mmlu_pro,pubmedqa,ceval_computer_network,sciq,winogrande,commonsenseqa,arc_challenge,hellaswag,boolq",
+    "limit_per_task": 100,
+    "seed": 101,
+    "exclude_seed": 23,
+    "exclude_limit": 50,
+    "pool_limit": 300,
+    "max_rounds": 12,
+    "out": "results/domain_shift/task_aware/lora_opt_v1/train/domain_mix_9task_balanced_exclude_eval_seed101.jsonl"
+  }
+}

@@ -1,0 +1,90 @@
+Using the latest cached version of the dataset since TIGER-Lab/MMLU-Pro couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /root/.cache/huggingface/datasets/TIGER-Lab___mmlu-pro/default/0.0.0/b189ec765aa7ed75c8acfea42df31fdae71f97be (last modified on Tue Jun  9 21:21:47 2026).
+Using the latest cached version of the dataset since TIGER-Lab/MMLU-Pro couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /root/.cache/huggingface/datasets/TIGER-Lab___mmlu-pro/default/0.0.0/b189ec765aa7ed75c8acfea42df31fdae71f97be (last modified on Tue Jun  9 21:21:47 2026).
+Using the latest cached version of the dataset since qiaojin/PubMedQA couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'pqa_labeled' at /root/.cache/huggingface/datasets/qiaojin___pub_med_qa/pqa_labeled/0.0.0/9001f2853fb87cab8d220904e0de81ac6973b318 (last modified on Tue Jun  9 21:22:06 2026).
+Using the latest cached version of the dataset since qiaojin/PubMedQA couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'pqa_labeled' at /root/.cache/huggingface/datasets/qiaojin___pub_med_qa/pqa_labeled/0.0.0/9001f2853fb87cab8d220904e0de81ac6973b318 (last modified on Tue Jun  9 21:22:06 2026).
+Using the latest cached version of the dataset since ceval/ceval-exam couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'computer_network' at /root/.cache/huggingface/datasets/ceval___ceval-exam/computer_network/0.0.0/617524a00b307ff6f9933702f724131fe12ca7ce (last modified on Tue Jun  9 21:22:29 2026).
+Using the latest cached version of the dataset since ceval/ceval-exam couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'computer_network' at /root/.cache/huggingface/datasets/ceval___ceval-exam/computer_network/0.0.0/617524a00b307ff6f9933702f724131fe12ca7ce (last modified on Tue Jun  9 21:22:29 2026).
+Using the latest cached version of the dataset since allenai/sciq couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /root/.cache/huggingface/datasets/allenai___sciq/default/0.0.0/2c94ad3e1aafab77146f384e23536f97a4849815 (last modified on Tue Jun  9 21:22:56 2026).
+Using the latest cached version of the dataset since allenai/sciq couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /root/.cache/huggingface/datasets/allenai___sciq/default/0.0.0/2c94ad3e1aafab77146f384e23536f97a4849815 (last modified on Tue Jun  9 21:22:56 2026).
+Using the latest cached version of the dataset since allenai/winogrande couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'winogrande_xl' at /root/.cache/huggingface/datasets/allenai___winogrande/winogrande_xl/0.0.0/01e74176c63542e6b0bcb004dcdea22d94fb67b5 (last modified on Tue Jun  9 21:23:22 2026).
+Using the latest cached version of the dataset since allenai/winogrande couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'winogrande_xl' at /root/.cache/huggingface/datasets/allenai___winogrande/winogrande_xl/0.0.0/01e74176c63542e6b0bcb004dcdea22d94fb67b5 (last modified on Tue Jun  9 21:23:22 2026).
+Using the latest cached version of the dataset since tau/commonsense_qa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /root/.cache/huggingface/datasets/tau___commonsense_qa/default/0.0.0/94630fe30dad47192a8546eb75f094926d47e155 (last modified on Tue Jun  9 21:40:30 2026).
+Using the latest cached version of the dataset since tau/commonsense_qa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /root/.cache/huggingface/datasets/tau___commonsense_qa/default/0.0.0/94630fe30dad47192a8546eb75f094926d47e155 (last modified on Tue Jun  9 21:40:30 2026).
+Using the latest cached version of the dataset since ai2_arc couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'ARC-Challenge' at /root/.cache/huggingface/datasets/ai2_arc/ARC-Challenge/0.0.0/210d026faf9955653af8916fad021475a3f00453 (last modified on Tue Jun  9 21:50:43 2026).
+Using the latest cached version of the dataset since ai2_arc couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'ARC-Challenge' at /root/.cache/huggingface/datasets/ai2_arc/ARC-Challenge/0.0.0/210d026faf9955653af8916fad021475a3f00453 (last modified on Tue Jun  9 21:50:43 2026).
+Using the latest cached version of the dataset since Rowan/hellaswag couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /root/.cache/huggingface/datasets/Rowan___hellaswag/default/0.0.0/218ec52e09a7e7462a5400043bb9a69a41d06b76 (last modified on Tue Jun  9 22:21:06 2026).
+Using the latest cached version of the dataset since Rowan/hellaswag couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /root/.cache/huggingface/datasets/Rowan___hellaswag/default/0.0.0/218ec52e09a7e7462a5400043bb9a69a41d06b76 (last modified on Tue Jun  9 22:21:06 2026).
+Using the latest cached version of the dataset since google/boolq couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /root/.cache/huggingface/datasets/google___boolq/default/0.0.0/35b264d03638db9f4ce671b711558bf7ff0f80d5 (last modified on Tue Jun  9 22:23:07 2026).
+Using the latest cached version of the dataset since google/boolq couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /root/.cache/huggingface/datasets/google___boolq/default/0.0.0/35b264d03638db9f4ce671b711558bf7ff0f80d5 (last modified on Tue Jun  9 22:23:07 2026).
+{
+  "out": "results/domain_shift/task_aware/lora_opt_v1/train/domain_mix_9task_balanced_exclude_eval_seed101.jsonl",
+  "n": 900,
+  "manifest": {
+    "tasks": {
+      "mmlu_pro": {
+        "n": 100,
+        "excluded_eval_ids": 50
+      },
+      "pubmedqa": {
+        "n": 100,
+        "excluded_eval_ids": 50
+      },
+      "ceval_computer_network": {
+        "n": 100,
+        "excluded_eval_ids": 50
+      },
+      "sciq": {
+        "n": 100,
+        "excluded_eval_ids": 50
+      },
+      "winogrande": {
+        "n": 100,
+        "excluded_eval_ids": 50
+      },
+      "commonsenseqa": {
+        "n": 100,
+        "excluded_eval_ids": 50
+      },
+      "arc_challenge": {
+        "n": 100,
+        "excluded_eval_ids": 50
+      },
+      "hellaswag": {
+        "n": 100,
+        "excluded_eval_ids": 50
+      },
+      "boolq": {
+        "n": 100,
+        "excluded_eval_ids": 50
+      }
+    },
+    "args": {
+      "tasks": "mmlu_pro,pubmedqa,ceval_computer_network,sciq,winogrande,commonsenseqa,arc_challenge,hellaswag,boolq",
+      "limit_per_task": 100,
+      "seed": 101,
+      "exclude_seed": 23,
+      "exclude_limit": 50,
+      "pool_limit": 300,
+      "max_rounds": 12,
+      "out": "results/domain_shift/task_aware/lora_opt_v1/train/domain_mix_9task_balanced_exclude_eval_seed101.jsonl"
+    }
+  }
+}
