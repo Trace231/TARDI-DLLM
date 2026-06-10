@@ -24,11 +24,12 @@ class GaussianFourierProjection(nn.Module):
 
 
 class NARAMapper(nn.Module):
-    def __init__(self, r, embedding_dim=64, hidden1=256, hidden2=512):
+    def __init__(self, r, embedding_dim=64, hidden1=256, hidden2=512, input_dim=None):
         super().__init__()
         self.r = int(r)
+        input_dim = int(input_dim or embedding_dim)
         self.net = nn.Sequential(
-            nn.Linear(embedding_dim, hidden1),
+            nn.Linear(input_dim, hidden1),
             nn.SiLU(),
             nn.Linear(hidden1, hidden2),
             nn.SiLU(),
@@ -57,20 +58,35 @@ class NaRALinear(nn.Module):
     by NaRA while keeping the implementation local to this project.
     """
 
-    def __init__(self, base, name, mapper, embedding, r=8, alpha=16, dropout=0.05, c_scale=0.1):
+    def __init__(
+        self,
+        base,
+        name,
+        mapper,
+        embedding,
+        r=8,
+        alpha=16,
+        dropout=0.05,
+        c_scale=0.1,
+        task_embedding=None,
+        num_tasks=0,
+    ):
         super().__init__()
         self.base = base
         self.name = name
         self.mapper = mapper
         self.embedding = embedding
+        self.task_embedding = task_embedding
         self.r = int(r)
         self.alpha = float(alpha)
         self.scaling = self.alpha / max(1, self.r)
         self.c_scale = float(c_scale)
+        self.num_tasks = int(num_tasks)
         self.dropout = nn.Dropout(float(dropout))
         self.lora_A = nn.Linear(base.in_features, self.r, bias=False)
         self.lora_B = nn.Linear(self.r, base.out_features, bias=False)
         self.register_buffer("current_noise_level", torch.ones(1, dtype=torch.float32), persistent=False)
+        self.register_buffer("current_task_id", torch.zeros(1, dtype=torch.long), persistent=False)
         self.reset_parameters()
         for p in self.base.parameters():
             p.requires_grad_(False)
@@ -85,6 +101,16 @@ class NaRALinear(nn.Module):
         noise_level = noise_level.detach().to(device=self.current_noise_level.device, dtype=torch.float32)
         self.current_noise_level = torch.clamp(noise_level.view(-1), 0.0, 1.0)
 
+    def set_task_id(self, task_id):
+        if not torch.is_tensor(task_id):
+            task_id = torch.tensor([int(task_id)], dtype=torch.long, device=self.current_task_id.device)
+        task_id = task_id.detach().to(device=self.current_task_id.device, dtype=torch.long)
+        if self.num_tasks > 0:
+            task_id = torch.clamp(task_id.view(-1), 0, self.num_tasks - 1)
+        else:
+            task_id = task_id.view(-1)
+        self.current_task_id = task_id
+
     def forward(self, x):
         base_out = self.base(x)
         dtype = self.lora_A.weight.dtype
@@ -98,6 +124,17 @@ class NaRALinear(nn.Module):
             noise = noise[:1].expand(z.shape[0] if z.dim() == 3 else 1)
 
         emb = self.embedding(noise).to(dtype)
+        if self.task_embedding is not None:
+            task_id = self.current_task_id.to(device=z.device, dtype=torch.long)
+            batch = z.shape[0] if z.dim() == 3 else 1
+            if task_id.numel() == batch:
+                pass
+            elif task_id.numel() == 1:
+                task_id = task_id.expand(batch)
+            else:
+                task_id = task_id[:1].expand(batch)
+            task_emb = self.task_embedding(task_id).to(dtype)
+            emb = torch.cat([emb, task_emb], dim=-1)
         core_delta = self.mapper(emb).to(dtype) * self.c_scale
         eye = torch.eye(self.r, device=z.device, dtype=dtype).unsqueeze(0)
         core = eye + core_delta
@@ -159,6 +196,31 @@ def _register_noise_hook(model):
     model._nara_noise_hook_registered = True
 
 
+def set_nara_task(model, task):
+    if not hasattr(model, "_nara_task_to_id"):
+        return
+    if isinstance(task, str):
+        task_id = model._nara_task_to_id.get(task, 0)
+    else:
+        task_id = int(task)
+    device = next(model.parameters()).device
+    tensor = torch.tensor([task_id], dtype=torch.long, device=device)
+    for layer in getattr(model, "_nara_layers", []):
+        if hasattr(layer, "set_task_id"):
+            layer.set_task_id(tensor)
+
+
+def set_nara_task_batch(model, tasks):
+    if not hasattr(model, "_nara_task_to_id"):
+        return
+    ids = [model._nara_task_to_id.get(str(t), 0) for t in tasks]
+    device = next(model.parameters()).device
+    tensor = torch.tensor(ids, dtype=torch.long, device=device)
+    for layer in getattr(model, "_nara_layers", []):
+        if hasattr(layer, "set_task_id"):
+            layer.set_task_id(tensor)
+
+
 def install_nara_adapter(
     model,
     target_modules,
@@ -170,20 +232,39 @@ def install_nara_adapter(
     mapper_hidden1=256,
     mapper_hidden2=512,
     c_scale=0.1,
+    task_list=None,
+    task_embedding_dim=0,
 ):
     for p in model.parameters():
         p.requires_grad_(False)
-    mapper = NARAMapper(r, embedding_dim=embedding_dim, hidden1=mapper_hidden1, hidden2=mapper_hidden2)
+    task_list = [str(x) for x in (task_list or []) if str(x)]
+    task_embedding_dim = int(task_embedding_dim or 0)
+    mapper_input_dim = embedding_dim + (task_embedding_dim if task_list else 0)
+    mapper = NARAMapper(r, embedding_dim=embedding_dim, hidden1=mapper_hidden1, hidden2=mapper_hidden2, input_dim=mapper_input_dim)
     embedding = GaussianFourierProjection(embedding_dim)
+    task_embedding = nn.Embedding(len(task_list), task_embedding_dim) if task_list else None
     device = next(model.parameters()).device
     dtype = next(model.parameters()).dtype
     mapper.to(device=device, dtype=dtype)
     embedding.to(device=device, dtype=dtype)
+    if task_embedding is not None:
+        task_embedding.to(device=device, dtype=dtype)
     layers = []
     names = []
     for name, module in _iter_target_linears(model, set(target_modules)):
         parent, child = _find_parent(model, name)
-        wrapped = NaRALinear(module, name=name, mapper=mapper, embedding=embedding, r=r, alpha=alpha, dropout=dropout, c_scale=c_scale)
+        wrapped = NaRALinear(
+            module,
+            name=name,
+            mapper=mapper,
+            embedding=embedding,
+            r=r,
+            alpha=alpha,
+            dropout=dropout,
+            c_scale=c_scale,
+            task_embedding=task_embedding,
+            num_tasks=len(task_list),
+        )
         wrapped.to(device=device, dtype=dtype)
         setattr(parent, child, wrapped)
         layers.append(wrapped)
@@ -193,8 +274,10 @@ def install_nara_adapter(
     model._nara_layers = layers
     model._nara_mapper = mapper
     model._nara_embedding = embedding
+    model._nara_task_embedding = task_embedding
+    model._nara_task_to_id = {task: i for i, task in enumerate(task_list)}
     model._nara_config = {
-        "type": "nara_style_hypernetwork",
+        "type": "task_noise_nara_style_hypernetwork" if task_list else "nara_style_hypernetwork",
         "target_modules": list(target_modules),
         "r": int(r),
         "alpha": float(alpha),
@@ -204,8 +287,11 @@ def install_nara_adapter(
         "mapper_hidden1": int(mapper_hidden1),
         "mapper_hidden2": int(mapper_hidden2),
         "c_scale": float(c_scale),
+        "task_list": task_list,
+        "task_embedding_dim": int(task_embedding_dim),
         "module_names": names,
         "official_mechanism": "C(lambda)=I+c_scale*MLP(GaussianFourier(lambda)); shared mapper across layers",
+        "task_noise_mechanism": "C(task,lambda)=I+c_scale*MLP([GaussianFourier(lambda); Emb(task)])",
     }
     _register_noise_hook(model)
     return model
@@ -215,6 +301,8 @@ def nara_state_dict(model):
     state = {}
     state["__mapper__"] = {k: v.detach().cpu() for k, v in model._nara_mapper.state_dict().items()}
     state["__embedding__"] = {k: v.detach().cpu() for k, v in model._nara_embedding.state_dict().items()}
+    if getattr(model, "_nara_task_embedding", None) is not None:
+        state["__task_embedding__"] = {k: v.detach().cpu() for k, v in model._nara_task_embedding.state_dict().items()}
     for layer in getattr(model, "_nara_layers", []):
         prefix = layer.name
         state[f"{prefix}.lora_A.weight"] = layer.lora_A.weight.detach().cpu()
@@ -245,12 +333,16 @@ def load_nara_adapter(model, adapter_dir):
         mapper_hidden1=config.get("mapper_hidden1", 256),
         mapper_hidden2=config.get("mapper_hidden2", 512),
         c_scale=config.get("c_scale", 0.1),
+        task_list=config.get("task_list") or None,
+        task_embedding_dim=config.get("task_embedding_dim", 0),
     )
     state = torch.load(adapter_dir / "nara_adapter.pt", map_location="cpu")
     if "__mapper__" in state:
         model._nara_mapper.load_state_dict({k: v.to(next(model._nara_mapper.parameters()).device) for k, v in state["__mapper__"].items()})
     if "__embedding__" in state:
         model._nara_embedding.load_state_dict({k: v.to(model._nara_embedding.W.device) for k, v in state["__embedding__"].items()})
+    if "__task_embedding__" in state and getattr(model, "_nara_task_embedding", None) is not None:
+        model._nara_task_embedding.load_state_dict({k: v.to(next(model._nara_task_embedding.parameters()).device) for k, v in state["__task_embedding__"].items()})
     by_name = {layer.name: layer for layer in model._nara_layers}
     missing = []
     for name, layer in by_name.items():

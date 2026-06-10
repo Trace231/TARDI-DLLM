@@ -10,7 +10,7 @@ import torch.nn.functional as F
 from peft import LoraConfig, get_peft_model
 from transformers import AutoModel, AutoTokenizer
 
-from nara_adapter import install_nara_adapter, save_nara_adapter
+from nara_adapter import install_nara_adapter, save_nara_adapter, set_nara_task_batch
 
 
 MASK_ID = 126336
@@ -143,13 +143,14 @@ def encode_one(tokenizer, row, args, rng, forced_ratio=None):
         "candidate_ids": torch.tensor(cand_ids, dtype=torch.long),
         "gold_idx": gold_idx,
         "noise_ratio": float(ratio),
+        "task": str(row.get("task", "unknown")),
     }
 
 
 def pad_batch(examples, pad_id):
     max_len = max(x["input_ids"].numel() for x in examples)
     batch = {"input_ids": [], "attention_mask": [], "denoise_labels": []}
-    label_pos, candidate_ids, gold_idx, ratios = [], [], [], []
+    label_pos, candidate_ids, gold_idx, ratios, tasks = [], [], [], [], []
     for ex in examples:
         n = ex["input_ids"].numel()
         pad = max_len - n
@@ -160,6 +161,7 @@ def pad_batch(examples, pad_id):
         candidate_ids.append(ex["candidate_ids"])
         gold_idx.append(ex["gold_idx"])
         ratios.append(ex["noise_ratio"])
+        tasks.append(ex["task"])
     return {
         "input_ids": torch.stack(batch["input_ids"]),
         "attention_mask": torch.stack(batch["attention_mask"]),
@@ -168,6 +170,7 @@ def pad_batch(examples, pad_id):
         "candidate_ids": candidate_ids,
         "gold_idx": torch.tensor(gold_idx, dtype=torch.long),
         "noise_ratio": ratios,
+        "task": tasks,
     }
 
 
@@ -191,6 +194,7 @@ def denoise_loss_from_logits(logits, labels):
 
 
 def forward_losses(model, batch, device):
+    set_nara_task_batch(model, batch.get("task", []))
     input_ids = batch["input_ids"].to(device)
     attention_mask = batch["attention_mask"].to(device)
     labels = batch["denoise_labels"].to(device)
@@ -207,7 +211,7 @@ def main():
     ap.add_argument("--train-jsonl", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--mode", choices=["vanilla", "label", "choice_noise"], default="choice_noise")
-    ap.add_argument("--peft-variant", choices=["lora", "rslora", "dora", "loraplus", "nara"], default="lora")
+    ap.add_argument("--peft-variant", choices=["lora", "rslora", "dora", "loraplus", "nara", "tasknara"], default="lora")
     ap.add_argument("--seed", type=int, default=23)
     ap.add_argument("--max-steps", type=int, default=200)
     ap.add_argument("--batch-size", type=int, default=1)
@@ -224,6 +228,8 @@ def main():
     ap.add_argument("--nara-embedding-dim", type=int, default=64)
     ap.add_argument("--nara-hidden1", type=int, default=256)
     ap.add_argument("--nara-hidden2", type=int, default=512)
+    ap.add_argument("--task-list", default="")
+    ap.add_argument("--task-embedding-dim", type=int, default=32)
     ap.add_argument("--noise-ratios", default="0.15,0.35,0.65,0.85")
     ap.add_argument("--denoise-weight", type=float, default=0.15)
     ap.add_argument("--consistency-weight", type=float, default=0.05)
@@ -253,7 +259,10 @@ def main():
     if hasattr(model, "enable_input_require_grads"):
         model.enable_input_require_grads()
     target_modules = [x.strip() for x in args.target_modules.split(",") if x.strip()]
-    if args.peft_variant == "nara":
+    if args.peft_variant in {"nara", "tasknara"}:
+        task_list = [x.strip() for x in args.task_list.split(",") if x.strip()]
+        if args.peft_variant == "tasknara" and not task_list:
+            task_list = sorted({str(r.get("task", "unknown")) for r in rows})
         model = install_nara_adapter(
             model,
             target_modules=target_modules,
@@ -265,6 +274,8 @@ def main():
             mapper_hidden1=args.nara_hidden1,
             mapper_hidden2=args.nara_hidden2,
             c_scale=args.nara_c_scale,
+            task_list=task_list if args.peft_variant == "tasknara" else None,
+            task_embedding_dim=args.task_embedding_dim if args.peft_variant == "tasknara" else 0,
         )
         trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
         total = sum(p.numel() for p in model.parameters())
@@ -394,12 +405,12 @@ def main():
             if step % 10 == 0 or step == 1:
                 print(json.dumps(rec), flush=True)
             if args.save_every and step % args.save_every == 0:
-                if args.peft_variant == "nara":
+                if args.peft_variant in {"nara", "tasknara"}:
                     save_nara_adapter(model, out_dir / f"checkpoint-{step}", tokenizer=tokenizer)
                 else:
                     model.save_pretrained(str(out_dir / f"checkpoint-{step}"))
 
-    if args.peft_variant == "nara":
+    if args.peft_variant in {"nara", "tasknara"}:
         save_nara_adapter(model, out_dir / "final_adapter", tokenizer=tokenizer)
     else:
         model.save_pretrained(str(out_dir / "final_adapter"))

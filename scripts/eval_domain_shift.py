@@ -10,6 +10,10 @@ from datasets import load_dataset
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import eval_subset as base
+try:
+    from nara_adapter import set_nara_task_batch
+except Exception:
+    set_nara_task_batch = None
 
 LETTERS = "ABCDEFGHIJ"
 
@@ -328,6 +332,8 @@ def main():
             batch = samples[start:start + args.batch_size]
             prompts = [x["prompt"] for x in batch]
             if args.backend == "llada":
+                if set_nara_task_batch is not None:
+                    set_nara_task_batch(model, [x["task"] for x in batch])
                 outs, dt, mem = base.generate_llada(tok, model, prompts, args)
             else:
                 outs, dt, mem = base.generate_ar(tok, model, prompts, args)
