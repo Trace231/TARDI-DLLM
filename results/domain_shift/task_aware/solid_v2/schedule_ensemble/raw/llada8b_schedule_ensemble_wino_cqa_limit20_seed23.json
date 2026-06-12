@@ -1,0 +1,2594 @@
+{
+  "method": "schedule_ensemble_controller",
+  "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+  "args": {
+    "model": "/data/hf/models/GSAI-ML/LLaDA-8B-Instruct",
+    "adapter": null,
+    "tasks": "winogrande,commonsenseqa",
+    "limit": 20,
+    "seed": 23,
+    "out": "results/domain_shift/task_aware/solid_v2/schedule_ensemble/raw/llada8b_schedule_ensemble_wino_cqa_limit20_seed23.json",
+    "gen_length": 32,
+    "block_length": 32,
+    "temperature": 0.0,
+    "cfg": 0.0,
+    "remasking": "low_confidence",
+    "compact_choice_fast": true,
+    "compact_choice_max_labels": 5,
+    "compact_choice_max_prompt_tokens": 512,
+    "primary_schedule": "back_loaded",
+    "secondary_schedule": "uniform",
+    "mid_budget": 16,
+    "full_budget": 32,
+    "full_on_disagree": false
+  },
+  "complete": true,
+  "summary": {
+    "winogrande": {
+      "accuracy": 0.75,
+      "n": 20,
+      "seconds": 11.620369672775269,
+      "avg_forward_calls": 16.8,
+      "route_rates": {
+        "8x2": 0.95,
+        "8x2->16": 0.05
+      },
+      "peak_mem_gb": 15.0614652633667
+    },
+    "commonsenseqa": {
+      "accuracy": 0.85,
+      "n": 20,
+      "seconds": 10.715816020965576,
+      "avg_forward_calls": 16.0,
+      "route_rates": {
+        "8x2": 1.0
+      },
+      "peak_mem_gb": 15.082664966583252
+    }
+  },
+  "rows": [
+    {
+      "task": "winogrande",
+      "id": "593",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.5869338512420654,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.96044921875,
+            "min_fill_confidence": 0.54296875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2896766662597656,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.984619140625,
+            "min_fill_confidence": 0.8046875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.8979771137237549,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "171",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.26786136627197266,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.94873046875,
+            "min_fill_confidence": 0.546875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2673757076263428,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9847412109375,
+            "min_fill_confidence": 0.86328125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5371270179748535,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "34",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.26632118225097656,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9462890625,
+            "min_fill_confidence": 0.3828125
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2666459083557129,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.978515625,
+            "min_fill_confidence": 0.62890625
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5346126556396484,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1212",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.26734066009521484,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9434814453125,
+            "min_fill_confidence": 0.48828125
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2676517963409424,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9749755859375,
+            "min_fill_confidence": 0.62890625
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5366098880767822,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "628",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2667250633239746,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.947509765625,
+            "min_fill_confidence": 0.546875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2664196491241455,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9827880859375,
+            "min_fill_confidence": 0.81640625
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5347776412963867,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "867",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "route": "8x2->16",
+      "reason": "dual8_disagree_upgrade",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.26685023307800293,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.952880859375,
+            "min_fill_confidence": 0.37109375
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2714114189147949,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9783935546875,
+            "min_fill_confidence": 0.51953125
+          }
+        },
+        {
+          "budget": 16,
+          "schedule": "uniform",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.5326864719390869,
+          "calls": 16,
+          "stats": {
+            "history": [
+              {
+                "step": 16,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 16,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9803466796875,
+            "min_fill_confidence": 0.5546875
+          }
+        }
+      ],
+      "forward_calls": 32,
+      "seconds": 1.0733141899108887,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "776",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2681272029876709,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.957275390625,
+            "min_fill_confidence": 0.5703125
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.26772117614746094,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9736328125,
+            "min_fill_confidence": 0.7578125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5378072261810303,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1085",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.26619553565979004,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9263916015625,
+            "min_fill_confidence": 0.27734375
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2686450481414795,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9793701171875,
+            "min_fill_confidence": 0.796875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5366334915161133,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "733",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2661280632019043,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.939697265625,
+            "min_fill_confidence": 0.4921875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.26595401763916016,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9886474609375,
+            "min_fill_confidence": 0.8671875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5336582660675049,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "266",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2667055130004883,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.950439453125,
+            "min_fill_confidence": 0.41796875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.26654982566833496,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9822998046875,
+            "min_fill_confidence": 0.7265625
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5348625183105469,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "393",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2666137218475342,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9437255859375,
+            "min_fill_confidence": 0.3984375
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2663381099700928,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.978271484375,
+            "min_fill_confidence": 0.6328125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5345547199249268,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "547",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2665703296661377,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.94183349609375,
+            "min_fill_confidence": 0.337890625
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2664365768432617,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9776611328125,
+            "min_fill_confidence": 0.63671875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.534550666809082,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "910",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2665691375732422,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9351806640625,
+            "min_fill_confidence": 0.515625
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.266371488571167,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.987060546875,
+            "min_fill_confidence": 0.82421875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5345304012298584,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "28",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2660212516784668,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9356689453125,
+            "min_fill_confidence": 0.52734375
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2658863067626953,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.98486328125,
+            "min_fill_confidence": 0.85546875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5335237979888916,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "452",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.26825952529907227,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9423828125,
+            "min_fill_confidence": 0.5546875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2681717872619629,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9854736328125,
+            "min_fill_confidence": 0.8046875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5380449295043945,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "931",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2735753059387207,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9417724609375,
+            "min_fill_confidence": 0.35546875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2665841579437256,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.97216796875,
+            "min_fill_confidence": 0.51171875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5417401790618896,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "50",
+      "gold": "A",
+      "pred": "B",
+      "correct": false,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.26672935485839844,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.94720458984375,
+            "min_fill_confidence": 0.404296875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2666051387786865,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9783935546875,
+            "min_fill_confidence": 0.54296875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5349154472351074,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "216",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2677600383758545,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.94915771484375,
+            "min_fill_confidence": 0.376953125
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2677574157714844,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9788818359375,
+            "min_fill_confidence": 0.55078125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5371167659759521,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "175",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2670300006866455,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.96044921875,
+            "min_fill_confidence": 0.640625
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2669863700866699,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9932861328125,
+            "min_fill_confidence": 0.9609375
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5355603694915771,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "winogrande",
+      "id": "1020",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "back_loaded",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2685120105743408,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.93988037109375,
+            "min_fill_confidence": 0.380859375
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.26837944984436035,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9759521484375,
+            "min_fill_confidence": 0.61328125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5384523868560791,
+      "metric": "letter",
+      "meta": {}
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "8b25332de2894ab38784235838d38cec",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.28442931175231934,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9866943359375,
+            "min_fill_confidence": 0.85546875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.2676112651824951,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9954833984375,
+            "min_fill_confidence": 0.921875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5541930198669434,
+      "metric": "letter",
+      "meta": {
+        "concept": "snake"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "8ea5720718c0e122efa6277edb511569",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "D",
+          "output": "Final answer: D",
+          "seconds": 0.26755309104919434,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "D",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.989990234375,
+            "min_fill_confidence": 0.91796875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "D",
+          "output": "Final answer: D",
+          "seconds": 0.26807188987731934,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "D",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9915771484375,
+            "min_fill_confidence": 0.953125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5372769832611084,
+      "metric": "letter",
+      "meta": {
+        "concept": "watch film"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "4acd496cc78d96c2431279a5fd87de7c",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.2666950225830078,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9849853515625,
+            "min_fill_confidence": 0.8671875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.26664090156555176,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9913330078125,
+            "min_fill_confidence": 0.9453125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5348830223083496,
+      "metric": "letter",
+      "meta": {
+        "concept": "helping"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "01794dde3ca2991615f1aa2f63fb22e3",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.2693462371826172,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.99267578125,
+            "min_fill_confidence": 0.90234375
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.2692246437072754,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9935302734375,
+            "min_fill_confidence": 0.92578125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5401821136474609,
+      "metric": "letter",
+      "meta": {
+        "concept": "landing"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "41bab71fea3fa04e5a4e10a2f86996df",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.25360846519470215,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9937744140625,
+            "min_fill_confidence": 0.9296875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.2489461898803711,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9962158203125,
+            "min_fill_confidence": 0.96875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5042526721954346,
+      "metric": "letter",
+      "meta": {
+        "concept": "mezzanine"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "c7ce02d9365fe9275f88338ad51cbde6",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2679862976074219,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.980712890625,
+            "min_fill_confidence": 0.859375
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.2678954601287842,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9842529296875,
+            "min_fill_confidence": 0.921875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5374963283538818,
+      "metric": "letter",
+      "meta": {
+        "concept": "exercise"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "c9f7d07e6d363a99f5fadd68a4dfa35a",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2668874263763428,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9888916015625,
+            "min_fill_confidence": 0.89453125
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.26690196990966797,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.99267578125,
+            "min_fill_confidence": 0.95703125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5353496074676514,
+      "metric": "letter",
+      "meta": {
+        "concept": "toothpick"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "29c194d032a266a7160bff6f546a4d9d",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "D",
+          "output": "Final answer: D",
+          "seconds": 0.2662088871002197,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "D",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.972900390625,
+            "min_fill_confidence": 0.65234375
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "D",
+          "output": "Final answer: D",
+          "seconds": 0.2661299705505371,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "D",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9932861328125,
+            "min_fill_confidence": 0.9453125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5338499546051025,
+      "metric": "letter",
+      "meta": {
+        "concept": "chips"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "32d5b7fcae24f0d4871cfb219c5a4b47",
+      "gold": "C",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.2664296627044678,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9786376953125,
+            "min_fill_confidence": 0.69921875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.2662487030029297,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9840087890625,
+            "min_fill_confidence": 0.6171875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5341823101043701,
+      "metric": "letter",
+      "meta": {
+        "concept": "metal"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "46351b3a6beb694c5f623583a3b1473d",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "Final answer: B",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.26667118072509766,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9833984375,
+            "min_fill_confidence": 0.83203125
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "Final answer: B",
+          "seconds": 0.2667236328125,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9910888671875,
+            "min_fill_confidence": 0.89453125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5349311828613281,
+      "metric": "letter",
+      "meta": {
+        "concept": "light source"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "5a50ea4bb2d13dc4f620ebd45025d445",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.26826047897338867,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.973388671875,
+            "min_fill_confidence": 0.74609375
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.26817774772644043,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9931640625,
+            "min_fill_confidence": 0.94921875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5379884243011475,
+      "metric": "letter",
+      "meta": {
+        "concept": "dream"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "5c2bc4335c8860342ec2d568ceb6ac6b",
+      "gold": "C",
+      "pred": "E",
+      "correct": false,
+      "output": "Final answer: E",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.2667970657348633,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9637451171875,
+            "min_fill_confidence": 0.671875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.26662421226501465,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9832763671875,
+            "min_fill_confidence": 0.671875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5349154472351074,
+      "metric": "letter",
+      "meta": {
+        "concept": "shelf"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "b3dc6d6a5e2f9d7da8eb72816c80b3f8_1",
+      "gold": "A",
+      "pred": "A",
+      "correct": true,
+      "output": "Final answer: A",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.26767945289611816,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9951171875,
+            "min_fill_confidence": 0.94921875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "A",
+          "output": "Final answer: A",
+          "seconds": 0.26767635345458984,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "A",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9923095703125,
+            "min_fill_confidence": 0.95703125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5368862152099609,
+      "metric": "letter",
+      "meta": {
+        "concept": "projectile ball"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "9889e5389917d812c09d6e5d382d333d",
+      "gold": "B",
+      "pred": "B",
+      "correct": true,
+      "output": "B. new job",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "B",
+          "output": "B. new job",
+          "seconds": 0.26696157455444336,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9652099609375,
+            "min_fill_confidence": 0.625
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "B",
+          "output": "B. new job",
+          "seconds": 0.26699399948120117,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "B",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9783935546875,
+            "min_fill_confidence": 0.7421875
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.535468339920044,
+      "metric": "letter",
+      "meta": {
+        "concept": "success"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "4ef3d70648ee3cea028bc5ed0fdfda28",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "C",
+          "output": "Final answer: C",
+          "seconds": 0.2684640884399414,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "C",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.98388671875,
+            "min_fill_confidence": 0.87890625
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "C",
+          "output": "Final answer: C",
+          "seconds": 0.268496036529541,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "C",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.990234375,
+            "min_fill_confidence": 0.93359375
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.538543701171875,
+      "metric": "letter",
+      "meta": {
+        "concept": "eating breakfast in bed"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "359aed918343d228e67cef329b693904",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "C",
+          "output": "Final answer: C",
+          "seconds": 0.2679266929626465,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "C",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9783935546875,
+            "min_fill_confidence": 0.8203125
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "C",
+          "output": "Final answer: C",
+          "seconds": 0.2695746421813965,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "C",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9925537109375,
+            "min_fill_confidence": 0.91015625
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5390899181365967,
+      "metric": "letter",
+      "meta": {
+        "concept": "chef"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "011096bcfff30fd38046cf9db3a411c5",
+      "gold": "C",
+      "pred": "C",
+      "correct": true,
+      "output": "Final answer: C",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "C",
+          "output": "Final answer: C",
+          "seconds": 0.26781749725341797,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "C",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9910888671875,
+            "min_fill_confidence": 0.8984375
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "C",
+          "output": "Final answer: C",
+          "seconds": 0.2676107883453369,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "C",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9957275390625,
+            "min_fill_confidence": 0.953125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5369620323181152,
+      "metric": "letter",
+      "meta": {
+        "concept": "human"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "0f2377604e628c55ba588366139396b9",
+      "gold": "E",
+      "pred": "D",
+      "correct": false,
+      "output": "Final answer: D",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "D",
+          "output": "Final answer: D",
+          "seconds": 0.2668271064758301,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "D",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.97607421875,
+            "min_fill_confidence": 0.66796875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "D",
+          "output": "Final answer: D",
+          "seconds": 0.2666752338409424,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "D",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.981201171875,
+            "min_fill_confidence": 0.5859375
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5350229740142822,
+      "metric": "letter",
+      "meta": {
+        "concept": "quill"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "900492bd731f8f615ed7c08155737d44",
+      "gold": "E",
+      "pred": "E",
+      "correct": true,
+      "output": "Final answer: E",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.26798295974731445,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.974609375,
+            "min_fill_confidence": 0.65625
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "E",
+          "output": "Final answer: E",
+          "seconds": 0.2677159309387207,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "E",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9859619140625,
+            "min_fill_confidence": 0.77734375
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5372660160064697,
+      "metric": "letter",
+      "meta": {
+        "concept": "run"
+      }
+    },
+    {
+      "task": "commonsenseqa",
+      "id": "0b52cc905fff0ca69a45e6353d10e401",
+      "gold": "D",
+      "pred": "D",
+      "correct": true,
+      "output": "Final answer: D",
+      "route": "8x2",
+      "reason": "dual8_agree",
+      "runs": [
+        {
+          "budget": 8,
+          "schedule": "middle_heavy",
+          "pred": "D",
+          "output": "Final answer: D",
+          "seconds": 0.2676572799682617,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "D",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9771728515625,
+            "min_fill_confidence": 0.76171875
+          }
+        },
+        {
+          "budget": 8,
+          "schedule": "uniform",
+          "pred": "D",
+          "output": "Final answer: D",
+          "seconds": 0.2678091526031494,
+          "calls": 8,
+          "stats": {
+            "history": [
+              {
+                "step": 8,
+                "pred": "D",
+                "valid": true,
+                "filled_ratio": 1.0
+              }
+            ],
+            "flip_count": 0,
+            "first_final_step": 8,
+            "valid_seen": 1,
+            "mean_fill_confidence": 0.9945068359375,
+            "min_fill_confidence": 0.9453125
+          }
+        }
+      ],
+      "forward_calls": 16,
+      "seconds": 0.5370757579803467,
+      "metric": "letter",
+      "meta": {
+        "concept": "dollar"
+      }
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+Loading checkpoint shards:   0%|          | 0/6 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 6/6 [00:00<00:00, 176.98it/s]
+Using the latest cached version of the dataset since allenai/winogrande couldn't be found on the Hugging Face Hub
+Found the latest cached dataset configuration 'winogrande_xl' at /data/hf/datasets/allenai___winogrande/winogrande_xl/0.0.0/01e74176c63542e6b0bcb004dcdea22d94fb67b5 (last modified on Fri Jun 12 22:48:07 2026).
+{"task": "winogrande", "id": "593", "gold": "A", "pred": "B", "correct": false, "route": "8", "forward_calls": 10}
+{"task": "winogrande", "id": "171", "gold": "A", "pred": "A", "correct": true, "route": "8->16", "forward_calls": 27}
+{"task": "winogrande", "id": "34", "gold": "B", "pred": "B", "correct": true, "route": "8->16", "forward_calls": 27}
+{"task": "winogrande", "id": "1212", "gold": "B", "pred": "B", "correct": true, "route": "8->16", "forward_calls": 27}
+{"task": "winogrande", "id": "628", "gold": "A", "pred": "B", "correct": false, "route": "8", "forward_calls": 10}
+{"task": "winogrande", "id": "867", "gold": "A", "pred": "A", "correct": true, "route": "8->16->32", "forward_calls": 59}
+{"task": "winogrande", "id": "776", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "winogrande", "id": "1085", "gold": "A", "pred": "B", "correct": false, "route": "8->16", "forward_calls": 27}
+{"task": "winogrande", "id": "733", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "winogrande", "id": "266", "gold": "B", "pred": "B", "correct": true, "route": "8->16", "forward_calls": 27}
+{"task": "winogrande", "id": "393", "gold": "B", "pred": "B", "correct": true, "route": "8->16", "forward_calls": 27}
+{"task": "winogrande", "id": "547", "gold": "A", "pred": "A", "correct": true, "route": "8->16->32", "forward_calls": 59}
+{"task": "winogrande", "id": "910", "gold": "A", "pred": "B", "correct": false, "route": "8", "forward_calls": 10}
+{"task": "winogrande", "id": "28", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "winogrande", "id": "452", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "winogrande", "id": "931", "gold": "B", "pred": "B", "correct": true, "route": "8->16", "forward_calls": 27}
+{"task": "winogrande", "id": "50", "gold": "A", "pred": "B", "correct": false, "route": "8->16", "forward_calls": 27}
+{"task": "winogrande", "id": "216", "gold": "A", "pred": "A", "correct": true, "route": "8->16->32", "forward_calls": 59}
+{"task": "winogrande", "id": "175", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "winogrande", "id": "1020", "gold": "B", "pred": "B", "correct": true, "route": "8->16", "forward_calls": 27}
+{"task": "commonsenseqa", "id": "8b25332de2894ab38784235838d38cec", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "8ea5720718c0e122efa6277edb511569", "gold": "D", "pred": "D", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "4acd496cc78d96c2431279a5fd87de7c", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "01794dde3ca2991615f1aa2f63fb22e3", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "41bab71fea3fa04e5a4e10a2f86996df", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "c7ce02d9365fe9275f88338ad51cbde6", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "c9f7d07e6d363a99f5fadd68a4dfa35a", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "29c194d032a266a7160bff6f546a4d9d", "gold": "D", "pred": "D", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "32d5b7fcae24f0d4871cfb219c5a4b47", "gold": "C", "pred": "E", "correct": false, "route": "8->16", "forward_calls": 27}
+{"task": "commonsenseqa", "id": "46351b3a6beb694c5f623583a3b1473d", "gold": "B", "pred": "B", "correct": true, "route": "8->16", "forward_calls": 27}
+{"task": "commonsenseqa", "id": "5a50ea4bb2d13dc4f620ebd45025d445", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "5c2bc4335c8860342ec2d568ceb6ac6b", "gold": "C", "pred": "E", "correct": false, "route": "8->16->32", "forward_calls": 59}
+{"task": "commonsenseqa", "id": "b3dc6d6a5e2f9d7da8eb72816c80b3f8_1", "gold": "A", "pred": "A", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "9889e5389917d812c09d6e5d382d333d", "gold": "B", "pred": "B", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "4ef3d70648ee3cea028bc5ed0fdfda28", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "359aed918343d228e67cef329b693904", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "011096bcfff30fd38046cf9db3a411c5", "gold": "C", "pred": "C", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "0f2377604e628c55ba588366139396b9", "gold": "E", "pred": "D", "correct": false, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "900492bd731f8f615ed7c08155737d44", "gold": "E", "pred": "E", "correct": true, "route": "8", "forward_calls": 10}
+{"task": "commonsenseqa", "id": "0b52cc905fff0ca69a45e6353d10e401", "gold": "D", "pred": "D", "correct": true, "route": "8", "forward_calls": 10}
+{
+  "winogrande": {
+    "accuracy": 0.75,
+    "n": 20,
+    "seconds": 17.25273323059082,
+    "avg_forward_calls": 25.0,
+    "route_rates": {
+      "8": 0.4,
+      "8->16": 0.45,
+      "8->16->32": 0.15
+    },
+    "peak_mem_gb": 15.06183910369873
+  },
+  "commonsenseqa": {
+    "accuracy": 0.85,
+    "n": 20,
+    "seconds": 9.452390432357788,
+    "avg_forward_calls": 14.15,
+    "route_rates": {
+      "8": 0.85,
+      "8->16": 0.1,
+      "8->16->32": 0.05
+    },
+    "peak_mem_gb": 15.083038806915283
+  }
+}

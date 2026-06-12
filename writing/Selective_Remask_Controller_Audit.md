@@ -45,8 +45,36 @@ step sweep 曲线只用于分析不同任务的预算敏感性，不作为默认
 ## 当前结论
 
 1. 任务步数先验不作为主方法，最多作为解释性分析。
-2. 更细步长不是天然改进；4-step online 在 WinoGrande 上是负结果。
+2. 更细步长没有自动带来收益；4-step online 在 WinoGrande 上是负结果。
 3. 当前稳健主线应保持 8-step scout + 风险控制。
 4. 后续真正值得做的改进是“非破坏性细粒度观察”，例如在 4 步时不填满所有 token，或只读取中间 logits/标签后验而不重掩已经稳定的答案。
 
-这条结论比强行包装 4-step 方法更可靠：它说明采样控制的关键不只是预算粒度，而是继续去噪时是否破坏已有答案轨迹。
+这条结论比强行包装 4-step 方法更可靠：采样控制的关键除了预算粒度，还包括继续去噪时是否破坏已有答案轨迹。
+
+## 解码机制探索结果
+
+我们进一步实现并测试了几类候选控制器，统一使用 `seed=23, limit=20` 的 WinoGrande 和 CommonsenseQA 小样本集筛选。
+
+| 方法 | WinoGrande 准确率 | WinoGrande 调用 | CommonsenseQA 准确率 | CommonsenseQA 调用 | 结论 |
+|---|---:|---:|---:|---:|---|
+| 风险门控低置信再掩码 | 0.800 | 14.20 | 0.850 | 9.05 | 当前最佳 |
+| gentle remask | 0.800 | 14.20 | 0.850 | 8.90 | 与默认基本等价 |
+| aggressive remask | 0.800 | 14.20 | 0.850 | 9.05 | 无额外收益 |
+| 4-step online | 0.700 | 18.50 | 0.850 | 11.00 | 细粒度带来扰动 |
+| no-prior shape routing | 0.750 | 20.65 | 0.850 | 16.40 | 成本过高 |
+| trajectory-probe cascade | 0.700 | 12.55 | 0.850 | 11.70 | verifier 无法识别 WinoGrande 错例 |
+| conservative probe cascade | 0.750 | 25.00 | 0.850 | 14.15 | 保守但不划算 |
+| schedule ensemble | 0.750 | 16.80 | 0.850 | 16.00 | 一致性信号不足 |
+
+这些结果把主方法收束到一个更清晰的设计：先用 prompt probe 发现必须满预算的样本，再用 8 步侦察和低置信再掩码修复轨迹敏感错误。额外的 verifier、双 schedule 或更细粒度在线控制在当前实验里没有超过这个组合。
+
+## 100 样本验证
+
+在筛掉明显负优化的候选后，我们对 gentle risk-gated remask 做了更大一轮验证，设置为 `seed=23, limit=100`，仍然不使用任务步数先验。
+
+| 方法 | 任务 | 准确率 | 平均调用 | 路由分布 |
+|---|---:|---:|---:|---|
+| gentle risk-gated remask | WinoGrande | 0.740 | 13.91 | 8: 59%, 16: 24%, 24: 12%, 32: 5% |
+| gentle risk-gated remask | CommonsenseQA | 0.800 | 9.92 | 8: 76%, 16: 20%, 24: 2%, 32: 2% |
+
+这轮结果确认了两点。第一，控制器没有退化成固定 8 步或固定 32 步，在 8/16/24/32 之间形成了非退化的样本级预算分配。第二，更复杂的 trajectory-probe cascade、schedule ensemble 和 4-step online 没有超过这个简单但稳定的风险门控机制。当前最适合写入报告的主方法是“prompt probe + 8-step scout + risk-gated low-confidence remask”，事后任务先验和反复重掩码的细粒度 online 控制只作为负例与消融。

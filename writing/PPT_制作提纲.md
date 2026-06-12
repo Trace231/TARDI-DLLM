@@ -137,7 +137,15 @@ figures/inference_joint_analysis.png
 
 ```text
 4-step online 更细，但在 WinoGrande 上掉到 0.700，说明反复重掩码会扰动答案轨迹。
+trajectory-probe cascade 和 schedule ensemble 也没有超过风险门控低置信再掩码。
 主方法保留 8-step scout + 风险门控再修。
+```
+
+100 样本验证：
+
+```text
+WinoGrande：0.740 / 13.91 次调用，路由分布 8:59%, 16:24%, 24:12%, 32:5%
+CommonsenseQA：0.800 / 9.92 次调用，路由分布 8:76%, 16:20%, 24:2%, 32:2%
 ```
 
 建议配图：
