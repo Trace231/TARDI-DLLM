@@ -63,9 +63,48 @@ TARDI-LoRA：0.776
 figures/lora_task_heatmap.png
 ```
 
+这一页要放 9 数据集主表，不要只放旧版 LoRA 审计：
+
+```text
+tables/paper_lora_task_main.csv
+```
+
 任务条件化 LoRA 作为补充消融即可：我们试过更复杂结构，但没有超过 TARDI-LoRA。
 
-## 第 5 页：为什么需要推理控制
+## 第 5 页：旧版 LoRA、TARDI-LoRA 与自回归 LoRA 的横向对比
+
+重点数字：
+
+```text
+6 个重叠任务宏平均：
+LLaDA 基础模型：0.677
+旧版 DDM LoRA：0.703，增益 +0.027
+TARDI-LoRA：0.737，增益 +0.060
+Qwen 基础模型：0.680
+Qwen LoRA：0.750，增益 +0.070
+```
+
+这一页必须三组一起讲：
+
+```text
+旧版 DDM LoRA：说明普通扩散 LoRA 有一点收益，但不稳定。
+TARDI-LoRA：说明改进训练方式后，DDM LoRA 的平均增益明显扩大。
+Qwen LoRA：作为自回归 LoRA 参照，说明 TARDI-LoRA 已接近 AR LoRA 的平均增益。
+```
+
+建议配图：
+
+```text
+figures/ar_vs_tardi_lora_gain.png
+```
+
+建议配表：
+
+```text
+tables/paper_ar_ddm_lora_comparison.csv
+```
+
+## 第 6 页：为什么需要推理控制
 
 讲轨迹差异：
 
@@ -86,7 +125,7 @@ WinoGrande 平均 15.89 步首次到达最终答案
 figures/trajectory_metrics.png
 ```
 
-## 第 6 页：选择性再掩码推理控制
+## 第 7 页：选择性再掩码推理控制
 
 流程：
 
@@ -101,7 +140,7 @@ figures/trajectory_metrics.png
 figures/controller_route_distribution.png
 ```
 
-## 第 7 页：主实验结果
+## 第 8 页：主实验结果
 
 重点数字：
 
@@ -116,7 +155,7 @@ CommonsenseQA：32 步 0.819，校准控制器 0.817，调用从 32 降到 9.06
 figures/controller_accuracy_cost.png
 ```
 
-## 第 8 页：阈值稳健性
+## 第 9 页：阈值稳健性
 
 讲法：
 
@@ -130,7 +169,7 @@ figures/controller_accuracy_cost.png
 figures/threshold_robustness.png
 ```
 
-## 第 9 页：边界与负例
+## 第 10 页：边界与负例
 
 重点：
 
@@ -144,7 +183,7 @@ PubMedQA 对预算敏感，C-Eval 更像知识缺口。
 figures/boundary_cases.png
 ```
 
-## 第 10 页：扩展任务覆盖
+## 第 11 页：扩展任务覆盖
 
 讲法：
 
@@ -160,7 +199,7 @@ figures/coverage_comparison.png
 figures/step_sweep_by_task.png
 ```
 
-## 第 11 页：最终贡献
+## 第 12 页：最终贡献
 
 三点贡献：
 
@@ -168,7 +207,7 @@ figures/step_sweep_by_task.png
 2. 选择性再掩码控制：把反向扩散过程变成风险可控的预算分配。
 3. 边界分析：区分轨迹敏感错误、知识缺口和长链推理瓶颈。
 
-## 第 12 页：汇报边界
+## 第 13 页：汇报边界
 
 容易被误解的说法：
 

@@ -174,6 +174,29 @@ def fig_old_lora_gain():
     savefig("old_lora_gain_audit")
 
 
+def fig_ar_vs_tardi_lora_gain():
+    lora_rows = read_csv(TAB / "lora_task_summary.csv")
+    audit_rows = read_csv(TAB / "old_lora_gain_audit.csv")
+    tasks = ["mmlu_pro", "pubmedqa", "ceval_computer_network", "sciq", "winogrande", "commonsenseqa"]
+    lora = {(r["method"], r["task"]): fnum(r["accuracy"]) for r in lora_rows}
+    audit = {(r["method"], r["task"]): fnum(r["accuracy"]) for r in audit_rows}
+    old_ddm_gain = [lora[("vanilla_lora_fixed32", t)] - lora[("base_fixed32", t)] for t in tasks]
+    tardi_gain = [lora[("tardi_lora_balanced_r8_highnoise", t)] - lora[("base_fixed32", t)] for t in tasks]
+    ar_gain = [audit[("qwen_lora", t)] - audit[("qwen_base", t)] for t in tasks]
+    x = np.arange(len(tasks))
+    w = 0.25
+    plt.figure(figsize=(9.0, 4.0))
+    plt.bar(x - w, old_ddm_gain, width=w, label="旧版 DDM LoRA", color="#bab0ac", edgecolor="#333333", linewidth=0.4)
+    plt.bar(x, tardi_gain, width=w, label="TARDI-LoRA", color="#d55e00", edgecolor="#333333", linewidth=0.4)
+    plt.bar(x + w, ar_gain, width=w, label="Qwen LoRA", color="#4c78a8", edgecolor="#333333", linewidth=0.4)
+    plt.axhline(0, color="#333333", linewidth=0.8)
+    plt.xticks(x, [TASK_ZH[t] for t in tasks], rotation=25, ha="right")
+    plt.ylabel("相对各自基础模型的准确率增量")
+    plt.title("旧版 DDM LoRA、TARDI-LoRA 与自回归 LoRA 的增益对比")
+    plt.legend(frameon=False, fontsize=8)
+    savefig("ar_vs_tardi_lora_gain")
+
+
 def fig_controller_accuracy_cost():
     rows = read_csv(TAB / "controller_main_1000.csv")
     colors = {"winogrande": "#4c78a8", "commonsenseqa": "#f58518"}
@@ -351,6 +374,64 @@ def write_markdown_tables():
         })
     write_csv(TAB / "paper_lora_main.csv", rows, ["方法", "正确数", "样本数", "宏平均准确率", "相对基础模型"])
 
+    task_rows = read_csv(TAB / "lora_task_summary.csv")
+    tasks = ["mmlu_pro", "pubmedqa", "ceval_computer_network", "sciq", "winogrande", "commonsenseqa", "arc_challenge", "hellaswag", "boolq"]
+    lookup = {(r["method"], r["task"]): fnum(r["accuracy"]) for r in task_rows}
+    rows = []
+    for t in tasks:
+        base = lookup[("base_fixed32", t)]
+        old = lookup[("vanilla_lora_fixed32", t)]
+        tardi = lookup[("tardi_lora_balanced_r8_highnoise", t)]
+        rows.append({
+            "数据集": TASK_ZH[t],
+            "LLaDA 基础模型": f"{base:.2f}",
+            "旧版 LoRA": f"{old:.2f}",
+            "TARDI-LoRA": f"{tardi:.2f}",
+            "TARDI 增益": f"{tardi - base:+.2f}",
+        })
+    rows.append({
+        "数据集": "宏平均",
+        "LLaDA 基础模型": f"{sum(lookup[('base_fixed32', t)] for t in tasks)/len(tasks):.3f}",
+        "旧版 LoRA": f"{sum(lookup[('vanilla_lora_fixed32', t)] for t in tasks)/len(tasks):.3f}",
+        "TARDI-LoRA": f"{sum(lookup[('tardi_lora_balanced_r8_highnoise', t)] for t in tasks)/len(tasks):.3f}",
+        "TARDI 增益": f"{sum(lookup[('tardi_lora_balanced_r8_highnoise', t)] - lookup[('base_fixed32', t)] for t in tasks)/len(tasks):+.3f}",
+    })
+    write_csv(TAB / "paper_lora_task_main.csv", rows, ["数据集", "LLaDA 基础模型", "旧版 LoRA", "TARDI-LoRA", "TARDI 增益"])
+
+    audit = read_csv(TAB / "old_lora_gain_audit.csv")
+    audit_lookup = {(r["method"], r["task"]): fnum(r["accuracy"]) for r in audit}
+    overlap = ["mmlu_pro", "pubmedqa", "ceval_computer_network", "sciq", "winogrande", "commonsenseqa"]
+    rows = []
+    for t in overlap:
+        llada_base = lookup[("base_fixed32", t)]
+        old_lora = lookup[("vanilla_lora_fixed32", t)]
+        tardi = lookup[("tardi_lora_balanced_r8_highnoise", t)]
+        qwen_base = audit_lookup[("qwen_base", t)]
+        qwen_lora = audit_lookup[("qwen_lora", t)]
+        rows.append({
+            "数据集": TASK_ZH[t],
+            "LLaDA 基础模型": f"{llada_base:.2f}",
+            "旧版 DDM LoRA": f"{old_lora:.2f}",
+            "旧版 DDM LoRA 增益": f"{old_lora - llada_base:+.2f}",
+            "TARDI-LoRA": f"{tardi:.2f}",
+            "TARDI 增益": f"{tardi - llada_base:+.2f}",
+            "Qwen 基础模型": f"{qwen_base:.2f}",
+            "Qwen LoRA": f"{qwen_lora:.2f}",
+            "Qwen LoRA 增益": f"{qwen_lora - qwen_base:+.2f}",
+        })
+    rows.append({
+        "数据集": "宏平均",
+        "LLaDA 基础模型": f"{sum(lookup[('base_fixed32', t)] for t in overlap)/len(overlap):.3f}",
+        "旧版 DDM LoRA": f"{sum(lookup[('vanilla_lora_fixed32', t)] for t in overlap)/len(overlap):.3f}",
+        "旧版 DDM LoRA 增益": f"{sum(lookup[('vanilla_lora_fixed32', t)] - lookup[('base_fixed32', t)] for t in overlap)/len(overlap):+.3f}",
+        "TARDI-LoRA": f"{sum(lookup[('tardi_lora_balanced_r8_highnoise', t)] for t in overlap)/len(overlap):.3f}",
+        "TARDI 增益": f"{sum(lookup[('tardi_lora_balanced_r8_highnoise', t)] - lookup[('base_fixed32', t)] for t in overlap)/len(overlap):+.3f}",
+        "Qwen 基础模型": f"{sum(audit_lookup[('qwen_base', t)] for t in overlap)/len(overlap):.3f}",
+        "Qwen LoRA": f"{sum(audit_lookup[('qwen_lora', t)] for t in overlap)/len(overlap):.3f}",
+        "Qwen LoRA 增益": f"{sum(audit_lookup[('qwen_lora', t)] - audit_lookup[('qwen_base', t)] for t in overlap)/len(overlap):+.3f}",
+    })
+    write_csv(TAB / "paper_ar_ddm_lora_comparison.csv", rows, ["数据集", "LLaDA 基础模型", "旧版 DDM LoRA", "旧版 DDM LoRA 增益", "TARDI-LoRA", "TARDI 增益", "Qwen 基础模型", "Qwen LoRA", "Qwen LoRA 增益"])
+
     main = read_csv(TAB / "controller_main_1000.csv")
     rows = []
     for r in main:
@@ -375,6 +456,7 @@ def main():
     fig_lora_macro()
     fig_lora_task_heatmap()
     fig_old_lora_gain()
+    fig_ar_vs_tardi_lora_gain()
     fig_controller_accuracy_cost()
     fig_route_distribution()
     fig_threshold_sweep()
