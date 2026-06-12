@@ -67,11 +67,24 @@ step sweep 曲线只用于分析不同任务的预算敏感性，不作为默认
 | conservative probe cascade | 0.750 | 25.00 | 0.850 | 14.15 | 保守但不划算 |
 | schedule ensemble | 0.750 | 16.80 | 0.850 | 16.00 | 一致性信号不足 |
 
-这些结果把主方法收束到一个更清晰的设计：先用 prompt probe 发现必须满预算的样本，再用 8 步侦察和低置信再掩码修复轨迹敏感错误。额外的 verifier、双 schedule、答案一致性保护或更细粒度在线控制在当前实验里没有超过这个组合。
+这些结果把主方法收束到一个更清晰的设计：先用 prompt probe 发现明显样本和必须满预算的样本，再用 8 步侦察和低置信再掩码修复轨迹敏感错误。额外的 verifier、双 schedule、答案一致性保护或更细粒度在线控制在当前实验里没有超过这个组合。
 
 answer-consistency remask 的机制更复杂：当 prompt probe 与 scout 答案一致时，保护最终答案 token 和 answer marker；当 prompt probe 强烈反对 scout 答案时，把标签和 answer marker 纳入优先修复区域。20 样本实验中该分支触发 11 次 refinement，其中 6 次为答案保护，1 次为强分歧修复。最终指标与 gentle remask 相同，说明答案一致性信息没有伤害结果，但它还没有提供额外收益。
 
-## 100 样本验证
+## Probe-direct 捷径
+
+进一步分析 1000 样本主实验中的 prompt probe 后验，我们发现高置信标签后验本身就是一个强信号。当 `top_prob >= 0.80` 且 `margin >= 0.40` 时，probe 直接提交在 WinoGrande 上覆盖 43.6% 样本，直接准确率为 0.856；在 CommonsenseQA 上覆盖 73.5% 样本，直接准确率为 0.917。把这些样本从反向扩散循环中拿出来，离线模拟可在保持 WinoGrande `0.756` 的同时把平均调用降到 `13.98`，在 CommonsenseQA 上达到 `0.820`、平均调用 `3.15`。
+
+真实 100 样本验证也支持这个方向：
+
+| 方法 | 任务 | 准确率 | 平均调用 | 路由分布 |
+|---|---:|---:|---:|---|
+| probe-direct + risk-gated remask | WinoGrande | 0.740 | 10.87 | 0-step: 38%, 8: 21%, 16: 24%, 24: 12%, 32: 5% |
+| probe-direct + risk-gated remask | CommonsenseQA | 0.800 | 5.23 | 0-step: 67%, 8: 9%, 16: 20%, 24: 2%, 32: 2% |
+
+这里的 0-step 表示只使用一次 masked final-label posterior probe，不进入反向扩散循环。该机制没有使用任务级先验，也没有依赖事后 step sweep；它只依据当前样本的标签后验置信度和 margin。与 gentle risk-gated remask 相比，WinoGrande 准确率保持 `0.740`，平均调用从 `13.91` 降到 `10.87`；CommonsenseQA 准确率保持 `0.800`，平均调用从 `9.92` 降到 `5.23`。因此最终推荐的解码机制是 probe-direct posterior shortcut + 8-step scout + risk-gated low-confidence remask。
+
+## 100 样本再修验证
 
 在筛掉明显负优化的候选后，我们对 gentle risk-gated remask 做了更大一轮验证，设置为 `seed=23, limit=100`，仍然不使用任务步数先验。
 
@@ -80,4 +93,4 @@ answer-consistency remask 的机制更复杂：当 prompt probe 与 scout 答案
 | gentle risk-gated remask | WinoGrande | 0.740 | 13.91 | 8: 59%, 16: 24%, 24: 12%, 32: 5% |
 | gentle risk-gated remask | CommonsenseQA | 0.800 | 9.92 | 8: 76%, 16: 20%, 24: 2%, 32: 2% |
 
-这轮结果确认了两点。第一，控制器没有退化成固定 8 步或固定 32 步，在 8/16/24/32 之间形成了非退化的样本级预算分配。第二，更复杂的 trajectory-probe cascade、schedule ensemble 和 4-step online 没有超过这个简单但稳定的风险门控机制。当前最适合写入报告的主方法是“prompt probe + 8-step scout + risk-gated low-confidence remask”，事后任务先验和反复重掩码的细粒度 online 控制只作为负例与消融。
+这轮结果确认了两点。第一，控制器没有退化成固定 8 步或固定 32 步，在 8/16/24/32 之间形成了非退化的样本级预算分配。第二，更复杂的 trajectory-probe cascade、schedule ensemble 和 4-step online 没有超过这个简单但稳定的风险门控机制。加入 probe-direct 捷径后，主方法进一步变成三段式：高置信标签后验直接提交，中等风险样本进入 8-step scout，高风险样本追加低置信再掩码或回退满预算。

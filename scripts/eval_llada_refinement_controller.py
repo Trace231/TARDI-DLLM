@@ -560,6 +560,27 @@ def direct_full(profile, probe, first_policy, args):
     return False, "scout_allowed"
 
 
+def probe_direct_accept(profile, probe, labels, args):
+    if not args.probe_direct_accept:
+        return False, None, "probe_direct_disabled"
+    if not probe.get("available"):
+        return False, None, "probe_direct_unavailable"
+    pred = probe.get("top_label")
+    if labels and pred not in labels:
+        return False, None, "probe_direct_invalid_label"
+    top_prob = float(probe.get("top_prob", 0.0))
+    margin = float(probe.get("margin", 0.0))
+    if profile.get("n_labels", 0) <= 2:
+        confidence = args.probe_direct_binary_confidence
+        margin_target = args.probe_direct_binary_margin
+    else:
+        confidence = args.probe_direct_multi_confidence
+        margin_target = args.probe_direct_multi_margin
+    if top_prob >= confidence and margin >= margin_target:
+        return True, pred, "probe_direct_high_posterior"
+    return False, None, "probe_direct_not_confident"
+
+
 def refinement_fraction(score, target_budget, args):
     base = args.remask_min_fraction + (args.remask_max_fraction - args.remask_min_fraction) * max(0.0, score)
     if target_budget >= 32:
@@ -675,6 +696,11 @@ def main():
     ap.add_argument("--answer-repair-confidence", type=float, default=0.62)
     ap.add_argument("--answer-repair-bonus", type=float, default=0.35)
     ap.add_argument("--answer-label-bonus", type=float, default=0.10)
+    ap.add_argument("--probe-direct-accept", action=argparse.BooleanOptionalAction, default=False)
+    ap.add_argument("--probe-direct-binary-confidence", type=float, default=0.80)
+    ap.add_argument("--probe-direct-binary-margin", type=float, default=0.40)
+    ap.add_argument("--probe-direct-multi-confidence", type=float, default=0.80)
+    ap.add_argument("--probe-direct-multi-margin", type=float, default=0.40)
     ap.add_argument("--compact-choice-fast", action="store_true")
     ap.add_argument("--compact-choice-max-labels", type=int, default=5)
     ap.add_argument("--compact-choice-max-prompt-tokens", type=int, default=512)
@@ -711,8 +737,20 @@ def main():
             score = None
             budget_decision = {}
 
+            accept_probe, probe_pred, probe_reason = probe_direct_accept(profile, probe, labels, args)
             go_full, full_reason = direct_full(profile, probe, first_policy, args)
-            if go_full:
+            if accept_probe:
+                pred = probe_pred
+                output = f"Final answer: {probe_pred}"
+                route_steps.append({"budget": 0, "mode": "probe_direct", "reason": probe_reason, "pred": pred})
+                stats = {"history": [], "flip_count": 0, "first_final_step": 0, "valid_seen": 1, "observed_steps": 0}
+                budget_decision = {
+                    "mode": "probe_direct",
+                    "reason": probe_reason,
+                    "probe_top_prob": probe.get("top_prob"),
+                    "probe_margin": probe.get("margin"),
+                }
+            elif go_full:
                 policy = budget_policy(first_policy, 32)
                 x, output, pred, c, last_conf, hist = fill_masks(
                     model, tokenizer, sample, x, attention_mask, prompt_len, prompt_index, 32, policy["schedule"], args, labels, {8, 16, 24, 32}
