@@ -1,4 +1,5 @@
 import argparse
+import csv
 import json
 import sys
 import time
@@ -22,6 +23,12 @@ from eval_llada_sampler_variants import MASK_ID, model_logits, token_budget, x0_
 from eval_llada_risk_controller import norm_entropy, risk_features, risk_score, budget_from_score
 
 
+DEFAULT_PRIOR_CANDIDATES = [
+    Path("writing/tables/step_sweep_9task_limit100_seed23.csv"),
+    Path("results/domain_shift/task_aware/solid_v2/tables/step_sweep_9task_limit100_seed23.csv"),
+]
+
+
 def budget_policy(first_policy, steps):
     policy = dict(first_policy)
     policy["steps"] = int(steps)
@@ -42,6 +49,186 @@ def next_budget(current, budgets):
         if b > current:
             return b
     return current
+
+
+def clip01(value):
+    return max(0.0, min(1.0, float(value)))
+
+
+def resolve_prior_path(text):
+    if text:
+        path = Path(text)
+        return path if path.exists() else None
+    for path in DEFAULT_PRIOR_CANDIDATES:
+        if path.exists():
+            return path
+    return None
+
+
+def load_task_priors(path, budgets):
+    if path is None:
+        return {}
+    by_task = {}
+    with path.open(newline="") as f:
+        for row in csv.DictReader(f):
+            try:
+                task = row["task"]
+                step = int(row["step"])
+                acc = float(row["accuracy"])
+            except (KeyError, TypeError, ValueError):
+                continue
+            by_task.setdefault(task, {})[step] = acc
+    priors = {}
+    for task, curve in by_task.items():
+        if not curve:
+            continue
+        min_budget = min(budgets)
+        max_budget = max(budgets)
+        base_step = min(curve, key=lambda s: abs(s - min_budget))
+        full_step = min(curve, key=lambda s: abs(s - max_budget))
+        base_acc = curve[base_step]
+        full_acc = curve[full_step]
+        best_acc = max(curve.values())
+        max_gain = max(1e-6, best_acc - base_acc)
+        budget_gain = {}
+        for budget in budgets:
+            near = min(curve, key=lambda s: abs(s - budget))
+            budget_gain[budget] = clip01((curve[near] - base_acc) / max_gain)
+        positive_span = max(0.0, full_acc - base_acc)
+        volatility = 0.0
+        ordered = sorted(curve)
+        if len(ordered) > 1:
+            volatility = float(np.mean([abs(curve[b] - curve[a]) for a, b in zip(ordered, ordered[1:])]))
+        saturation_step = max_budget
+        for step in ordered:
+            if curve[step] >= best_acc - 0.01:
+                saturation_step = step
+                break
+        priors[task] = {
+            "source": str(path),
+            "base_step": base_step,
+            "full_step": full_step,
+            "base_acc": base_acc,
+            "full_acc": full_acc,
+            "best_acc": best_acc,
+            "budget_gain": {str(k): v for k, v in budget_gain.items()},
+            "positive_span": positive_span,
+            "sensitivity": clip01(positive_span / 0.20 + volatility / 0.08),
+            "volatility": volatility,
+            "saturation_step": saturation_step,
+        }
+    return priors
+
+
+def fallback_prior(task, profile, budgets):
+    n_labels = profile.get("n_labels", 0)
+    if profile.get("metric") not in {"letter", "bool", "decision"}:
+        sensitivity = 1.0
+        saturation = max(budgets)
+    elif profile.get("metric") == "decision":
+        sensitivity = 0.9
+        saturation = max(budgets)
+    elif n_labels <= 2:
+        sensitivity = 0.45
+        saturation = 16 if 16 in budgets else max(budgets)
+    elif n_labels >= 8:
+        sensitivity = 0.75
+        saturation = 24 if 24 in budgets else max(budgets)
+    else:
+        sensitivity = 0.55
+        saturation = 16 if 16 in budgets else max(budgets)
+    budget_gain = {}
+    lo, hi = min(budgets), max(budgets)
+    for budget in budgets:
+        budget_gain[str(budget)] = clip01((budget - lo) / max(1, hi - lo))
+    return {
+        "source": "fallback_shape_prior",
+        "base_step": min(budgets),
+        "full_step": max(budgets),
+        "base_acc": None,
+        "full_acc": None,
+        "best_acc": None,
+        "budget_gain": budget_gain,
+        "positive_span": None,
+        "sensitivity": sensitivity,
+        "volatility": 0.0,
+        "saturation_step": saturation,
+    }
+
+
+def structured_budget_decision(task, profile, features, score, budgets, prior, args):
+    if not args.structured_routing:
+        target, reason = budget_from_score(score, budgets, args)
+        return target, reason, {"mode": "threshold", "score": score}
+    if features.get("invalid_or_empty", 0.0) >= 1.0:
+        return max(budgets), "invalid_or_empty_full", {
+            "mode": "risk_value",
+            "score": score,
+            "forced": "invalid_or_empty",
+        }
+    min_budget = min(budgets)
+    max_budget = max(budgets)
+    sensitivity = float(prior.get("sensitivity", 0.5))
+    instability = 0.5 * float(features.get("flip_instability", 0.0)) + 0.5 * float(features.get("late_first_final", 0.0))
+    uncertainty = 0.5 * float(features.get("probe_entropy", 0.0)) + 0.5 * float(features.get("margin_deficit", 0.0))
+    disagreement = float(features.get("probe_scout_disagree", 0.0))
+    risk_mass = clip01(score * (0.65 + 0.55 * sensitivity + 0.25 * instability + 0.20 * uncertainty + 0.15 * disagreement))
+    objective = {}
+    gain_curve = prior.get("budget_gain", {})
+    saturation = float(prior.get("saturation_step", max_budget) or max_budget)
+    for budget in budgets:
+        normalized_cost = (budget - min_budget) / max(1, max_budget - min_budget)
+        curve_gain = float(gain_curve.get(str(budget), 0.0))
+        saturation_bonus = 0.0
+        if budget <= saturation:
+            saturation_bonus = args.saturation_bonus * (1.0 - abs(budget - saturation) / max(1.0, saturation - min_budget + 1.0))
+        expected_gain = risk_mass * (args.prior_gain_weight * curve_gain + args.instability_gain_weight * instability * normalized_cost)
+        residual = risk_mass - expected_gain
+        objective[str(budget)] = {
+            "curve_gain": curve_gain,
+            "expected_gain": expected_gain,
+            "residual_risk": residual,
+            "cost": args.compute_cost * normalized_cost,
+            "saturation_bonus": saturation_bonus,
+            "value": residual + args.compute_cost * normalized_cost - saturation_bonus,
+        }
+    target = min(budgets, key=lambda b: (objective[str(b)]["value"], b))
+    if args.prefer_saturation_budget and target == max_budget and score < args.structured_force_32_score and saturation < max_budget:
+        saturation_budget = min((b for b in budgets if b >= saturation), default=max_budget)
+        if objective[str(saturation_budget)]["value"] <= objective[str(max_budget)]["value"] + args.saturation_tolerance:
+            target = saturation_budget
+    if profile.get("n_labels", 0) <= 2 and score >= args.binary_min_16_score and target < 16 and 16 in budgets:
+        target = 16
+        reason = "binary_medium_risk_min_16"
+    elif score >= args.structured_force_32_score and target < max_budget:
+        target = max_budget
+        reason = "high_residual_risk_full"
+    elif score >= args.structured_min_24_score and 24 in budgets and target < 24:
+        target = 24
+        reason = "high_risk_min_24"
+    elif disagreement and probe_confident_enough(profile, score, args) and target < 16 and 16 in budgets:
+        target = 16
+        reason = "probe_scout_disagreement_min_16"
+    else:
+        reason = f"risk_value_budget_{target}"
+    return target, reason, {
+        "mode": "risk_value",
+        "task": task,
+        "score": score,
+        "risk_mass": risk_mass,
+        "sensitivity": sensitivity,
+        "instability": instability,
+        "uncertainty": uncertainty,
+        "objective": objective,
+        "selected_budget": target,
+        "prior": prior,
+    }
+
+
+def probe_confident_enough(profile, score, args):
+    if profile.get("n_labels", 0) <= 2:
+        return score >= args.risk_t16
+    return score >= args.risk_t24
 
 
 def make_state(tokenizer, sample, args, device):
@@ -137,6 +324,29 @@ def scout_stats(history, args, last_conf=None, prompt_len=0):
     return out
 
 
+def label_token_ids(tokenizer, labels):
+    out = set()
+    for label in labels:
+        for text in (label, " " + label, "\n" + label):
+            ids = tokenizer(text, add_special_tokens=False)["input_ids"]
+            if len(ids) == 1:
+                out.add(int(ids[0]))
+    return out
+
+
+def token_text_flags(tokenizer, token_ids):
+    flags = []
+    for token_id in token_ids:
+        piece = tokenizer.decode([int(token_id)], skip_special_tokens=False).lower()
+        flags.append(
+            {
+                "final_marker": any(x in piece for x in ["final", "answer", "答案", "答"]),
+                "separator": any(x in piece for x in [":", "：", "<answer>", "</answer>"]),
+            }
+        )
+    return flags
+
+
 def remask_low_confidence(x, prompt_len, last_conf, fraction, min_tokens):
     gen_conf = last_conf[:, prompt_len:].clone()
     gen_tokens = x[:, prompt_len:]
@@ -150,6 +360,46 @@ def remask_low_confidence(x, prompt_len, last_conf, fraction, min_tokens):
     _, idx = torch.topk(-gen_conf[0], k=k)
     gen_tokens[0, idx] = MASK_ID
     return k
+
+
+def remask_structured(x, tokenizer, prompt_len, last_conf, labels, fraction, min_tokens, args):
+    gen_conf = last_conf[:, prompt_len:].clone()
+    gen_tokens = x[:, prompt_len:]
+    valid = gen_tokens != MASK_ID
+    valid_count = int(valid.sum().item())
+    if valid_count <= 0:
+        return 0, {"policy": "structured", "reason": "no_valid_tokens"}
+    k = max(min_tokens, int(round(valid_count * fraction)))
+    k = min(k, valid_count)
+    label_ids = label_token_ids(tokenizer, labels)
+    token_ids = gen_tokens[0].detach().cpu().tolist()
+    flags = token_text_flags(tokenizer, token_ids)
+    finite_conf = torch.where(valid, gen_conf, torch.full_like(gen_conf, 1.0))
+    rank_score = 1.0 - finite_conf[0]
+    label_bonus = torch.zeros_like(rank_score)
+    marker_bonus = torch.zeros_like(rank_score)
+    for idx, token_id in enumerate(token_ids):
+        if not bool(valid[0, idx].item()):
+            continue
+        if int(token_id) in label_ids:
+            label_bonus[idx] = args.label_remask_bonus
+            left = max(0, idx - args.label_remask_window)
+            right = min(label_bonus.numel(), idx + args.label_remask_window + 1)
+            label_bonus[left:right] = torch.maximum(label_bonus[left:right], torch.full_like(label_bonus[left:right], args.label_context_bonus))
+        if flags[idx]["final_marker"] or flags[idx]["separator"]:
+            marker_bonus[idx] = args.answer_marker_bonus
+    rank_score = torch.where(valid[0], rank_score + label_bonus + marker_bonus, torch.full_like(rank_score, -1.0))
+    _, idx = torch.topk(rank_score, k=k)
+    gen_tokens[0, idx] = MASK_ID
+    selected = idx.detach().cpu().tolist()
+    return k, {
+        "policy": "structured",
+        "fraction": fraction,
+        "selected": selected,
+        "label_token_hits": int(sum(1 for i in selected if int(token_ids[i]) in label_ids)),
+        "marker_hits": int(sum(1 for i in selected if flags[i]["final_marker"] or flags[i]["separator"])),
+        "valid_count": valid_count,
+    }
 
 
 def post_risky(pred, labels, probe, profile, args):
@@ -215,6 +465,19 @@ def maybe_enable_compact_choice_scout(profile, first_policy, args):
     }
 
 
+def write_payload(path, args, prior_path, summary, rows, complete):
+    payload = {
+        "method": "selective_remask_refinement_controller",
+        "model": args.model,
+        "args": vars(args),
+        "task_prior_csv": str(prior_path) if prior_path else None,
+        "complete": complete,
+        "summary": summary,
+        "rows": rows,
+    }
+    Path(path).write_text(json.dumps(payload, ensure_ascii=False, indent=2))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True)
@@ -245,12 +508,30 @@ def main():
     ap.add_argument("--remask-max-fraction", type=float, default=0.55)
     ap.add_argument("--remask-min-tokens", type=int, default=4)
     ap.add_argument("--max-refinements", type=int, default=3)
+    ap.add_argument("--structured-routing", action=argparse.BooleanOptionalAction, default=True)
+    ap.add_argument("--task-prior-csv", default=None)
+    ap.add_argument("--compute-cost", type=float, default=0.055)
+    ap.add_argument("--prior-gain-weight", type=float, default=0.75)
+    ap.add_argument("--instability-gain-weight", type=float, default=0.30)
+    ap.add_argument("--saturation-bonus", type=float, default=0.025)
+    ap.add_argument("--prefer-saturation-budget", action=argparse.BooleanOptionalAction, default=True)
+    ap.add_argument("--saturation-tolerance", type=float, default=0.08)
+    ap.add_argument("--binary-min-16-score", type=float, default=0.24)
+    ap.add_argument("--structured-min-24-score", type=float, default=0.48)
+    ap.add_argument("--structured-force-32-score", type=float, default=0.70)
+    ap.add_argument("--structured-remask", action=argparse.BooleanOptionalAction, default=True)
+    ap.add_argument("--label-remask-bonus", type=float, default=0.45)
+    ap.add_argument("--label-context-bonus", type=float, default=0.20)
+    ap.add_argument("--answer-marker-bonus", type=float, default=0.12)
+    ap.add_argument("--label-remask-window", type=int, default=2)
     ap.add_argument("--compact-choice-fast", action="store_true")
     ap.add_argument("--compact-choice-max-labels", type=int, default=5)
     ap.add_argument("--compact-choice-max-prompt-tokens", type=int, default=512)
     args = ap.parse_args()
 
     budgets = parse_budgets(args.budgets)
+    prior_path = resolve_prior_path(args.task_prior_csv)
+    task_priors = load_task_priors(prior_path, budgets)
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     tokenizer, model = base.load_llada(args.model, args.adapter)
     torch.cuda.reset_peak_memory_stats()
@@ -268,6 +549,7 @@ def main():
             labels = infer_label_space(raw)
             first_policy = choose_policy(profile)
             first_policy = maybe_enable_compact_choice_scout(profile, first_policy, args)
+            task_prior = task_priors.get(task, fallback_prior(task, profile, budgets))
             sample = apply_prompt(raw, first_policy["prompt"])
             t0 = time.time()
             probe = probe_label_distribution(model, tokenizer, sample, labels)
@@ -276,6 +558,7 @@ def main():
             route_steps = []
             features = {}
             score = None
+            budget_decision = {}
 
             go_full, full_reason = direct_full(profile, probe, first_policy, args)
             if go_full:
@@ -306,15 +589,29 @@ def main():
                 stats = scout_stats(hist, args, last_conf, prompt_len)
                 features = risk_features(profile, probe, pred, labels, stats, args)
                 score = risk_score(features, profile)
-                target, reason = budget_from_score(score, budgets, args)
+                target, reason, budget_decision = structured_budget_decision(task, profile, features, score, budgets, task_prior, args)
                 current_budget = args.scout_steps
-                route_steps.append({"budget": current_budget, "mode": "scout", "reason": "scout", "pred": pred, "risk_score": score, "target_budget": target})
+                route_steps.append(
+                    {
+                        "budget": current_budget,
+                        "mode": "scout",
+                        "reason": "scout",
+                        "pred": pred,
+                        "risk_score": score,
+                        "target_budget": target,
+                        "budget_decision": budget_decision,
+                    }
+                )
 
                 refinements = 0
                 while target > current_budget and refinements < args.max_refinements:
                     extra_steps = target - current_budget
                     frac = refinement_fraction(score, target, args)
-                    remasked = remask_low_confidence(x, prompt_len, last_conf, frac, args.remask_min_tokens)
+                    if args.structured_remask:
+                        remasked, remask_plan = remask_structured(x, tokenizer, prompt_len, last_conf, labels, frac, args.remask_min_tokens, args)
+                    else:
+                        remasked = remask_low_confidence(x, prompt_len, last_conf, frac, args.remask_min_tokens)
+                        remask_plan = {"policy": "low_confidence", "fraction": frac}
                     if remasked <= 0:
                         break
                     policy = budget_policy(first_policy, target)
@@ -334,7 +631,17 @@ def main():
                     )
                     calls += c
                     current_budget = target
-                    route_steps.append({"budget": current_budget, "mode": "refine", "reason": reason, "pred": pred, "remasked_tokens": remasked})
+                    stats.setdefault("refine_histories", []).append(hist2)
+                    route_steps.append(
+                        {
+                            "budget": current_budget,
+                            "mode": "refine",
+                            "reason": reason,
+                            "pred": pred,
+                            "remasked_tokens": remasked,
+                            "remask_plan": remask_plan,
+                        }
+                    )
                     risky, risk_reason, severity = post_risky(pred, labels, probe, profile, args)
                     if not risky:
                         break
@@ -363,6 +670,7 @@ def main():
                 "probe": probe,
                 "risk_features": features,
                 "risk_score": score,
+                "budget_decision": budget_decision,
                 "scout_stats": stats,
                 "route": route,
                 "route_steps": route_steps,
@@ -390,8 +698,8 @@ def main():
             "final_budget_rates": {k: v / n for k, v in sorted(budget_counts.items())},
             "peak_mem_gb": torch.cuda.max_memory_allocated() / 1024**3,
         }
-    payload = {"method": "selective_remask_refinement_controller", "model": args.model, "args": vars(args), "summary": summary, "rows": rows}
-    Path(args.out).write_text(json.dumps(payload, ensure_ascii=False, indent=2))
+        write_payload(args.out, args, prior_path, summary, rows, complete=False)
+    write_payload(args.out, args, prior_path, summary, rows, complete=True)
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 
 
