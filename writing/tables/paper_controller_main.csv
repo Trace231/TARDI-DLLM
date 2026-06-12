@@ -1,0 +1,9 @@
+方法,任务,准确率,正确数,样本数,平均调用次数,路由
+32step,WinoGrande,0.756,756,1000,32.00,"{""fixed"": 1.0}"
+32step,CommonsenseQA,0.819,819,1000,32.00,"{""fixed"": 1.0}"
+old_adaptive,WinoGrande,0.736,736,1000,9.36,"{""fallback"": 0.011, ""fixed"": 0.989}"
+old_adaptive,CommonsenseQA,0.816,816,1000,9.86,"{""fallback"": 0.026, ""fixed"": 0.974}"
+forward_aware,WinoGrande,0.756,756,1000,17.56,"{""accepted_fast"": 0.648, ""post_fallback"": 0.014, ""pre_fallback"": 0.338}"
+forward_aware,CommonsenseQA,0.818,818,1000,10.82,"{""accepted_fast"": 0.943, ""post_fallback"": 0.057}"
+calibrated,WinoGrande,0.756,756,1000,17.56,"{""32"": 0.338, ""8"": 0.648, ""8->32"": 0.014}"
+calibrated,CommonsenseQA,0.817,817,1000,9.06,"{""8"": 0.998, ""8->32"": 0.002}"

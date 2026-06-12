@@ -1,0 +1,7 @@
+task,task_label,reference,candidate,n_intersection,both_correct,reference_only,candidate_only,neither,net_candidate_minus_reference,mcnemar_p
+winogrande,WinoGrande,32step,calibrated,1000,753,3,3,241,0,1.0
+commonsenseqa,CommonsenseQA,32step,calibrated,1000,811,8,6,175,-2,0.79052734375
+winogrande,WinoGrande,old_adaptive,calibrated,1000,711,25,45,219,20,0.022462895492509277
+commonsenseqa,CommonsenseQA,old_adaptive,calibrated,1000,816,0,1,183,1,1.0
+winogrande,WinoGrande,forward_aware,calibrated,1000,756,0,0,244,0,1.0
+commonsenseqa,CommonsenseQA,forward_aware,calibrated,1000,814,4,3,179,-1,1.0
