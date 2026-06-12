@@ -1,0 +1,11 @@
+task,task_name,qwen_base_accuracy,qwen_lora_accuracy,qwen_lora_gain,base_correct,lora_correct,n
+mmlu_pro,MMLU-Pro,0.420000,0.540000,+0.120000,21,27,50
+pubmedqa,PubMedQA,0.580000,0.760000,+0.180000,29,38,50
+ceval_computer_network,C-Eval,0.740000,0.740000,+0.000000,37,37,50
+sciq,SciQ,0.900000,0.900000,+0.000000,45,45,50
+winogrande,WinoGrande,0.700000,0.700000,+0.000000,35,35,50
+commonsenseqa,CommonsenseQA,0.780000,0.840000,+0.060000,39,42,50
+arc_challenge,ARC,0.920000,0.920000,+0.000000,46,46,50
+hellaswag,HellaSwag,0.780000,0.780000,+0.000000,39,39,50
+boolq,BoolQ,0.880000,0.880000,+0.000000,44,44,50
+macro,Macro,0.744444,0.784444,+0.040000,,,

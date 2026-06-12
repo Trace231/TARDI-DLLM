@@ -24,7 +24,7 @@
 建议配图：
 
 ```text
-figures/trajectory_metrics.png
+figures/trajectory_metrics_expanded.png
 ```
 
 ## 第 3 页：训练侧方法
@@ -76,12 +76,12 @@ tables/paper_lora_task_main.csv
 重点数字：
 
 ```text
-6 个重叠任务宏平均：
-LLaDA 基础模型：0.677
-旧版 DDM LoRA：0.703，增益 +0.027
-TARDI-LoRA：0.737，增益 +0.060
-Qwen 基础模型：0.680
-Qwen LoRA：0.750，增益 +0.070
+9 个任务宏平均：
+LLaDA 基础模型：0.722
+旧版 DDM LoRA：0.744，增益 +0.022
+TARDI-LoRA：0.776，增益 +0.053
+Qwen 基础模型：0.744
+Qwen LoRA：0.784，增益 +0.040
 ```
 
 这一页必须三组一起讲：
@@ -89,7 +89,7 @@ Qwen LoRA：0.750，增益 +0.070
 ```text
 旧版 DDM LoRA：说明普通扩散 LoRA 有一点收益，但不稳定。
 TARDI-LoRA：说明改进训练方式后，DDM LoRA 的平均增益明显扩大。
-Qwen LoRA：作为自回归 LoRA 参照，说明 TARDI-LoRA 已接近 AR LoRA 的平均增益。
+Qwen LoRA：作为自回归 LoRA 参照，说明 TARDI-LoRA 的平均增益不弱于这次 9 任务 Qwen LoRA，但最终准确率仍略低于 Qwen LoRA。
 ```
 
 建议配图：
@@ -109,8 +109,8 @@ tables/paper_ar_ddm_lora_comparison.csv
 讲轨迹差异：
 
 ```text
-CommonsenseQA 平均 7.44 步首次到达最终答案
-WinoGrande 平均 15.89 步首次到达最终答案
+CommonsenseQA 平均 6.57 步首次到达最终答案
+WinoGrande 平均 16.81 步首次到达最终答案
 ```
 
 结论：
@@ -122,7 +122,7 @@ WinoGrande 平均 15.89 步首次到达最终答案
 建议配图：
 
 ```text
-figures/trajectory_metrics.png
+figures/trajectory_metrics_expanded.png
 ```
 
 ## 第 7 页：选择性再掩码推理控制
@@ -196,7 +196,7 @@ GSM8K 对扩散步数高度敏感；ARC、HellaSwag、BoolQ 也有预算效应�
 
 ```text
 figures/coverage_comparison.png
-figures/step_sweep_by_task.png
+figures/step_sweep_9task_limit50.png
 ```
 
 ## 第 12 页：最终贡献

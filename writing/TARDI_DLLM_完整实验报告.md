@@ -67,7 +67,7 @@ K*(x) = argmin_K E[L(y_K, y*) | trajectory_8(x)] + lambda K
 
 主模型为 LLaDA-8B-Instruct。训练侧 LoRA 实验覆盖 9 个固定标签任务，每个任务 50 条评测样本，共 450 条。任务包括 MMLU-Pro、PubMedQA、C-Eval、SciQ、WinoGrande、CommonsenseQA、ARC-Challenge、HellaSwag 和 BoolQ。
 
-推理控制主实验使用 WinoGrande 和 CommonsenseQA，各 1000 条样本。阈值稳定性实验使用每任务 500 条样本。边界负例使用 PubMedQA 和 C-Eval。扩展覆盖实验加入 ARC-Challenge、HellaSwag、BoolQ 和 GSM8K，以检查结论是否局限于原始选择题集合。
+推理控制主实验使用 WinoGrande 和 CommonsenseQA，各 1000 条样本。阈值稳定性实验使用每任务 500 条样本。边界负例使用 PubMedQA 和 C-Eval。扩展覆盖实验加入 ARC-Challenge、HellaSwag、BoolQ 和 GSM8K，以检查结论是否局限于原始选择题集合。轨迹分析补充到每任务 500 条、trace stride 为 1；步数扫描覆盖 9 个任务，每个任务 50 条样本，从 4 步到 32 步每 4 步取一个点。
 
 所有关键输出统一整理在：
 
@@ -125,21 +125,24 @@ writing/figures/
 
 ## 与自回归 LoRA 的对照
 
-为了回答“改进后的扩散模型 LoRA 与自回归 LoRA 相比如何”，我们在 6 个重叠任务上同时比较旧版 DDM LoRA、TARDI-LoRA 和 Qwen LoRA。这里的重点不是只证明 DDM LoRA 能涨，而是看改进后的训练方式是否真的超过旧版 LoRA，并接近自回归 LoRA 的增益。
+为了回答“改进后的扩散模型 LoRA 与自回归 LoRA 相比如何”，我们补跑了 9 个任务上的 Qwen2.5-7B LoRA 对照，并和旧版 DDM LoRA、TARDI-LoRA 放在同一张表里。这里的重点不是只证明 DDM LoRA 能涨，而是看改进后的训练方式是否真的超过旧版 LoRA，并和自回归 LoRA 的增益处在什么关系。
 
 | 数据集 | LLaDA 基础模型 | 旧版 DDM LoRA | 旧版 DDM LoRA 增益 | TARDI-LoRA | TARDI 增益 | Qwen 基础模型 | Qwen LoRA | Qwen LoRA 增益 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| MMLU-Pro | 0.44 | 0.38 | -0.06 | 0.44 | +0.00 | 0.35 | 0.39 | +0.04 |
-| PubMedQA | 0.64 | 0.70 | +0.06 | 0.74 | +0.10 | 0.57 | 0.85 | +0.28 |
-| C-Eval | 0.56 | 0.60 | +0.04 | 0.64 | +0.08 | 0.73 | 0.74 | +0.01 |
-| SciQ | 0.86 | 0.90 | +0.04 | 0.92 | +0.06 | 0.93 | 0.98 | +0.05 |
-| WinoGrande | 0.76 | 0.74 | -0.02 | 0.76 | +0.00 | 0.70 | 0.68 | -0.02 |
-| CommonsenseQA | 0.80 | 0.90 | +0.10 | 0.92 | +0.12 | 0.80 | 0.86 | +0.06 |
-| 宏平均 | 0.677 | 0.703 | +0.027 | 0.737 | +0.060 | 0.680 | 0.750 | +0.070 |
+| MMLU-Pro | 0.44 | 0.38 | -0.06 | 0.44 | +0.00 | 0.42 | 0.54 | +0.12 |
+| PubMedQA | 0.64 | 0.70 | +0.06 | 0.74 | +0.10 | 0.58 | 0.76 | +0.18 |
+| C-Eval | 0.56 | 0.60 | +0.04 | 0.64 | +0.08 | 0.74 | 0.74 | +0.00 |
+| SciQ | 0.86 | 0.90 | +0.04 | 0.92 | +0.06 | 0.90 | 0.90 | +0.00 |
+| WinoGrande | 0.76 | 0.74 | -0.02 | 0.76 | +0.00 | 0.70 | 0.70 | +0.00 |
+| CommonsenseQA | 0.80 | 0.90 | +0.10 | 0.92 | +0.12 | 0.78 | 0.84 | +0.06 |
+| ARC | 0.86 | 0.88 | +0.02 | 0.86 | +0.00 | 0.92 | 0.92 | +0.00 |
+| HellaSwag | 0.74 | 0.72 | -0.02 | 0.78 | +0.04 | 0.78 | 0.78 | +0.00 |
+| BoolQ | 0.84 | 0.88 | +0.04 | 0.92 | +0.08 | 0.88 | 0.88 | +0.00 |
+| 宏平均 | 0.722 | 0.744 | +0.022 | 0.776 | +0.053 | 0.744 | 0.784 | +0.040 |
 
 ![旧版 DDM LoRA、TARDI-LoRA 与自回归 LoRA 增益对比](figures/ar_vs_tardi_lora_gain.png)
 
-这张表给出的结论更清楚：旧版 DDM LoRA 在 6 个重叠任务上的平均增益只有 `+0.027`，TARDI-LoRA 提升到 `+0.060`，已经接近 Qwen LoRA 的 `+0.070`。任务分布上，Qwen LoRA 在 PubMedQA 上优势明显；TARDI-LoRA 在 CommonsenseQA、C-Eval、SciQ 和 PubMedQA 上都超过旧版 DDM LoRA；WinoGrande 对三类 LoRA 都不敏感。这个结果说明，前面讨论的 DDM LoRA 问题不是“完全不能涨”，而是普通训练方式没有充分对齐固定标签任务。
+这张表给出的结论更清楚：旧版 DDM LoRA 在 9 个任务上的平均增益为 `+0.022`，TARDI-LoRA 提升到 `+0.053`；Qwen LoRA 的平均增益为 `+0.040`，最终宏平均准确率为 `0.784`，略高于 TARDI-LoRA 的 `0.776`。任务分布上，Qwen LoRA 的收益集中在 MMLU-Pro、PubMedQA 和 CommonsenseQA；TARDI-LoRA 在 PubMedQA、C-Eval、SciQ、CommonsenseQA、HellaSwag 和 BoolQ 上都超过旧版 DDM LoRA。这个结果说明，前面讨论的 DDM LoRA 问题不是“完全不能涨”，而是普通训练方式没有充分对齐固定标签任务。
 
 ## 推理侧结果：校准风险控制
 
@@ -170,9 +173,9 @@ writing/figures/
 
 ## 轨迹分析
 
-轨迹记录器显示，不同任务达到最终答案的时间分布明显不同。CommonsenseQA 的平均首次到达最终答案步数为 `7.44`，而 WinoGrande 为 `15.89`。这说明 WinoGrande 更依赖较长的语义绑定过程，CommonsenseQA 更容易在早期形成稳定标签。
+轨迹记录器补充到每任务 500 条样本、每一步都记录一次。结果显示，不同任务达到最终答案的时间分布明显不同。CommonsenseQA 的平均首次到达最终答案步数为 `6.57`，而 WinoGrande 为 `16.81`。WinoGrande 的平均调用次数为 `18.01`，CommonsenseQA 为 `9.00`。这说明 WinoGrande 更依赖较长的语义绑定过程，CommonsenseQA 更容易在早期形成稳定标签。
 
-![轨迹统计](figures/trajectory_metrics.png)
+![扩展轨迹统计](figures/trajectory_metrics_expanded.png)
 
 这个结果支撑了选择性再掩码控制的理论动机：统一固定步数并不合理，反向扩散预算应由轨迹风险决定。
 
@@ -209,9 +212,9 @@ PubMedQA 和 C-Eval 给出了清晰的边界。PubMedQA 从 8 步 `0.557` 到 32
 
 ![扩展任务覆盖](figures/coverage_comparison.png)
 
-步数扫描进一步说明，不同数据集的准确率随扩散步数变化并不一致。
+补充的细粒度步数扫描进一步说明，不同数据集的准确率随扩散步数变化并不一致。在 9 个任务、每任务 50 条样本的扫描中，PubMedQA 从 4 步到 32 步提升 `+0.42`，BoolQ 提升 `+0.18`；ARC、C-Eval、HellaSwag、MMLU-Pro 和 WinoGrande 有较小收益；CommonsenseQA 和 SciQ 在低步数已经基本饱和。
 
-![步数扫描](figures/step_sweep_by_task.png)
+![9 任务步数扫描](figures/step_sweep_9task_limit50.png)
 
 这使得本文主张更加具体：LLaDA 的价值不在于全面替代自回归模型，而在于其反向轨迹具有可观测、可分析、可控制的任务依赖性。
 
