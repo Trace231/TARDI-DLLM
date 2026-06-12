@@ -59,6 +59,7 @@ step sweep 曲线只用于分析不同任务的预算敏感性，不作为默认
 |---|---:|---:|---:|---:|---|
 | 风险门控低置信再掩码 | 0.800 | 14.20 | 0.850 | 9.05 | 当前最佳 |
 | gentle remask | 0.800 | 14.20 | 0.850 | 8.90 | 与默认基本等价 |
+| answer-consistency remask | 0.800 | 14.20 | 0.850 | 8.90 | 答案保护/修复逻辑生效，但没有超过 gentle remask |
 | aggressive remask | 0.800 | 14.20 | 0.850 | 9.05 | 无额外收益 |
 | 4-step online | 0.700 | 18.50 | 0.850 | 11.00 | 细粒度带来扰动 |
 | no-prior shape routing | 0.750 | 20.65 | 0.850 | 16.40 | 成本过高 |
@@ -66,7 +67,9 @@ step sweep 曲线只用于分析不同任务的预算敏感性，不作为默认
 | conservative probe cascade | 0.750 | 25.00 | 0.850 | 14.15 | 保守但不划算 |
 | schedule ensemble | 0.750 | 16.80 | 0.850 | 16.00 | 一致性信号不足 |
 
-这些结果把主方法收束到一个更清晰的设计：先用 prompt probe 发现必须满预算的样本，再用 8 步侦察和低置信再掩码修复轨迹敏感错误。额外的 verifier、双 schedule 或更细粒度在线控制在当前实验里没有超过这个组合。
+这些结果把主方法收束到一个更清晰的设计：先用 prompt probe 发现必须满预算的样本，再用 8 步侦察和低置信再掩码修复轨迹敏感错误。额外的 verifier、双 schedule、答案一致性保护或更细粒度在线控制在当前实验里没有超过这个组合。
+
+answer-consistency remask 的机制更复杂：当 prompt probe 与 scout 答案一致时，保护最终答案 token 和 answer marker；当 prompt probe 强烈反对 scout 答案时，把标签和 answer marker 纳入优先修复区域。20 样本实验中该分支触发 11 次 refinement，其中 6 次为答案保护，1 次为强分歧修复。最终指标与 gentle remask 相同，说明答案一致性信息没有伤害结果，但它还没有提供额外收益。
 
 ## 100 样本验证
 

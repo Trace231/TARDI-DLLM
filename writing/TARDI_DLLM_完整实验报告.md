@@ -203,7 +203,7 @@ $$
 
 我们还尝试了更细粒度的 4-step online 控制。该方法按 `4 -> 8 -> 12 -> ... -> 32` 逐段判断是否继续。小样本结果显示，它在 CommonsenseQA 上保持 `0.850`，但平均调用升到 `11.00`；在 WinoGrande 上降到 `0.700`，平均调用升到 `18.50`。这个负结果说明，细粒度控制不能只靠反复重掩码实现，因为重掩码会扰动已经稳定的答案轨迹。最终主方法仍采用 8-step scout + 风险门控再修。
 
-为避免只挑一个看起来合理的机制，我们还测试了 trajectory-probe cascade、保守 probe cascade、双 schedule ensemble、gentle/aggressive remask 等候选。小样本筛选中，trajectory-probe cascade 在 WinoGrande 上只有 `0.700 / 12.55`，schedule ensemble 为 `0.750 / 16.80`，保守 probe cascade 为 `0.750 / 25.00`。gentle remask 与默认风险门控相同，WinoGrande `0.800 / 14.20`，CommonsenseQA `0.850 / 8.90`。因此当前最稳的解码机制仍是：prompt probe 先发现必须满预算的样本，8-step scout 估计轨迹风险，低置信再掩码只用于风险样本。
+为避免只挑一个看起来合理的机制，我们还测试了 trajectory-probe cascade、保守 probe cascade、双 schedule ensemble、answer-consistency remask、gentle/aggressive remask 等候选。小样本筛选中，trajectory-probe cascade 在 WinoGrande 上只有 `0.700 / 12.55`，schedule ensemble 为 `0.750 / 16.80`，保守 probe cascade 为 `0.750 / 25.00`。answer-consistency remask 会在探针与 scout 答案一致时保护答案 token，在强分歧时优先修复答案区域；它触发了 11 次 refinement，但最终仍为 WinoGrande `0.800 / 14.20`、CommonsenseQA `0.850 / 8.90`。gentle remask 与默认风险门控相同，WinoGrande `0.800 / 14.20`，CommonsenseQA `0.850 / 8.90`。因此当前最稳的解码机制仍是：prompt probe 先发现必须满预算的样本，8-step scout 估计轨迹风险，低置信再掩码只用于风险样本。
 
 随后我们把 gentle risk-gated remask 扩大到每任务 100 条样本验证。WinoGrande 达到 `0.740`，平均调用 `13.91`；CommonsenseQA 达到 `0.800`，平均调用 `9.92`。路由没有退化：WinoGrande 中 59% 样本停在 8 步，24% 到 16 步，12% 到 24 步，5% 到 32 步；CommonsenseQA 中 76% 停在 8 步，20% 到 16 步，2% 到 24 步，2% 到 32 步。这说明控制器确实在做样本级预算分配。它的价值主要体现在节省调用并守住强基线行为边界，不能写成凭空提升模型知识能力。
 

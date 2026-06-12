@@ -403,6 +403,60 @@ def remask_structured(x, tokenizer, prompt_len, last_conf, labels, fraction, min
     }
 
 
+def remask_answer_consistency(x, tokenizer, prompt_len, last_conf, labels, pred, probe, fraction, min_tokens, args):
+    gen_conf = last_conf[:, prompt_len:].clone()
+    gen_tokens = x[:, prompt_len:]
+    valid = gen_tokens != MASK_ID
+    valid_count = int(valid.sum().item())
+    if valid_count <= 0:
+        return 0, {"policy": "answer_consistency", "reason": "no_valid_tokens"}
+    k = max(min_tokens, int(round(valid_count * fraction)))
+    k = min(k, valid_count)
+    label_ids = label_token_ids(tokenizer, labels)
+    pred_ids = set(label_token_ids(tokenizer, [pred])) if pred else set()
+    probe_top = probe.get("top_label") if probe.get("available") else None
+    probe_conf = float(probe.get("top_prob", 0.0)) if probe.get("available") else 0.0
+    probe_margin = float(probe.get("margin", 0.0)) if probe.get("available") else 0.0
+    agrees = bool(pred and probe_top == pred and probe_conf >= args.answer_protect_confidence and probe_margin >= args.answer_protect_margin)
+    disagrees = bool(pred and probe_top and probe_top != pred and probe_conf >= args.answer_repair_confidence)
+    token_ids = gen_tokens[0].detach().cpu().tolist()
+    flags = token_text_flags(tokenizer, token_ids)
+    finite_conf = torch.where(valid, gen_conf, torch.full_like(gen_conf, 1.0))
+    rank_score = 1.0 - finite_conf[0]
+    adjustment = torch.zeros_like(rank_score)
+    for idx, token_id in enumerate(token_ids):
+        if not bool(valid[0, idx].item()):
+            continue
+        is_label = int(token_id) in label_ids
+        is_pred = int(token_id) in pred_ids
+        is_marker = flags[idx]["final_marker"] or flags[idx]["separator"]
+        if agrees and (is_pred or is_marker):
+            adjustment[idx] -= args.answer_protect_penalty
+        elif disagrees and (is_label or is_marker):
+            adjustment[idx] += args.answer_repair_bonus
+        elif is_label and not agrees:
+            adjustment[idx] += args.answer_label_bonus
+    rank_score = torch.where(valid[0], rank_score + adjustment, torch.full_like(rank_score, -1.0))
+    selectable = int((rank_score > -0.5).sum().item())
+    k = min(k, max(1, selectable))
+    _, idx = torch.topk(rank_score, k=k)
+    gen_tokens[0, idx] = MASK_ID
+    selected = idx.detach().cpu().tolist()
+    return k, {
+        "policy": "answer_consistency",
+        "fraction": fraction,
+        "selected": selected,
+        "probe_top": probe_top,
+        "probe_confidence": probe_conf,
+        "probe_margin": probe_margin,
+        "agrees": agrees,
+        "disagrees": disagrees,
+        "label_token_hits": int(sum(1 for i in selected if int(token_ids[i]) in label_ids)),
+        "marker_hits": int(sum(1 for i in selected if flags[i]["final_marker"] or flags[i]["separator"])),
+        "valid_count": valid_count,
+    }
+
+
 def post_risky(pred, labels, probe, profile, args):
     if labels and pred not in labels:
         return True, "invalid_label", 2
@@ -610,10 +664,17 @@ def main():
     ap.add_argument("--structured-min-24-score", type=float, default=0.48)
     ap.add_argument("--structured-force-32-score", type=float, default=0.70)
     ap.add_argument("--structured-remask", action=argparse.BooleanOptionalAction, default=False)
+    ap.add_argument("--answer-consistency-remask", action=argparse.BooleanOptionalAction, default=False)
     ap.add_argument("--label-remask-bonus", type=float, default=0.45)
     ap.add_argument("--label-context-bonus", type=float, default=0.20)
     ap.add_argument("--answer-marker-bonus", type=float, default=0.12)
     ap.add_argument("--label-remask-window", type=int, default=2)
+    ap.add_argument("--answer-protect-confidence", type=float, default=0.58)
+    ap.add_argument("--answer-protect-margin", type=float, default=0.04)
+    ap.add_argument("--answer-protect-penalty", type=float, default=0.55)
+    ap.add_argument("--answer-repair-confidence", type=float, default=0.62)
+    ap.add_argument("--answer-repair-bonus", type=float, default=0.35)
+    ap.add_argument("--answer-label-bonus", type=float, default=0.10)
     ap.add_argument("--compact-choice-fast", action="store_true")
     ap.add_argument("--compact-choice-max-labels", type=int, default=5)
     ap.add_argument("--compact-choice-max-prompt-tokens", type=int, default=512)
@@ -732,6 +793,29 @@ def main():
                         )
                         calls += c
                         hist2_abs = absolute_history(hist2, 0)
+                    elif args.answer_consistency_remask:
+                        remasked, remask_plan = remask_answer_consistency(
+                            x, tokenizer, prompt_len, last_conf, labels, pred, probe, frac, args.remask_min_tokens, args
+                        )
+                        if remasked <= 0:
+                            break
+                        policy = budget_policy(first_policy, target)
+                        x, output, pred, c, last_conf, hist2 = fill_masks(
+                            model,
+                            tokenizer,
+                            sample,
+                            x,
+                            attention_mask,
+                            prompt_len,
+                            prompt_index,
+                            extra_steps,
+                            policy["schedule"],
+                            args,
+                            labels,
+                            {extra_steps},
+                        )
+                        calls += c
+                        hist2_abs = absolute_history(hist2, current_budget)
                     elif args.structured_remask:
                         remasked, remask_plan = remask_structured(x, tokenizer, prompt_len, last_conf, labels, frac, args.remask_min_tokens, args)
                         if remasked <= 0:

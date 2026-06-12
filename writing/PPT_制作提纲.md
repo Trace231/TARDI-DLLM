@@ -138,6 +138,7 @@ figures/inference_joint_analysis.png
 ```text
 4-step online 更细，但在 WinoGrande 上掉到 0.700，说明反复重掩码会扰动答案轨迹。
 trajectory-probe cascade 和 schedule ensemble 也没有超过风险门控低置信再掩码。
+answer-consistency remask 触发了答案保护/修复逻辑，但指标与 gentle remask 持平。
 主方法保留 8-step scout + 风险门控再修。
 ```
 
