@@ -23,12 +23,6 @@ from eval_llada_sampler_variants import MASK_ID, model_logits, token_budget, x0_
 from eval_llada_risk_controller import norm_entropy, risk_features, risk_score, budget_from_score
 
 
-DEFAULT_PRIOR_CANDIDATES = [
-    Path("writing/tables/step_sweep_9task_limit100_seed23.csv"),
-    Path("results/domain_shift/task_aware/solid_v2/tables/step_sweep_9task_limit100_seed23.csv"),
-]
-
-
 def budget_policy(first_policy, steps):
     policy = dict(first_policy)
     policy["steps"] = int(steps)
@@ -59,9 +53,6 @@ def resolve_prior_path(text):
     if text:
         path = Path(text)
         return path if path.exists() else None
-    for path in DEFAULT_PRIOR_CANDIDATES:
-        if path.exists():
-            return path
     return None
 
 
@@ -300,7 +291,7 @@ def fill_masks(model, tokenizer, sample, x, attention_mask, prompt_len, prompt_i
     return x, output, pred, forward_calls, last_conf, history
 
 
-def scout_stats(history, args, last_conf=None, prompt_len=0):
+def scout_stats(history, args, last_conf=None, prompt_len=0, total_steps=None):
     preds = [h["pred"] for h in history if h.get("pred")]
     flips = sum(1 for a, b in zip(preds, preds[1:]) if a != b)
     final = preds[-1] if preds else ""
@@ -321,6 +312,16 @@ def scout_stats(history, args, last_conf=None, prompt_len=0):
         if vals.numel() > 0:
             out["mean_fill_confidence"] = float(vals.detach().float().mean().item())
             out["min_fill_confidence"] = float(vals.detach().float().min().item())
+    out["observed_steps"] = int(total_steps or args.scout_steps)
+    return out
+
+
+def absolute_history(history, offset):
+    out = []
+    for item in history:
+        row = dict(item)
+        row["local_step"] = int(row.get("local_step", 0)) + int(offset)
+        out.append(row)
     return out
 
 
@@ -422,6 +423,76 @@ def post_risky(pred, labels, probe, profile, args):
     return False, "accepted", 0
 
 
+def online_risk_features(profile, probe, pred, labels, stats, args, observed_steps):
+    features = risk_features(profile, probe, pred, labels, stats, args)
+    first_final = stats.get("first_final_step")
+    features["late_first_final"] = 1.0 if first_final is None else clip01(first_final / max(1, observed_steps))
+    return features
+
+
+def online_continue_decision(profile, probe, pred, labels, features, score, current_budget, budgets, args):
+    if labels and pred not in labels:
+        target = max(budgets) if current_budget >= args.online_invalid_full_after else next_budget(current_budget, budgets)
+        return True, "online_invalid_label", target
+    if not pred:
+        target = max(budgets) if current_budget >= args.online_invalid_full_after else next_budget(current_budget, budgets)
+        return True, "online_empty_prediction", target
+
+    next_b = next_budget(current_budget, budgets)
+    if next_b <= current_budget:
+        return False, "online_max_budget", current_budget
+    if current_budget < args.online_min_budget:
+        return True, "online_minimum_scout_budget", next_b
+    if (
+        profile.get("n_labels", 0) <= 2
+        and current_budget < args.online_binary_hesitation_until
+        and score >= args.online_binary_hesitation_score
+    ):
+        return True, "online_binary_hesitation", next_b
+
+    probe_top = probe.get("top_prob", 0.0) if probe.get("available") else 0.0
+    probe_margin = probe.get("margin", 1.0) if probe.get("available") else 1.0
+    strong_disagreement = bool(
+        probe.get("available")
+        and pred != probe.get("top_label")
+        and probe_top >= args.online_disagree_confidence
+        and probe_margin >= args.online_disagree_margin
+    )
+    unstable = (
+        features.get("flip_instability", 0.0) >= args.online_flip_threshold
+        or (
+            features.get("late_first_final", 0.0) >= args.online_late_threshold
+            and score >= args.online_late_score
+            and current_budget < args.online_late_ignore_after
+        )
+    )
+    weak_conf = (
+        features.get("low_fill_confidence", 0.0) >= args.online_low_fill_threshold
+        or features.get("margin_deficit", 0.0) >= args.online_margin_deficit_threshold
+    )
+    high_uncertainty = features.get("probe_entropy", 0.0) >= args.online_entropy_threshold
+
+    accept_score = args.online_accept_score
+    if current_budget <= 4:
+        accept_score *= 0.75
+    elif current_budget >= 16:
+        accept_score *= 1.15
+
+    if score <= accept_score and not strong_disagreement and not unstable and not weak_conf:
+        return False, "online_accept_low_risk", current_budget
+    if strong_disagreement:
+        return True, "online_probe_scout_disagreement", next_b
+    if unstable:
+        return True, "online_unstable_trajectory", next_b
+    if weak_conf:
+        return True, "online_weak_decision_confidence", next_b
+    if high_uncertainty and score >= args.online_uncertain_score:
+        return True, "online_probe_uncertainty", next_b
+    if score >= args.online_continue_score:
+        return True, "online_score_continue", next_b
+    return False, "online_accept_marginal_gain_low", current_budget
+
+
 def direct_full(profile, probe, first_policy, args):
     if not first_policy.get("fast_candidate"):
         return True, "profile_conservative"
@@ -507,8 +578,27 @@ def main():
     ap.add_argument("--remask-min-fraction", type=float, default=0.20)
     ap.add_argument("--remask-max-fraction", type=float, default=0.55)
     ap.add_argument("--remask-min-tokens", type=int, default=4)
-    ap.add_argument("--max-refinements", type=int, default=3)
-    ap.add_argument("--structured-routing", action=argparse.BooleanOptionalAction, default=True)
+    ap.add_argument("--max-refinements", type=int, default=7)
+    ap.add_argument("--online-control", action=argparse.BooleanOptionalAction, default=False)
+    ap.add_argument("--online-step", type=int, default=4)
+    ap.add_argument("--online-min-budget", type=int, default=8)
+    ap.add_argument("--online-min-rerun", action=argparse.BooleanOptionalAction, default=True)
+    ap.add_argument("--online-accept-score", type=float, default=0.24)
+    ap.add_argument("--online-continue-score", type=float, default=0.42)
+    ap.add_argument("--online-uncertain-score", type=float, default=0.30)
+    ap.add_argument("--online-late-score", type=float, default=0.32)
+    ap.add_argument("--online-late-ignore-after", type=int, default=16)
+    ap.add_argument("--online-invalid-full-after", type=int, default=12)
+    ap.add_argument("--online-binary-hesitation-score", type=float, default=0.21)
+    ap.add_argument("--online-binary-hesitation-until", type=int, default=16)
+    ap.add_argument("--online-disagree-confidence", type=float, default=0.62)
+    ap.add_argument("--online-disagree-margin", type=float, default=0.08)
+    ap.add_argument("--online-flip-threshold", type=float, default=0.34)
+    ap.add_argument("--online-late-threshold", type=float, default=0.80)
+    ap.add_argument("--online-low-fill-threshold", type=float, default=0.28)
+    ap.add_argument("--online-margin-deficit-threshold", type=float, default=0.50)
+    ap.add_argument("--online-entropy-threshold", type=float, default=0.82)
+    ap.add_argument("--structured-routing", action=argparse.BooleanOptionalAction, default=False)
     ap.add_argument("--task-prior-csv", default=None)
     ap.add_argument("--compute-cost", type=float, default=0.055)
     ap.add_argument("--prior-gain-weight", type=float, default=0.75)
@@ -519,7 +609,7 @@ def main():
     ap.add_argument("--binary-min-16-score", type=float, default=0.24)
     ap.add_argument("--structured-min-24-score", type=float, default=0.48)
     ap.add_argument("--structured-force-32-score", type=float, default=0.70)
-    ap.add_argument("--structured-remask", action=argparse.BooleanOptionalAction, default=True)
+    ap.add_argument("--structured-remask", action=argparse.BooleanOptionalAction, default=False)
     ap.add_argument("--label-remask-bonus", type=float, default=0.45)
     ap.add_argument("--label-context-bonus", type=float, default=0.20)
     ap.add_argument("--answer-marker-bonus", type=float, default=0.12)
@@ -586,11 +676,25 @@ def main():
                     {1, 2, 4, args.scout_steps},
                 )
                 calls += c
-                stats = scout_stats(hist, args, last_conf, prompt_len)
-                features = risk_features(profile, probe, pred, labels, stats, args)
-                score = risk_score(features, profile)
-                target, reason, budget_decision = structured_budget_decision(task, profile, features, score, budgets, task_prior, args)
                 current_budget = args.scout_steps
+                cumulative_history = absolute_history(hist, 0)
+                stats = scout_stats(cumulative_history, args, last_conf, prompt_len, current_budget)
+                features = online_risk_features(profile, probe, pred, labels, stats, args, current_budget)
+                score = risk_score(features, profile)
+                if args.online_control:
+                    keep_going, reason, target = online_continue_decision(profile, probe, pred, labels, features, score, current_budget, budgets, args)
+                    budget_decision = {
+                        "mode": "online_sequential",
+                        "observed_budget": current_budget,
+                        "selected_next_budget": target,
+                        "keep_going": keep_going,
+                        "reason": reason,
+                        "score": score,
+                        "features": features,
+                    }
+                else:
+                    target, reason, budget_decision = structured_budget_decision(task, profile, features, score, budgets, task_prior, args)
+                    keep_going = target > current_budget
                 route_steps.append(
                     {
                         "budget": current_budget,
@@ -604,49 +708,100 @@ def main():
                 )
 
                 refinements = 0
-                while target > current_budget and refinements < args.max_refinements:
+                while keep_going and target > current_budget and refinements < args.max_refinements:
                     extra_steps = target - current_budget
                     frac = refinement_fraction(score, target, args)
-                    if args.structured_remask:
+                    if args.online_control and args.online_min_rerun and current_budget < args.online_min_budget and target <= args.online_min_budget:
+                        remasked = 0
+                        remask_plan = {"policy": "fresh_min_budget_rerun", "from_budget": current_budget, "to_budget": target}
+                        x, attention_mask, prompt_len, prompt_index = make_state(tokenizer, sample, args, model.device)
+                        policy = budget_policy(first_policy, target)
+                        x, output, pred, c, last_conf, hist2 = fill_masks(
+                            model,
+                            tokenizer,
+                            sample,
+                            x,
+                            attention_mask,
+                            prompt_len,
+                            prompt_index,
+                            target,
+                            policy["schedule"],
+                            args,
+                            labels,
+                            {1, 2, 4, target},
+                        )
+                        calls += c
+                        hist2_abs = absolute_history(hist2, 0)
+                    elif args.structured_remask:
                         remasked, remask_plan = remask_structured(x, tokenizer, prompt_len, last_conf, labels, frac, args.remask_min_tokens, args)
+                        if remasked <= 0:
+                            break
+                        policy = budget_policy(first_policy, target)
+                        x, output, pred, c, last_conf, hist2 = fill_masks(
+                            model,
+                            tokenizer,
+                            sample,
+                            x,
+                            attention_mask,
+                            prompt_len,
+                            prompt_index,
+                            extra_steps,
+                            policy["schedule"],
+                            args,
+                            labels,
+                            {extra_steps},
+                        )
+                        calls += c
+                        hist2_abs = absolute_history(hist2, current_budget)
                     else:
                         remasked = remask_low_confidence(x, prompt_len, last_conf, frac, args.remask_min_tokens)
                         remask_plan = {"policy": "low_confidence", "fraction": frac}
-                    if remasked <= 0:
-                        break
-                    policy = budget_policy(first_policy, target)
-                    x, output, pred, c, last_conf, hist2 = fill_masks(
-                        model,
-                        tokenizer,
-                        sample,
-                        x,
-                        attention_mask,
-                        prompt_len,
-                        prompt_index,
-                        extra_steps,
-                        policy["schedule"],
-                        args,
-                        labels,
-                        {extra_steps},
-                    )
-                    calls += c
+                        if remasked <= 0:
+                            break
+                        policy = budget_policy(first_policy, target)
+                        x, output, pred, c, last_conf, hist2 = fill_masks(
+                            model,
+                            tokenizer,
+                            sample,
+                            x,
+                            attention_mask,
+                            prompt_len,
+                            prompt_index,
+                            extra_steps,
+                            policy["schedule"],
+                            args,
+                            labels,
+                            {extra_steps},
+                        )
+                        calls += c
+                        hist2_abs = absolute_history(hist2, current_budget)
                     current_budget = target
-                    stats.setdefault("refine_histories", []).append(hist2)
+                    cumulative_history.extend(hist2_abs)
+                    stats = scout_stats(cumulative_history, args, last_conf, prompt_len, current_budget)
+                    features = online_risk_features(profile, probe, pred, labels, stats, args, current_budget)
+                    score = risk_score(features, profile)
                     route_steps.append(
                         {
                             "budget": current_budget,
                             "mode": "refine",
                             "reason": reason,
                             "pred": pred,
+                            "risk_score": score,
                             "remasked_tokens": remasked,
                             "remask_plan": remask_plan,
+                            "features": features,
                         }
                     )
-                    risky, risk_reason, severity = post_risky(pred, labels, probe, profile, args)
-                    if not risky:
-                        break
-                    target = 32 if severity >= 2 else next_budget(current_budget, budgets)
-                    reason = risk_reason
+                    if args.online_control:
+                        keep_going, reason, target = online_continue_decision(profile, probe, pred, labels, features, score, current_budget, budgets, args)
+                    else:
+                        risky, risk_reason, severity = post_risky(pred, labels, probe, profile, args)
+                        if not risky:
+                            keep_going = False
+                            break
+                        target = 32 if severity >= 2 else next_budget(current_budget, budgets)
+                        reason = risk_reason
+                        keep_going = target > current_budget
                     refinements += 1
 
             dt = time.time() - t0
