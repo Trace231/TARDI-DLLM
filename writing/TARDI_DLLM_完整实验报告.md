@@ -195,7 +195,16 @@ $$
 
 这种机制会在轨迹稳定的样本上节省预算，在高风险样本上保守回退。9 任务快速覆盖实验中，选择性再修控制器与 32 步满预算的宏平均准确率相同，均为 `0.658`，平均调用次数从 `32.00` 降到 `26.92`。相比固定 16 步调度的 `0.644` 和早停式方法的 `0.647`，选择性再修更稳。
 
-在此基础上，我们进一步加入 posterior shortcut：当 prompt probe 的标签后验满足 `top_prob >= 0.80` 且 `margin >= 0.40` 时，直接提交 probe 标签，不进入反向扩散循环。这个设计利用 LLaDA 的 masked final-label posterior，是当前样本级在线信号，不需要任务先验。1000 样本主实验的离线阈值扫描显示，该阈值在 WinoGrande 上覆盖 43.6% 样本、直接准确率 0.856，模拟总体准确率保持 `0.756`，平均调用降到 `13.98`；在 CommonsenseQA 上覆盖 73.5% 样本、直接准确率 0.917，模拟总体准确率 `0.820`，平均调用降到 `3.15`。
+在此基础上，我们进一步加入 posterior shortcut。简单阈值版在 prompt probe 满足 `top_prob >= 0.80` 且 `margin >= 0.40` 时直接提交 probe 标签，不进入反向扩散循环。这个设计利用 LLaDA 的 masked final-label posterior，是当前样本级在线信号，不需要任务先验。1000 样本主实验的离线阈值扫描显示，该阈值在 WinoGrande 上覆盖 43.6% 样本、直接准确率 0.856，模拟总体准确率保持 `0.756`，平均调用降到 `13.98`；在 CommonsenseQA 上覆盖 73.5% 样本、直接准确率 0.917，模拟总体准确率 `0.820`，平均调用降到 `3.15`。
+
+为了减少纯阈值调参，我们进一步实现 value-of-refinement controller。它把 direct answer 与继续反向扩散看成两个动作，比较
+
+```text
+direct_value = posterior_risk + lambda * 1
+continue_value = residual_risk_after_refinement + lambda * expected_continuation_calls
+```
+
+其中 posterior risk 由 Bayes error、归一化熵、margin deficit 和标签空间复杂度组成；expected continuation calls 只依赖标签空间大小，不依赖任务名。这个版本把“是否继续去噪”写成带成本的决策问题，比单纯置信度阈值更容易讲清理论基础。
 
 | 方法 | 9 任务宏平均准确率 | 平均调用次数 |
 |---|---:|---:|
@@ -210,7 +219,7 @@ $$
 
 随后我们把 gentle risk-gated remask 扩大到每任务 100 条样本验证。WinoGrande 达到 `0.740`，平均调用 `13.91`；CommonsenseQA 达到 `0.800`，平均调用 `9.92`。路由没有退化：WinoGrande 中 59% 样本停在 8 步，24% 到 16 步，12% 到 24 步，5% 到 32 步；CommonsenseQA 中 76% 停在 8 步，20% 到 16 步，2% 到 24 步，2% 到 32 步。这说明控制器确实在做样本级预算分配。它的价值主要体现在节省调用并守住强基线行为边界，不能写成凭空提升模型知识能力。
 
-加入 posterior shortcut 后，真实 100 样本验证进一步降低调用。WinoGrande 保持 `0.740`，平均调用从 `13.91` 降到 `10.87`，其中 38% 样本直接由 probe 提交；CommonsenseQA 保持 `0.800`，平均调用从 `9.92` 降到 `5.23`，其中 67% 样本直接由 probe 提交。最终选择的解码机制因此是三段式：高置信 posterior shortcut，8-step scout，risk-gated low-confidence remask。
+加入 posterior shortcut 后，真实 100 样本验证进一步降低调用。阈值版在 WinoGrande 上保持 `0.740`，平均调用从 `13.91` 降到 `10.87`；CommonsenseQA 保持 `0.800`，平均调用从 `9.92` 降到 `5.23`。value-of-refinement 版本进一步把 WinoGrande 平均调用降到 `9.43`，准确率仍为 `0.740`；CommonsenseQA 为 `0.800 / 5.30`，与阈值版基本持平。最终选择的解码机制因此是三段式：value-of-refinement posterior shortcut，8-step scout，risk-gated low-confidence remask。
 
 在 LoRA 后模型上，选择性再修也保留了主要收益。已有 LoRA 控制实验中，LoRA 32 步为 `0.744`，LoRA 加控制器为 `0.742`，平均调用次数为 `25.24`，约减少 21% 的调用。这一实验使用的是早期 LoRA 检查点，后续最自然的扩展是在 TARDI-LoRA 检查点上复测同一控制器。
 

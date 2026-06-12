@@ -71,9 +71,18 @@ step sweep 曲线只用于分析不同任务的预算敏感性，不作为默认
 
 answer-consistency remask 的机制更复杂：当 prompt probe 与 scout 答案一致时，保护最终答案 token 和 answer marker；当 prompt probe 强烈反对 scout 答案时，把标签和 answer marker 纳入优先修复区域。20 样本实验中该分支触发 11 次 refinement，其中 6 次为答案保护，1 次为强分歧修复。最终指标与 gentle remask 相同，说明答案一致性信息没有伤害结果，但它还没有提供额外收益。
 
-## Probe-direct 捷径
+## Value-of-Refinement 后验捷径
 
-进一步分析 1000 样本主实验中的 prompt probe 后验，我们发现高置信标签后验本身就是一个强信号。当 `top_prob >= 0.80` 且 `margin >= 0.40` 时，probe 直接提交在 WinoGrande 上覆盖 43.6% 样本，直接准确率为 0.856；在 CommonsenseQA 上覆盖 73.5% 样本，直接准确率为 0.917。把这些样本从反向扩散循环中拿出来，离线模拟可在保持 WinoGrande `0.756` 的同时把平均调用降到 `13.98`，在 CommonsenseQA 上达到 `0.820`、平均调用 `3.15`。
+进一步分析 1000 样本主实验中的 prompt probe 后验，我们发现高置信标签后验本身就是一个强信号。最简单的阈值版使用 `top_prob >= 0.80` 且 `margin >= 0.40`，在 WinoGrande 上覆盖 43.6% 样本，直接准确率为 0.856；在 CommonsenseQA 上覆盖 73.5% 样本，直接准确率为 0.917。把这些样本从反向扩散循环中拿出来，离线模拟可在保持 WinoGrande `0.756` 的同时把平均调用降到 `13.98`，在 CommonsenseQA 上达到 `0.820`、平均调用 `3.15`。
+
+为了避免方法看起来只是阈值调参，我们进一步实现了 value-of-refinement 版本。它不直接判断 `top_prob` 是否超过某个数，而是比较两个动作的期望代价：
+
+```text
+direct_value = posterior_risk + lambda * 1
+continue_value = residual_risk_after_refinement + lambda * expected_continuation_calls
+```
+
+其中 `posterior_risk` 由 Bayes error、归一化熵、margin deficit 和标签空间复杂度组成；`expected_continuation_calls` 只依赖标签空间大小，二分类默认 14，多选默认 9，不使用任务名。若 `direct_value <= continue_value`，控制器直接提交 posterior 标签；否则进入 8-step scout 和后续再修。
 
 真实 100 样本验证也支持这个方向：
 
@@ -81,8 +90,10 @@ answer-consistency remask 的机制更复杂：当 prompt probe 与 scout 答案
 |---|---:|---:|---:|---|
 | probe-direct + risk-gated remask | WinoGrande | 0.740 | 10.87 | 0-step: 38%, 8: 21%, 16: 24%, 24: 12%, 32: 5% |
 | probe-direct + risk-gated remask | CommonsenseQA | 0.800 | 5.23 | 0-step: 67%, 8: 9%, 16: 20%, 24: 2%, 32: 2% |
+| value-of-refinement controller | WinoGrande | 0.740 | 9.43 | 0-step: 54%, 8: 6%, 16: 24%, 24: 11%, 32: 5% |
+| value-of-refinement controller | CommonsenseQA | 0.800 | 5.30 | 0-step: 66%, 8: 10%, 16: 20%, 24: 2%, 32: 2% |
 
-这里的 0-step 表示只使用一次 masked final-label posterior probe，不进入反向扩散循环。该机制没有使用任务级先验，也没有依赖事后 step sweep；它只依据当前样本的标签后验置信度和 margin。与 gentle risk-gated remask 相比，WinoGrande 准确率保持 `0.740`，平均调用从 `13.91` 降到 `10.87`；CommonsenseQA 准确率保持 `0.800`，平均调用从 `9.92` 降到 `5.23`。因此最终推荐的解码机制是 probe-direct posterior shortcut + 8-step scout + risk-gated low-confidence remask。
+这里的 0-step 表示只使用一次 masked final-label posterior probe，不进入反向扩散循环。该机制没有使用任务级先验，也没有依赖事后 step sweep；它只依据当前样本的标签后验风险和继续计算价值。与 gentle risk-gated remask 相比，value-of-refinement controller 在 WinoGrande 上准确率保持 `0.740`，平均调用从 `13.91` 降到 `9.43`；在 CommonsenseQA 上准确率保持 `0.800`，平均调用从 `9.92` 降到 `5.30`。因此最终推荐的解码机制是 value-of-refinement posterior shortcut + 8-step scout + risk-gated low-confidence remask。
 
 ## 100 样本再修验证
 

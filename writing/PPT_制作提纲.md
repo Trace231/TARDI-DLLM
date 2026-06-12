@@ -156,6 +156,13 @@ WinoGrande：0.740 / 10.87 次调用，38% 样本直接由 final-label posterior
 CommonsenseQA：0.800 / 5.23 次调用，67% 样本直接由 final-label posterior 提交
 ```
 
+升级成 value-of-refinement 后：
+
+```text
+WinoGrande：0.740 / 9.43 次调用，54% 样本直接提交
+CommonsenseQA：0.800 / 5.30 次调用，66% 样本直接提交
+```
+
 建议配图：
 
 ```text

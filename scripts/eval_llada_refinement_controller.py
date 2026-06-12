@@ -560,6 +560,20 @@ def direct_full(profile, probe, first_policy, args):
     return False, "scout_allowed"
 
 
+def posterior_value_risk(profile, probe, args):
+    top_prob = float(probe.get("top_prob", 0.0))
+    margin = float(probe.get("margin", 0.0))
+    entropy = norm_entropy(probe.get("probs", {}))
+    margin_deficit = clip01((args.probe_value_margin_target - margin) / max(1e-6, args.probe_value_margin_target))
+    label_complexity = clip01((profile.get("n_labels", 0) - 2) / 6) if profile.get("n_labels", 0) else 0.0
+    return clip01(
+        args.probe_value_error_weight * (1.0 - top_prob)
+        + args.probe_value_entropy_weight * entropy
+        + args.probe_value_margin_weight * margin_deficit
+        + args.probe_value_label_weight * label_complexity
+    )
+
+
 def probe_direct_accept(profile, probe, labels, args):
     if not args.probe_direct_accept:
         return False, None, "probe_direct_disabled"
@@ -570,6 +584,14 @@ def probe_direct_accept(profile, probe, labels, args):
         return False, None, "probe_direct_invalid_label"
     top_prob = float(probe.get("top_prob", 0.0))
     margin = float(probe.get("margin", 0.0))
+    if args.probe_direct_strategy == "utility":
+        risk = posterior_value_risk(profile, probe, args)
+        expected_calls = args.probe_value_binary_expected_calls if profile.get("n_labels", 0) <= 2 else args.probe_value_multi_expected_calls
+        direct_value = args.probe_value_error_cost * risk + args.probe_value_compute_cost * 1.0
+        continue_value = args.probe_value_error_cost * (risk * args.probe_value_residual_factor) + args.probe_value_compute_cost * expected_calls
+        if direct_value <= continue_value:
+            return True, pred, "probe_direct_utility_accept"
+        return False, None, "probe_direct_utility_continue"
     if profile.get("n_labels", 0) <= 2:
         confidence = args.probe_direct_binary_confidence
         margin_target = args.probe_direct_binary_margin
@@ -697,10 +719,21 @@ def main():
     ap.add_argument("--answer-repair-bonus", type=float, default=0.35)
     ap.add_argument("--answer-label-bonus", type=float, default=0.10)
     ap.add_argument("--probe-direct-accept", action=argparse.BooleanOptionalAction, default=False)
+    ap.add_argument("--probe-direct-strategy", choices=["threshold", "utility"], default="threshold")
     ap.add_argument("--probe-direct-binary-confidence", type=float, default=0.80)
     ap.add_argument("--probe-direct-binary-margin", type=float, default=0.40)
     ap.add_argument("--probe-direct-multi-confidence", type=float, default=0.80)
     ap.add_argument("--probe-direct-multi-margin", type=float, default=0.40)
+    ap.add_argument("--probe-value-compute-cost", type=float, default=0.012)
+    ap.add_argument("--probe-value-error-cost", type=float, default=1.0)
+    ap.add_argument("--probe-value-residual-factor", type=float, default=0.58)
+    ap.add_argument("--probe-value-binary-expected-calls", type=float, default=14.0)
+    ap.add_argument("--probe-value-multi-expected-calls", type=float, default=9.0)
+    ap.add_argument("--probe-value-margin-target", type=float, default=0.40)
+    ap.add_argument("--probe-value-error-weight", type=float, default=0.58)
+    ap.add_argument("--probe-value-entropy-weight", type=float, default=0.25)
+    ap.add_argument("--probe-value-margin-weight", type=float, default=0.12)
+    ap.add_argument("--probe-value-label-weight", type=float, default=0.05)
     ap.add_argument("--compact-choice-fast", action="store_true")
     ap.add_argument("--compact-choice-max-labels", type=int, default=5)
     ap.add_argument("--compact-choice-max-prompt-tokens", type=int, default=512)
