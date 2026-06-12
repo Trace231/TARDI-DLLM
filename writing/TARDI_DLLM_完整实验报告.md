@@ -67,7 +67,7 @@ K*(x) = argmin_K E[L(y_K, y*) | trajectory_8(x)] + lambda K
 
 主模型为 LLaDA-8B-Instruct。训练侧 LoRA 实验覆盖 9 个固定标签任务，每个任务 50 条评测样本，共 450 条。任务包括 MMLU-Pro、PubMedQA、C-Eval、SciQ、WinoGrande、CommonsenseQA、ARC-Challenge、HellaSwag 和 BoolQ。
 
-推理控制主实验使用 WinoGrande 和 CommonsenseQA，各 1000 条样本。阈值稳定性实验使用每任务 500 条样本。边界负例使用 PubMedQA 和 C-Eval。扩展覆盖实验加入 ARC-Challenge、HellaSwag、BoolQ 和 GSM8K，以检查结论是否局限于原始选择题集合。轨迹分析补充到每任务 500 条、trace stride 为 1；步数扫描覆盖 9 个任务，每个任务 50 条样本，从 4 步到 32 步每 4 步取一个点。
+推理控制主实验使用 WinoGrande 和 CommonsenseQA，各 1000 条样本。阈值稳定性实验使用每任务 500 条样本。边界负例使用 PubMedQA 和 C-Eval。扩展覆盖实验加入 ARC-Challenge、HellaSwag、BoolQ 和 GSM8K，以检查结论是否局限于原始选择题集合。轨迹分析补充到每任务 500 条、trace stride 为 1；步数扫描覆盖 9 个任务，每任务 100 条样本，包含 2、4、6、8、10、12、14、16、18、20、22、24、32、40 共 14 个扩散步点。
 
 所有关键输出统一整理在：
 
@@ -175,9 +175,9 @@ writing/figures/
 
 轨迹记录器补充到每任务 500 条样本、每一步都记录一次。结果显示，不同任务达到最终答案的时间分布明显不同。CommonsenseQA 的平均首次到达最终答案步数为 `6.57`，而 WinoGrande 为 `16.81`。WinoGrande 的平均调用次数为 `18.01`，CommonsenseQA 为 `9.00`。这说明 WinoGrande 更依赖较长的语义绑定过程，CommonsenseQA 更容易在早期形成稳定标签。
 
-![扩展轨迹统计](figures/trajectory_metrics_expanded.png)
+![推理侧证据合图](figures/inference_joint_analysis.png)
 
-这个结果支撑了选择性再掩码控制的理论动机：统一固定步数并不合理，反向扩散预算应由轨迹风险决定。
+这张合图把三类证据放在同一页：任务准确率随扩散步数的变化、任务预算敏感性、轨迹 hitting-time 统计，以及控制器实际路由分布。它支撑了选择性再掩码控制的理论动机：统一固定步数并不合理，反向扩散预算应由轨迹风险决定。
 
 ## 选择性再掩码修正
 
@@ -212,9 +212,9 @@ PubMedQA 和 C-Eval 给出了清晰的边界。PubMedQA 从 8 步 `0.557` 到 32
 
 ![扩展任务覆盖](figures/coverage_comparison.png)
 
-补充的细粒度步数扫描进一步说明，不同数据集的准确率随扩散步数变化并不一致。在 9 个任务、每任务 50 条样本的扫描中，PubMedQA 从 4 步到 32 步提升 `+0.42`，BoolQ 提升 `+0.18`；ARC、C-Eval、HellaSwag、MMLU-Pro 和 WinoGrande 有较小收益；CommonsenseQA 和 SciQ 在低步数已经基本饱和。
+步数扫描进一步说明，不同数据集的准确率随扩散步数变化并不一致。在 9 个任务、每任务 100 条样本的 14 点扫描中，PubMedQA 从 2 步到 40 步提升 `+0.36`，BoolQ 提升 `+0.14`，WinoGrande 提升 `+0.05`；ARC、HellaSwag 和 MMLU-Pro 有较小收益；SciQ 基本不受步数影响，CommonsenseQA 在低步数已经饱和。该图主要用于展示形态差异，不单独承担最终准确率结论；最终性能仍以 1000 样本主实验和 500 样本轨迹统计为主。
 
-![9 任务步数扫描](figures/step_sweep_9task_limit50.png)
+![9 任务步数扫描](figures/step_sweep_by_task.png)
 
 这使得本文主张更加具体：LLaDA 的价值不在于全面替代自回归模型，而在于其反向轨迹具有可观测、可分析、可控制的任务依赖性。
 

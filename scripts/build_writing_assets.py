@@ -109,6 +109,7 @@ def copy_core_tables():
         "old_lora_gain_audit.csv": ROOT / "solid_v2/tables/lora_gain_audit.csv",
         "qwen_lora_9task_limit50_seed23.csv": ROOT / "solid_v2/tables/qwen_lora_9task_limit50_seed23.csv",
         "trajectory_metrics_limit500_stride1.csv": ROOT / "solid_v2/tables/trajectory_metrics_limit500_stride1.csv",
+        "step_sweep_9task_limit100_seed23.csv": ROOT / "solid_v2/step_sweep_limit100_2to40/tables/step_sweep_9task_limit100_seed23.csv",
         "step_sweep_9task_limit50_seed23.csv": ROOT / "solid_v2/step_sweep_limit50_4to32/tables/step_sweep_9task_limit50_seed23.csv",
     }
     for name, src in sources.items():
@@ -347,8 +348,9 @@ def fig_coverage():
 
 
 def fig_step_sweep():
-    path = TAB / "step_sweep_9task_limit50_seed23.csv"
-    rows = read_csv(path if path.exists() else TAB / "step_sweep.csv")
+    fine = TAB / "step_sweep_9task_limit100_seed23.csv"
+    coarse = TAB / "step_sweep_9task_limit50_seed23.csv"
+    rows = read_csv(fine if fine.exists() else coarse if coarse.exists() else TAB / "step_sweep.csv")
     tasks = ["mmlu_pro", "pubmedqa", "ceval_computer_network", "sciq", "winogrande", "commonsenseqa", "arc_challenge", "hellaswag", "boolq", "gsm8k"]
     plt.figure(figsize=(8.4, 4.5))
     for task in tasks:
@@ -361,6 +363,112 @@ def fig_step_sweep():
     plt.title("扩散步数扫描：不同任务的预算敏感性")
     plt.legend(frameon=False, ncol=2, fontsize=8)
     savefig("step_sweep_by_task")
+
+
+def fig_inference_joint_analysis():
+    fine = TAB / "step_sweep_9task_limit100_seed23.csv"
+    current = TAB / "step_sweep_9task_limit50_seed23.csv"
+    if fine.exists():
+        sweep_path = fine
+        sweep_note = "step sweep: n=100/task, steps 2-40"
+    elif current.exists():
+        sweep_path = current
+        sweep_note = "step sweep: n=50/task, steps 4-32"
+    else:
+        sweep_path = TAB / "step_sweep.csv"
+        sweep_note = "step sweep"
+    sweep_rows = read_csv(sweep_path)
+    traj_path = TAB / "trajectory_metrics_limit500_stride1.csv"
+    traj_rows = read_csv(traj_path if traj_path.exists() else TAB / "trajectory_metrics.csv")
+    ctrl_rows = [r for r in read_csv(TAB / "controller_main_1000.csv") if r["method"] == "calibrated"]
+
+    tasks = [
+        "mmlu_pro",
+        "pubmedqa",
+        "ceval_computer_network",
+        "sciq",
+        "winogrande",
+        "commonsenseqa",
+        "arc_challenge",
+        "hellaswag",
+        "boolq",
+    ]
+    colors = {
+        "mmlu_pro": "#4c78a8",
+        "pubmedqa": "#e45756",
+        "ceval_computer_network": "#72b7b2",
+        "sciq": "#54a24b",
+        "winogrande": "#f58518",
+        "commonsenseqa": "#b279a2",
+        "arc_challenge": "#ff9da6",
+        "hellaswag": "#9d755d",
+        "boolq": "#bab0ac",
+    }
+
+    fig, axes = plt.subplots(2, 2, figsize=(11.0, 7.2))
+    ax = axes[0, 0]
+    sweep_lookup = {}
+    for task in tasks:
+        rs = sorted([r for r in sweep_rows if r["task"] == task], key=lambda r: fnum(r["step"]))
+        if not rs:
+            continue
+        steps = [fnum(r["step"]) for r in rs]
+        acc = [fnum(r["accuracy"]) for r in rs]
+        sweep_lookup[task] = {int(fnum(r["step"])): fnum(r["accuracy"]) for r in rs}
+        ax.plot(steps, acc, marker="o", markersize=3.2, linewidth=1.4, color=colors.get(task), label=TASK_ZH.get(task, task))
+    ax.set_xlabel("扩散步数")
+    ax.set_ylabel("准确率")
+    ax.set_title("A. 扩散步数-准确率曲线")
+    ax.text(0.02, 0.02, sweep_note, transform=ax.transAxes, fontsize=8, color="#555555")
+    ax.legend(frameon=False, ncol=3, fontsize=7, loc="lower right")
+
+    ax = axes[0, 1]
+    gains = []
+    for task, values in sweep_lookup.items():
+        min_step = min(values)
+        max_step = max(values)
+        gains.append((task, values[max_step] - values[min_step], min_step, max_step))
+    gains.sort(key=lambda x: x[1], reverse=True)
+    y = np.arange(len(gains))
+    ax.barh(y, [g[1] for g in gains], color=[colors.get(g[0], "#777777") for g in gains], edgecolor="#333333", linewidth=0.35)
+    ax.axvline(0, color="#333333", linewidth=0.8)
+    ax.set_yticks(y, [TASK_ZH.get(g[0], g[0]) for g in gains])
+    ax.invert_yaxis()
+    ax.set_xlabel("最高步数 - 最低步数准确率")
+    ax.set_title("B. 任务预算敏感性")
+
+    ax = axes[1, 0]
+    labels = [TASK_ZH.get(r["task"], r["task"]) for r in traj_rows]
+    x = np.arange(len(labels))
+    w = 0.34
+    ax.bar(x - w / 2, [fnum(r["mean_first_final_step"]) for r in traj_rows], width=w, label="首次到达最终答案步数", color="#4c78a8", edgecolor="#333333", linewidth=0.35)
+    ax.bar(x + w / 2, [fnum(r.get("avg_forward_calls", "")) for r in traj_rows], width=w, label="平均调用次数", color="#f58518", edgecolor="#333333", linewidth=0.35)
+    ax.set_xticks(x, labels)
+    ax.set_ylabel("步数 / 调用次数")
+    ax.set_title("C. 轨迹 hitting-time 统计")
+    ax.legend(frameon=False, fontsize=8)
+    ax.text(0.02, 0.02, "trace: n=500/task, stride=1", transform=ax.transAxes, fontsize=8, color="#555555")
+
+    ax = axes[1, 1]
+    route_keys = ["8", "8->32", "32"]
+    route_names = ["8步接受", "追加再修", "32步"]
+    route_colors = ["#72b7b2", "#eeca3b", "#e45756"]
+    labels = [TASK_ZH.get(r["task"], r["task"]) for r in ctrl_rows]
+    bottom = np.zeros(len(ctrl_rows))
+    for key, name, color in zip(route_keys, route_names, route_colors):
+        vals = [parse_route(r["route_rates"]).get(key, 0.0) for r in ctrl_rows]
+        ax.bar(labels, vals, bottom=bottom, label=name, color=color, edgecolor="#333333", linewidth=0.35)
+        bottom += np.array(vals)
+    for i, r in enumerate(ctrl_rows):
+        ax.text(i, 1.03, f"{fnum(r['avg_forward_calls']):.1f} calls", ha="center", va="bottom", fontsize=8)
+    ax.set_ylim(0, 1.16)
+    ax.set_ylabel("路由比例")
+    ax.set_title("D. 控制器如何分配预算")
+    ax.legend(frameon=False, fontsize=8, ncol=3, loc="upper center", bbox_to_anchor=(0.5, -0.12))
+
+    fig.suptitle("推理侧证据合图：步数曲线、轨迹稳定性与预算路由", y=1.02, fontsize=13)
+    fig.tight_layout()
+    savefig("inference_joint_analysis")
 
 
 def write_markdown_tables():
@@ -488,6 +596,7 @@ def main():
     fig_boundary_cases()
     fig_coverage()
     fig_step_sweep()
+    fig_inference_joint_analysis()
     print(f"wrote {FIG} and {TAB}")
 
 

@@ -24,7 +24,7 @@
 建议配图：
 
 ```text
-figures/trajectory_metrics_expanded.png
+figures/inference_joint_analysis.png
 ```
 
 ## 第 3 页：训练侧方法
@@ -122,7 +122,7 @@ WinoGrande 平均 16.81 步首次到达最终答案
 建议配图：
 
 ```text
-figures/trajectory_metrics_expanded.png
+figures/inference_joint_analysis.png
 ```
 
 ## 第 7 页：选择性再掩码推理控制
@@ -196,7 +196,23 @@ GSM8K 对扩散步数高度敏感；ARC、HellaSwag、BoolQ 也有预算效应�
 
 ```text
 figures/coverage_comparison.png
-figures/step_sweep_9task_limit50.png
+figures/step_sweep_by_task.png
+figures/inference_joint_analysis.png
+```
+
+这一页的步数扫描已经补到 9 个任务、每任务 100 条样本、14 个步点：
+
+```text
+2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 32, 40
+```
+
+重点讲：
+
+```text
+PubMedQA：2 步到 40 步 +0.36
+BoolQ：+0.14
+WinoGrande：+0.05
+CommonsenseQA 和 SciQ：低步数基本饱和
 ```
 
 ## 第 12 页：最终贡献
