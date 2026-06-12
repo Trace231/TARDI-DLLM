@@ -2,7 +2,9 @@
 set -euo pipefail
 
 cd "${LLADA_EVAL_ROOT:-/data/llada_eval}"
-source scripts/env_llada.sh
+if [ -f scripts/env_llada.sh ]; then
+  source scripts/env_llada.sh
+fi
 
 ROOT="${ROOT:-results/domain_shift/task_aware/solid_v2}"
 MODEL_Q="${MODEL_Q:-/data/hf/models/Qwen/Qwen2.5-7B-Instruct}"
