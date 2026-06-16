@@ -66,3 +66,9 @@ test_plot.pdf
 test_text_cn.pdf
 test_text_cn_font.pdf
 第七章练习*
+
+# Large training artifacts / outputs / nested repos (do not commit)
+results/
+LLaDA/
+writing/
+*.bak

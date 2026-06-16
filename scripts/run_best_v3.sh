@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -uo pipefail
+cd /data/llada_eval
+export HF_HUB_OFFLINE=1 HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+# BEST config: choice_noise recipe + proper training (cosine+val-select+wd)
+#   + CONTINUOUS high-biased noise (7 anchors + jitter) + SUPERVISED reducible-choice importance sampling (per-task bandit, sharp)
+python3 scripts/train_llada_choice_noise_lora.py --model /data/hf/models/GSAI-ML/LLaDA-8B-Instruct --train-jsonl results/domain_shift/task_aware/lora_opt_v1/train/domain_mix_9task_balanced_exclude_eval_seed101.jsonl --peft-variant lora   --mode choice_noise --batch-size 1 --grad-accum 8 --lr 1e-4 --lora-r 16 --lora-alpha 32 --mask-prompt   --denoise-weight 0.15 --consistency-weight 0.05   --noise-ratios 0.1,0.25,0.4,0.55,0.7,0.8,0.9 --noise-jitter 0.07   --adaptive-noise reducible_loss --adaptive-where sampling --adaptive-signal choice_ppl   --adaptive-eps 0.03 --adaptive-temp 0.2 --adaptive-ema 0.95 --adaptive-fast-ema 0.7   --lr-scheduler cosine --warmup-ratio 0.1 --max-steps 600 --val-fraction 0.15 --val-every 40 --weight-decay 0.05   --out results/domain_shift/task_aware/solid_v2/related_work_v1/ours_trained/best_v3/best_v3 > results/domain_shift/task_aware/solid_v2/related_work_v1/ours_trained/best_v3/logs/train.log 2>&1
+echo "[$(date)] trained. scorecard (continuous anchors, supervised-choice importance):"
+python3 -c "import json;d=json.load(open('results/domain_shift/task_aware/solid_v2/related_work_v1/ours_trained/best_v3/best_v3/adaptive_noise_ema.json'));b=d['buckets'];t=[0]*len(b)
+for k in d['ema_seen']:
+ for i,v in enumerate(d['ema_seen'][k]): t[i]+=v
+T=sum(t);print('  anchors',b);print('  share  ',[f'{100*x/T:.0f}%' for x in t],'(uniform=%.0f%%)'%(100/len(b)))"
+echo "[$(date)] eval-450:"
+python3 scripts/eval_domain_shift.py --backend llada --model /data/hf/models/GSAI-ML/LLaDA-8B-Instruct --adapter results/domain_shift/task_aware/solid_v2/related_work_v1/ours_trained/best_v3/best_v3/final_adapter   --tasks mmlu_pro,pubmedqa,ceval_computer_network,sciq,winogrande,commonsenseqa,arc_challenge,hellaswag,boolq --limit 50 --seed 23 --steps 32 --gen-length 32 --block-length 32   --prompt-style final_label_typed --out results/domain_shift/task_aware/solid_v2/related_work_v1/ours_trained/best_v3/raw_eval450.json > results/domain_shift/task_aware/solid_v2/related_work_v1/ours_trained/best_v3/logs/eval450.log 2>&1
+python3 -c "import json,statistics as s;d=json.load(open('results/domain_shift/task_aware/solid_v2/related_work_v1/ours_trained/best_v3/raw_eval450.json'));print('[$(date)] best_v3 eval-450 = %.4f (baseline best_uniform_v2 eval-450 0.7467 / big-test 0.7763)'%s.mean([v['accuracy'] for v in d['summary'].values()]))"
+echo "[$(date)] BIG-TEST 200/task:"
+python3 scripts/eval_domain_shift.py --backend llada --model /data/hf/models/GSAI-ML/LLaDA-8B-Instruct --adapter results/domain_shift/task_aware/solid_v2/related_work_v1/ours_trained/best_v3/best_v3/final_adapter   --tasks mmlu_pro,pubmedqa,ceval_computer_network,sciq,winogrande,commonsenseqa,arc_challenge,hellaswag,boolq --limit 200 --seed 23 --steps 32 --gen-length 32 --block-length 32   --prompt-style final_label_typed --out results/domain_shift/task_aware/solid_v2/related_work_v1/ours_trained/best_v3/raw_big.json > results/domain_shift/task_aware/solid_v2/related_work_v1/ours_trained/best_v3/logs/big.log 2>&1
+python3 -c "import json,statistics as s;d=json.load(open('results/domain_shift/task_aware/solid_v2/related_work_v1/ours_trained/best_v3/raw_big.json'));print('[$(date)] best_v3 BIG = %.4f  vs best_uniform_v2 BIG 0.7763'%s.mean([v['accuracy'] for v in d['summary'].values()]))"
