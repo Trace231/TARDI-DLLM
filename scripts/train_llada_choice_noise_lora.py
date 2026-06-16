@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import json
+import math
 import random
 import re
 from pathlib import Path
@@ -122,6 +123,8 @@ def encode_one(tokenizer, row, args, rng, forced_ratio=None):
     input_ids = original.clone()
     denoise_labels = torch.full_like(original, -100)
     ratio = forced_ratio if forced_ratio is not None else rng.choice(args.noise_ratios)
+    if getattr(args, "noise_jitter", 0.0) > 0:  # CONTINUOUS noise: jitter the (bucketed) ratio into a smooth range
+        ratio = min(0.97, max(0.05, ratio + rng.uniform(-args.noise_jitter, args.noise_jitter)))
     completion_positions = list(range(label_pos, len(full_ids)))
     masked = []
     for pos in completion_positions:
@@ -183,14 +186,28 @@ def choice_loss_from_logits(logits, batch):
         target = torch.tensor([batch["gold_idx"][i].item()], device=logits.device)
         losses.append(F.cross_entropy(cand_logits.unsqueeze(0), target))
         probs.append(F.softmax(cand_logits, dim=-1))
-    return torch.stack(losses).mean(), probs
+    stacked = torch.stack(losses)
+    # 3rd return keeps GRAD (loss-weighting backprops through per-example choice loss); EMA-signal
+    # callers detach it themselves.
+    return stacked.mean(), probs, stacked
 
 
 def denoise_loss_from_logits(logits, labels):
     mask = labels != -100
     if not bool(mask.any()):
-        return logits.sum() * 0.0
-    return F.cross_entropy(logits[mask].float(), labels[mask].to(logits.device))
+        z = logits.sum() * 0.0
+        return z, torch.zeros(logits.shape[0], device=logits.device)
+    flat = F.cross_entropy(logits[mask].float(), labels[mask].to(logits.device))
+    # per-example reconstruction CE = "how hard is denoising at THIS example's noise ratio rho":
+    # the on-target signal for choosing which noise bucket to upsample (vs choice CE = answer difficulty).
+    per_ex = []
+    for i in range(logits.shape[0]):
+        mi = mask[i]
+        if bool(mi.any()):
+            per_ex.append(F.cross_entropy(logits[i][mi].float(), labels[i][mi].to(logits.device)).detach())
+        else:
+            per_ex.append((logits[i].sum() * 0.0).detach())
+    return flat, torch.stack(per_ex)
 
 
 def forward_losses(model, batch, device):
@@ -200,9 +217,32 @@ def forward_losses(model, batch, device):
     labels = batch["denoise_labels"].to(device)
     out = model(input_ids=input_ids, attention_mask=attention_mask)
     logits = out.logits
-    choice_loss, choice_probs = choice_loss_from_logits(logits, batch)
-    denoise_loss = denoise_loss_from_logits(logits, labels)
-    return choice_loss, denoise_loss, choice_probs
+    choice_loss, choice_probs, choice_per_ex = choice_loss_from_logits(logits, batch)
+    denoise_loss, denoise_per_ex = denoise_loss_from_logits(logits, labels)
+    return choice_loss, denoise_loss, choice_probs, choice_per_ex, denoise_per_ex
+
+
+@torch.no_grad()
+def val_choice_accuracy(model, tokenizer, val_rows, args, rng, pad_id, device):
+    """Cheap validation signal: one forward per held-out row (fixed masking), choice argmax vs gold.
+    Used to pick the eval-optimal checkpoint (early stop on VALIDATION, not train loss -> catches overfit)."""
+    was_training = model.training
+    model.eval()
+    correct = total = 0
+    for r in val_rows:
+        ex = encode_one(tokenizer, r, args, rng, forced_ratio=0.5)  # fixed ratio -> consistent val signal
+        if ex is None:
+            continue
+        batch = pad_batch([ex], pad_id)
+        out = model(input_ids=batch["input_ids"].to(device), attention_mask=batch["attention_mask"].to(device))
+        pos = batch["label_pos"][0]
+        cand = batch["candidate_ids"][0].to(device)
+        pred = int(torch.argmax(out.logits[0, pos, cand]).item())
+        correct += int(pred == int(batch["gold_idx"][0].item()))
+        total += 1
+    if was_training:
+        model.train()
+    return correct / max(total, 1)
 
 
 def main():
@@ -238,7 +278,39 @@ def main():
     ap.add_argument("--consistency-weight", type=float, default=0.05)
     ap.add_argument("--mask-prompt", action="store_true")
     ap.add_argument("--prompt-mask-scale", type=float, default=0.15)
+    # --- option C: online loss-aware adaptive noise (per-task x per-bucket loss EMA) ---
+    ap.add_argument("--adaptive-noise", choices=["none", "loss_aware", "reducible_loss"], default="none")
+    ap.add_argument("--adaptive-eps", type=float, default=0.2, help="exploration floor (uniform mix)")
+    ap.add_argument("--adaptive-temp", type=float, default=0.5, help="softmax temperature")
+    ap.add_argument("--adaptive-ema", type=float, default=0.9, help="slow EMA decay for per-(task,bucket) loss")
+    ap.add_argument("--adaptive-fast-ema", type=float, default=0.6, help="fast EMA decay (reducible_loss: sample ~ slow-fast)")
+    ap.add_argument("--adaptive-signal", choices=["choice_ppl", "denoise_ppl", "mix"], default="denoise_ppl",
+                    help="which per-example perplexity feeds the EMA / loss weight: denoise_ppl = "
+                         "reconstruction difficulty at that noise level (on-target); choice_ppl = answer difficulty")
+    ap.add_argument("--adaptive-where", choices=["sampling", "loss_weight", "both"], default="sampling",
+                    help="sampling = bandit upsamples hard noise buckets (dynamic noise schedule); "
+                         "loss_weight = uniform sampling, focal-weight each example's choice loss by its own "
+                         "fresh perplexity; both = dynamic-noise sampling AND loss weighting (PPL on both ends)")
+    ap.add_argument("--adaptive-gamma", type=float, default=1.0,
+                    help="loss_weight sharpness: w = normalize(PPL^gamma); 0 -> uniform (recovers baseline)")
+    ap.add_argument("--adaptive-wclip", type=float, default=4.0, help="loss_weight: clamp normalized weight max")
     ap.add_argument("--save-every", type=int, default=0)
+    # --- proper training strategy: LR schedule + convergence-based stopping (vs toy constant-LR/fixed-steps) ---
+    ap.add_argument("--lr-scheduler", choices=["none", "cosine", "linear"], default="none",
+                    help="cosine/linear LR decay with warmup; 'none' = constant LR (the old toy default)")
+    ap.add_argument("--warmup-ratio", type=float, default=0.1)
+    ap.add_argument("--convergence-window", type=int, default=50, help="steps per convergence-check window")
+    ap.add_argument("--convergence-patience", type=int, default=0,
+                    help=">0 enables EARLY STOP: stop once this many consecutive windows show EMA-loss "
+                         "relative improvement < --convergence-tol (i.e. converged). max-steps becomes an upper bound.")
+    ap.add_argument("--convergence-tol", type=float, default=0.01)
+    # --- proper model selection: hold-out validation -> keep the BEST-val checkpoint (catches overfit) ---
+    ap.add_argument("--val-fraction", type=float, default=0.0, help=">0 holds out this fraction of train as val")
+    ap.add_argument("--val-every", type=int, default=50, help="evaluate val choice-accuracy every N steps")
+    ap.add_argument("--weight-decay", type=float, default=0.01, help="AdamW weight decay (regularization)")
+    ap.add_argument("--noise-jitter", type=float, default=0.0,
+                    help=">0 turns the discrete noise buckets into a CONTINUOUS schedule by jittering each "
+                         "sampled ratio uniformly by +/- this amount (clipped to [0.05, 0.97])")
     args = ap.parse_args()
     args.noise_ratios = [float(x) for x in args.noise_ratios.split(",") if x.strip()]
 
@@ -333,11 +405,28 @@ def main():
             flush=True,
         )
     else:
-        optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=args.lr)
+        optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=args.lr,
+                                       weight_decay=args.weight_decay)
+
+    scheduler = None
+    if args.lr_scheduler != "none":
+        from transformers import get_cosine_schedule_with_warmup, get_linear_schedule_with_warmup
+        warm = max(1, int(args.warmup_ratio * args.max_steps))
+        _build = get_cosine_schedule_with_warmup if args.lr_scheduler == "cosine" else get_linear_schedule_with_warmup
+        scheduler = _build(optimizer, num_warmup_steps=warm, num_training_steps=args.max_steps)
+        print(f"LR schedule: {args.lr_scheduler}, warmup={warm}/{args.max_steps}", flush=True)
 
     usable = [r for r in rows if encode_one(tokenizer, r, args, rng) is not None]
     if not usable:
         raise RuntimeError("No usable training examples after tokenization.")
+    val_rows = []
+    if args.val_fraction > 0:
+        n_val = max(1, int(args.val_fraction * len(usable)))
+        val_rows = usable[:n_val]          # held out, NOT trained on
+        usable = usable[n_val:]
+        print(f"held-out val: {len(val_rows)} rows; train: {len(usable)} rows", flush=True)
+    best_val = -1.0
+    best_val_step = 0
     (out_dir / "train_manifest.json").write_text(
         json.dumps(
             {
@@ -350,29 +439,118 @@ def main():
         )
     )
 
+    # --- option C: online loss-aware adaptive noise sampler (per-task x per-bucket loss EMA) ---
+    noise_buckets = list(args.noise_ratios)
+    ema_loss = {}   # task -> [slow EMA loss per bucket]
+    ema_fast = {}   # task -> [fast EMA loss per bucket]
+    ema_seen = {}   # task -> [visit count per bucket]
+
+    def _bucket_logit(task, i):
+        # loss_aware: sample ~ raw loss EMA (high loss -> more samples).
+        # reducible_loss: sample ~ (slow - fast) i.e. loss still DROPPING (learnable) -> more samples;
+        #   high-but-flat (irreducible, e.g. mmlu knowledge gap) -> ~0 -> falls back to exploration floor.
+        slow = ema_loss[task][i]
+        if args.adaptive_noise == "reducible_loss":
+            fast = ema_fast[task][i]
+            return (slow - fast) if (slow is not None and fast is not None) else 0.0
+        return slow if slow is not None else 0.0
+
+    def adaptive_sample(task):
+        """Return (bucket_idx, ratio): sample bucket ~ softmax(logit/temp) with eps floor; unseen first."""
+        B = len(noise_buckets)
+        ema_loss.setdefault(task, [None] * B)
+        ema_fast.setdefault(task, [None] * B)
+        seen = ema_seen.setdefault(task, [0] * B)
+        unseen = [i for i in range(B) if seen[i] == 0]
+        if unseen:
+            j = rng.choice(unseen)
+        else:
+            logits = [_bucket_logit(task, i) for i in range(B)]
+            m = max(logits)
+            ws = [math.exp((v - m) / max(1e-6, args.adaptive_temp)) for v in logits]
+            s = sum(ws)
+            probs = [(1.0 - args.adaptive_eps) * (w / s) + args.adaptive_eps / B for w in ws]
+            r = rng.random()
+            acc = 0.0
+            j = B - 1
+            for i, p in enumerate(probs):
+                acc += p
+                if r <= acc:
+                    j = i
+                    break
+        return j, noise_buckets[j]
+
+    def adaptive_update(task, j, loss_val):
+        s = ema_loss[task]
+        s[j] = loss_val if s[j] is None else args.adaptive_ema * s[j] + (1.0 - args.adaptive_ema) * loss_val
+        f = ema_fast[task]
+        f[j] = loss_val if f[j] is None else args.adaptive_fast_ema * f[j] + (1.0 - args.adaptive_fast_ema) * loss_val
+        ema_seen[task][j] += 1
+
     step = 0
     accum = 0
     cursor = 0
     running = []
+    loss_ema = None          # smoothed loss for convergence detection (choice_loss is too noisy to use raw)
+    conv_marks = []          # EMA-loss snapshot per window
+    no_progress = 0
+    stopped_converged = False
     optimizer.zero_grad(set_to_none=True)
+    use_bandit = (args.adaptive_noise != "none" and args.adaptive_where in ("sampling", "both"))
+    use_lossw = (args.adaptive_noise != "none" and args.adaptive_where in ("loss_weight", "both"))
     while step < args.max_steps:
         batch_rows = [usable[(cursor + j) % len(usable)] for j in range(args.batch_size)]
         cursor += args.batch_size
         examples = []
+        ex_keys = []  # aligned 1:1 with examples (only non-None rows), for per-example bucket attribution
         for row in batch_rows:
-            ex = encode_one(tokenizer, row, args, rng)
+            if use_bandit:
+                j, ratio = adaptive_sample(str(row.get("task", "unknown")))
+                ex = encode_one(tokenizer, row, args, rng, forced_ratio=ratio)
+                key = (str(row.get("task", "unknown")), j)
+            else:
+                ex = encode_one(tokenizer, row, args, rng)  # uniform draw (baseline / loss_weight)
+                key = None
             if ex is not None:
                 examples.append(ex)
+                ex_keys.append(key)
         if not examples:
             continue
         batch = pad_batch(examples, pad_id)
-        choice_loss, denoise_loss, probs1 = forward_losses(model, batch, "cuda")
+        choice_loss, denoise_loss, probs1, choice_per_ex, denoise_per_ex = forward_losses(model, batch, "cuda")
+
+        # which per-example perplexity is the signal (used by BOTH sampling EMA and loss weighting)
+        if args.adaptive_signal == "denoise_ppl":
+            sig_t = denoise_per_ex
+        elif args.adaptive_signal == "mix":
+            sig_t = 0.5 * choice_per_ex.detach() + 0.5 * denoise_per_ex
+        else:
+            sig_t = choice_per_ex.detach()
+
+        if use_bandit:
+            # PER-EXAMPLE attribution: each bucket's EMA updated with ITS OWN example's perplexity, not the
+            # batch mean (the old code gave every bucket the batch mean -> contaminated signal).
+            sig = sig_t.detach().cpu().tolist()
+            for _idx, _k in enumerate(ex_keys):
+                if _k is not None and _idx < len(sig):
+                    adaptive_update(_k[0], _k[1], float(sig[_idx]))
+
         if args.mode == "vanilla":
             loss = denoise_loss
             consistency_loss = denoise_loss * 0.0
         elif args.mode == "label":
             consistency_loss = denoise_loss * 0.0
-            loss = choice_loss + args.denoise_weight * denoise_loss
+            if use_lossw:
+                # FOCAL-style: weight each example's choice loss by its own FRESH perplexity (no staleness,
+                # no chicken-and-egg -- PPL is a byproduct of the forward we already ran). Normalize to mean 1
+                # (keeps loss scale, bounds variance) and clamp outliers.
+                w = sig_t.detach().clamp(min=0.0) ** args.adaptive_gamma
+                w = w / (w.mean() + 1e-6)
+                w = w.clamp(max=args.adaptive_wclip)
+                weighted_choice = (w * choice_per_ex).mean()
+                loss = weighted_choice + args.denoise_weight * denoise_loss
+            else:
+                loss = choice_loss + args.denoise_weight * denoise_loss
         else:
             alt_examples = []
             for row in batch_rows:
@@ -381,7 +559,7 @@ def main():
                 if alt is not None:
                     alt_examples.append(alt)
             alt_batch = pad_batch(alt_examples, pad_id)
-            alt_choice_loss, alt_denoise_loss, probs2 = forward_losses(model, alt_batch, "cuda")
+            alt_choice_loss, alt_denoise_loss, probs2, _alt_per_ex, _alt_dn_per_ex = forward_losses(model, alt_batch, "cuda")
             kl_terms = []
             for p, q in zip(probs1, probs2):
                 p = p.float()
@@ -397,12 +575,18 @@ def main():
         if accum >= args.grad_accum:
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             optimizer.step()
+            if scheduler is not None:
+                scheduler.step()
             optimizer.zero_grad(set_to_none=True)
             accum = 0
             step += 1
+            _lv = float(loss.detach().cpu())
+            loss_ema = _lv if loss_ema is None else 0.97 * loss_ema + 0.03 * _lv
             rec = {
                 "step": step,
-                "loss": float(loss.detach().cpu()),
+                "loss": _lv,
+                "loss_ema": loss_ema,
+                "lr": (scheduler.get_last_lr()[0] if scheduler is not None else args.lr),
                 "choice_loss": float(choice_loss.detach().cpu()),
                 "denoise_loss": float(denoise_loss.detach().cpu()),
                 "consistency_loss": float(consistency_loss.detach().cpu()),
@@ -410,18 +594,48 @@ def main():
             running.append(rec)
             if step % 10 == 0 or step == 1:
                 print(json.dumps(rec), flush=True)
+            # convergence-based early stop: stop once the smoothed loss plateaus (vs toy fixed-step stop)
+            if args.convergence_patience > 0 and step % args.convergence_window == 0:
+                conv_marks.append(loss_ema)
+                if len(conv_marks) >= 2:
+                    rel = (conv_marks[-2] - conv_marks[-1]) / max(abs(conv_marks[-2]), 1e-6)
+                    no_progress = no_progress + 1 if rel < args.convergence_tol else 0
+                    if no_progress >= args.convergence_patience:
+                        print(json.dumps({"converged": True, "step": step, "loss_ema": loss_ema,
+                                          "windows_flat": no_progress}), flush=True)
+                        stopped_converged = True
+                        break
+            # VALIDATION-based model selection: keep the BEST-val checkpoint as final_adapter (catches overfit,
+            # unlike train-loss stopping). Fixed budget runs to the end; we just select the best point on it.
+            if val_rows and step % args.val_every == 0:
+                vacc = val_choice_accuracy(model, tokenizer, val_rows, args, rng, pad_id, "cuda")
+                print(json.dumps({"step": step, "val_acc": round(vacc, 4),
+                                  "best_val": round(max(best_val, vacc), 4)}), flush=True)
+                if vacc > best_val:
+                    best_val, best_val_step = vacc, step
+                    model.save_pretrained(str(out_dir / "final_adapter"))
+                    tokenizer.save_pretrained(str(out_dir / "final_adapter"))
             if args.save_every and step % args.save_every == 0:
                 if args.peft_variant in {"nara", "tasknara"}:
                     save_nara_adapter(model, out_dir / f"checkpoint-{step}", tokenizer=tokenizer)
                 else:
                     model.save_pretrained(str(out_dir / f"checkpoint-{step}"))
 
-    if args.peft_variant in {"nara", "tasknara"}:
+    if val_rows and best_val_step > 0:
+        # final_adapter already holds the BEST-val checkpoint; do NOT overwrite with the (possibly overfit) last step
+        print(json.dumps({"selected_by_val": True, "best_val": round(best_val, 4), "best_val_step": best_val_step}), flush=True)
+        tokenizer.save_pretrained(str(out_dir / "final_adapter"))
+    elif args.peft_variant in {"nara", "tasknara"}:
         save_nara_adapter(model, out_dir / "final_adapter", tokenizer=tokenizer)
     else:
         model.save_pretrained(str(out_dir / "final_adapter"))
         tokenizer.save_pretrained(str(out_dir / "final_adapter"))
     (out_dir / "train_log.json").write_text(json.dumps(running, indent=2))
+    if args.adaptive_noise != "none":
+        (out_dir / "adaptive_noise_ema.json").write_text(
+            json.dumps({"buckets": noise_buckets, "ema_loss": ema_loss, "ema_fast": ema_fast, "ema_seen": ema_seen},
+                       ensure_ascii=False, indent=2)
+        )
 
 
 if __name__ == "__main__":

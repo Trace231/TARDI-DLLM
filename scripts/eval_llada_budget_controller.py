@@ -143,6 +143,7 @@ def decode_once(model, tokenizer, sample, policy, args, labels, collect_trace):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True)
+    ap.add_argument("--adapter", default=None, help="optional PEFT adapter path")
     ap.add_argument("--tasks", default="winogrande,commonsenseqa")
     ap.add_argument("--limit", type=int, default=100)
     ap.add_argument("--seed", type=int, default=11)
@@ -161,7 +162,7 @@ def main():
     args = ap.parse_args()
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
-    tokenizer, model = base.load_llada(args.model)
+    tokenizer, model = base.load_llada(args.model, args.adapter)
     torch.cuda.reset_peak_memory_stats()
 
     rows = []
